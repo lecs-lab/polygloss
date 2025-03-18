@@ -1,4 +1,4 @@
-# GlossLM
+# PolyGloss (formerly GlossLM)
 A Massively Multilingual Corpus and Pretrained Model for Interlinear Glossed Text
 
 [📄 Paper](https://arxiv.org/abs/2403.06399) | [📦 Models and data](https://huggingface.co/collections/lecslab/glosslm-66da150854209e910113dd87)
