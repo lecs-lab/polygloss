@@ -5,3 +5,4 @@ __pycache__
 src/wandb
 slurm-out/
 training-checkpoints/
+.venv
