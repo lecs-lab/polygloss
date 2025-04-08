@@ -1,6 +1,6 @@
 """Creates the entire PolyGloss dataset from scratch by aggregating sources, filtering, and processing. May take a while."""
 
-from .scrape_data import (
+from data.scrape_data import (
     scrape_cldf,
     scrape_gurani,
     scrape_imtvault,
