@@ -10,3 +10,6 @@
 [submodule "data/raw/uratyp"]
 	path = data/raw/uratyp
 	url = https://github.com/cldf-datasets/uratyp.git
+[submodule "data/raw/apics"]
+	path = data/raw/apics
+	url = https://github.com/cldf-datasets/apics.git
