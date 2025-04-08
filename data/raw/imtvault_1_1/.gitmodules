@@ -1,6 +1,0 @@
-[submodule "raw/langsci"]
-	path = raw/langsci
-	url = https://github.com/langsci/raw_texfiles.git
-[submodule "raw/glossa"]
-	path = raw/glossa
-	url = https://github.com/xrotwang/glossa_xml
