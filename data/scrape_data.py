@@ -6,17 +6,18 @@ import typing
 import pandas as pd
 from tqdm import tqdm
 
-from data.data import IGTLine, SplitType, load_igt
+from data.lang_codes import iso3_to_glotto
+from data.model import IGTLine, SplitType, load_igt
 
 
 def scrape_odin() -> list[IGTLine]:
     raw_dir = pathlib.Path(__file__).parent / "raw/ODIN"
     all_data: list[IGTLine] = []
     for file in tqdm((raw_dir / "odin_data_sigmorphon").iterdir()):
+        glottocode = iso3_to_glotto.get(file.stem.split("-")[0])
         data = load_igt(file, id_prefix=f"odin_{file.stem}", source="odin")
         for row in data:
-            # TODO: use mapping from odin codes to glottocodes
-            pass
+            row.glottocode = glottocode
         all_data.extend(data)
     return all_data
 
@@ -100,6 +101,8 @@ def scrape_imtvault() -> list[IGTLine]:
     data: list[IGTLine] = []
     for row in df.itertuples():
         row = typing.cast(typing.Any, row)
+        if isinstance(row.Analyzed_Word, float) or isinstance(row.Gloss, float):
+            continue
         transcription = row.Analyzed_Word.replace("\\t", " ")
         segmentation = transcription if "-" in transcription else None
         transcription = transcription.replace("-", "")
