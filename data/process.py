@@ -1,3 +1,4 @@
+import regex
 from langid.langid import LanguageIdentifier, model
 
 from data.lang_codes import iso1_to_3, iso3_to_glotto
@@ -25,6 +26,21 @@ def standardize(example: IGTLine) -> IGTLine:
     if not isinstance(example.translation, str):
         example.translation = None
 
-    # TODO: fix punctuation and such
+    # Fix punctuation and such
+    example.transcription = regex.sub(r"(\w)\?", r"\1 ?", example.transcription)
+    example.transcription = regex.sub(r"(\w)\.", r"\1 .", example.transcription)
+    example.transcription = regex.sub(r"(\w)\!", r"\1 !", example.transcription)
+    example.transcription = regex.sub(r"(\w)\,", r"\1 ,", example.transcription)
+    example.transcription = regex.sub(r"\-(\s|$)", " ", example.transcription)
+
+    # I've omitted a regex that removes null morphemes (e.g. dangling hyphens)
+    # If you want to add that back, the regex is:
+    # regex.sub("\-(\s|$)", " ")
+
+    if example.glosses:
+        example.glosses = regex.sub("\t", " ", example.glosses)
+        example.glosses = regex.sub(r"(\w)\.(\s|$)", r"\1 . ", example.glosses)
+        example.glosses = regex.sub(r"(\w)\!(\s|$)", r"\1 ! ", example.glosses)
+        example.glosses = regex.sub(r"(\w)\?(\s|$)", r"\1 ? ", example.glosses)
 
     return example

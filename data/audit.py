@@ -26,5 +26,15 @@ def audit(dataset: datasets.Dataset):
         if not row["metalang_glottocode"]:
             stats["Missing metalang glottocode"] += 1
 
+        if row["segmentation"] and row["glosses"]:
+            num_morphemes = len(
+                [t for word in row["segmentation"].split() for t in word.split("-")]
+            )
+            num_glosses = len(
+                [t for word in row["glosses"].split() for t in word.split("-")]
+            )
+            if num_morphemes != num_glosses:
+                stats["Morpheme count mismatch"] += 1
+
     for key in sorted(stats):
         print(f"{key}: {stats[key]}")

@@ -1,4 +1,5 @@
 import csv
+import json
 import pathlib
 
 from iso639 import Lang
@@ -18,3 +19,7 @@ with open(pathlib.Path(__file__).parent / "raw/glottocode2iso.csv", "r") as f:
 def iso1_to_3(code: str):
     """Converts ISO 639-1 codes (two-letter) into ISO 639-3 (three-letter)"""
     return Lang(code).pt3
+
+
+with open(pathlib.Path(__file__).parent / "raw/ODIN/language_map.json", "r") as f:
+    odin_to_glotto: dict[str, str] = json.load(f)
