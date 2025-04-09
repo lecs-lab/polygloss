@@ -1,0 +1,304 @@
+\t Ka’aguy pa’ume, jahypytývo tuichá va yvy pe,
+\m Ka’aguy pa’u-me, ja-hypytý-vo tuichá -va yvy pe,
+\g Forest middle-Loc 1Pl.Incl-reach-Temp.Conj big- Rel ground-Loc.Prep
+\l In the middle of the forest, when reaching a large ground area,
+
+\t oĩ peteĩ ygua kakuaa, hoy’u há[pe] opaite animal ka’aguy.
+\m o-ĩ peteĩ ygua kakuaa, hoy’u- há[-pe] opa-ite animal ka’aguy.
+\g 3Sg-exist one spring big [water fountain] 3Pl.drink- Rel[-Loc] all-Superl animal forest
+\l there is a big spring, where all the animals of the forest drink.
+
+\t Upéinte, peteĩ ko’ẽme, ahy’o sorópe osapukái sapy’a jaguarete ha he’i:
+\m Upéi-nte, peteĩ ko’ẽ-me, ahy’o soró-pe o-sapukái sapy’a jaguarete ha he’i:
+\g Dem-FOC one day-Loc throat-torn-Loc.Prep 3Sg-shout suddenly tiger Conj 3Sg.say
+\l Suddenly, one day, the tiger shouted out:
+
+\t ——Ko’águi che añonté ma hay’ú ta ko’ápe,
+\m ——Ko’á-gui che año-nté -ma hay’ú -ta ko’á-pe,
+\g ——Here.Prep 1.Pron alone-only -Asp 1Sg.drink -Prosp here-Loc.Prep
+\l "From here on, only I will drink here,
+
+\t che mba’é ma ko ygua.
+\m che mba’é -ma ko ygua.
+\g 1Sg.Poss thing -Asp Dem spring
+\l this spring is mine."
+
+\t Upete guive, ótro kuéra hapicha ka’aguy
+\m Upe-te guive, ótro kuéra hapicha ka’aguy
+\g Dem-Superl from another Pl alike (Prep) forest
+\l From then on, other animals from the forest
+
+\t ndojavéiva upe y rembe’ýpe.
+\m nd-o-javé-i-va upe y rembe’ý-pe.
+\g Neg-3Sg-get.close-Neg-Hab Dem water shore-Loc.Prep
+\l did not usually get close to the shore of that spring.
+
+\t Jaguarete [ãga] katu, pyhareve asajévo, katuete oguejy upépe hoy’u.
+\m Jaguarete [ãga] katu, pyhareve asajé-vo, katu-ete o-guejy upé-pe hoy’u.
+\g Tiger Conj morning middle-Goal Mod-Superl 3Sg-come.down Dem-Loc 3Sg.drink
+\l But the tiger, at mid-morning, for sure comes down to drink there.
+
+\t Upéi peteĩ árape, oguejyjeývo jaguarete, ojuhu ityai pe y
+\m Upéi peteĩ ára-pe, o-guejy-jeý-vo jaguarete, o-juhu i-tyai pe y
+\g Then one day-Loc 3Sg.come-down-again-Temp.Conj tiger 3Sg-find turbulent Dem water
+\l And then one day, when the tiger came down again, he found that water turbulent,
+
+\t ha oĩ pypore upe ijere rehe.
+\m ha o-ĩ pypore upe ijere rehe.
+\g Conj 3Sg-exist footprints Dem surrounding Prep
+\l and there were footprints in the surrounding area.
+
+\t Oma’ẽ ma’ẽ upérupi ha opillá ma ka’i kuéra
+\m O-ma’ẽ ma’ẽ upé-rupi ha o-pillá -ma ka’i kuéra
+\g 3Sg-look look Dem-around Conj 3Sg-saw -Asp monkey-Pl Pl
+\l He looked and looked around and saw the monkeys
+
+\t oguejy hague hoy’u ijyguápe ra'e
+\m o-guejy- ha-gue hoy’u i-jyguá-pe ra'e
+\g 3Sg.come-down Sub-Term.Asp 3Pl.drink 3.Poss-fountain-Loc.Prep Evid
+\l who had come down to drink in his fountain.
+
+\t ——Ko’ãvape amokasõ ta ——he’i jaguarete
+\m ——Ko’ã-va-pe a-mo-kasõ -ta ——he’i jaguarete
+\g ——Dem.DOM 1Sg-Caus-pant -Prosp ——3Sg.say tiger
+\l "I will show them (give them a beating)," said the tiger
+
+\t ha opyta omangea hese kuéra peteĩ yvyragúype.
+\m ha o-pyta o-mangea hese kuéra peteĩ yvyra-gúy-pe.
+\g Conj 3Sg-stay 3Sg-catch 3Sg.Pron.Obl Pl one tree-under-Loc.Prep
+\l and he stayed under the tree to catch them.
+
+\t [Ãga] Katu mamo ahẽpa?
+\m [Ãga] Katu mamo ahẽ-pa?
+\g Conj where devils-Q
+\l But where are the devils?
+
+\t Upe diápe ndoguejýi ni peteĩ ka’i la y rembe’ýpe.
+\m Upe diá-pe nd-o-guejý-i ni peteĩ ka’i la y rembe’ý-pe.
+\g Dem day-Loc Neg-3Sg-bring-Neg Neg.Conj one monkey Def.Det water shore-Loc.Prep
+\l On that day not one monkey came down to the fountain [shores].
+
+\t Upẽ ma rõ, aremi ndohovéi avei jaguarete ykuápe,
+\m Upẽ -ma -rõ, are-mi nd-o-ho-vé-i avei jaguarete ykuá-pe,
+\g Then -Asp -Conj time-Dim Neg-3Sg-go-more-Neg also tiger spring-Loc.Prep
+\l Then, for a long time the tiger did not go to the spring.
+
+\t ha upe aja opensa mba’éichapa ka’i kuéra oitý ta ivokópe.
+\m ha upe aja o-pensa mba’éicha-pa ka’i kuéra o-itý -ta i-vokó-pe.
+\g Conj Dem meanwhile 3Sg-think how-Q monkey Pl 3Sg-throw -Prosp 3.Poss-bag-Loc.Prep
+\l And he thought how he will throw the monkeys into his bag.
+
+\t Upéi peteĩ pyhareve asaje jaguarete oguejy,
+\m Upéi peteĩ pyhareve asaje jaguarete o-guejy,
+\g Then one morning mid tiger 3Sg-come.down
+\l Then one morning around noon the tiger came down,
+
+\t ha pe ygua rapépe oho oñeno,
+\m ha pe ygua rapé-pe o-ho o-ñeno,
+\g Conj Dem spring groove-Loc.Prep 3Sg-go 3Sg-sleep
+\l and in the groove of the spring, he went to sleep,
+
+\t ojepysopaite, ku omanoite ramoguáicha.
+\m o-jepysopa-ite, ku o-mano-ite ramo-guáicha.
+\g 3Sg-extend-Superl Dem 3Sg-die-Superl if-as
+\l he extended himself as if he were dead.
+
+\t ——Oñemo’aguĩvo chehegui, apó ta hi’ári kuéra
+\m ——O-ñe-mo’aguĩ-vo che-hegui, a-pó -ta hi’ári kuéra
+\g ——3-Refl-come.close-Temp.Conj 1Sg-Pron.Obl 1Sg-jump -Prosp 3Pl.Pron.on Pl
+\l "As they get close to me, I will jump on them,"
+
+\t ——he’i ha oñemongete.
+\m ——he’i ha o-ñe-mongete.
+\g ——3Sg.Pron Conj 3Sg-Refl-asleep
+\l he said and he pretended to be asleep.
+
+\t Upéi oguahẽ ka’i pandilla, ombiriki joa oúvo,
+\m Upéi o-guahẽ ka’i pandilla, o-mbiriki joa o-ú-vo,
+\g Then 3Sg-bring monkey gang 3Sg-screech together 3Sg-come-Temp.Conj
+\l Then the gang of monkeys arrived, screeching together, [lit. came screeching]
+
+\t ha ohechávo ojepyso jaguarete hína upépe, he’i peteĩ va:
+\m ha o-hechá-vo o-jepyso jaguarete hína upé-pe, he’i peteĩ -va:
+\g Conj 3Sg-saw-Temp.Conj 3Sg-extended tiger Cont Dem-Loc 3Sg.say one -Rel
+\l and when he saw the tiger extended there, one said:
+
+\t ——Ma’ẽ, omanómbo amigo jaguarete ápe ra'e ——he’i ndaje.
+\m ——Ma’ẽ, o-manó-mbo amigo jaguarete ápe ra'e ——he’i ndaje.
+\g ——Look 3Sg-die-Part friend tiger here Evid ——3Sg.say Report.Evid
+\l "Look, the friend tiger died here, it appears," it is said that he said.
+
+\t Ojevolea mombyrymínte voi chugui la ka’i kuéra,
+\m O-je-volea mombyry-mí-nte voi chugui la ka’i kuéra,
+\g 3Pl-Refl-round afar-Dim-FOC FOC 3Sg.Pron.Obl Def.Det monkey Pl
+\l The monkeys turned around and around him from afar,
+
+\t ojere jere hese hikuái.
+\m o-jere jere hese hikuái.
+\g 3Pl-go.around around 3Sg.Pron.Obl 3Pl.Pron.Subj
+\l they go around and around him.
+
+\t Upéi oja’imie peteĩ ka’i kuña ha opoko hese:
+\m Upéi o-ja’i-mie peteĩ ka’i kuña ha o-poko hese:
+\g Then 3Sg-get.close-Dim.more one monkey female Conj 3Sg-touch 3Sg.Pron.Obl
+\l Then a female got a bit closer and touched him:
+
+\t ojapysaka jaguarete py’a rehe,
+\m o-japysaka jaguarete py’a rehe,
+\g 3Sg-examine tiger belly Obl.Prep
+\l she examined the tiger’s belly
+
+\t opilla haguã naipytuhẽipa.
+\m o-pilla haguã na-i-pytuhẽ-i-pa.
+\g 3Sg-see Sub.Irrealis Neg-3.Poss-breath-Neg-Q
+\l to see if he is breathing.
+
+\t Oñandúvo upéa "el finado," ojokoite ipytu, ha he’i iypy’ápe:
+\m O-ñandú-vo upéa "el finado," o-joko-ite i-pytu, ha he’i iypy’á-pe:
+\g 3Sg-feel-Temp.Conj Dem the dead.one 3Sg-stop-Superl 3.Poss-breath Conj 3Sg.say self-IO
+\l When the "dead one" felt that, he held his breath, and said to himself:
+
+\t ——Aha’arõ ta ∅ oñembojapa hikuái,
+\m ——A-ha’arõ -ta ∅ o-ñe-mboja-pa hikuái,
+\g ——1Sg-wait -Prosp 3.Pron.DO 3Pl-Refl-get.close-Compl 3Pl.Pron.Subj
+\l "I will wait for them all to get closer
+
+\t apo haguã hiári kuéra.
+\m a-po haguã hiári kuéra.
+\g 1Sg.jump Sub.Irrealis 3Pl.Pron.on Pl
+\l to jump on them."
+
+\t Upe aja otro ka’i ojapysaka hye,
+\m Upe aja otro ka’i o-japysaka hye,
+\g Dem while another monkey 3Sg-examine 3.Poss.belly
+\l Meanwhile another monkey examined his belly,
+
+\t itĩ, ha ijapysa rehe.
+\m itĩ, ha i-japysa rehe.
+\g 3.Poss.nose Conj 3.Poss.ear Obl.Prep
+\l his nose, and his ear.
+
+\t Jaguarete katu itáicha okirirĩ.
+\m Jaguarete katu itái-cha o-kirirĩ.
+\g Tiger Emph stone-like 3Sg-silent
+\l Meanwhile the tiger was silent like a stone.
+
+\t Upévo oja avei ijypýpe peteĩ ka’i
+\m Upé-vo o-ja avei i-jypýpe peteĩ ka’i
+\g Dem-Temp.Conj 3Sg-get.close also 3.Poss-ability.side one monkey
+\l At that moment, a monkey approached him on his side
+
+\t ipirãivé va ha osapukái:
+\m i-pirãi-vé -va ha o-sapukái:
+\g 3.Poss-dare-more -Rel Conj 3Sg-scream
+\l who was more daring (the monkey) and screamed:
+
+\t ——Péa nomanói, péa nomanói! ——he’i ndaje,
+\m ——Péa n-o-manói, péa n-o-manó-i! ——he’i ndaje,
+\g ——Dem Neg-3Sg-die-Neg Dem Neg-3Sg-die-Neg ——3Sg.say Report.Evid
+\l "This one did not die, this one did not die!" it is said he said,
+
+\t ——oimérõ añete la omano ningo, opyno arã [va’erã].
+\m ——oi-mé-rõ añete la o-mano ningo, o-pyno arã [va’erã].
+\g ——3Sg-exist-Cond truly Def.Det 3Sg-die Emph 3Sg-release.gas Mod
+\l "if he really died he must release gas."
+
+\t Ohendúvo upéa, oña’ã jaguarete ha puuu! Puuu! Opyno.
+\m O-hendú-vo upéa, o-ña’ã jaguarete ha puuu! Puuu! O-pyno.
+\g 3Sg-listen-Temp.Conj Dem 3Sg-make.effort tiger Conj puuu Puuu 3Sg-release.gas
+\l When he heard that, the tiger made an effort and puuu! Puuu! He released gas.
+
+\t Upé ma rõ oja ka’i ruvicha ha he’i ta’ýra kuérape:
+\m Upé -ma -rõ o-ja ka’i ruvicha ha he’i ta’ýra kuéra-pe:
+\g Dem -Asp -Cond 3Sg-get.close monkey leader Conj 3Sg.say son Pl-IO
+\l Then he got close to the leader of the monkeys and said to their sons:
+
+\t ——Peipokua ha peipykua
+\m ——Pe-i-po-kua ha pe-i-py-kua
+\g ——Imp.2Pl-3.Poss-hand-tie Conj Imp.2Pl-3.Poss-foot-tie
+\l "Handcuff his hands and feet
+
+\t ha jagueraha japoi chugui ku ka’aguy yvate,
+\m ha ja-gueraha japoi chugui ku ka’aguy yvate,
+\g Conj 1Pl.Incl-take throw 3Sg.Pron-Obl Dem forest high
+\l and let's take him to throw him at the height of the forest
+
+\t hetaite oĩ hápe guasu’i,
+\m heta-ite o-ĩ há-pe guasu’i,
+\g a.lot-Superl 3Sg-exist- Rel-Loc deer
+\l where there are lots of deer;
+
+\t tovy’ami guasu kuéra ohechávo omano ha jaguarete.
+\m tovy’a-mi guasu kuéra o-hechá-vo o-mano- ha jaguarete.
+\g be.happy-Dim deer Pl 3Pl-see-Temp.Conj 3Sg-die- Sub tiger
+\l the deer will be happy when they see that the tiger is dead.
+
+\t Upépe jajorá ta chugui ikupy sã.
+\m Upé-pe ja-jorá -ta chugui ikupy sã.
+\g Dem-Loc 1Pl-untie -Prosp 3Sg.Pron-Obl 3.Poss-rope ankle
+\l There we will untie the rope from his ankles."
+
+\t Ohekýi ysypo ka’i ruvicha ha oipykua ha ojurujokua rire jaguaretépe,
+\m O-hekýi ysypo ka’i ruvicha ha oi-py-kua ha o-juru-jokua rire jaguareté-pe,
+\g 3Sg-tear rope monkey leader Conj 3Sg-feet-tie Conj 3Sg-mouth-tie after tiger-DOM
+\l The leader of the monkeys tore the vine and after he tied the tiger’s feet and mouth,
+
+\t oko’i hese hikuái ha ogueraha mombyry chupe upégui.
+\m o-ko’i hese hikuái ha o-gueraha mombyry chupe upé-gui.
+\g 3Pl-get.together 3Sg.Pron.Obl 3Pl.Pron.Subj Conj 3Pl-take far 3.Pron.DO Dem-Prep
+\l They all got together and took him far from there.
+
+\t Mombyry porã ogueraha rire hikuái, he’i ka’i ruvicha ta’ýra kuérape:
+\m Mombyry porã o-gueraha rire hikuái, he’i ka’i ruvicha ta’ýra kuéra-pe:
+\g Far well 3Pl-take after 3Pl.Pron.Subj 3Sg.say monkey leader sons Pl-DOM
+\l After taking him far away, the monkey’s leader said to his sons:
+
+\t ——Pemboguejy ∅ ko ñu perõme, japytu’umi ko ahẽ rymbágui.
+\m ——Pe-mboguejy ∅ ko ñu perõ-me, ja-pytu’u-mi ko ahẽ rymbá-gui.
+\g ——Imp.2Pl-get.down 3.Pron.DO Dem field bare-Loc 1Pl-rest-Dim Dem miserable animal-Prep
+\l "Put him down in this bare field, let’s take rest of this miserable animal."
+
+\t Ha jaguarete oimo’ã ojorá ta chupe hikuái ra’ẽ,
+\m Ha jaguarete oi-mo’ã o-jorá -ta chupe hikuái ra’ẽ,
+\g Conj tiger 3Sg-think 3Pl-untie -Prosp 3.Pron.DO 3Pl.Pron.Subj Evid
+\l And the tiger thought that they would untie him [he realized],
+
+\t kómo la omanó ma ha’e.
+\m kómo la o-manó -ma ha’e.
+\g as Def.Det 3Sg-die -Asp 3Sg.Pron.Subj
+\l as he is already dead.
+
+\t Ha oitývo chupe ka’i umía yvýpe,
+\m Ha oi-tývo chupe ka’i umía yvý-pe,
+\g Conj 3Pl-throw.down 3.Pron.DO monkey Dem ground-Loc
+\l And the monkeys threw him to the ground
+
+\t opoí ma pýgui hikuái,
+\m o-poí -ma pý-gui hikuái,
+\g 3Pl-let.loose -Asp feet-Prep 3Pl.Pron.Subj
+\l and ran away,
+
+\t ha opyta jaguerete upépe, ojejokua hápe.
+\m ha o-pyta jaguerete upé-pe, o-je-jokua- há-pe.
+\g Conj 3Sg-stay tiger Dem-Loc 3Sg-Refl-tied- Rel.Loc
+\l and the tiger stayed there, tied up.
+
+\t Ha mavave ndojaséi hese
+\m Ha mavave nd-o-ja-sé-i hese
+\g Conj nobody Neg-3Sg-get.close-Des-Neg 3Sg.Pron.Obl
+\l And nobody wanted to get close to him
+
+\t ojora haguã chupe la ipykuaha.
+\m o-jora haguã chupe la i-py-kua-ha.
+\g 3Sg-undo Sub.Irrealis 3.Pron.DO Def.Det 3.Poss-feet-tie-Nom
+\l to untie him.
+
+\t Upe ára guive, ka’i kuéra rupi,
+\m Upe ára guive, ka’i kuéra rupi,
+\g Dem day from monkey Pl around
+\l From that day on, thanks to the monkeys,
+
+\t enterove ka’aguygua ojajoa hoy’u jey upe yvu resatĩ porãme.
+\m enterove ka’aguy-gua o-j-ajoa hoy’u jey upe yvu resatĩ porã-me.
+\g all forest-origin 3Pl-Refl-get.close 3Pl.drink again Dem spring transparent nice-Loc
+\l all those from the forest again approached the spring to drink from that beautiful transparent spring water.

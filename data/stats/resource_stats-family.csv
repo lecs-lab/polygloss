@@ -1,0 +1,161 @@
+family,seg_counts,unseg_counts,unk_counts,total_counts
+Algic [algi1248],49331,49331,0,98662
+Tsimshian [tsim1258],157,157,15,329
+Nakh-Daghestanian [nakh1245],8609,8609,53,17271
+Austronesian [aust1307],8077,8077,3484,19638
+Atlantic-Congo [atla1278],10531,10531,1105,22167
+Mayan [maya1287],12032,12032,50,24114
+Athabaskan-Eyak-Tlingit [atha1245],289,289,31,609
+Indo-European [indo1319],29021,29024,11673,69718
+Japonic [japo1237],5087,5087,65,10239
+Turkic [turk1311],2365,2365,77,4807
+Amto-Musan [amto1249],2,2,0,4
+Sino-Tibetan [sino1245],9784,9784,433,20001
+Koreanic [kore1284],3860,3860,1,7721
+None,1488,1488,136,3112
+Uralic [ural1272],4103,4103,274,8480
+Afro-Asiatic [afro1255],4826,4826,424,10076
+Salishan [sali1255],165,165,8,338
+Dravidian [drav1251],513,513,14,1040
+Eastern Jebel [east2386],1,1,0,2
+Otomanguean [otom1299],379,379,40,798
+Nubian [nubi1251],9,9,0,18
+Kartvelian [kart1248],688,688,3,1379
+Bookkeeping [book1242],732,732,5,1469
+Mande [mand1469],80,80,55,215
+Tai-Kadai [taik1256],385,385,23,793
+Iroquoian [iroq1247],52,52,5,109
+Araucanian [arau1255],156,156,0,312
+Pama-Nyungan [pama1250],1118,1118,12,2248
+Nilotic [nilo1247],224,224,68,516
+Totonacan [toto1251],8,8,0,16
+Sign Language [sign1238],58,58,9,125
+Mongolic-Khitan [mong1349],497,497,41,1035
+Mailuan [mail1249],0,0,1,1
+Uto-Aztecan [utoa1244],1662,1662,81,3405
+Cochimi-Yuman [coch1271],92,92,12,196
+Nuclear Trans New Guinea [nucl1709],2333,2333,205,4871
+Eskimo-Aleut [eski1264],561,561,6,1128
+Tupian [tupi1275],1016,1016,12,2044
+Sahaptian [saha1239],128,128,0,256
+Ijoid [ijoi1239],68,68,0,136
+Hmong-Mien [hmon1336],57,57,87,201
+Quechuan [quec1387],574,574,0,1148
+Dizoid [dizo1235],3,3,0,6
+Tungusic [tung1282],288,288,32,608
+Tangkic [tang1340],87,87,4,178
+Ta-Ne-Omotic [gong1255],33,33,2,68
+Pano-Tacanan [pano1259],147,147,4,298
+Tucanoan [tuca1253],336,336,3,675
+Timor-Alor-Pantar [timo1261],417,417,283,1117
+Arawakan [araw1281],113,113,4,230
+Katla-Tima [katl1246],32,32,10,74
+Siouan [siou1252],289,289,83,661
+Chukotko-Kamchatkan [chuk1271],202,202,0,404
+Kiowa-Tanoan [kiow1265],62,62,0,124
+Fasu [fasu1242],1,1,0,2
+Arawan [araw1282],9,9,2,20
+Khoe-Kwadi [khoe1240],129,129,40,298
+Naduhup [nada1235],147,147,18,312
+Ticuna-Yuri [ticu1244],0,0,21,21
+Mangarrayi-Maran [mang1423],9,9,0,18
+Northern Daly [nort1547],2,2,0,4
+Yuki-Wappo [yuki1242],24,24,2,50
+Surmic [surm1244],30,30,3,63
+Maiduan [maid1262],7,7,0,14
+Austroasiatic [aust1305],293,293,10,596
+Nyulnyulan [nyul1248],17,17,0,34
+Yukaghir [yuka1259],24,24,0,48
+Chapacuran [chap1271],6,6,0,12
+North Halmahera [nort2923],35,35,1,71
+Anim [anim1240],20,20,0,40
+Koiarian [koia1260],28,28,0,56
+Misumalpan [misu1242],4,4,0,8
+Sentanic [sent1261],0,0,1,1
+Greater Kwerba [kwer1242],0,0,2,2
+Tor-Orya [toro1256],1,1,1,3
+Muskogean [musk1252],265,265,0,530
+Central Sudanic [cent2225],61,61,7,129
+Border [bord1247],11,11,0,22
+Kuliak [kuli1252],45,45,151,241
+Kru [krua1234],41,41,16,98
+Saharan [saha1256],19,19,10,48
+Bunaban [buna1274],31,31,0,62
+Tamaic [tama1329],0,0,1,1
+Blue Nile Mao [maoo1243],76,76,1,153
+Kresh-Aja [kres1240],3,3,2,8
+Cariban [cari1283],582,582,42,1206
+Nuclear-Macro-Je [nucl1710],95,95,10,200
+Mirndi [mirn1241],181,181,0,362
+Chicham [jiva1245],14,14,0,28
+Nambiquaran [namb1299],283,283,0,566
+Pidgin [pidg1258],6,6,7,19
+Yeniseian [yeni1252],35,35,6,76
+Yam [more1255],321,321,570,1212
+Suki-Gogodala [suki1244],1,1,0,2
+Sepik [sepi1257],20,20,1,41
+Lower Sepik [lowe1423],98,98,1,197
+Bosavi [bosa1245],66,66,15,147
+Huitotoan [huit1251],3,3,0,6
+Coosan [coos1248],6,6,0,12
+Tuu [tuuu1241],5,5,6,16
+Dogon [dogo1299],6,6,2,14
+Peba-Yagua [peba1241],15,15,0,30
+Koman [koma1264],25,25,15,65
+Nuclear Torricelli [nucl1708],122,122,0,244
+North Bougainville [nort2933],5,5,0,10
+Rashad [rash1249],1,1,0,2
+Heibanic [heib1242],2,2,0,4
+Iwaidjan Proper [iwai1246],11,11,0,22
+Chonan [chon1288],1,1,0,2
+Barbacoan [barb1265],98,98,1,197
+Southern Daly [sout2772],4,4,0,8
+Gunwinyguan [gunw1250],159,159,0,318
+Chumashan [chum1262],2,2,1,5
+Chocoan [choc1280],3,3,0,6
+Ndu [nduu1242],10,10,0,20
+Wintuan [wint1258],10,10,1,21
+Boran [bora1262],3,3,0,6
+Guaicuruan [guai1249],4,4,0,8
+Narrow Talodi [narr1279],4,4,0,8
+Abkhaz-Adyge [abkh1242],223,223,0,446
+West Bomberai [west2604],388,388,565,1341
+Turama-Kikori [tura1263],1,1,0,2
+Basque [basq1248],14,14,0,28
+,0,0,0,0
+Sko [skoo1245],439,439,0,878
+Haida [haid1248],4,4,0,8
+Uru-Chipaya [uruc1242],26,26,0,52
+Chibchan [chib1249],11,11,0,22
+Guahiboan [guah1252],2,2,0,4
+Yangmanic [yang1287],3,3,0,6
+Mixe-Zoque [mixe1284],29,29,0,58
+Palaihnihan [pala1350],2,2,0,4
+Dagan [daga1274],9,9,0,18
+Maningrida [mani1293],7,7,0,14
+Piawi [piaw1238],4,4,0,8
+Wakashan [waka1280],178,178,0,356
+Baining [bain1263],1,1,0,2
+Pomoan [pomo1273],35,35,0,70
+Miwok-Costanoan [miwo1274],4,4,0,8
+Tarascan [tara1323],10,10,0,20
+Tequistlatecan [tequ1244],1,1,0,2
+Songhay [song1307],148,148,0,296
+Keresan [kere1287],1,1,0,2
+South Bougainville [sout2948],4,4,0,8
+Chinookan [chin1490],2,2,0,4
+Bororoan [boro1281],2,2,0,4
+Hatam-Mansim [hata1242],7,7,0,14
+Yawa-Saweru [yawa1259],2,2,0,4
+Lakes Plain [lake1255],1,1,0,2
+South Omotic [sout2845],2,2,0,4
+Worrorran [worr1236],4,4,0,8
+Ainu [ainu1252],22,22,0,44
+Kadugli-Krongo [kadu1256],11,11,0,22
+Aymaran [ayma1253],4,4,0,8
+Kayagaric [kaya1327],1,1,0,2
+Nimboranic [nimb1257],3,3,0,6
+Nivkh [nivk1234],13,13,0,26
+Kxa [kxaa1236],8,8,0,16
+Caddoan [cadd1255],16,16,0,32
+Western Daly [west2434],2,2,0,4

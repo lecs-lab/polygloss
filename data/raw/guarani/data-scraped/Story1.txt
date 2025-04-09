@@ -1,0 +1,299 @@
+\t O-ho peteĩ karia’y hína peteĩ ñú-re.
+\g 3Sg-go one young.man Cont one field-Prep
+\l A young man was going on/across a field.
+
+\t Upéi o-maña o-hó-vo i-jyké-pe ha hesa [o-]ho sapy’a
+\g Then 3Sg-saw 3Pl-go-Simult 3.Poss-side-Loc.Prep Conj 3.Poss.sight [3Sg-]go suddenly
+\l Then he was looking at his side and his sight went [saw] towards
+
+\t peteĩ mbói guasú-re. Hesa sẽmba hína la mbói,
+\g one snake big-Prep Eyes protrude Cont Def.Det snake
+\l a big snake. The snake's eyes were protruding
+
+\t ha la karia’y nd-oi-kuaá-i mba’é-pa o-jehu chupe.
+\g Conj Def.Det young.man Neg-3Sg-know-Neg what-Q 3Sg-happen 3Sg.Pron.IO
+\l and the young man did not know what was happening.
+
+\t Upéi o-jave ha o-hecha nimbo peteĩ ita guasu o-jopy
+\g Then 3Sg-get.closer Conj 3Sg-saw Part one rock big 3Sg-squeeze
+\l Then he got closer and he saw that a large rock was squeezing
+
+\t ra'e la mbó-ipe ha nd-oi-katu-vé-i o-sẽ iguýgui.
+\g Evid Def.Det snake-DOM Conj Neg-3Sg-can.more Neg 3Sg-go.out under-from
+\l the snake [he realized] and he could not get out from under it.
+
+\t O-hechá-vo la mbói la karia’y-pe, o-sapukái voi [i]chupe:
+\g 3Sg-see.Temp.Conj Def.Det snake Def.Det lad-DOM 3Sg-scream Emph 3Sg.Pron.IO
+\l When the snake saw the young man, he screamed at him:
+
+\t ——Che-[gue]ronohẽ-mí-na-ko ai-me- há- gui! ——he’i, i-juku’a pepe.
+\g ——1Sg.DO-take-out-Dim-Rog 1Sg-be- Rel- Prep ——3Sg-say 3Sg-agitated palpitate
+\l "Please take me out of this place," he said, very agitated.
+
+\t Ha tuicha iterei la mbói,
+\g Conj big too.much Def.Det snake
+\l And [since] the snake was so big,
+
+\t o-kyhyje chu-gui la karia’y.
+\g 3Sg-fear 3Sg.Pron-Prep Def.Det young.man
+\l the young man was afraid of it.
+
+\t ——Nd-ai-katu mo’ã-i ai-pe’a ndéve,
+\g ——Neg-1Sg-be.able Prosp-Neg 1Pl-take.out 2Sg.Pron.DO
+\l "I will not be able to take you out,
+
+\t pórke nde che-apeligra ——he’i chupe la típo.
+\g because 2Sg.Pron.Subj 1Sg.DO-endanger ——3Sg-say 3.Pron.IO Def.Det guy
+\l because you put me in danger," the guy said to him [snake].
+
+\t ——Mba’éicha piko nde re-japó-rõ che-rehe peteĩ favor,
+\g ——How Q 2Pl.Subj 2Sg-do-Cond 1Sg-Obl.Pl one favor
+\l "How if you do me a favor,
+
+\t che a-pu’ã -ta nde-rehe? Ne-ñembyahýi-ko reína?
+\g 1Sg.Pron 1Sg-get.up -Prosp 2Sg-Obl.Pl 2Sg-hungry-Emph 2Sg-Cont
+\l I'm going to jump on you? Are you hungry?
+
+\t Nd-a-japo moã-i nde-rehe mba’eve.
+\g Neg-1Sg-do Fut-Neg 2Sg.Obl.Pl nothing
+\l I will not do anything to you.
+
+\t Ndé-ngo re-mboguý -ta -nte ko ita ha che-salvá -ma.
+\g 2Sg-only 2Sg-raise -Prosp -only this rock Conj 1Sg.Obj-save-Perf -Asp
+\l You only have to raise this rock and you will have saved me already."
+
+\t Are upéicha o-ño-mongeta hikuái,
+\g [long] time that.way 3Pl-Rec-converse 3Pl.Pron.Subj
+\l They talked a long time,
+
+\t ha upéi hasý-pe la karai’y o-guenohẽ chupe ra'e.
+\g Conj then fatigue-Loc.Prep Def.Det young.man 3Sg-remove 3.Pron.DO Evid
+\l and then in the end the young man took him out, it turns out.
+
+\t Ha o-sẽ-re[he] upé-gui voi,
+\g Conj 3Sg-out-at-cause there-from Emph
+\l And having got out of that place,
+
+\t o-ú -ma la mbói ho’u haguã chupe.
+\g 3Sg-eat -Asp Def.Det snake 3Sg-eat Sub.Irrealis 3.Pron.DO
+\l the snake came to eat him.
+
+\t Upépe la karia’y he’i la mbói-pe:
+\g At.that.moment Def.Det lad 3Sg-say Def.Det snake-DOM
+\l At that moment, the young man said to the snake:
+
+\t ——La che’u-se katu-eté-rõ-na,
+\g ——Def.Det 1Sg-eat-Des Mod-Superl-Cond-Rog
+\l "If you want to eat me so much,
+
+\t ja-ha ja-heka mi tetígo.
+\g 1Sg.Pl.Incl-go 1Pl.Incl-look-for my witness
+\l let’s go find a witness.
+
+\t Ja-hechá-ke mba’é-pa he’i ñandé-va -va hikuái.
+\g 1Pl-Incl-see-Imp what-Q 3Sg-say 1Pl.Incl.Pron.IO -Rel 3Pl.Pron.Subj
+\l Let’s see what they say to us."
+
+\t Ha o-ho oñondive la tetígo reka.
+\g Conj 3Sg-go together Def.Det witness find
+\l And they went together to find a witness.
+
+\t O-ho o-guahẽ hikuái peteĩ yvyra guý-pe
+\g 3Pl-go 3Pl-arrive 3Pl.Pron.Subj one tree under-Loc.Prep
+\l They arrived under a tree
+
+\t ha o-hecha peteĩ kavaju o-karu hína.
+\g Conj 3Pl-saw one horse 3Sg-eat Cont
+\l and found a horse that was eating.
+
+\t O-ñemboja ijypý-pe hikuái
+\g 3Pl-approach close-Loc.Prep 3Pl.Pron.Subj
+\l They got up close [to the horse]
+
+\t ha o-mombe’u chupe mba’éicha-pa la mbói o-ĩ ra'e hína
+\g Conj 3Pl-tell 3Sg.Pron.IO manner-Q Def.Det snake 3Sg.be.Loc Evid Emph/Assert
+\l and told him how the snake was/had been (ra’e progessive)
+
+\t ha mba’é-pa la karia’y o-japo hese ra'e.
+\g Conj what-Q Def.Det lad 3Sg-do 3Sg.Pron.Obl Evid
+\l and told him what the young man had done for him ra’e.
+
+\t ——Mba’e-pa nde ere ——he’i chupe la mbói,
+\g ——What-Q 2Sg.Pron.Subj 2Sg.say ——3Sg.say 3Sg.Pron.IO Def.Det snake
+\l "What do you say," the snake told him,
+
+\t ——ha’ú-pa ∅ térã a-hejá-nte o-ho ∅?
+\g ——1Sg.eat-tot.Asp 3.Pron.DO or 1Sg-let-just 3Sg-go 3.Pron.DO
+\l "do I eat him up or do I just let him go?"
+
+\t Kavaju nda-hesa pirĩri voi:
+\g Horse Neg-sight thin FOC
+\l The horse without blinking [said]:
+
+\t ——He'u ∅ katu ——he’i,
+\g ——3Sg-eat 3.Pron.DO FOC ——3Sg-say
+\l "Eat him," he said,
+
+\t ——ko’ãva nd-oi-kuaa-sé-i ñande-hegui mba’eve, na-i-korasõi-ri.
+\g ——these [men] Neg-3Sg-know-Des-Neg 1Pl.Incl-Pl.Obl nothing Neg-3.Poss-heart-Neg
+\l "these men do not want to know anything about us, they do not have a heart.
+
+\t Péa oréve ore-jagarra, ore-mosã, o-jupi ore ári,
+\g Dem.Pron-This 1Pl.Excl.Pron.DO 1Pl.Excl.DO-grab 1Pl.Excl.DO-rope 3Pl-get.on 1Pl.Excl-on
+\l Those ones grab us, rope us, get on us,
+
+\t ore-nupã ore-ajúrape, ore-kutu, ore-ruguái mopẽ-mba,
+\g 1Pl.Excl.DO-spank 1Pl.Excl.DO-mount 1Pl.Excl.DO-prick 1Pl.Excl.Poss-tail twist-all
+\l they spank and mount us, they prick us, [and] twist our tails,
+
+\t ha o-moinge ore jurú-pe fiérro.
+\g Conj 3Pl-put 1Pl.Excl.Poss mouth-Loc.Prep iron
+\l and they put an iron in our mouth."
+
+\t O-hasa-ve upégui hikuái ha o-juhu peteĩ guéi.
+\g 3Pl-pass.more there.Prep 3Pl.Pron.Subj Conj 3Pl-find one ox
+\l They went further and found an ox.
+
+\t O-mombe’u chupe hikuái mba’ére-pa o-ja’yvere hína.
+\g 3Pl-tell 3Pl.Pron.IO 3Pl.Pron.IO reason-Q 3Pl-be in litigation Cont
+\l They told him why they were arguing.
+
+\t La guéi avei, ñe’ẽ peteĩ-me,
+\g Def.Det ox also word one-Loc
+\l The ox also, said in one word,
+
+\t ni n-o-hendu-pá-i voi la h-e’í -va chupe umi mokõi:
+\g not-even Neg-3Sg-hear-all-Neg Emph Def.Det 3Pl-say -Rel 3Sg.Pron.IO those two
+\l not even hearing all of what those two were saying:
+
+\t ——He'u katu ∅ ——he’i mbói-pe.
+\g ——3Sg-eat Emph 3.Pron.DO ——3Sg-say snake-IO
+\l "Eat him," he said to the snake.
+
+\t ——Péa oréve ore-jokua ore akã-gui yvyrá-re,
+\g ——Dem.Pron-This 1Pl.Excl.Pron.DO 1Pl.Excl.DO-tie 1Pl.Excl.Poss head-Prep wood-Pl.Obl
+\l "This one ties our head to the wood,
+
+\t ore-juru jokua ha ore ape,
+\g 1Pl.Excl.Poss-mouth tie Conj 1Pl.Excl.Poss back
+\l ties our mouth and our back,
+
+\t ha ore rumby o-mbohuguypa yvyra akuá-pe, ha upéi no-ñe-kontentá-i,
+\g Conj 1Pl.Excl.Poss buttock 3Sg-bleed stick pointy-Loc.Prep Conj then Neg.3-Refl.content-Neg
+\l and makes our buttock bleed with a pointy stick, and then not content,
+
+\t ha ore-juka rire,
+\g Conj 1Pl.Excl.DO-kill after
+\l and after they kill us,
+
+\t ho’u terere ore ratĩ-ngué-pe ——he’i voi la guéi.
+\g 3Pl-drink terere 1Pl.Excl.Poss horn-former-Loc.Prep 3Sg-say Emph Def.Det ox
+\l they drink ‘terere’ from our horn."
+
+\t Mokõi -ma o-ĩ la mbói ndive o-ĩ -va.
+\g Two-already -Asp 3Sg-be.Loc Def.Det snake with 3Sg.be.Loc -Rel
+\l Two already are with the snake.
+
+\t Ha o-ho o-heka hikuái la mbohapy-ha.
+\g Conj 3Pl-go 3Pl-look 3Pl.Pron.Subj Def.Det third-Nom
+\l And they went to look for a third one.
+
+\t O-juhu peteĩ aguara, takuru ári, o-maña mombyry hína, ka’aguy rembe’ý-pe.
+\g 3Pl-find one fox anthill on 3Pl-look far.away Cont forest edge-Loc.Prep
+\l They found a fox on an anthill. He was looking far away to the edge of the forest.
+
+\t O-mombe’u chupe hikuái la oi-ko va’ekue:
+\g 3Pl-tell 3Sg.Pron.IO 3Pl-Pron.Subj Def.Det 3Sg-live Rel.Term.Asp
+\l They told him what had happened:
+
+\t Mba’eicha-pa la karia’y o-guenohẽ mbói-pe la ita guýgui,
+\g How-Q Def.Det lad 3Sg-took.out snake-DOM Def.Det rock under.Prep
+\l How is it that the young man had taken the snake out from under the rock,
+
+\t ha ko’ãga ha’e ho’u-se chupe hína?
+\g Conj now 3Sg.Pron.Subj 3Sg-eat-Des 3.Pron.DO Emph
+\l and now he wants to eat him?
+
+\t La karia’y o-jaivy gua’u ha pe aguara apysa ypyeté-pe he’i:
+\g Def.Det lad 3Sg-bend.down pretend Conj that fox ear close-Loc.Prep 3Sg-say
+\l The young man pretended to bend down and said very close to the fox’s ear:
+
+\t ——Heta a-reko la ipýre o-ké -va!
+\g ——Many 1Sg-have Def.Det standing.up 3Pl-sleep -Rel
+\l "I have many hens that are sleeping!" [standing up]
+
+\t O-hendu-pa aguara la o-mombe’ú -va chupe hikuái, ha upépe o-sẽ:
+\g 3Sg-hear-Tot.Asp fox Def.Det 3Pl-tell -Rel 3Sg.Pron.IO 3Pl.Pron.Subj Conj there 3Sg-go.out
+\l The fox heard all that they were telling him, and came out to say:
+
+\t ——Che-piko moõ-pa ai-kuaá-ta -ta
+\g ——1Sg.Pron.Subj-Q where-Q 1Sg-know -Prosp
+\l "How [from-where] am I going to know
+
+\t añeté-pa la pe mombe’ú -va chéve? ——he’i voi.
+\g truly-Tot.Asp Def.Det Dem 2Pl-tell -Rel 1Sg.Pron.IO ——3Sg-say Emph
+\l if it is the truth that which they tell me?" said he.
+
+\t ——A-hecha-rire ae che ikatu ha’e
+\g ——1Sg-see-Pst.Cond really 1Sg.Pron.Subj 3Sg-Mod 1Sg-say
+\l "If I had really seen it I could say
+
+\t 'he’u-ke' ∅ térã 'anike re’u' ∅.
+\g eat-Imp 3.Pron.DO Prep Neg.Imp-eat 3.Pron.DO
+\l 'eat him' or 'do not eat him.'
+
+\t Ha upea-rã [upeguarã] ja-ha mante vaerã ja-hecha la pende apykuere,
+\g Conj that-Irrealis 1Pl.Incl-go FOC Mod.nec 1Pl.Incl-see Def.Det 2Pl-Poss facts
+\l And for that we must at least go see your facts,
+
+\t ani[ke] che-mbotavy. Ja-hechá -ta moõ-pa la reime ra'e,
+\g Neg.Imp 1Sg-trick 1Pl-see -Prosp where-Q Def.Det 2Sg-be.Loc Evid
+\l don’t trick me. Let’s go see where you have been,"
+
+\t ——he’i la mbói-pe.
+\g ——3Sg-say Def.Det snake-DOM
+\l he said to the snake.
+
+\t ——Ha añeté-ramo-nte che a-ñe-komprometé -ta.
+\g ——Conj true-Cond.Pres-only 1Sg.Pron.Subj 1Sg-Refl-commit -Prosp
+\l "And only it is the truth I will commit myself."
+
+\t ——Ja-ha ja-hecha ——he’i voi la karia’y, ha o-jogueraha hikuái.
+\g ——1Pl.Incl-go 1Pl.Incl-see ——3Sg-say Emph Def.Det lad Conj 3Sg-Rec-take 3Pl-Pron.Subj
+\l "Let’s go see," he told the lad, and they went together all of them.
+
+\t Mombyry o-ho la karia’y ha la mbói rapykuerévo hikuái,
+\g Far 3Sg-go Def.Det lad Conj Def.Det snake on.their.footsteps 3Pl.Pron.Subj
+\l Far went the lad and the snake back on their footsteps,
+
+\t ha o-ho o-sẽ la ita guasu, mbói renda-gué-pe.
+\g Conj 3Sg-go 3Pl-got.out Def.Det rock big snake place-former-Loc.Prep
+\l and they arrived at the place of the big rock, the snake’s former place.
+
+\t O-maña aguara hína la itá-re, ha he’i mbói-pe:
+\g 3Sg-look fox Emph Def.Det rock-at Conj 3Sg-say snake-to.IO
+\l The fox looked at the rock, and he said to the snake:
+
+\t ——E-ñe-moĩ-mi jey ∅ pe rei-me hagué-pe,
+\g ——Imp-Refl-put-Dim again 2Sg.Pron.DO Dem 2Sg-be.Loc Rel.Term-Loc.Prep
+\l "Please put yourself again at the place where you were,
+
+\t ja-hecha añeté-pa la rei-me asy ra'e.
+\g 1Pl.Incl-see true-Tot Def.Det 2Sg-be.Loc suffer Evid
+\l let us truly see the place where you were suffering."
+
+\t Oi-ke jey mbói ogueví-vo la o-ĩ- hagué-pe,
+\g 3Sg-go.in again snake 3Sg-backwards-Temp.Conj Def.Det 3Sg-be.Loc Rel.Term-Loc.Prep
+\l The snake went in backwards into the place where he had been,
+
+\t ha la karia’y aguara-ndive o-ño-pytyvõ
+\g Conj Def.Det lad fox-with 3Sg-Refl-help
+\l and the lad with the fox helped each other
+
+\t ha o-mboguapy jey mbói ári la ita hikuái.
+\g Conj 3-Caus.sit again snake on Def.Det rock 3Pl.Pron.Subj
+\l and placed the rock on the snake again.
+
+\t Ha mbói o-pyta jey henda-gue-té-pe.
+\g Conj snake 3Sg-stay again 3.Poss.place.former-Emph-Loc.Prep
+\l And the snake stayed again in its place.

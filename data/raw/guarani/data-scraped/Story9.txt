@@ -1,0 +1,55 @@
+\t Peteĩ ka’i ndaje o-sena hína tatay-pýpe,
+\g One monkey Report.Evid 3Sg-dinner Cont fire-close
+\l It is said that a monkey was having dinner close to the fire,
+
+\t i-ñirũ ovecha he-ndive, la pyhare.
+\g 3.Poss-friend sheep 3.Pron.Prep Def.Det night
+\l his friend the sheep with him, at night.
+
+\t Ka’i nimbo oho ojuhu ra'e peteĩ leõ akãngue
+\g Monkey Part 3Sg-go 3Sg-find Evid one lion head
+\l It is said that the monkey went to find [go find] a lion’s head
+
+\t ha o-u o-hesy ho’u [haguã] hína.
+\g Conj 3Sg-come 3Sg-bbq 3Sg.eat [Sub.Irrealis] Cont
+\l and came [back] and barbequed it to eat it.
+
+\t Ha jaguarete o-ñe-tĩ rupi jepi ha o-ñe-mbope o-ú-vo,
+\g Conj tiger 3Sg-Refl-nose around occasionally Conj 3Sg-Refl-drag 3Sg-come-Simult
+\l And the tiger sniffed around occasionally, dragging himself,
+
+\t h-o’u-se mokõi-ve umi o-jepe’é -va [-pe] hína.
+\g 3Sg-eat-Des two-more Dem 3Sg-close -Rel [-DOM] Cont
+\l he wanted to eat both of those that were close to the fire.
+
+\t Mbegue-katú-pe o-ñe-mo’aguĩ o-hó-vo ichu-gui kuéra.
+\g Slow-Mod-Loc.Prep 3Sg-Refl-approach 3Sg-go-Simult 3.Pron-Prep Pl
+\l Slowly, he was getting close to them.
+
+\t O-hechá -je ka’i la jaguarete o-u -ha [i]chupe kuéra hína,
+\g 3Sg-see -Report.Evid monkey Def.Det tiger 3Sg-come -Sub 3.Pron.IO Pl Cont
+\l It is said that the monkey saw the tiger that was coming towards them.
+
+\t ha upé -ma -rõ o-jagarra la leõ akãngue
+\g Conj Dem -Asp -Cond 3Sg-grab Def.Det lion head
+\l And then he grabbed the lion’s head
+
+\t ha o-ho o-moĩ la haity rokẽ-me peteĩ yvyra púnta-re.
+\g Conj 3Sg-go 3Sg-put Def.Det nest door-Loc one wood point-Obl
+\l and went to put it on the point of a stick on the door of his cave.
+
+\t O-je-juru-hýi ka’i ha he’i:
+\g 3Sg-Refl-mouth-clean monkey Conj 3Sg.say
+\l The monkey cleaned his mouth and said:
+
+\t ——Ko’ãga ña-sena leõ ha ko’ẽrõ
+\g Now 3Pl.Incl-dinner lion Conj tomorrow
+\l "Now we have a lion for dinner and tomorrow
+
+\t ja-’ú -ma -ne jaguarete! ——he’i ndaje.
+\g 1Pl.Excl-eat -Asp -Mod tiger 3Sg.say Report.Evid
+\l we will probably already have a tiger for dinner," it is said that he said.
+
+\t Ha o-hendú-vo upéa, o-mongyhyje jaguareté-pe ha o-jevy.
+\g Conj 3Sg-hear-Simult Dem 3Sg-frighten tiger-DOM Conj 3Sg-go.back
+\l And when he heard that, the tiger got frightened and went back.

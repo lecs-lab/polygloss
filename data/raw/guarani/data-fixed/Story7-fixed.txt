@@ -1,0 +1,199 @@
+\t Aguara ha jaguarete ndaje yma olehimi
+\m Aguara ha jaguarete ndaje yma o-lehi-mi
+\g Fox Conj tiger Report.Evid time.ago 3Sg-choose-Dim
+\l It is said that a long time ago the fox and the tiger chose
+
+\t peteĩ hendaitépe hóga ojapo haguã hikuái.
+\m peteĩ henda-ité-pe hóga o-japo haguã hikuái.
+\g one place-Superl-Loc.Prep 3.Poss-house 3Pl-do Sub.Irrealis 3Pl.Subj
+\l one same place to build their house.
+
+\t Ovy’a aguara ha riremínte
+\m O-vy’a aguara ha rire-mí-nte
+\g 3Sg-happy fox Conj after-Dim-only
+\l The fox was happy and after a while
+
+\t ohó ma voi ohecha la h.óga rendaguã.
+\m o-hó -ma voi o-hecha la h.óga renda-guã.
+\g 3Sg-go -Asp FOC 3Sg-see Def.Det 3.Poss-house place-Irrealis
+\l he went to see the location of his future house.
+
+\t Ha omopotĩmbá ma ne voi katu pya’e pya’e.
+\m Ha o-mo-potĩ-mbá -ma -ne voi katu pya’e pya’e.
+\g Conj 3Sg-TR-clean-Compl -Asp -Mod FOC Mod fast fast
+\l And he would probably already clean all very fast.
+
+\t Ha hapykuerépe ou avei jaguarete
+\m Ha hapykueré-pe o-u avei jaguarete
+\g Conj behind-Loc.Prep 3Sg-come also tiger
+\l And behind him came also the tiger
+
+\t la hóga rendaguã rechávo ha omaña mañante ha he’i:
+\m la hóga renda-guã rechá-vo ha o-maña maña-nte ha he’i:
+\g Def.Det 3.Poss-house place-Irrealis see-Goal Conj 3Sg-look look-only Conj 3Sg.say
+\l to see the place of his future house and looked, looked, and said:
+
+\t ––Máva piko la imba’e porãité va
+\m ––Máva piko la i-mba’e porã-ité -va
+\g ––Who Q Def.Det 3Sg-thing- good-Superl -Rel
+\l "Who is the benevolent person
+
+\t ou va’ekue omopotĩmbaité ma
+\m o-u va’ekue o-mo-potĩ-mba-ité -ma
+\g 3Sg-come Rel.Term 3SG-TR-clean-Compl-Superl -Asp
+\l that already came to clean
+
+\t chéve la che róga rendaguã!
+\m chéve la che róga renda-guã!
+\g 1Sg.Pron.IO Def.Det 1Sg.Poss house place-Irrealis
+\l all the place of my future house?!"
+
+\t Upé ma rõ ha’e omohorkon.
+\m Upé -ma -rõ ha’e o-mo-horkon.
+\g There -Asp -Cond 3Sg.Pron.Subj 3Sg-put-roof.support
+\l Then he put the roof support.
+
+\t Upéi ou aguarahá ma,
+\m Upéi o-u aguara-há -ma,
+\g Then 3Sg-come fox-turn -Asp
+\l Then came the fox’s turn,
+
+\t ha ojuhu ihorkón -ma la hogarã.
+\m ha o-juhu i-horkón -ma la hoga-rã. 
+\g Conj 3Sg-find 3.Poss-roof.support -Asp Def.Det 3.Poss-house-Irrealis
+\l and he finds his future house already with the roof support on.
+
+\t Ovy’avénte -ma aguara ha he’i:
+\m O-vy’a-vé-nte -ma aguara ha he’i:
+\g 3Sg-happy-more-only -Asp fox Conj 3Sg.say
+\l The fox, already happier, says:
+
+\t ––Máva piko la imba’e porãité va chendive,
+\m ––Máva piko la i-mba’e porã-ité -va che-ndive,
+\g ––Who Q Def.Det 3Sg-thing- good-Superl -Rel 1Sg.Pron-with
+\l "Who is so kind to me
+
+\t omoĩ va chéve che horkonrã!
+\m o-moĩ -va chéve che horkon-rã!
+\g 3Sg-put -Rel 1Sg.Pron.IO 1Sg.Poss roof.support-Irrealis
+\l that he has already placed my [future] roof support?"
+
+\t Ha oñepia’ã ha’e ombovíga.
+\m Ha o-ñe-pia’ã ha’e o-mbo-víga.
+\g Conj 3Sg-Refl-made.effort 3Sg.Subj 3Sg-TR-beam
+\l And he applied himself to put a beam [on the ceiling].
+
+\t Ha ou jey jaguarete ojuhu
+\m Ha o-u jey jaguarete o-juhu
+\g Conj 3Sg-come again tiger 3Sg-find
+\l And the tiger came back and found
+
+\t ivigapá ma la hóga, ha mbotihéra ha’e.
+\m i-viga-pá -ma la hóga, ha -mbo-tihéra ha’e.
+\g 3Sg-beam-Compl -Asp Def.Det 3.Poss-house Conj -3Sg-TR-ceiling.scissors 3Sg.Pron.Subj
+\l that his house already had beams on, and he placed the ceiling scissors.
+
+\t Upéi ou aguara ha ojuhu opapotaité ma la hóga:
+\m Upéi o-u aguara ha o-juhu o-pa-pota-ité -ma la hóga:
+\g Then 3Sg-come fox Conj 3Sg-find 3Sg-finish-about-Superl -Asp Def.Det 3.Poss-house
+\l Then came the fox and found that his house was almost finished.
+
+\t ––Mávaiko la ombotiherapá ma va chéve?
+\m ––Máva-iko la o-mbo-tihera-pá -ma -va chéve?
+\g ––Who-Q Def.Det 3Sg-TR-ceiling.scissors-Compl -Asp -Rel 1Sg.Pron.Ben
+\l "Who is the one that finished putting the ceiling scissors for me?
+
+\t Ñande járante voi, che suertetéiko! ––he’i.
+\m Ñande jára-nte voi, che suerte-téiko! ––he’i.
+\g 3Pl.Incl.Poss lord-only FOC 1Sg.Poss luck-have ––3Sg.say
+\l Only our lord, how lucky I am!" he said.
+
+\t Upéi ha’e ombotécho.
+\m Upéi ha’e o-mbo-técho.
+\g Then 3Sg.Pron.Subj 3Sg-TR-roof
+\l Then he put on the roof.
+
+\t Jaguarete ou ojuhu itechopá ma la hóga,
+\m Jaguarete o-u o-juhu i-techo-pá -ma la hóga,
+\g Fox 3Sg-come 3Sg-find 3.Poss-roof-Compl -Asp Def.Det 3.Poss-house
+\l The tiger came to find his house with the roof all finished,
+
+\t ovy’aiterei voi, iguýpe,
+\m o-vy’a-iterei voi, i-guý-pe,
+\g 3Sg-happy-Superl FOC 3.Poss-under-Loc.Prep
+\l he was so happy under its roof,
+
+\t ha omoĩ ma etakéo.
+\m ha o-moĩ -ma etakéo.
+\g Conj 3Sg-put -Perf poles
+\l and he put the poles (for the walls).
+
+\t Upéingo aguara ou jeý va pe,
+\m Upéi-ngo aguara o-u jeý -va -pe,
+\g Then-FOC fox 3Sg-come again-Rel-Loc -Rel -Loc
+\l Then the next time that the fox came,
+
+\t ojuhu ojetakeapá ma la hoga,
+\m o-juhu o-je-takea-pá -ma la hoga,
+\g 3Sg-find 3Sg-Refl-pole-finish -Asp Def.Det 3.Poss-house
+\l he found his house with all the wall poles,
+
+\t ha ha’e katu ojapo tuju ha otapiapá ma.
+\m ha ha’e katu o-japo tuju ha o-tapia-pá -ma.
+\g Conj 3Sg.Pron.Subj Mod 3Sg-do mud Conj 3Sg-plaster-Compl -Asp
+\l and he (himself) did the mud mixture and plastered it completely.
+
+\t Aguara oheja jey la hóga sapy’ami,
+\m Aguara o-heja jey la hóga sapy’a-mi,
+\g Fox 3Sg-left again Def.Det 3.Poss-house time-Dim
+\l The fox left the house for a short moment
+
+\t oho haguãicha ou ojatapy ha ojepe’e.
+\m o-ho haguãicha o-u o-jatapy ha o-jepe’e.
+\g 3Sg-go Sub.Irrealis 3Sg-come 3Sg-fire Conj 3Sg-warm.up
+\l as to go light a fire and warm himself up.
+
+\t Katu oúrõ guarã,
+\m Katu o-ú-rõ guarã,
+\g Mod 3Sg-come-Cond Irrealis
+\l When he returned,
+
+\t ojuhú ma la ojepe’é va hína la óga guýpe.
+\m o-juhú -ma la o-jepe’é -va hína la óga guý-pe.
+\g 3Sg-find -Asp Def.Det 3Sg-warm -Rel Cont Def.Det house under-Loc.Prep
+\l he already found one that was warming up in the house.
+
+\t Aguara oikuaase mávapa oú va ra'e la hógape ojatapy.
+\m Aguara oi-kuaa-se máva-pa o-ú -va ra'e la hóga-pe ojatapy.
+\g Fox 3Sg-know-Des who-Q 3Sg-come -Rel Evid Def.Det 3.Poss-house-Loc.Prep 3Sg-fire
+\l The fox wanted to know who is the one that was making a fire in his house.
+
+\t Oikére voi ohechá ma jaguaretépe
+\m Oi-ké-re voi o-hechá -ma jaguareté-pe
+\g 3Sg-enter-at FOC 3Sg-see -Asp tiger-DOM
+\l When entering already, he saw the tiger
+
+\t ha oñemoĩ ma oiko vai hikuái.
+\m ha o-ñe-moĩ -ma oi-ko vai hikuái.
+\g Conj 3Sg-Refl-put -Asp 3Sg-exist bad 3Pl.Pron.Subj
+\l and they got into a fight [argument].
+
+\t "Che la omohorkón va", "nahániri, che atapia",
+\m "Che la o-mo-horkón -va", "nahániri, che a-tapia",
+\g 1Sg.Pron.Subj Def.Det 3Sg-TR-roof.support -Rel no 1Sg.Pron.Subj 1Sg-plaster
+\l "I put the roof support", "No, I put on the plaster",
+
+\t "che katu atechapa", upéicha oĩ hikuái.
+\m "che katu a-techa-pa", upéi-cha o-ĩ hikuái.
+\g 1Sg.Pron.Subj Mod 1Sg-roof-Compl that-way 3Sg-exist 3Pl.Pron.Subj
+\l and "I have in fact put on the roof", and they carried on so.
+
+\t Ha amo ipahápe jaguarete hatãve orroka,
+\m Ha amo i-pahá-pe jaguarete hatã-ve o-rroka,
+\g Conj there 3.Poss-end-Loc.Prep tiger strong-more 3Sg-roar
+\l And there at the end, the tiger roared louder,
+
+\t ha omuña aguarápe ha opyta ha’e la óga pyahúpe.
+\m ha o-muña aguará-pe ha o-pyta ha’e la óga pyahú-pe.
+\g Conj 3Sg-run fox-DOM Conj 3Sg-stay 3Sg.Pron.Subj Def.Det house new-Loc.Prep
+\l and he ran after the fox and he stayed in the new house.

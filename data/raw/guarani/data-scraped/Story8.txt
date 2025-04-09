@@ -1,0 +1,95 @@
+\t Mbohapy ka’i rupi nimbo i-kunpleáno hína ra'e,
+\g Three monkey around Part 3.Poss-birthday Cont Evid
+\l Three monkeys had a birthday, it turns out,
+
+\t ha la asaje o-ho hikuái, ka’aguy guasú-pe.
+\g Conj Def.Det early.afternoon 3Pl-go 3Pl.Subj forest big-Loc.Prep
+\l and early afternoon they went to the big forest.
+
+\t Umi yvyra rakamby pa’ũ-me o-jupi, o-kyhyjé-gui jaguareté-gui,
+\g Dem tree branch middle-Loc 3Pl-got.up 3Pl-afraid-Prep tiger-Prep
+\l They climbed up on the tree branches, because they were afraid of the tiger,
+
+\t pono [por sino] o-u ho’u chupe kuéra.
+\g in.case 3Sg-come 3Sg.eat 3.Pron.DO Pl
+\l in case he comes to eat them.
+
+\t Upé-pe o-jatapy, o-mbyakú -ma y hína hikuái, o-portiju haguã.
+\g Dem-Loc 3Pl-fire 3Pl-heat.up -Asp water Cont 3Pl.Subj 3Pl-eat Sub.Irrealis
+\l There they made a fire, and they were already heating up the water to eat.
+
+\t O-pupu ndaje la y pé-pe, olla guasu peteĩ-me.
+\g 3Sg-boil Report.Evid Def.Det water Dem-Loc pot big one-Loc
+\l It is that the water was boiling there, in a big pot. [emphasis on 'big']
+
+\t Ha upé-vo o-ñemo’aguĩ sapy’a o-hó-vo chu-gui kuéra peteĩ aguara.
+\g Conj Dem-Temp.Conj 3Sg-get.close suddenly 3Sg-go-Simult 3-Obl Pl one fox
+\l And at that moment, suddenly, a fox was getting close to them.
+
+\t Lo ka’i oi-ko gua’ú-nte o-hecha-’ỹ -va ramo upe o-guahẽ -va -pe.
+\g Def.Det monkey 3Pl-exist pretend-only 3Pl-see-Privative -Rel recently Dem 3Sg-arrive -Rel -DOM
+\l The monkeys pretended that they did not see the one that recently arrived.
+
+\t ——Mba’e piko pe-mbojy upé-pe, lo amigo
+\g ——What Q 2Pl-cook there-Loc Def.Pl friend
+\l "What are you cooking there, my friends?"
+
+\t ——he’i ndaje aguara, story-pa-ité-pe.
+\g ——3Sg.say Report.Evid fox story-Compl-Superl-Loc.Prep
+\l it is said that the fox said, with joy/confidence.
+
+\t ——Ryguasu kyra hupi’aky-pá -va peteĩ
+\g ——Hen fat 3.Poss-egg-Tot -Rel one
+\l "A big hen with lots of eggs,"
+
+\t ——he’i ndaje peteĩ -va la ka’i chupe.
+\g ——3Sg.say Report.Evid one -Rel Def.Det monkey 3.Pron.IO
+\l it is said that one of the monkeys said to him.
+
+\t Hendy no’õ-mba-ité -ma aguara ha o-porandu jey:
+\g 3.Poss.saliva collect-Compl-Superl -Asp fox Conj 3Sg-ask again
+\l The fox was already salivating and asked again:
+
+\t ——Ha piko mba’éicha, amigo ka’i, ja-jupi-mí -ta pene rendá-pe?
+\g ——Conj Q how friend monkey 1Pl.Excl-go.up-Dim- -Prosp 2Pl.Poss place-Loc.Prep
+\l "And how, my monkey friends, will we be able to get up to where you are?"
+
+\t ——Nda-hasý-i-eté-ngo upea ——he’i chupe peteĩ ka’i kuña.
+\g ——Neg-3Sg.difficult-Neg-Superl-FOC that ——3Sg.say 3Sg.Pron.IO one monkey female
+\l "That is not difficult," a female monkey said to him.
+
+\t ——Re-jupí -ta nde revi-kue yvaté-vo ha ne akãngue yvy gotyo.
+\g ——2Sg-go.up -Prosp 2Sg.Poss butt-former above-Simult Conj 2Sg.Poss head ground towards
+\l "You will go up with your butt up and your head down (towards the ground)."
+
+\t Ha aguara o-ñe-moĩ o-tantea: o-ñe-moĩ ovakã-vo.
+\g Conj fox 3Sg-Refl-put 3Sg-try 3Sg-Refl-put head-Simult
+\l And the fox tried it out: he put himself upside down (head down).
+
+\t Oi-kutu i-pysapẽ yvyra máta rehe ha o-jupi mbegue katu hendá-pe. kuéra.
+\g 3Sg-stick 3.Poss-foot tree trunk Obl. Conj 3Sg-got.up slowly Emph place-Loc.Prep Pl
+\l He stuck his feet on the tree trunk and he climbed up slowly towards them.
+
+\t Pe mbyte o-hasa jave o-ho-vo, o-hupyty rupi sapy’a ka’i kuéra
+\g Dem middle 3Sg-pass instant 3Sg-go-Temp.Conj 3Sg-reach around suddenly monkey Pl
+\l At the moment when he was half way up, he was about to reach
+
+\t la ka’i kuéra o-ĩ- ha[pe], o-mboyke la ólla guasu.
+\g Def.Det monkey Pl 3Sg-be- Rel[Loc] 3Pl-throw Def.Det pot big
+\l the monkeys,they suddenly threw the [contents] of the entire big pot.
+
+\t Ha cháu! O-hykuavo humbý-re hikuái la y-taku.
+\g Conj cháu [Sound] 3Pl-throw.out hip-on 3Pl.Subj Def.Det water-hot
+\l And cháu! They threw out the hot water on his side.
+
+\t Re-hechá-ko mitã aguara upe-gui-ete o-ú-rõ o-tĩ-vo yvý-pe.
+\g 2Pl-see-Emph guy fox Dem-Prep-Superl 3Sg-come-Cond 3.Poss-nose-Simult ground-Loc.Prep
+\l And you see, the guy fox came down on his nose to the ground.
+
+\t Ka’aguy mbyté-re o-je-heka,
+\g forest middle-Obl 3Sg-Refl-search
+\l He was searched for in the middle of the forest,
+
+\t ha upe guive sa’i nunga o-ñe-mokonpi-se ka’i umía rehe.
+\g Conj Dem Prep few Part 3Sg-Refl-befriend-Des monkey those Obl
+\l and from then on very few wanted to befriend the monkeys.

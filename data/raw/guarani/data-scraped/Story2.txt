@@ -1,0 +1,156 @@
+\t Peteĩ ára-pe ningo o-ha’ã-mi karréra guasu ha jatevu.
+\g One day-Loc.Prep FOC 3Pl-play-Dim race deer Conj tick
+\l One day the deer and the tick played a little race.
+
+\t Iñepyrῦ-rã guasu oi-mo’ã jatevu o-ñe’ẽ reínte ra'e.
+\g At.the.beginning.deer 3Sg-believe tick 3Sg.-speak in.vain Evid
+\l At first, the deer thought that the tick was speaking in vain.
+
+\t Si máva-iko oi-mo’ã -ta o-ñemoĩ -ta- ha hese ko ahẽ karape?
+\g Si who-Q 3Sg-believe -Prosp 3Sg-put -Prosp Sub 3Sg.Pron.Obl that devil small
+\l [As if] who was going to believe that the little devil was going [to race] with him?
+
+\t ——Nde rehé-nte -ma o-pa’ã, a-ñaní-ta ndéve,
+\g ——You for.you-only -Asp 3Sg-block [the race] 1Sg-run-TA 2Sg.Pron
+\l "Only because of you [the race] is blocked, I'm going to run you,
+
+\t térã-piko re-mbopo’i che-hegui? ——he’i voi chupe jatevu.
+\g or-Q 2Sg-be.afraid 1Sg-of ——3Sg.say Emph 3Sg.Pron.IO tick
+\l or are you afraid of me?" the tick said to him.
+
+\t Upémarõ guasu ombojo’a mante parada.
+\g Then deer 3Sg-added.to Asp-FOC bet
+\l Then the deer already raised the bet.
+
+\t Nd-oi-ko-sé-i niko o-kyhyjé -va ramo jatevú-gui.
+\g Neg-3Sg-be-Des-Neg Emph 3Sg-be.afraid -Rel Conj tick-of
+\l He does not want to be like the one who is afraid of the tick, he is the fastest.
+
+\t Ko ha’e huvicha-'ỹ -va akuã-me.
+\g This 3Sg.be superior-Neg Rel velocity-Loc
+\l There are none that can surpass him in velocity.
+
+\t ——Mamó -ma piko jatevu o-ñemoĩ -ta guasu rehe?
+\g ——Prep.where -Asp Q tick 3Sg-Refl-put -Prosp deer with
+\l "How come the tick is going to get [in competition] with the deer?"
+
+\t ——he’i umi i-vesíno.
+\g ——3Sg.say those 3.Poss-neighbor
+\l said their neighbors.
+
+\t ——Máva piko o-hó -ta kóa vyrorei- hápe?
+\g ——Who-Q 3Sg-go -Prosp those nonsense -Rel.Loc
+\l "Who will go into such nonsense?"
+
+\t ——he’i hikuái, hapicha kuéra ka’aguy-guá -va
+\g ——3Sg.say 3Pl.Pron.Subj 3.Poss.fellow.creature 3Pl forest-source -Rel
+\l they say, their fellow men [who are] from the forest.
+
+\t Katu o-guahẽ-vo ára o-ñani haguã hikuái,
+\g Conj 3Sg-arrive-Temp.Conj day 3Pl-run Sub.Irrealis 3Pl.Pron.Subj
+\l However, when the day comes for them to run [race day],
+
+\t o-u joa vícho
+\g 3Pl-come together animals
+\l all the animals came
+
+\t kuéra o-hecha-sé-gui mba’é-pa o-pa la karréra.
+\g 3Pl 3Pl-see-Des-because what-Q 3Sg-finish def.det race
+\l because they wanted to see how the race would end.
+
+\t Pe ka’aguy-pa’ũ-eté-pe o-ĩ peteĩ ñu porã
+\g That forest-middle-Superl-Loc.Prep 3Sg-be.Loc one field nice
+\l In the very center of the forest there was a beautiful field
+
+\t ha upé-pe o-ñaní -ta hikuái.
+\g Conj there-Loc 3Pl-run -Prosp 3Pl.Pron.Subj
+\l and there they were going to run.
+
+\t Mokõi hue o-moĩ hikuái:
+\g Two judges 3Pl-put 3Pl.Pron.Subj
+\l Two judges situated themselves:
+
+\t Mokõi hue o-moĩ hikuái:
+\g Two judges 3Pl-put 3Pl.Pron.Subj
+\l at the head [of the field] the monkey will look at them,
+
+\t ha huã-me o-py -ta aguara.
+\g Conj high.point-Loc 3Sg-stay -Prosp fox
+\l and at the end [of the field] the fox will remain.
+
+\t Amo ñu pahá-pe o-ĩ peteĩ yvyra py-kue poguasu,
+\g That field end-Loc.Prep 3Sg-be.Loc one tree foot-Term.Asp thick
+\l At the end of the field there was what was the foot of a thick tree [trunk],
+
+\t ha ——kóa ári o-guapy raẽ -va o-ganá -ma,
+\g Conj ——here on 3Sg-sit first -Rel 3Sg-win -Asp
+\l and "whoever sits here first wins,"
+
+\t ——o-sapukái chupe kuéra aguara-i.
+\g ——3Sg-shout 3Pl.Pron.IO Pl wild-fox
+\l the wild fox yelled at them.
+
+\t O-jepytasó-vo hikuái, o-sẽ haguãicha,
+\g 3Pl-firmly.in.place-Temp.Conj 3Pl.Pron.Subj 3Pl-go.out in.that.way
+\l In this way, firmly in place, when they left [their starting position],
+
+\t o-mbokapu ka’i ha vokóike
+\g 3Sg-shoot monkey Conj immediately
+\l the monkey fired and immediately
+
+\t o-joja-ite o-po guasu ha jatevu.
+\g 3Pl-together-Superl 3Pl-jump deer Conj tick
+\l the deer and the tick jumped together.
+
+\t Havẽ tape rehe,
+\g Moldy road Prep.Obl
+\l Like mold on the road,
+
+\t guasu-i ha jatevú-pe katu ndo-hecha-vé-i mavave.
+\g wild.deer-Dim Conj tick.DOM FOC Neg-3Sg-see-more-Neg nobody
+\l the wild deer and the tick, already no one sees them.
+
+\t Re-hechá-ko o-pu’ã-va yvy timbo
+\g 2Sg-see-FOC 3Sg-rise-Asp soil dust
+\l You could see dust rising
+
+\t ha o-guãhẽ -ma -ne katu guasu ñu pahá-pe.
+\g Conj 3Sg-arrive -Asp -Mod Emph deer field end-Loc.Prep
+\l and the deer might have already arrived at the end of the field.
+
+\t Ha o-guapý-vo yvyra py-kue ári, o-hendu peteĩ
+\g Conj 3Sg-sit-Temp.Conj tree foot-Term.Asp on 3Sg-hear one
+\l And as he sat on the tree trunk, he heard a
+
+\t ——Ai, re-guapý-ko che ári!
+\g ——Ay 2Sg.-sit-FOC 1Sg.Pron on
+\l "Ay, you sat on me!
+
+\t Che aje’í
+-ma
+a-guahẽ!
+——he’í
+-va
+ichupe. -ma a-guahẽ! ——he’í -va ichupe.
+\g 1Sg.Pron.Subj long.time -Asp 1Sg-arrive ——3Sg.say -Rel 3Sg.Pron.IO
+\l I arrived a while ago!" [he heard] someone say to him.
+
+\t Nimbo jatevu, o-ñepyrῦ la karréra,
+\g Part tick 3Sg-begin Def.Det race
+\l It turns out that the tick, at the beginning of the race,
+
+\t o-po guasu rumby rague rehe ra'e.
+\g 3Sg-jump deer behind hair Prep.Obl Evid
+\l jumped [caught] on the hair of the deer’s behind.
+
+\t Ha upéicha-rupi ha’e raẽ o-guapy yvyra py-kue ári.
+\g Conj in.that.way 3Sg.Pron.Subj first 3Sg-sit tree foot-Term.Asp on
+\l And in that way he first sat on the tree trunk.
+
+\t Ha ——karréra karai hue ——he’í-vo ichupe kuéra ka'i,
+\g Conj ——the.race Mr. Judge ——3Sg.say-Temp.Conj 3Sg.Pron.IO Pl monkey
+\l And "the race, Mr. Judge," at the moment that the monkey said to them,
+
+\t o-ma’ẽ yvý-re aguara ha he’i ——o-gana jatevu.
+\g 3Sg-look floor-at fox Conj 3Sg-say ——3Sg-win tick
+\l the fox looked down at the ground and said, "the tick won."

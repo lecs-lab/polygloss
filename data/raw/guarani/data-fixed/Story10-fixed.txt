@@ -1,0 +1,414 @@
+\t Peruríma ndaje he’i oguereko ha peteĩ chavurro okaká va pláta.
+\m Peruríma ndaje he’i o-guereko- ha peteĩ chavurro o-kaká -va pláta.
+\g Perurima Report.Evid 3Sg.say 3Sg-have- Sub one donkey 3Sg-defecate -Rel money
+\l It is said that Perurima said that he had a donkey that defecated money.
+
+\t Omoherakuã ndaje upéicha ha opárupi ojeju
+\m O-moherakuã ndaje upé-icha ha opá-rupi o-je-ju
+\g 3Sg-make.known Report.Evid Dem-manner Conj all-around 3Sg-Refl-come
+\l In that way, it is said, he made it known and from all places all types of animals came
+
+\t ojehecha haguã mba’eichaguápa la Peru rymba vuúrro.
+\m o-je-hecha haguã mba’eichaguá-pa la Peru rymba vuúrro.
+\g 3Sg-Refl-see Sub.Irrealis type-Compl Def.Det Peru animal donkey
+\l to see what kind of animal was Peru’s donkey.
+
+\t Upé[v]a ndaje ha’e, ohendúrõ guarã oĩ ha la oú va,
+\m Upé[v]a ndaje ha’e, o-hendú-rõ guarã o-ĩ- ha la o-ú -va,
+\g Pron.Dem Report.Evid 3.Pron.Nom 3Sg-hear-Cond Irrealis 3Sg-exist- Sub Def.Det 3Sg-come -Rel
+\l That way it is said that when he hears that someone is coming,
+
+\t opo’ẽ ma la hymba vúrro revípe
+\m o-po’ẽ -ma la hymba vúrro reví-pe
+\g 3Sg-hand.put -Asp Def.Det animal donkey ass-Loc.Prep
+\l he puts the hand in the donkey’s ass
+
+\t ha omoĩ pype la pláta, upéi ombokaka haguã ãga.
+\m ha o-moĩ pype la pláta, upéi o-mbokaka haguã ãga.
+\g Conj 3Sg-put inside Def.Det money then 3Sg-defecate Sub.Irrealis now
+\l and then makes him defecate.
+
+\t Upéi ndaje, arépe
+\m Upéi ndaje, aré-pe
+\g Then Report.Evid time-Prep
+\l That way, it is said that with time,
+
+\t herakuã ma opárupi la vúrro de virtu Peru oguerekó va,
+\m herakuã -ma opá-rupi la vúrro de virtu Peru o-guerekó -va,
+\g news -Asp all-around Def.Det donkey of virtue Peru 3Sg-have -Rel
+\l Peru’s donkey’s virtue was made known in all places,
+
+\t ha oguahẽ Señor Réi apysápe avei.
+\m ha o-guahẽ Señor Réi apysá-pe avei.
+\g Conj 3Sg-arrive Mr. King ear-Loc.Prep also
+\l and it also arrived to the King's ears.
+
+\t Oñembosako’i ndaje ha’eve ha ou la Perurima rógape
+\m O-ñembosako’i ndaje ha’e-ve ha o-u la Perurima róga-pe
+\g 3Sg-prepare Report.Evid 3.Pron-also Conj 3Sg-come Def.Det Perurima house-Loc.Prep
+\l It is said that he also prepared himself, and came to Peru’s house
+
+\t ohecha haguã la hymba vúrro okaká va pláta.
+\m o-hecha haguã la hymba vúrro o-kaká -va pláta.
+\g 3Sg-see Sub.Irrealis Def.Det animal donkey 3Sg-defecate -Rel money
+\l to see the donkey defecate money.
+
+\t Oguahẽ ndaje Señor Réi ka’aru
+\m O-guahẽ ndaje Señor Réi ka’aru
+\g 3Sg-arrive Report.Evid Mr. King afternoon
+\l It is said that the King arrived in the afternoon,
+
+\t ha Perurima omoguahẽ omboguapy chupe la hógape.
+\m ha Perurima o-mo-guahẽ o-mbo-guapy chupe la hóga-pe.
+\g Conj Perurima 3Sg-Caus-arrive 3Sg-Caus-sit 3.Pron.IO Def.Det house-Loc.Prep
+\l and Peru made him come in and sat him in his house.
+
+\t Ha la Réi he’i mboyve mba’eve voi
+\m Ha la Réi he’i mboyve mba’eve voi
+\g Conj Def.Det King 3Sg.say before anything FOC
+\l And before the King said anything,
+
+\t ndaje Peru osẽ he’i hembirekópe:
+\m ndaje Peru o-sẽ he’i hembirekó-pe:
+\g Report.Evid Peru 3Sg-go.out 3Sg.say wife-DOM
+\l it is said that Peru came out to say to his wife:
+
+\t ——Embokakamína ñandéve ñane rymba vúrro,
+\m ——E-mbokaka-mí-na ñandéve ñane rymba vúrro,
+\g ——Imp-defecate-Dim-Rog 1Pl.Pron.Ben 1Pl.Incl.Poss animal donkey
+\l "Make our donkey defecate
+
+\t ñamondo haguã almasenpegua.
+\m ña-mondo haguã almasen-pe-gua.
+\g 1Pl.Incl-send Sub.Irrealis store-Loc.Prep-place
+\l so we can send [someone] to the store."
+
+\t Ha oho la kuñakarai
+\m Ha o-ho la kuñakarai
+\g Conj 3Sg-go Def.Det woman
+\l And the woman went
+
+\t ohe’ỹi he’ỹi la hymba vúrro, oipete chupe.
+\m o-he’ỹi he’ỹi la hymba vúrro, oi-pete chupe.
+\g 3Sg-scratch scratch Def.Det animal donkey 3Sg-pat 3.Pron.IO
+\l to scratch the donkey [and] pat him.
+
+\t Upévo la vúrro omboguy la huguái
+\m Upé-vo la vúrro o-mboguy la huguái
+\g Dem-Temp.Conj Def.Det donkey 3Sg-raise Def.Det tail
+\l At that moment the donkey raises the tail
+
+\t ha okaka pláta memete.
+\m ha okaka pláta meme-te.
+\g Conj 3Sg-defecate money constantly-Superl
+\l and defecates all the money.
+
+\t Omaña ndaje hese la Réi hína,
+\m O-maña ndaje hese la Réi hína,
+\g 3Sg-watch Report.Evid 3.Pron.IO Def.Det King Cont
+\l It is said that the King was watching,
+
+\t nimbo oipota itereí ma hína ra'e (ha’éngo itaryrýi eterei voi).
+\m nimbo oi-pota itereí -ma hína ra'e (ha’é-ngo i-taryrýi eterei voi).
+\g Part 3Sg-want Superl -Asp Cont Evid 3.Pron.Nom-FOC 3Sg-greedy Superl FOC
+\l it seems that he wanted it so much (he is of course very greedy).
+
+\t Upéi ndaje he’í ma voi chupe novendeséi chénepa.
+\m Upéi ndaje he’í -ma voi chupe n-o-vende-sé-i chéne-pa.
+\g Then Report.Evid 3Sg.say -Asp FOC 3Sg.Pron.IO Neg-3Sg-sell-Des-Neg Mod-Q
+\l Then it is said that he already said to him whether he would sell [it] to him.
+
+\t ——Navende vaerãi ——he’i ma voi chupe Peru,
+\m ——N-a-vende vaerã-i ——he’i -ma voi chupe Peru,
+\g ——Neg-1Sg-sell Mod-Neg ——3Sg.say -Asp FOC 3.Pron.IO Peru
+\l "I will (probably) not sell," Peru already says to him,
+
+\t ——chéngo péva mante la aikotevẽ jave chesalva.
+\m ——ché-ngo péva mante la ai-kotevẽ jave che-salva.
+\g ——1Sg-FOC that only Def.Det 1Sg-have moment 1Sg.Obj-save
+\l "this is the only thing I have at the moment that saves me."
+
+\t Ha ko’ýte ndaje upépe
+\m Ha ko’ýte ndaje upépe
+\g Conj even.more Report.Evid Dem-Loc
+\l And even more, it is said, at that moment
+
+\t la Réi ojopy hese heta iterei pláta.
+\m la Réi o-jopy hese heta iterei pláta.
+\g Def.Det King 3Sg-squeeze 3.Pron.Obl a.lot Superl money
+\l the King offered him lots of money.
+
+\t Hasýpe je Peru oasyta. [omonei]
+\m Hasý-pe -je Peru o-asyta. [omonei]
+\g Difficult-Loc.Prep -Report.Evid Peru 3Sg-accept
+\l It is said that with difficulty, Peru accepted.
+
+\t Oguaraha Réi la hymba vurro[r]ã, ovy’a syry ohóvo heseve.
+\m O-guaraha Réi la hymba vurro-[r]ã, o-vy’a syry o-hó-vo heseve.
+\g 3Sg-take King Def.Det animal donkey-Irrealis 3Sg-happy fluid 3Sg-go-Temp.Conj 3.Pron.Obl
+\l The King took his future donkey, very happy he was going with it.
+
+\t Oho ndaje karai Réi ohe’ỹi la hymba vúrro ha ndokakái.
+\m O-ho ndaje karai Réi o-he’ỹi la hymba vúrro ha nd-o-kaká-i.
+\g 3Sg-go Report.Evid Mr. King 3Sg-scratch Def.Det animal donkey Conj Neg-3Sg-defecate-Neg
+\l It is said that the King went to scratch the donkey but it did not defecate.
+
+\t Upéi oipete ha ndokakái jeýnte.
+\m Upéi oi-pete ha nd-o-kaká-i jeý-nte.
+\g Then 3Sg-pat Conj Neg-3Sg-defecate-Neg again-FOC
+\l Then he patted him and it did not defecate again.
+
+\t Omohumby’apa garrótepe.
+\m O-mohumby’a-pa garróte-pe.
+\g 3Sg-buttock.fallen-Compl club-Loc.Prep
+\l He had his buttock dented from so much hitting.
+
+\t Aremi rire ndaje Peru ojagarra jeý ma mokõi apere’a
+\m Are-mi rire ndaje Peru o-jagarra jeý -ma mokõi apere’a
+\g Time-Dim after Report.Evid Peru 3Sg-grab again -Asp two rabbit
+\l A little time after, it is said, Peru grabbed two wild rabbits
+
+\t ha ogueru la hógape.
+\m ha o-gueru la hóga-pe.
+\g Conj 3Sg-bring Def.Det 3.Poss-house-Loc.Prep
+\l and brought them to his house.
+
+\t Upéi ndaje ha’e oikuaa voi mba’e diápe
+\m Upéi ndaje ha’e oi-kuaa voi mba’e diá-pe
+\g Then Report.Evid 3.Pron.Nom 3Sg-know FOC thing day-Loc.Prep
+\l Then, it is said that he knew which day
+
+\t oú ta hendápe la karai Réi hína.
+\m o-ú -ta hendá-pe la karai Réi hína.
+\g 3Sg-come -Prosp place-Loc.Prep Def.Det Mr. King Cont
+\l the King would come to him.
+
+\t Ha oho haguã la kokuépe
+\m Ha o-ho haguã la kokué-pe
+\g Conj 3Sg-go Sub.Irrealis Def.Det veg.garden-Loc.Prep
+\l And to go to the vegetable garden
+
+\t omoĩ peteĩ la apere’a ajaka guýpe
+\m o-moĩ peteĩ la apere’a ajaka guý-pe
+\g 3Sg-put one Def.Det rabbit basket under-Loc.Prep
+\l he put one rabbit under the basket
+
+\t ha oheja la hembirekópe, ha ótro ogueraha ha’e.
+\m ha o-heja la hembirekó-pe, ha ótro o-gueraha ha’e.
+\g Conj 3Sg-leave Def.Det wife-DOM Conj another 3Sg-take 3Sg.Nom
+\l and left it with his wife and the other one he took with him.
+
+\t ——Ãga Señor Réi oúke, ha cherenoi[u]ka
+\m ——Ãga Señor Réi o-ú-ke, ha che-renoi-[u]ka
+\g ——Now Mr. King 3Sg-come-Sub Conj 1Sg.Pron.Obj-call-Caus
+\l "If the King comes, have them call me,"
+
+\t ——he’i la hembirekópe.
+\m ——he’i la hembirekó-pe.
+\g ——3Sg.say Def.Det 3.Poss-wife-IO
+\l he said to his wife.
+
+\t Upéi ndaje la Señor Réi ou oguahẽ ha oporandu voi Perúre.
+\m Upéi ndaje la Señor Réi o-u o-guahẽ ha o-porandu voi Perú-re.
+\g Then Report.Evid Def.Det Mr. King 3Sg-come 3Sg-arrive Conj 3Sg-ask FOC Peru-Obl
+\l Then, it is said, the King came arriving and asked for Peru.
+
+\t ——Moõpa oime? ——he’í -je.
+\m ——Moõ-pa oi-me? ——he’í -je. 
+\g ——Where-Q 3Sg-be ——3Sg.say- Report.Evid
+\l "Where is he?" it is said that he said.
+
+\t ——Oime kokuépe. Reikotevẽpa hese? ——he’i chupe la hembireko.
+\m ——Oi-me kokué-pe. Re-ikotevẽ-pa hese? ——he’i chupe la hembireko.
+\g ——3Sg.be veg.garden-Loc.Prep 2Sg-need-Q 3.Pron-Obl ——3Sg.say 3.Pron.IO Def.Det 3.Poss-wife
+\l "He is in the vegetable garden. Do you need him?" asked his wife.
+
+\t ——Hẽe, aikotevẽ ——he’i Señor Réi.
+\m ——Hẽe, ai-kotevẽ ——he’i Señor Réi.
+\g ——yes 1Sg-need ——3Sg.say Mr. King
+\l "Yes, I need him," said Mr. King.
+
+\t ——Tamondo ko mitã toavisa chupe
+\m ——Ta-mondo ko mitã to-avisa chupe
+\g ——Exhort-1Sg-send Dem child Exhort-3Sg-let.know 3.Pron.IO
+\l "I will send this child to let him know,"
+
+\t ——he’i ndaje la kuñakarai,
+\m ——he’i ndaje la kuñakarai,
+\g ——3Sg.say Report.Evid Def.Det woman
+\l it is said that the wife said.
+
+\t Ha ndaje oguenohẽ la ajaka guýgui peteĩ la apere’a:
+\m Ha ndaje o-guenohẽ la ajaka guý-gui peteĩ la apere’a:
+\g Conj Report.Evid 3Sg-take.out Def.Det basket under-Prep one Def.Det rabbit
+\l And it is said that she took the rabbit from under the basket:
+
+\t ——Tereho ere nde rúpe tou ——he’i ndaje chupe,
+\m ——Te-re-ho ere nde rú-pe t-o-u ——he’i ndaje chupe,
+\g ——Imp-2Sg-go 2Sg.say 2Sg.Poss father-IO Imp-3Sg-come ——3Sg.say Report.Evid 3.Pron.IO
+\l "Go tell your father to come," it is said that she said to him,
+
+\t ha oheviro’opete ha omboguejy oho.
+\m ha o-heviro’o-pete ha o-mboguejy o-ho.
+\g Conj 3Sg-buttock-pat Conj 3Sg-bring.down 3Sg-go
+\l and she patted his buttock and brought him down for him to go.
+
+\t Ha la Réi ndaje omaña ñemi hese hína.
+\m Ha la Réi ndaje o-maña ñemi hese hína.
+\g Conj Def.Det King Report.Evid 3Sg-watch hidden 3.Pron.IO Cont
+\l And the King secretly watched her.
+
+\t Upéi ndaje Peru oguahẽ oúvo la óga kupe guio,
+\m Upéi ndaje Peru o-guahẽ o-ú-vo la óga kupe guio,
+\g Then Report.Evid Peru 3Sg-arrive 3Sg-come-Temp.Conj Def.Det house behind towards
+\l Then, it is said, Peru was arriving towards the back of the house,
+
+\t la apere’a ijyva guýpe,
+\m la apere’a i-jyva guý-pe,
+\g Def.Det rabbit 3.Poss-arm under-Loc.Prep
+\l with the rabbit under his arm,
+
+\t pe ogueraha va’ekue ha’e voi.
+\m pe o-gueraha va’ekue ha’e voi.
+\g Dem 3Sg-take Rel.Distal 3Sg.Cop FOC
+\l the one he had taken [earlier].
+
+\t He’i hembirekópe:
+\m He’i hembirekó-pe:
+\g 3Sg.say 3.Poss-wife-IO
+\l He said to his wife:
+
+\t ——Mba’erãnga piko mitã remondo jeý ma pe kokue ñanandýre.
+\m ——Mba’e-rã-nga piko mitã re-mondo jeý -ma -pe kokue ñanandý-re.
+\g ——Thing-Irrealis-poor Q child 2Sg-send again -Asp -Loc.Prep veg.garden shrub-Obl
+\l "For what did you send this poor child again among the shrubs of the vegetable garden?"
+
+\t ——Ha Señor Réi oikotevẽ nderehe ——he’i chupe.
+\m ——Ha Señor Réi oi-kotevẽ nderehe ——he’i chupe.
+\g ——Conj Mr. King 3Sg-need 2Sg.Pron.Obl ——3Sg.say 3.Pron.IO
+\l "And the King needed you," she told him.
+
+\t Oike ndaje Peru ha oñomongeta Señor Réi ndive.
+\m Oi-ke ndaje Peru ha o-ñomongeta Señor Réi ndive.
+\g 3Sg.enter Report.Evid Peru Conj 3Sg-talk.with Mr. King 2Sg-with
+\l It is said that Peru came in and talked with the King,
+
+\t Ha’e hesarái voi ma’erãpa ou ra'e la Peru rendápe.
+\m Ha’e hesarái voi ma’erã-pa o-u ra'e la Peru rendá-pe.
+\g 3.Pron.Nom 3Sg-forget FOC what.for-Q 3Sg-come Evid Def.Det Peru place-Loc.Prep
+\l He had forgotten for what reason he came to see Peru.
+
+\t La hesa la apere’árente voi.
+\m La hesa la apere’á-rente voi.
+\g Def.Det look Def.Det rabbit-only FOC
+\l His sight was only for the rabbit.
+
+\t Omaña hese, ha upéi noaguantavéi,
+\m O-maña hese, ha upéi n-o-aguanta-vé-i,
+\g 3Sg-look 3.Pron.Obl Conj then Neg-3Sg-stand-more-Neg
+\l He was watching him, and then he couldn’t stand it anymore,
+
+\t ha he’i chupe moõpa ha’e
+\m ha he’i chupe moõ-pa ha’e
+\g Conj 3Sg.say 3.Pron.IO where-Q 3.Pron.Nom
+\l and he asked him where he had sent him
+
+\t ombo’eka raka’e péichaite iñarandu haguã,
+\m o-mbo’e-ka raka’e péichaite i-ñarandu haguã,
+\g 3Sg-teach-Caus Distal.Evid this.way 3.Poss-intelligence Sub.Irrealis
+\l to learn that he is so intelligent,
+
+\t ko animal nde resaité va ningo la apere’a.
+\m ko animal nde re-saité -va ningo la apere’a.
+\g Dem animal 2Sg.Pron 2Sg-wild -Rel FOC Def.Det wild.rabbit
+\l this animal so wild that it is the wild rabbit.
+
+\t ——Ha kóva apere’a de virtu ——he’i chupe Peru.
+\m ——Ha kóva apere’a de virtu ——he’i chupe Peru.
+\g ——Conj Dem.Pron rabbit of virtue ——3Sg.say 3.Pron.IO Peru
+\l "And this is a rabbit with virtue," Peru said to him.
+
+\t Oipotáiterei jeý ma ndaje Señor Réi ha otrateá ma voi Perúgui.
+\m Oi-potá-iterei jeý -ma ndaje Señor Réi ha o-trateá -ma voi Perú-gui.
+\g 3Sg-want-Superl again -Asp Report.Evid Mr. King Conj 3Sg-deal -Asp FOC Peru-Prep
+\l The King wanted it badly again, it is said, and he already made a deal with Peru.
+
+\t Oikuave’ẽ chupe hese pláta heta iterei jeý ma.
+\m Oi-kuave’ẽ chupe hese pláta heta iterei jeý -ma.
+\g 3Sg-offer 3.Pron.IO 3.Pron.Obl money a.lot Superl again -Asp
+\l He offered lots of money for it [the rabbit] again.
+
+\t Ha upéi hasýpe ovende chupe Peru.
+\m Ha upéi hasý-pe o-vende chupe Peru.
+\g Conj then difficult-Loc.Prep 3Sg-sell 3.Pron.IO Peru
+\l And then in the end Peru sold it to him.
+
+\t Oho ndaje karai Réi oguahẽ la hógape,
+\m O-ho ndaje karai Réi o-guahẽ la hóga-pe,
+\g 3Sg-go Report.Evid Mr. King 3Sg-arrive Def.Det 3.Poss-house-Loc.Prep
+\l It is said that the King went home,
+
+\t ome’ẽ la hembirekópe la apere’a oñongatu.
+\m o-me’ẽ la hembirekó-pe la apere’a o-ñongatu.
+\g 3Sg-give Def.Det 3.Poss-wife-IO Def.Det rabbit 3Sg-keep
+\l he gave his wife the rabbit to keep it for him.
+
+\t Upéi pyhareve he’i chupe:
+\m Upéi pyhareve he’i chupe:
+\g Then morning 3Sg.say 3.Pron.IO
+\l Then in the morning he said to him:
+
+\t ——Reipota vove ajúke
+\m ——Rei-pota vove a-jú-ke
+\g ——2Sg-want Temp.Conj a-come-Sub
+\l "When you want me to come,
+
+\t emondo che piári ãga la ñande apere’a de virtu
+\m e-mondo che piári ãga la ñande apere’a de virtu
+\g Imp.2Sg-send 1Sg.Pron.DO find now Def.Det 1Pl.Incl.Poss rabbit of virtue
+\l send our virtuous rabbit to find me,"
+
+\t ——he’i ndaje Señor Réi.
+\m ——he’i ndaje Señor Réi.
+\g ——3Sg.say Report.Evid Mr. King
+\l it is said that the King said.
+
+\t Upéi ndaje la kuñakarai oguenohẽ la ijapere’a
+\m Upéi ndaje la kuñakarai o-guenohẽ la i-japere’a
+\g Then Report.Evid Def.Det woman 3Sg-take Def.Det 3.Poss-rabbit
+\l Then, it is reported, the woman took out her rabbit
+
+\t ha ohevi ro'o pete ha he’i chupe:
+\m ha o-hevi ro'o pete ha he’i chupe:
+\g Conj 3-buttock pat Conj 3Sg.say 3.Pron.IO
+\l and patted him on the buttock and said to him:
+
+\t ——Tereho ere nde rúpe tou.
+\m ——Te-re-ho ere nde rú-pe t-o-u.
+\g ——Imp-2Sg-go 2Sg.say 2Sg.Poss father-IO Imp-3Sg-come
+\l "Go and tell your father to come."
+
+\t Iladóse jere ndaje Karái Réi ha ne’írã ou.
+\m I-ladóse jere ndaje Karái Réi ha ne’írã o-u.
+\g 3Sg-twelve around Report.Evid Mr. King Conj not.yet 3Sg-come
+\l And it was already close to twelve, it is said, and he still had not come.
+
+\t Ha upéi ae ndaje oguahẽ oúvo.
+\m Ha upéi ae ndaje o-guahẽ o-ú-vo.
+\g Conj then just Report.Evid 3Sg-arrive 3Sg-come-Simult
+\l And just then it is said he was arriving.
+
+\t ——Mba’erã piko neremondói ——he’i la hembirekópe.
+\m ——Mba’erã piko ne-re-mondó-i ——he’i la hembirekó-pe.
+\g ——Why Q Neg-2Sg-send-Neg ——3Sg.say Def.Det 3.Poss-wife-IO
+\l "Why didn’t you send it [the rabbit]?" he said to his wife.
+
+\t ——Uje’í ma ko oho kuri ——he’i chupe la kuñakarai.
+\m ——Uje’í -ma -ko o-ho kuri ——he’i chupe la kuñakarai.
+\g ——While.ago -Asp -FOC 3Sg-go Retrosp.Asp ——3Sg.say 3.Pron.IO Def.Det woman
+\l "It has gone some time ago already," the wife said to him.
+
+\t Ha la apere’a uje’í ma okañy karaguatatýpe.
+\m Ha la apere’a uje’í -ma o-kañy karaguata-tý-pe.
+\g Conj Def.Det rabbit while.ago -Asp 3Sg-hide karaguata-plantation-Loc.Prep
+\l And some time ago already the rabbit had hidden in the karaguata-plantation.

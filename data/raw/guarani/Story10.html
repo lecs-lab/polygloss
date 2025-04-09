@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Lato", sans-serif}
+h1,button {font-family: "Montserrat", sans-serif}
+.w3-bar {font-family: "Montserrat", sans-serif;
+align-items: center; background-color: white;}
+.navbar {
+  overflow: auto;
+  background-color: white;
+  text-align:center;
+}
+
+.navbar a {
+  float: left; 
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  text-align:center;
+}
+
+td {
+	white-space: wrap;
+}
+
+.dropdown {
+  float: left;
+  overflow: auto;
+}
+
+.dropdown .dropbtn {
+  font-size: 18px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: whitesmoke;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  background-color: whitesmoke;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown-content a:hover {
+  background-color: lightslategrey;
+  font-family: "Montserrat", sans-serif;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  max-height:250px;
+  overflow:auto;
+}
+
+        #MyTable{
+            border: 1px solid black;
+        }
+        #MyTable td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+        .parentCell{
+            position: relative;
+        }
+        .tooltip{
+            display: none;
+            position: absolute; 
+            z-index: 100;
+            border: 1px;
+            background-color: white;
+            border: 1px solid green;
+            padding: 3px;
+            color: green; 
+            top: 20px; 
+            left: 20px;
+        }
+        .parentCell:hover span.tooltip{
+            display:block;
+        }
+
+</style>
+	<title>Story #10</title>
+	<link rel="stylesheet" type="text/css" href="cssstory1/style.css">
+</head>
+
+
+
+
+<body>
+
+
+	<!-- Header -->
+	<header class="w3-center" style="color:#40B5AD; background-color: #40B5AD; padding-top:115px; padding-bottom: 8px;" id="main">
+		<h1 style="color: white; font-weight: bold; font-size: 45px;">Guarani Corpus</h1>
+		<p class="w3-large" style="color: black">Funded by NSF BCS-1917619</p>
+		<button class="w2-button w3-black" style="font-size: 12px; padding-bottom: 2px">Glossed, translated, and annotated by Maria Luisa Zubizarreta<br>Web Designers: Abigail Jarvis and Claire Benet Post</button>
+	</header>
+
+	  
+	<!-- Navbar -->
+	<div class="w3-top">
+		<div class = "w3-bar" style="background-color:#40B5AD">
+	
+		  
+			<div class="w3-navbar" style="background-color: #40B5AD; display: flex; justify-content: space-around; list-style-type: none;">
+				<div class="w3-left-align w3-large">
+					<a class="w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-light-grey w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"></a>
+					<a href="index.html" style="color:white" class="w3-button w3-padding-large w3-hover-light-grey">Home</a>
+				</div>
+			
+				<div class="dropdown">
+					<button class="dropbtn w3-hover-light-grey">Glossed Stories 
+					<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content w3-small">
+						<a href="Story1.html">Story #1</a>
+						<a href="Story2.html">Story #2</a>
+						<a href="Story3.html">Story #3</a>
+						<a href="Story4.html">Story #4</a>
+						<a href="Story5.html">Story #5</a>
+						<a href="Story6.html">Story #6</a>
+						<a href="Story7.html">Story #7</a>
+						<a href="Story8.html">Story #8</a>
+						<a href="Story9.html">Story #9</a>
+						<a href="Story10.html">Story #10</a>
+						<a href="Story11.html">Story #11</a>
+						<a href="Story12.html">Story #12</a>
+						<a href="Story13.html">Story #13</a>
+						<a href="Story14.html">Story #14</a>
+						<a href="Story15.html">Story #15</a>
+					</div>
+				</div>
+			
+			
+					<div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Search by Morpheme 
+							<i class="fa fa-caret-down"></i>
+						</button>
+					<div class="dropdown-content">
+						<a href="Subordinator 'ha'.html">ha (Subordinator)</a>
+						<a href="Locational Relative Pronoun 'ha'.html">há(-pe), há(-gui) (Locational Relativizer)</a>
+						<a href="Irrealis 'ha' Subordinator.html">haguã (Irrealis Subordinador)</a>
+						<a href="'hague' Terminative Subordinador.html">hague (Terminative Subordinador)</a>
+						<a href="Nominalizer 'ha'.html">ha (Nominalizer)</a>
+						<a href="Past Morpheme 'kuri'.html">kuri (Retrospective Aspect)</a>
+						<a href="va'ekue-akue distal perfect aspect.html">va'ekue/akue (Distal Aspect)</a>
+						<a href="va'ekue-akue relative distal.html">va'ekue/akue (Relative Distal)</a>
+						<a href="Progressive Morpheme 'ina' Inflections.html">hína (Continuative Aspect / Focalizer)</a>
+						<a href="-ta 'Prospective Aspect'.html">-ta (Prospective Aspect)</a>
+						<a href="-ma 'Already'.html">-ma (Aspect/Focalizer)</a>
+						<a href="Relativizer 'va'.html">-va (Relativizer)</a>
+						<a href="Focalizer Particle 'voi'.html">voi (Focalizer Particle)</a>
+						<a href="Ra'e Evidential.html">ra'e (Indirect Evidential)</a>
+						<a href="'Ndaje_-je' Reportative Evidential.html">ndaje/je (Reportative Evidential)</a>
+						<a href="Overt Direct Object Pronoun.html">Overt DO Pronoun</a>
+						<a href="Covert Direct Object Pronoun.html">Covert DO pronoun</a>
+					</div>
+					</div>
+
+
+                    <div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Children's Narratives 
+						<i class="fa fa-caret-down"></i>
+						</button>
+					<div class="dropdown-content w3-small">
+						<a href="ChildrensNarrativesAge4.html">4 Years Old</a>
+						<a href="ChildrensNarrativesAge5.html">5 Years Old</a>
+						<a href="ChildrensNarrativesAge6.html">6 Years Old</a>
+						<a href="TeacherNarratives.html">Teachers</a>
+					</div>
+					</div>
+	
+					<a href="Additional Resources.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Additional Resources</a>
+				<a href="Publications.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Publications</a>
+
+				<!--Side Menu-->
+				<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-border w3-light-grey" style="width:180px;right:0" id="mySidebar">
+					
+					<button class="w3-bar-item w3-button w3-large w3-black"
+					onclick="w3_close()">Hide &times;</button> 
+                        <h5 class="w3-bar-item">Gloss Abbreviations</h5>
+					    <a class="w3-bar-item">Asp = Aspect</a>
+                        <a class="w3-bar-item">Compl = Completitive</a>
+						<a class="w3-bar-item">Conj = Conjunction</a>
+						<a class="w3-bar-item">Cont = Continuitive</a>
+						<a class="w3-bar-item">Def = Definite</a>
+						<a class="w3-bar-item">Dem = Demonstrative Pronoun</a>
+						<a class="w3-bar-item">Des = Deserative</a>
+						<a class="w3-bar-item">Det = Determiner</a>
+						<a class="w3-bar-item">Dim = Diminuitive</a>
+						<a class="w3-bar-item">DO = Direct Object</a>
+						<a class="w3-bar-item">DOM = Direct Object Marker</a>
+						<a class="w3-bar-item">Emph = Emphasis</a>
+						<a class="w3-bar-item">Evid = Evidential</a>
+						<a class="w3-bar-item">Excl = Exclusive</a>
+						<a class="w3-bar-item">FOC = Focus</a>
+						<a class="w3-bar-item">Fut = Future Tense</a>
+						<a class="w3-bar-item">Incl = Inclusive</a>
+						<a class="w3-bar-item">IO = Indirect Object</a>
+						<a class="w3-bar-item">Irr = Irrealis Mood</a>
+						<a class="w3-bar-item">Loc = Locative</a>
+						<a class="w3-bar-item">Mod = Modal</a>
+						<a class="w3-bar-item">Nom = Number</a>
+						<a class="w3-bar-item">Neg = Negation</a>
+						<a class="w3-bar-item">Obl = Oblique</a>
+						<a class="w3-bar-item">Part = Participle</a>
+						<a class="w3-bar-item">Pl = Plural</a>
+						<a class="w3-bar-item">Port = Portmanteau morpheme (1P Subj and 2PObj)</a>
+						<a class="w3-bar-item">Poss = Possesive</a>
+						<a class="w3-bar-item">Prep = Preposition</a>
+						<a class="w3-bar-item">Pron = Pronoun</a>
+						<a class="w3-bar-item">Prosp = Prospective Aspect</a>
+						<a class="w3-bar-item">Q = Question</a>
+						<a class="w3-bar-item">Rec = Reciprocal</a>
+						<a class="w3-bar-item">Refl = Reflexive</a>
+						<a class="w3-bar-item">Rel = Relative Marker</a>
+						<a class="w3-bar-item">Rog = Rogative</a>
+						<a class="w3-bar-item">Sg = Singular</a>
+						<a class="w3-bar-item">Simult = Simultaneous</a>
+						<a class="w3-bar-item">[Sp] = Spanish Origin</a>
+						<a class="w3-bar-item">Sub = Subordinate </a>
+						<a class="w3-bar-item">Subj = Subject </a>
+						<a class="w3-bar-item">Superl = Superalitive</a>
+                        <a class="w3-bar-item">Temp = Temporal Conjunction</a>
+                        <a class="w3-bar-item">Term = Termantive</a>
+						<a class="w3-bar-item">1 = First Person</a>
+						<a class="w3-bar-item">2 = Second Person</a>
+						<a class="w3-bar-item">3 = Third Person</a>
+						<a class="w3-bar-item">[] = Dropped Morpheme</a>
+						<a class="w3-bar-item">. = One morpheme encodes multiple meaning pieces</a>
+						<a class="w3-bar-item">- = Morphemic constituents of a word</a>
+				</div>
+				<!-- clickable gloss menu-->
+				<div style="color:#40B5AD">
+					<button id="openNav" class="w3-button w3-large w3-right" style="color:black; margin-top:10px; background-color:#40B5AD; margin-right:10px"onclick="w3_open()"> Gloss Menu &#9776;</button>
+				</div>
+			</div>
+    	</div>
+	</div>
+		
+	<div class="w3-container w3-teal">
+		<div class="w3-main" id="main">
+			<div class="w3-teal">
+				<div class="w3-container">
+					<h2>Story #10</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body> 
+</body> 
+		
+<body>
+	<div class="w3-container" id="mainText">
+	<body>
+			<div class="w3-container">
+			<section id="firstline">
+				<h1 class="parentCell" style="padding-top: 12px; padding-bottom: 19px; padding-right: 12px; width: 1000px;;">Peruríma ha Señor Réi</h1>
+			</section>
+			</div>
+		<div class="w3-container" style="padding-top: 18px; width: 1000px">
+			<section id="title" >
+				<h3>'Perurima and Mister King'</h3>
+				<h3>'Peruríma y Señor Rey'</h3>
+			</section>
+		</div>
+	</body>
+	<hr>
+	<body>
+		<div>
+			<div class="gloss">
+				<p>Hover over Guaraní morphemes written in purple to see their syntactic function.</p>
+			</div>
+		</div>
+
+
+
+		<div class="gloss">
+			<p>Audio for Story #10:</p>
+			<iframe src="https://drive.google.com/file/d/1Du_Ye_kUHB-TRRCKbH3E5011hBfgUKZZ/preview" width="450" height="70" allow="autoplay"></iframe>
+		</div>
+
+		<hr>
+		<table>
+		    <thead>
+				<td><a class="anchor" id="Subordinator ha 1"></a></td>
+				<td><a class="anchor" id="ndaje 1"></a></td>
+				<td><a class="anchor" id="va 1"></a></td>
+		        <tr>
+		            <td>Peruríma</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 1">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>he’i</td>
+		            <td>o-guereko-</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Subordinator 'ha'.html#Story 10 Subordinator ha 1">ha<span class="tooltip">Subordinate 'ha'</span></div></a></td>
+		            <td>peteĩ</td>
+		            <td>chavurro</td>
+		            <td>o-kaká</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 10 va 1">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+		            <td>pláta.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Perurima</td>
+		            <td>Report.Evid</td>
+		            <td>3Sg.say</td>
+		            <td>3Sg-have-</td>
+		            <td>Sub</td>
+		            <td>one</td>
+		            <td>donkey</td>
+		            <td>3Sg-defecate</td>
+					<td>-Rel</td>
+		            <td>money</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that Perurima said that he had a donkey that defecated money.</p>
+			<p style="color:#CD5C5C">Se dice que dijo Perurima que tenía un burro que defecaba dinero.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 2"></a></td>
+		        <tr>
+		            <td>O-moherakuã</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 2">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>upé-icha</td>
+		            <td>ha</td>
+		            <td>opá-rupi</td>
+		            <td>o-je-ju</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-make.known</td>
+		            <td>Report.Evid</td>
+	            	<td>Dem-manner</td>
+		            <td>Conj</td>
+		            <td>all-around</td>
+		            <td>3Sg-Refl-come</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">In that way, it is said, he made it known and from all places all types of animals came</p>
+			<p style="color:#CD5C5C">Así dicen que difundió y de todos vinieron</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 1"></a></td>
+		        <tr>
+		            <td>o-je-hecha</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 1">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		            <td>mba’eichaguá-pa</td>
+		            <td>la</td>
+		            <td>Peru</td>
+		            <td>rymba</td>
+		            <td>vuúrro.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-Refl-see</td>
+		            <td>Sub.Irrealis</td>
+		            <td>type-Compl</td>
+		            <td>Def.Det</td>
+		            <td>Peru</td>
+		            <td>animal</td>
+		            <td>donkey</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">to see what kind of animal was Peru’s donkey.</p>
+			<p style="color:#CD5C5C">para ver qué clase de animal era el burro de Peru.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="Nom ha 1"></a></td>
+				<td><a class="anchor" id="ndaje 3"></a></td>
+				<td><a class="anchor" id="va 2"></a></td>
+		        <tr>
+			        <td>Upé[v]a</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 3">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>ha’e,</td>
+		            <td>o-hendú-rõ</td>
+		            <td>guarã</td>
+		            <td>o-ĩ-</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Nominalizer 'ha'.html#Story 10 Nom ha 1">ha<span class="tooltip">Nominalizer 'ha'</span></div></a></td>
+		            <td>la</td>
+		            <td>o-ú</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 10 va 2">-va,<span class="tooltip">Relativizer 'va'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Pron.Dem</td>
+		            <td>Report.Evid</td>
+		            <td>3.Pron.Nom</td>
+		            <td>3Sg-hear-Cond</td>
+		            <td>Irrealis</td>
+		            <td>3Sg-exist-</td>
+		            <td>Sub</td>
+		            <td>Def.Det</td>
+		            <td>3Sg-come</td>
+					<td>-Rel</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">That way it is said that when he hears that someone is coming,</p>
+			<p style="color:#CD5C5C">Así se dice que él, cuando escucha que alguien viene,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 1"></a></td>
+		        <tr>
+		            <td>o-po’ẽ</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 1">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td>la</td>
+		            <td>hymba</td>
+		            <td>vúrro</td> 
+		            <td>reví-pe</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-hand.put</td>
+		            <td>-Asp</td>
+		            <td>Def.Det</td>
+		            <td>animal</td>
+	            	<td>donkey</td>
+	            	<td>ass-Loc.Prep</td>
+				</tr>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">he puts the hand in the donkey’s ass</p>
+			<p style="color:#CD5C5C">ya mete la mano en el trasero del burro</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 2"></a></td>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-moĩ</td>
+		            <td>pype</td>
+		            <td>la</td>
+		            <td>pláta,</td>
+		            <td>upéi</td>
+		            <td>o-mbokaka</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 2">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		            <td>ãga.</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+	            	<td>Conj</td>
+	            	<td>3Sg-put</td>
+	            	<td>inside</td>
+	            	<td>Def.Det</td>
+	            	<td>money</td>
+	            	<td>then</td>
+	            	<td>3Sg-defecate</td>
+	            	<td>Sub.Irrealis</td>
+	            	<td>now</td>
+				</tr>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and then makes him defecate.</p>
+			<p style="color:#CD5C5C">y pone dentro la plata para que después le haga defecar.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 4"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 4">ndaje,<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>aré-pe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>Report.Evid</td>
+		            <td>time-Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">That way, it is said that with time,</p>
+			<p style="color:#CD5C5C">Así se dice, con el tiempo</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 2"></a></td>
+				<td><a class="anchor" id="va 3"></a></td>
+		        <tr>
+		            <td>herakuã</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 2">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td>opá-rupi</td>
+		            <td>la</td>
+		            <td>vúrro</td>
+		            <td>de</td>
+		            <td>virtu</td>
+		            <td>Peru</td>
+		            <td>o-guerekó</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 10 va 3">-va,<span class="tooltip">Relativizer 'va'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>news</td>
+		            <td>-Asp</td>
+		            <td>all-around</td>
+		            <td>Def.Det</td>
+		            <td>donkey</td>
+		            <td>of</td>
+		            <td>virtue</td>
+		            <td>Peru</td>
+		            <td>3Sg-have</td>
+					<td>-Rel</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Peru’s donkey’s virtue was made known in all places,</p>
+			<p style="color:#CD5C5C">difundido/conocido ya por todos lados la virtud del burro que tiene Perú,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-guahẽ</td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>apysá-pe</td>
+		            <td>avei.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-arrive</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>ear-Loc.Prep</td>
+		            <td>also</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and it also arrived to the King's ears.</p>
+			<p style="color:#CD5C5C">y llegó a los oídos del Señor Rey también.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 5"></a></td>
+		        <tr>
+		            <td>O-ñembosako’i</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 5">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>ha’e-ve</td>
+		            <td>ha</td>
+		            <td>o-u</td>
+		            <td>la</td>
+		            <td>Perurima</td>
+		            <td>róga-pe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-prepare</td>
+		            <td>Report.Evid</td>
+		            <td>3.Pron-also</td>
+            		<td>Conj</td>
+            		<td>3Sg-come</td>
+            		<td>Def.Det</td>
+            		<td>Perurima</td>
+            		<td>house-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that he also prepared himself, and came to Peru’s house</p>
+			<p style="color:#CD5C5C">Se dice que se preparó también él, y vino a la casa de Peru</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 3"></a></td>
+				<td><a class="anchor" id="va 4"></a></td>
+		        <tr>
+		            <td>o-hecha</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 3">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		            <td>la</td>
+		            <td>hymba</td>
+		            <td>vúrro</td>
+		            <td>o-kaká</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 10 va 4">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+		            <td>pláta.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+            		<td>3Sg-see</td>
+            		<td>Sub.Irrealis</td>
+            		<td>Def.Det</td>
+            		<td>animal</td>
+            		<td>donkey</td>
+            		<td>3Sg-defecate</td>
+					<td>-Rel</td>
+            		<td>money</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">to see the donkey defecate money.</p>
+			<p style="color:#CD5C5C">para ver al animal burro que defeca plata.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 6"></a></td>
+		        <tr>
+		            <td>O-guahẽ</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 6">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>ka’aru</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-arrive</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>afternoon</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that the King arrived in the afternoon,</p>
+			<p style="color:#CD5C5C">Se dice que llegó a la tarde el Señor Rey,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>Perurima</td>
+		            <td>o-mo-guahẽ</td>
+		            <td>o-mbo-guapy</td>
+		            <td>chupe</td>
+		            <td>la</td>
+		            <td>hóga-pe.</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>Perurima</td>
+		            <td>3Sg-Caus-arrive</td>
+		            <td>3Sg-Caus-sit</td>
+		            <td>3.Pron.IO</td>
+		            <td>Def.Det</td>
+		            <td>house-Loc.Prep</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and Peru made him come in and sat him in his house.</p>
+			<p style="color:#CD5C5C">y Peru le hizo llegar [le recibió] y le hizo sentar en su casa.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="voi 1"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>la</td>
+		            <td>Réi</td>
+		            <td>he’i</td>
+		            <td>mboyve</td>
+		            <td>mba’eve</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 1">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+            		<td>Def.Det</td>
+            		<td>King</td>
+            		<td>3Sg.say</td>
+            		<td>before</td>
+            		<td>anything</td>
+            		<td>FOC</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And before the King said anything,</p>
+			<p style="color:#CD5C5C">Y antes que el Rey diga nada,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 7"></a></td>
+		        <tr>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 7">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Peru</td>
+		            <td>o-sẽ</td>
+		            <td>he’i</td>
+		            <td>hembirekó-pe:</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+            		<td>Report.Evid</td>
+            		<td>Peru</td>
+            		<td>3Sg-go.out</td>
+            		<td>3Sg.say</td>
+            		<td>wife-DOM</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">it is said that Peru came out to say to his wife:</p>
+			<p style="color:#CD5C5C">se dice que Peru salió a decir a su esposa:</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——E-mbokaka-mí-na</td>
+		            <td>ñandéve</td>
+		            <td>ñane</td>
+		            <td>rymba</td>
+		            <td>vúrro,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Imp-defecate-Dim-Rog</td>
+		            <td>1Pl.Pron.Ben</td>
+		            <td>1Pl.Incl.Poss</td>
+		            <td>animal</td>
+		            <td>donkey</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Make our donkey defecate</p>
+			<p style="color:#CD5C5C">"Hacele defecar a nuestro animal burro,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 4"></a>(4)</td>
+		        <tr>
+		            <td>ña-mondo</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 4">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		            <td>almasen-pe-gua.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>1Pl.Incl-send</td>
+		            <td>Sub.Irrealis</td>
+		            <td>store-Loc.Prep-place</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">so we can send [someone] to the store."</p>
+			<p style="color:#CD5C5C">para enviarle [a alguien] al almacén."</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>Ha</td>
+					<td>o-ho</td>
+		            <td>la</td>
+		            <td>kuñakarai</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+					<td>3Sg-go</td>
+		            <td>Def.Det</td>
+		            <td>woman</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And the woman went</p>
+			<p style="color:#CD5C5C">Y fue la mujer</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>o-he’ỹi</td>
+		            <td>he’ỹi</td>
+		            <td>la</td>
+		            <td>hymba</td>
+		            <td>vúrro,</td>
+		            <td>oi-pete</td>
+		            <td>chupe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-scratch</td>
+		            <td>scratch</td>
+		            <td>Def.Det</td>
+		            <td>animal</td>
+		            <td>donkey</td>
+		            <td>3Sg-pat</td>
+		            <td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">to scratch the donkey [and] pat him.</p>
+			<p style="color:#CD5C5C">a rascarle y rascarle al animal burro, [y] le da palmada.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>Upé-vo</td>
+		            <td>la</td>
+		            <td>vúrro</td>
+		            <td>o-mboguy</td>
+		            <td>la</td>
+		            <td>huguái</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Dem-Temp.Conj</td>
+		            <td>Def.Det</td>
+		            <td>donkey</td>
+		            <td>3Sg-raise</td>
+		            <td>Def.Det</td>
+		            <td>tail</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">At that moment the donkey raises the tail</p>
+			<p style="color:#CD5C5C">En ese momento el burro levanta la cola</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>okaka</td>
+		            <td>pláta</td>
+		            <td>meme-te.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-defecate</td>
+		            <td>money</td>
+		            <td>constantly-Superl</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and defecates all the money.</p>
+			<p style="color:#CD5C5C">y caga toda la plata.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hina 1"></a></td>
+				<td><a class="anchor" id="ndaje 8"></a></td>
+		        <tr>
+		            <td>O-maña</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 8">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>hese</td>
+		            <td>la</td>
+		            <td>Réi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 10 hina 1">hína,<span class="tooltip">Emphasis on 'la Rei'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-watch</td>
+		            <td>Report.Evid</td>
+		            <td>3.Pron.IO</td>
+		            <td>Def.Det</td>
+		            <td>King</td>
+		            <td>Cont</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that the King was watching,</p>
+			<p style="color:#CD5C5C">Se dice que el Rey estaba mirando,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hina 2"></a></td>
+				<td><a class="anchor" id="ma 3"></a></td>
+				<td><a class="anchor" id="voi 2"></a></td>
+				<td><a class="anchor" id="ra'e 1"></a></td>
+		        <tr>
+					<td>nimbo</td>
+		            <td>oi-pota</td>
+		            <td>itereí</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 3">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		           	<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 10 hina 2">hína<span class="tooltip">Emphasis on Superlative</span></div></a></td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 10 ra'e 1">ra'e<span class="tooltip">Matrix, declarative, narrator-oriented</span></div></a></td>
+		            <td>(ha’é-ngo</td>
+		            <td>i-taryrýi</td>
+		            <td>eterei</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 2">voi).<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Part</td>
+		            <td>3Sg-want</td>
+		            <td>Superl</td>
+		            <td>-Asp</td>
+		            <td>Cont</td>
+		            <td>Evid</td>
+		            <td>3.Pron.Nom-FOC</td>
+		            <td>3Sg-greedy</td>
+		            <td>Superl</td>
+		            <td>FOC</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">it seems that he wanted it so much (he is of course very greedy).</p>
+			<p style="color:#CD5C5C">había sido que demasiado ya quería (él luego es demasiado codicioso luego).</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 4"></a></td>
+				<td><a class="anchor" id="voi 3"></a></td>
+				<td><a class="anchor" id="ndaje 9"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 9">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>he’í</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 4">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story10 voi 3">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>chupe</td>
+		            <td>n-o-vende-sé-i</td>
+		            <td>chéne-pa.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>Report.Evid</td>
+		            <td>3Sg.say</td>
+		            <td>-Asp</td>
+		            <td>FOC</td>
+		            <td>3Sg.Pron.IO</td>
+		            <td>Neg-3Sg-sell-Des-Neg</td>
+		            <td>Mod-Q</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then it is said that he already said to him whether he would sell [it] to him.</p>
+			<p style="color:#CD5C5C">Después se dice ya le dijo que si no le querría vender.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 5"></a></td>
+				<td><a class="anchor" id="voi 4"></a></td>
+		        <tr>
+		            <td>——N-a-vende</td>
+		            <td>vaerã-i</td>
+		            <td>——he’i</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 5">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 4">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>chupe</td>
+		            <td>Peru,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Neg-1Sg-sell</td>
+		            <td>Mod-Neg</td>
+		            <td>——3Sg.say</td>
+		            <td>-Asp</td>
+		            <td>FOC</td>
+		            <td>3.Pron.IO</td>
+		            <td>Peru</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"I will (probably) not sell," Peru already says to him,</p>
+			<p style="color:#CD5C5C">"No he de vender," le dice ya Peru,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——ché-ngo</td>
+		            <td>péva</td>
+		            <td>mante</td>
+		            <td>la</td>
+		            <td>ai-kotevẽ</td>
+		            <td>jave</td>
+		            <td>che-salva.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——1Sg-FOC</td>
+		            <td>that</td>
+		            <td>only</td>
+		            <td>Def.Det</td>
+		            <td>1Sg-have</td>
+		            <td>moment</td>
+		            <td>1Sg.Obj-save</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"this is the only thing I have at the moment that saves me."</p>
+			<p style="color:#CD5C5C">"esto es solamente lo que tengo que me salva."</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 10"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>ko’ýte</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 10">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>upépe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>even.more</td>
+		            <td>Report.Evid</td>
+		            <td>Dem-Loc</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And even more, it is said, at that moment</p>
+			<p style="color:#CD5C5C">Y aún más se dice que en ese momento</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>la</td>
+		            <td>Réi</td>
+		            <td>o-jopy</td>
+		            <td>hese</td>
+		            <td>heta</td>
+		            <td>iterei</td>
+		            <td>pláta.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Def.Det</td>
+		            <td>King</td>
+		            <td>3Sg-squeeze</td>
+		            <td>3.Pron.Obl</td>
+		            <td>a.lot</td>
+		            <td>Superl</td>
+		            <td>money</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">the King offered him lots of money.</p>
+			<p style="color:#CD5C5C">el Rey le ofreció [apretarle] demasiado mucha plata.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 11"></a></td>
+		        <tr>
+		            <td>Hasý-pe</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 11">-je<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Peru</td>
+		            <td>o-asyta. [omonei]</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Difficult-Loc.Prep</td>
+		            <td>-Report.Evid</td>
+		            <td>Peru</td>
+		            <td>3Sg-accept</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that with difficulty, Peru accepted.</p>
+			<p style="color:#CD5C5C">Costosamente [dice que] Peru aceptó.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>O-guaraha</td>
+		            <td>Réi</td>
+		            <td>la</td>
+		            <td>hymba</td>
+		            <td>vurro-[r]ã,</td>
+		            <td>o-vy’a</td>
+		            <td>syry</td>
+		            <td>o-hó-vo</td>
+		            <td>heseve.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-take</td>
+		            <td>King</td>
+		            <td>Def.Det</td>
+		            <td>animal</td>
+		            <td>donkey-Irrealis</td>
+		            <td>3Sg-happy</td>
+		            <td>fluid</td>
+		            <td>3Sg-go-Temp.Conj</td>
+		            <td>3.Pron.Obl</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">The King took his future donkey, very happy he was going with it.</p>
+			<p style="color:#CD5C5C">Llevó el Rey para su animal burro, muy contento se iba con él.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 12"></a></td>
+		        <tr>
+		            <td>O-ho</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 12">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>karai</td>
+		            <td>Réi</td>
+		            <td>o-he’ỹi</td>
+		            <td>la</td>
+		            <td>hymba</td>
+		            <td>vúrro</td>
+		            <td>ha</td>
+		            <td>nd-o-kaká-i.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-go</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>3Sg-scratch</td>
+		            <td>Def.Det</td>
+		            <td>animal</td>
+		            <td>donkey</td>
+		            <td>Conj</td>
+		            <td>Neg-3Sg-defecate-Neg</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that the King went to scratch the donkey but it did not defecate.</p>
+			<p style="color:#CD5C5C">Se dice se fué el Señor Rey arrascar al burro y no defecó.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>Upéi</td>
+		            <td>oi-pete</td>
+		            <td>ha</td>
+		            <td>nd-o-kaká-i</td>
+		            <td>jeý-nte.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>3Sg-pat</td>
+		            <td>Conj</td>
+		            <td>Neg-3Sg-defecate-Neg</td>
+		            <td>again-FOC</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then he patted him and it did not defecate again.</p>
+			<p style="color:#CD5C5C">Y después le dio palmadas y tampoco defecó.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>O-mohumby’a-pa</td>
+		            <td>garróte-pe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-buttock.fallen-Compl</td>
+		            <td>club-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">He had his buttock dented from so much hitting.</p>
+			<p style="color:#CD5C5C">De tanto garrotazos, tenía ya la nalga caída.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 6"></a></td>
+				<td><a class="anchor" id="ndaje 13"></a></td>
+		        <tr>
+		            <td>Are-mi</td>
+		            <td>rire</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 13">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Peru</td>
+		            <td>o-jagarra</td>
+		            <td>jeý</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 6">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td>mokõi</td>
+		            <td>apere’a</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Time-Dim</td>
+		            <td>after</td>
+		            <td>Report.Evid</td>
+		            <td>Peru</td>
+		            <td>3Sg-grab</td>
+		            <td>again</td>
+		            <td>-Asp</td>
+		            <td>two</td>
+		            <td>rabbit</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">A little time after, it is said, Peru grabbed two wild rabbits</p>
+			<p style="color:#CD5C5C">Un tiempo después, dicen que, Peru agarró devuelta dos conejos silvestres</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-gueru</td>
+		            <td>la</td>
+		            <td>hóga-pe.</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-bring</td>
+		            <td>Def.Det</td>
+		            <td>3.Poss-house-Loc.Prep</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and brought them to his house.</p>
+			<p style="color:#CD5C5C">y trajo a su casa.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="voi 5"></a></td>
+				<td><a class="anchor" id="ndaje 14"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 14">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>ha’e</td>
+		            <td>oi-kuaa</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 5">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>mba’e</td>
+		            <td>diá-pe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>Report.Evid</td>
+		            <td>3.Pron.Nom</td>
+		            <td>3Sg-know</td>
+		            <td>FOC</td>
+		            <td>thing</td>
+		            <td>day-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then, it is said that he knew which day</p>
+			<p style="color:#CD5C5C">Después, dice que, él sabía luego que día</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hina 3"></a></td>
+				<td><a class="anchor" id="ta 1"></a></td>
+		        <tr>
+		            <td>o-ú</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 10 ta 1">-ta<span class="tooltip">Prospective Aspect</span></div></a></td>
+		            <td>hendá-pe</td>
+		            <td>la</td>
+		            <td>karai</td>
+		            <td>Réi</td>
+		           	<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 10 hina 3">hína.<span class="tooltip">Emphasis on 'Rei'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-come</td>
+					<td>-Prosp</td>
+		            <td>place-Loc.Prep</td>
+		            <td>Def.Det</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>Cont</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">the King would come to him.</p>
+			<p style="color:#CD5C5C">iba a venir el rey junto a él.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 5"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>o-ho</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 5">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		            <td>la</td>
+		            <td>kokué-pe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-go</td>
+		            <td>Sub.Irrealis</td>
+            		<td>Def.Det</td>
+            		<td>veg.garden-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And to go to the vegetable garden</p>
+			<p style="color:#CD5C5C">Y para ir a la chacra</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>o-moĩ</td>
+		            <td>peteĩ</td>
+		            <td>la</td>
+		            <td>apere’a</td>
+		            <td>ajaka</td>
+		            <td>guý-pe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+            		<td>3Sg-put</td>
+            		<td>one</td>
+            		<td>Def.Det</td>
+            		<td>rabbit</td>
+            		<td>basket</td>
+            		<td>under-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">he put one rabbit under the basket</p>
+			<p style="color:#CD5C5C">le puso un conejo debajo de la canasta</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-heja</td>
+		            <td>la</td>
+		            <td>hembirekó-pe,</td>
+		            <td>ha</td>
+		            <td>ótro</td>
+		            <td>o-gueraha</td>
+		            <td>ha’e.</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-leave</td>
+		            <td>Def.Det</td>
+		            <td>wife-DOM</td>
+		            <td>Conj</td>
+		            <td>another</td>
+		            <td>3Sg-take</td>
+		            <td>3Sg.Nom</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and left it with his wife and the other one he took with him.</p>
+			<p style="color:#CD5C5C">y le dejó a su esposa, y al otro lo llevó él.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Ãga</td>
+            		<td>Señor</td>
+            		<td>Réi</td>
+            		<td>o-ú-ke,</td>
+            		<td>ha</td>
+            		<td>che-renoi-[u]ka</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Now</td>
+            		<td>Mr.</td>
+            		<td>King</td>
+            		<td>3Sg-come-Sub</td>
+            		<td>Conj</td>
+            		<td>1Sg.Pron.Obj-call-Caus</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"If the King comes, have them call me,"</p>
+			<p style="color:#CD5C5C">"Si viene el Señor Rey, mándame llamar,"</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+            		<td>——he’i</td>
+            		<td>la</td>
+            		<td>hembirekó-pe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+            		<td>——3Sg.say</td>
+            		<td>Def.Det</td>
+            		<td>3.Poss-wife-IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">he said to his wife.</p>
+			<p style="color:#CD5C5C">le dijo a su esposa.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="voi 6"></a></td>
+				<td><a class="anchor" id="ndaje 15"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 15">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>la</td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>o-u</td>
+		            <td>o-guahẽ</td>
+		            <td>ha</td>
+		            <td>o-porandu</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 6">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>Perú-re.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>Report.Evid</td>
+		            <td>Def.Det</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>3Sg-come</td>
+		            <td>3Sg-arrive</td>
+		            <td>Conj</td>
+		            <td>3Sg-ask</td>
+		            <td>FOC</td>
+		            <td>Peru-Obl</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then, it is said, the King came arriving and asked for Peru.</p>
+			<p style="color:#CD5C5C">Después dicen que el Señor Rey vino llegando y preguntó. por Peru.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 16"></a>(16)</td>
+		        <tr>
+		            <td>——Moõ-pa</td>
+		            <td>oi-me?</td>
+		            <td>——he’í
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 16">-je.<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Where-Q</td>
+		            <td>3Sg-be</td>
+		            <td>——3Sg.say-</td>
+		            <td>Report.Evid</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Where is he?" it is said that he said.</p>
+			<p style="color:#CD5C5C">"Dónde está?" se dice que dijo.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Oi-me</td>
+		            <td>kokué-pe.</td>
+		            <td>Re-ikotevẽ-pa</td>
+		            <td>hese?</td>
+		            <td>——he’i</td>
+		            <td>chupe</td>
+		            <td>la</td>
+		            <td>hembireko.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——3Sg.be</td>
+		            <td>veg.garden-Loc.Prep</td>
+		            <td>2Sg-need-Q</td>
+		            <td>3.Pron-Obl</td>
+		            <td>——3Sg.say</td>
+		            <td>3.Pron.IO</td>
+		            <td>Def.Det</td>
+		            <td>3.Poss-wife</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"He is in the vegetable garden. Do you need him?" asked his wife.</p>
+			<p style="color:#CD5C5C">"Está en la chacra. Necesitas de él?" le dice su esposa.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Hẽe,</td>
+		            <td>ai-kotevẽ</td>
+		            <td>——he’i</td>
+		            <td>Señor</td>
+		            <td>Réi.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——yes</td>
+		            <td>1Sg-need</td>
+		            <td>——3Sg.say</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Yes, I need him," said Mr. King.</p>
+			<p style="color:#CD5C5C">"Sí, [lo] necesito," dijo el Señor Rey.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Ta-mondo</td>
+		            <td>ko</td>
+		            <td>mitã</td>
+		            <td>to-avisa</td>
+		            <td>chupe</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Exhort-1Sg-send</td>
+		            <td>Dem</td>
+		            <td>child</td>
+		            <td>Exhort-3Sg-let.know</td>
+		            <td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"I will send this child to let him know,"</p>
+			<p style="color:#CD5C5C">"Voy a enviarle a esta criatura para que le avise,"</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 17"></a></td>
+		        <tr>
+		            <td>——he’i</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 17">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>la</td>
+		            <td>kuñakarai,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——3Sg.say</td>
+		            <td>Report.Evid</td>
+		            <td>Def.Det</td>
+		            <td>woman</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">it is said that the wife said.</p>
+			<p style="color:#CD5C5C">dice que dijo la señora.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 18"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 18">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>o-guenohẽ</td>
+		            <td>la</td>
+		            <td>ajaka</td>
+		            <td>guý-gui</td>
+		            <td>peteĩ</td>
+		            <td>la</td>
+		            <td>apere’a:</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>Report.Evid</td>
+		            <td>3Sg-take.out</td>
+		            <td>Def.Det</td>
+		            <td>basket</td>
+		            <td>under-Prep</td>
+		            <td>one</td>
+		            <td>Def.Det</td>
+		            <td>rabbit</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And it is said that she took the rabbit from under the basket:</p>
+			<p style="color:#CD5C5C">Y dice que sacó de debajo la canasta un conejo:</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="Story 10 ndaje 19"></a></td>
+		        <tr>
+		            <td>——Te-re-ho</td>
+		            <td>ere</td>
+		            <td>nde</td>
+		            <td>rú-pe</td>
+		            <td>t-o-u</td>
+		            <td>——he’i</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 19">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>chupe,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Imp-2Sg-go</td>
+		            <td>2Sg.say</td>
+		            <td>2Sg.Poss</td>
+		            <td>father-IO</td>
+		            <td>Imp-3Sg-come</td>
+		            <td>——3Sg.say</td>
+		            <td>Report.Evid</td>
+		            <td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Go tell your father to come," it is said that she said to him,</p>
+			<p style="color:#CD5C5C">"Anda decirle a tu padre que venga," dice que le dijo,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-heviro’o-pete</td>
+		            <td>ha</td>
+		            <td>o-mboguejy</td>
+		            <td>o-ho.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg-buttock-pat</td>
+		            <td>Conj</td>
+		            <td>3Sg-bring.down</td>
+		            <td>3Sg-go</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and she patted his buttock and brought him down for him to go.</p>
+			<p style="color:#CD5C5C">y palmateó la nalga y le bajo para que se vaya.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hina 4"></a></td>
+				<td><a class="anchor" id="ndaje 20"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>la</td>
+		            <td>Réi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 20">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>o-maña</td>
+		            <td>ñemi</td>
+		            <td>hese</td>
+		           	<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 10 hina 4">hína.<span class="tooltip">Emphasis on hese. Event is not continuative.</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>Def.Det</td>
+		            <td>King</td>
+		            <td>Report.Evid</td>
+		            <td>3Sg-watch</td>
+		            <td>hidden</td>
+		            <td>3.Pron.IO</td>
+		            <td>Cont</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And the King secretly watched her.</p>
+			<p style="color:#CD5C5C">Y el Rey le miró a escondida a ella.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="Story 10 ndaje 21"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 21">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Peru</td>
+		            <td>o-guahẽ</td>
+		            <td>o-ú-vo</td>
+		            <td>la</td>
+		            <td>óga</td>
+		            <td>kupe</td>
+		            <td>guio,</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>Report.Evid</td>
+		            <td>Peru</td>
+		            <td>3Sg-arrive</td>
+		            <td>3Sg-come-Temp.Conj</td>
+		            <td>Def.Det</td>
+		            <td>house</td>
+		            <td>behind</td>
+		            <td>towards</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then, it is said, Peru was arriving towards the back of the house,</p>
+			<p style="color:#CD5C5C">Y después se dice que Peru venía llegando de hacia detrás de la casa,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>la</td>
+		            <td>apere’a</td>
+		            <td>i-jyva</td>
+		            <td>guý-pe,</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Def.Det</td>
+		            <td>rabbit</td>
+		            <td>3.Poss-arm</td>
+		            <td>under-Loc.Prep</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">with the rabbit under his arm,</p>
+			<p style="color:#CD5C5C">el conejo bajo su brazo,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="va'ekue 1"></a></td>
+		        <tr>
+		            <td>pe</td>
+		            <td>o-gueraha</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="va'ekue-akue relative distal.html#Story 10 va'ekue 1">va’ekue<span class="tooltip">Relative Distal</span></div></a></td>
+		            <td>ha’e</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell">voi.<span class="tooltip">Focalizer Particle 'voi'</span></div></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Dem</td>
+            		<td>3Sg-take</td>
+            		<td>Rel.Distal</td>
+            		<td>3Sg.Cop</td>
+            		<td>FOC</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">the one he had taken [earlier].</p>
+			<p style="color:#CD5C5C">el que había llevado luego él.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>He’i</td>
+		            <td>hembirekó-pe:</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg.say</td>
+		            <td>3.Poss-wife-IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">He said to his wife:</p>
+			<p style="color:#CD5C5C">Dijo a su esposa:</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 7"></a></td>
+		        <tr>
+		            <td>——Mba’e-rã-nga</td>
+		            <td>piko</td>
+		            <td>mitã</td>
+		            <td>re-mondo</td>
+		            <td>jeý</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 7">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		          	<td>-pe</td>
+		            <td>kokue</td>
+		            <td>ñanandý-re.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Thing-Irrealis-poor</td>
+		            <td>Q</td>
+		            <td>child</td>
+		            <td>2Sg-send</td>
+		            <td>again</td>
+		            <td>-Asp</td>
+		          	<td>-Loc.Prep</td>
+		            <td>veg.garden</td>
+		            <td>shrub-Obl</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"For what did you send this poor child again among the shrubs of the vegetable garden?"</p>
+			<p style="color:#CD5C5C">"Para qué (pobrecito) esta criatura le enviaste otra vez entre las malezas de la chacra?"</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Ha</td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>oi-kotevẽ</td>
+		            <td>nderehe</td>
+		            <td>——he’i</td>
+		            <td>chupe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Conj</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>3Sg-need</td>
+		            <td>2Sg.Pron.Obl</td>
+		            <td>——3Sg.say</td>
+		            <td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"And the King needed you," she told him.</p>
+			<p style="color:#CD5C5C">"Y el Señor Rey te necesita," le dijo.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 22"></a></td>
+		        <tr>
+		            <td>Oi-ke</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 22">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Peru</td>
+		            <td>ha</td>
+		            <td>o-ñomongeta</td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>ndive.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg.enter</td>
+		            <td>Report.Evid</td>
+		            <td>Peru</td>
+		            <td>Conj</td>
+		            <td>3Sg-talk.with</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>2Sg-with</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that Peru came in and talked with the King,</p>
+			<p style="color:#CD5C5C">Se dice que entró Peru y conversó con el Señor Rey,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="voi 7"></a></td>
+				<td><a class="anchor" id="ra'e 2"></a></td>
+		        <tr>
+		            <td>Ha’e</td>
+		            <td>hesarái</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 7">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>ma’erã-pa</td>
+		            <td>o-u</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 10 ra'e 2">ra'e<span class="tooltip">Embedded wh-complement. Matrix subject oriented</span></div></a></td>
+		            <td>la</td>
+		            <td>Peru</td>
+		            <td>rendá-pe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3.Pron.Nom</td>
+		            <td>3Sg-forget</td>
+		            <td>FOC</td>
+		            <td>what.for-Q</td>
+		            <td>3Sg-come</td>
+		            <td>Evid</td>
+		            <td>Def.Det</td>
+		            <td>Peru</td>
+		            <td>place-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">He had forgotten for what reason he came to see Peru.</p>
+			<p style="color:#CD5C5C">Él se olvidó luego para que vino junto a Peru.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="voi 8"></a></td>
+		        <tr>
+		            <td>La</td>
+		            <td>hesa</td>
+		            <td>la</td>
+		            <td>apere’á-rente</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 8">voi.<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Def.Det</td>
+		            <td>look</td>
+		            <td>Def.Det</td>
+		            <td>rabbit-only</td>
+		            <td>FOC</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">His sight was only for the rabbit.</p>
+			<p style="color:#CD5C5C">Su mirada estaba por el conejo nomás luego.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>O-maña</td>
+		            <td>hese,</td>
+		            <td>ha</td>
+		            <td>upéi</td>
+		            <td>n-o-aguanta-vé-i,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-look</td>
+		            <td>3.Pron.Obl</td>
+		            <td>Conj</td>
+		            <td>then</td>
+		            <td>Neg-3Sg-stand-more-Neg</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">He was watching him, and then he couldn’t stand it anymore,</p>
+			<p style="color:#CD5C5C">Le miraba, y después no aguantó más,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>he’i</td>
+		            <td>chupe</td>
+		            <td>moõ-pa</td>
+		            <td>ha’e</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>3Sg.say</td>
+		            <td>3.Pron.IO</td>
+		            <td>where-Q</td>
+		            <td>3.Pron.Nom</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and he asked him where he had sent him</p>
+			<p style="color:#CD5C5C">y le dijo donde él le habías mandado</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="hagua 6"></a></td>
+		        <tr>
+		            <td>o-mbo’e-ka</td>
+		            <td>raka’e</td>
+		            <td>péichaite</td>
+		            <td>i-ñarandu</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 10 hagua 6">haguã,<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-teach-Caus</td>
+		            <td>Distal.Evid</td>
+		            <td>this.way</td>
+		            <td>3.Poss-intelligence</td>
+		            <td>Sub.Irrealis</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">to learn that he is so intelligent,</p>
+			<p style="color:#CD5C5C">a enseñar para que sea tan inteligente,</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="va 5"></a></td>
+		        <tr>
+		            <td>ko</td>
+		            <td>animal</td>
+		            <td>nde</td>
+		            <td>re-saité</td>
+					<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 10 va 5">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+		            <td>ningo</td>
+		            <td>la</td>
+		            <td>apere’a.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Dem</td>
+		            <td>animal</td>
+		            <td>2Sg.Pron</td>
+		            <td>2Sg-wild</td>
+					<td>-Rel</td>
+		            <td>FOC</td>
+		            <td>Def.Det</td>
+		            <td>wild.rabbit</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">this animal so wild that it is the wild rabbit.</p>
+			<p style="color:#CD5C5C">este animal tan salvaje que es el conejo silvestre.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Ha</td>
+		            <td>kóva</td>
+		            <td>apere’a</td>
+		            <td>de</td>
+		            <td>virtu</td>
+		            <td>——he’i</td>
+		            <td>chupe</td>
+		            <td>Peru.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Conj</td>
+		            <td>Dem.Pron</td>
+		            <td>rabbit</td>
+		            <td>of</td>
+		            <td>virtue</td>
+		            <td>——3Sg.say</td>
+		            <td>3.Pron.IO</td>
+		            <td>Peru</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"And this is a rabbit with virtue," Peru said to him. </p>
+			<p style="color:#CD5C5C">"Y este es un conejo virtuosa," le dijo Peru</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 8/9"></a></td>
+				<td><a class="anchor" id="voi 9"></a></td>
+				<td><a class="anchor" id="ndaje 23"></a></td>
+		        <tr>
+		            <td>Oi-potá-iterei</td>
+		            <td>jeý</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 8/9">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 23">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Señor</td>
+		            <td>Réi</td>
+		            <td>ha</td>
+		            <td>o-trateá</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 8/9">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 10 voi 9">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></a></td>
+		            <td>Perú-gui.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-want-Superl</td>
+		            <td>again</td>
+		            <td>-Asp</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>Conj</td>
+		            <td>3Sg-deal</td>
+		            <td>-Asp</td>
+		            <td>FOC</td>
+		            <td>Peru-Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">The King wanted it badly again, it is said, and he already made a deal with Peru.</p>
+			<p style="color:#CD5C5C">Demasiado quería otra vez el señor Rei, se dice que, e hizo el trato otra vez con Peru.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 10"></a></td>
+		        <tr>
+		            <td>Oi-kuave’ẽ</td>
+		            <td>chupe</td>
+		            <td>hese</td>
+		            <td>pláta</td>
+		            <td>heta</td>
+		            <td>iterei</td>
+		            <td>jeý</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 10">-ma.<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-offer</td>
+		            <td>3.Pron.IO</td>
+		            <td>3.Pron.Obl</td>
+		            <td>money</td>
+		            <td>a.lot</td>
+		            <td>Superl</td>
+		            <td>again</td>
+		            <td>-Asp</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">He offered lots of money for it [the rabbit] again.</p>
+			<p style="color:#CD5C5C">Le ofreció por él [el conejo] muchísima plata ya otra vez.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>Ha</td>
+		            <td>upéi</td>
+		            <td>hasý-pe</td>
+		            <td>o-vende</td>
+		            <td>chupe</td>
+		            <td>Peru.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>then</td>
+		            <td>difficult-Loc.Prep</td>
+		            <td>3Sg-sell</td>
+		            <td>3.Pron.IO</td>
+		            <td>Peru</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And then in the end Peru sold it to him.</p>
+			<p style="color:#CD5C5C">Y después a la cansada le vendió Peru.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 24"></a></td>
+		        <tr>
+		            <td>O-ho</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 24">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>karai</td>
+		            <td>Réi</td>
+		            <td>o-guahẽ</td>
+		            <td>la</td>
+		            <td>hóga-pe,</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-go</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>3Sg-arrive</td>
+		            <td>Def.Det</td>
+		            <td>3.Poss-house-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">It is said that the King went home,</p>
+			<p style="color:#CD5C5C">Se dice que fue el Señor Rey y llegó a su casa,</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>o-me’ẽ</td>
+		            <td>la</td>
+		            <td>hembirekó-pe</td>
+		            <td>la</td>
+		            <td>apere’a</td>
+		            <td>o-ñongatu.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-give</td>
+		            <td>Def.Det</td>
+		            <td>3.Poss-wife-IO</td>
+		            <td>Def.Det</td>
+		            <td>rabbit</td>
+		            <td>3Sg-keep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">he gave his wife the rabbit to keep it for him.</p>
+			<p style="color:#CD5C5C">le dio a su esposa el conejo para guardar[le].</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>Upéi</td>
+		            <td>pyhareve</td>
+		            <td>he’i</td>
+		            <td>chupe:</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+		            <td>morning</td>
+		            <td>3Sg.say</td>
+		            <td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then in the morning he said to him:</p>
+			<p style="color:#CD5C5C">Y después a la  mañana le dijo:</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Rei-pota</td>
+		            <td>vove</td>
+		            <td>a-jú-ke</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——2Sg-want</td>
+		            <td>Temp.Conj</td>
+		            <td>a-come-Sub</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"When you want me to come,</p>
+			<p style="color:#CD5C5C">"Cuando quieras [yo] venga</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>e-mondo</td>
+		            <td>che</td>
+		            <td>piári</td>
+		            <td>ãga</td>
+		            <td>la</td>
+		            <td>ñande</td>
+		            <td>apere’a</td>
+		            <td>de</td>
+		            <td>virtu</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Imp.2Sg-send</td>
+		            <td>1Sg.Pron.DO</td>
+		            <td>find</td>
+		            <td>now</td>
+		            <td>Def.Det</td>
+		            <td>1Pl.Incl.Poss</td>
+		            <td>rabbit</td>
+		            <td>of</td>
+		            <td>virtue</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">send our virtuous rabbit to find me,"</p>
+			<p style="color:#CD5C5C">enviale a nuestro conejo virtuoso para que me busque,"</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="Story 10 ndaje 25"></a></td>
+		        <tr>
+		            <td>——he’i</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 25">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Señor</td>
+		            <td>Réi.</td>
+				</tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——3Sg.say</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+            	</tr>
+        	</tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">it is said that the King said.</p>
+			<p style="color:#CD5C5C">dice que dijo el Señor Rey.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 26"></a></td>
+		        <tr>
+		            <td>Upéi</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 26">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>la</td>
+		            <td>kuñakarai</td>
+		            <td>o-guenohẽ</td>
+		            <td>la</td>
+		            <td>i-japere’a</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Then</td>
+            		<td>Report.Evid</td>
+            		<td>Def.Det</td>
+            		<td>woman</td>
+            		<td>3Sg-take</td>
+            		<td>Def.Det</td>
+            		<td>3.Poss-rabbit</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">Then, it is reported, the woman took out her rabbit</p>
+			<p style="color:#CD5C5C">Y después, se dice que, la señora le sacó a su conejo</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>ha</td>
+		            <td>o-hevi ro'o</td>
+		            <td>pete</td>
+		            <td>ha</td>
+		            <td>he’i</td>
+		            <td>chupe:</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+            		<td>Conj</td>
+            		<td>3-buttock</td>
+            		<td>pat</td>
+            		<td>Conj</td>
+            		<td>3Sg.say</td>
+            		<td>3.Pron.IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">and patted him on the buttock and said to him:</p>
+			<p style="color:#CD5C5C">y le dio palmadas en la nalga y le dijo:</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Te-re-ho</td>
+		            <td>ere</td>
+		            <td>nde</td>
+		            <td>rú-pe</td>
+		            <td>t-o-u.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Imp-2Sg-go</td>
+		            <td>2Sg.say</td>
+		            <td>2Sg.Poss</td>
+		            <td>father-IO</td>
+		            <td>Imp-3Sg-come</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Go and tell your father to come."</p>
+			<p style="color:#CD5C5C">"Anda y decile a tu papá que venga."</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 27"></a></td>
+		        <tr>
+		            <td>I-ladóse</td>
+		            <td>jere</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 27">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>Karái</td>
+		            <td>Réi</td>
+		            <td>ha</td>
+		            <td>ne’írã</td>
+		            <td>o-u.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>3Sg-twelve</td>
+		            <td>around</td>
+		            <td>Report.Evid</td>
+		            <td>Mr.</td>
+		            <td>King</td>
+		            <td>Conj</td>
+		            <td>not.yet</td>
+		            <td>3Sg-come</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And it was already close to twelve, it is said, and he still had not come.</p>
+			<p style="color:#CD5C5C">Y ya eran cerca de las doce se dice y todavía no venía.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ndaje 28"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>upéi</td>
+		            <td>ae</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="'Ndaje_-je' Reportative Evidential.html#Story 10 ndaje 28">ndaje<span class="tooltip">Reportative Evidential 'ndaje'</span></div></a></td>
+		            <td>o-guahẽ</td>
+		            <td>o-ú-vo.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>then</td>
+		            <td>just</td>
+		            <td>Report.Evid</td>
+		            <td>3Sg-arrive</td>
+		            <td>3Sg-come-Simult</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And just then it is said he was arriving.</p>
+			<p style="color:#CD5C5C">Y después recién se dice vino llegando.</p>
+		</div>
+		<table>
+		    <thead><br>
+		        <tr>
+		            <td>——Mba’erã</td>
+		            <td>piko</td>
+		            <td>ne-re-mondó-i</td>
+		            <td>——he’i</td>
+		            <td>la</td>
+		            <td>hembirekó-pe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——Why</td>
+		            <td>Q</td>
+		            <td>Neg-2Sg-send-Neg</td>
+		            <td>——3Sg.say</td>
+		            <td>Def.Det</td>
+		            <td>3.Poss-wife-IO</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"Why didn’t you send it [the rabbit]?" he said to his wife.</p>
+			<p style="color:#CD5C5C">"Por qué no le enviaste?" le dijo a su esposa.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="kuri 1"></a></td>
+				<td><a class="anchor" id="ma 11"></a></td>
+		        <tr>
+		            <td>——Uje’í</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 11">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		          	<td>-ko</td>
+		            <td>o-ho</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="Past Morpheme 'kuri'.html#Story 10 kuri 1">kuri<span class="tooltip">Retrospective Aspect 'kuri'</span></div></a></td>
+		            <td>——he’i</td>
+		            <td>chupe</td>
+		            <td>la</td>
+		            <td>kuñakarai.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>——While.ago</td>
+		            <td>-Asp</td>
+		          	<td>-FOC</td>
+		            <td>3Sg-go</td>
+		            <td>Retrosp.Asp</td>
+		            <td>——3Sg.say</td>
+		            <td>3.Pron.IO</td>
+		            <td>Def.Det</td>
+		            <td>woman</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">"It has gone some time ago already," the wife said to him.</p>
+			<p style="color:#CD5C5C">"Hace rato ya se fue," le dijo la señora.</p>
+		</div>
+		<table>
+		    <thead><br>
+				<td><a class="anchor" id="ma 12"></a></td>
+		        <tr>
+		            <td>Ha</td>
+		            <td>la</td>
+		            <td>apere’a</td>
+		            <td>uje’í</td>
+		            <td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 10 ma 12">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+		            <td>o-kañy</td>
+		            <td>karaguata-tý-pe.</td>
+		        </tr>
+		    </thead>
+		    <tbody id="table_body">
+		        <tr style="color:#157a32">
+		            <td>Conj</td>
+		            <td>Def.Det</td>
+		            <td>rabbit</td>
+		            <td>while.ago</td>
+		            <td>-Asp</td>
+		            <td>3Sg-hide</td>
+		            <td>karaguata-plantation-Loc.Prep</td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="gloss">
+			<p style="color:#6495ED">And some time ago already the rabbit had hidden in the karaguata-plantation.</p>
+			<p style="color:#CD5C5C">Y el conejo hace rato estaba escondido en la plantación del karaguatá.</p>
+		</div>
+		</tr>
+		</tbody>
+	</div>
+	</body>
+	</body>
+</body>
+
+
+<body>
+	<!-- Footer -->
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-grey">  
+		<div class="w3-large">
+			<i class="fa fa-envelope w3-hover-opacity"><p>zubizarr@usc.edu</p></i>
+		</div>
+	</footer>
+</body>
+
+
+
+
+
+<script>
+	function w3_open() {
+		document.getElementById("main").style.marginRight = "0%";
+		document.getElementById("mainText").style.marginRight = "0%";
+		document.getElementById("mySidebar").style.display = "block";
+		document.getElementById("openNav").style.display = 'none';
+	  }
+
+	function w3_close() {
+		document.getElementById("main").style.marginLeft = "0%";
+		document.getElementById("mySidebar").style.display = "none";
+		document.getElementById("openNav").style.display = "inline-block";
+	}
+</script>
+
+
+</html>
+

@@ -1,0 +1,187 @@
+\t Petẽi mbói áripi o-hasa peteĩ karréta ha oi-ku’a mopẽ chupe.
+\g One snake on.top 3-pass one wagon Conj 3-middle break 3.Pron
+\l A wagon passed on top of a snake and broke it in half.
+
+\t Ha upéi o-u Peru o-juhu la mbói o-padese hína upé-pe, o-japajeréi hína.
+\g Conj then 3-come Peru 3-find Def.Det [Sp] snake 3-suffering Cont/Emph there-Loc 3-wallow Cont/Emph
+\l And then Peru came to find a snake that was suffering there and was wallowing.
+
+\t Ha o-hasa-vé-ta otro karréta hi’áripi hína.
+\g Conj 3-pass-more-Prosp another wagon 3-on.top Emph
+\l And that another wagon more will pass on top of him.
+
+\t Ha upé -ma -rõ Peru o-ja hese ha: “Aichéjaranga ko mbói,” he’i, “o-ĩ vai eterei hína.”
+\g Conj Dem -Asp -Cond Peru 3-get.close 3.Obl Conj: “Poor.thing Dem snake," 3-say, “3-exist badly Superl Emph.”
+\l And then Peru got closer to it: “Poor thing, this snake,” he said, “it is doing very badly.”
+
+\t Ha o-gerrea mbegue katu hese,
+\g Conj 3-fight slowly FOC 3.Obl
+\l And he slowly fought with it,
+
+\t o-moinge iguý-pe peteĩ garróte, o-mboguapy porã, pasiénsia-pe o-hupi chupe.
+\g 3-put 3.Poss-under-Loc one stick 3-sit well, patience-Loc 3-lift 3.Pron
+\l ...he put a stick under it, he sat it down, and with patience lifted it.
+
+\t Oi-pe’a chupe la tapé-gui.
+\g 3-take.out 3.Pron Def.Det [Sp] trail-from.Prep
+\l He removed it from the trail.
+
+\t Upéi o-ho o-juhu peteĩ takuru i-kuáva ha o-moinge hakykuévo upépe la mbói-pe.
+\g Then 3-go 3-find one ant.hill 3.Poss-hole Conj 3-put behind there-Loc Def.Det [Sp] snake-DO
+\l Then he went and found an anthill with a hole and put the snake there behind it.
+
+\t Mbegue katu o-myaña, huguái o-mondo la takuru-kuá-pe chupe,
+\g Slowly FOC 3-push, tail 3-send Def.Det [Sp] ant.hill-end-Loc 3.Pron
+\l Slowly he pushed it, sending the tail to the end of the anthill,
+
+\t ha o-heja la i-ñakãmi, o-maña haguã, la i-kua rokẽ-me.
+\g Conj 3-leave Def.Det [Sp] 3Pos-head-Dim, 3-look Sub.Purp, Def.Det [Sp] 3Pos-hole entrance-Loc
+\l ...and he left her head out [in the entrance hole] so it could look out.
+
+\t Ha o-hó-ta-vo Peru, la mbói he’i chupe:
+\g Conj 3-go-Prosp-Simult Peru, Def.Det [Sp] snake 3.say 3.Pron
+\l And when Peru was going to leave, the snake said to him:
+
+\t --E-[gue]ru pe ne kuã ha e-moi-nge pe che jurú-pe.
+\g 2.Imp-bring Dem 2Sg.Poss finger Conj 2.Imp-put-FOC dem 1Sg.Poss mouth-Loc
+\l Bring your finger and put it in my mouth.
+
+\t --Añá-mona, che-su’u mba’e! –he’i chupe Peru.
+\g Devil-Part, 1Sg.Obj-bite what –3.say 3.Pron Peru
+\l “What the devil, you will bite me or what!” said Peru to him.
+
+\t --Nahániri, ndo-roi-su’u mo’ãi. E-mbou katu la ne kuã.
+\g No, Neg-1Sg.2O-bite Neg. 2.Imp.pass FOC Def.Det [Sp] 2Sg.Poss finger
+\l "No, I will not bite you. Pass me your finger."
+
+\t --Che-su’ú-ne –he’i jey chupe Peru.
+\g 1.Obj-bite-Mod –3.say again 3.Pron Peru
+\l "You might bite," Peru said to him again.
+
+\t --E-mbou katu, anive rekyhyje.
+\g 2.Imp-pass FOC, Neg be.afraid
+\l "Pass me your finger, don’t be afraid."
+
+\t Ne-mbovy’a va’erã-ko o-ĩ che-jurú-pe –he’i chupe.
+\g 2Sg-happy Mod-FOC 3-exist 1Sg.Poss-mouth-Loc –3.say 3.Pron
+\l "What I have in my mouth will make you happy," he said to him.
+
+\t Ha pe tre vése hápe, o-po’ẽ Peru la mbói jurú-pe ha,
+\g Conj Dem three times Loc, 3-hand Peru Def.Det [Sp] snake mouth-Loc Conj,
+\l And on the third time, Peru put his hand in the snake’s mouth and,
+
+\t o-guenohẽ-vo ndaje, o-sẽ peteĩ kuãirũ la i-kuã-re.
+\g 3-take.out-Simult Report.Evid 3-come.out one ring Def.Det [Sp] 3.Poss-finger-Obl
+\l ...when removing it, it is said that a ring came out on his finger.
+
+\t --Péa [upéva], pe kuãirũ i-virtu; nde rei-jeruré-ta chupe la rei-potá-va-re,
+\g That Dem ring 3Pos-virtue; 2Sg 2Sg.ask-Prosp 3.Pron Def.Det [Sp] 2Sg-ask-Rel-Obl
+\l "That your ring that has virtue; you will ask it what[ever] you want,"
+
+\t ha nd-aipó-ri re-konsegi-'ỹ va’erã –he’i chupe la mbói.
+\g Conj Neg-exist-Neg 2Sg-obtain-Neg Mod –3.say 3.Pron Def.Det [Sp] snake
+\l "...there is nothing that you wouldn’t be able to obtain," said the snake to him.
+
+\t Nde che salva la muérte-gui.
+\g 2Sg 1Sg.Obj sabe Def.Det [Sp] death-from.Prep
+\l "You saved me from death."
+
+\t Upéi o-sẽ o-ho Peru o-guapy peteĩ tajy máta-kue ári ha o-pensa mba’é-pa la i-katú-va o-jeru-re.
+\g Then 3-go.out 3-go Peru 3-sit one tree trunk-former on Conj 3-think what-Q Def.Det [Sp] 3.Poss-able-Rel 3-ask-Obl
+\l Then Peru went out and went to sit on a former tree trunk and thought about what thing that he could ask for.
+
+\t « Hẽe, ai-kuaá -ma », he’i sapy’a.
+\g Hee, 1Sg-know -Asp, 3.say suddenly.
+\l “Yes, I know already,” he said suddenly.
+
+\t Ha o-ho o-jerure haguã karai Réi-pe tajýra-re.
+\g Conj 3-go 3-ask Sub.Irr mister King-DOM daughter-Obl
+\l And he went to ask for the King’s daughter’s hand.
+
+\t O-guahẽ Palásio-pe ha oi-ke voi o-ñomongeta Réi ndive.
+\g 3-arrive Palace-Loc Conj 3-enter FOC 3-converse King with
+\l He arrived at the palace and entered to talk with the King.
+
+\t He’i chupe ha’e o-menda-se -ha la [i-]tajýrare.
+\g 3.say 3.Pron 3.Subj 3-marry-Des -Sub Def.Det [Sp] 3.Poss-daughter.
+\l He told him he wanted to marry his daughter.
+
+\t Ha “nd-aipó-ri provléma,” he’i karai Rei.
+\g Conj Neg-exist-Neg problem, 3.say Mister King
+\l And “there is no problem,” he said to the King.
+
+\t “A-hecha-se raẽ-nte ne volunta,” he’i chupe, “Ña-mba’apó-ta."
+\g 1Sg-see-Des first-only 2Sg will, 3.say 3.Pron, 1Incl.Pl-work-Prosp
+\l “I only want to first see your will,” he said, “Let’s work [on it].”
+
+\t Réi voi o-ho Peru ndive la o-mba’apó-vo hikuái ñú-me, peteĩ hembiguái hendive-kuéra.
+\g King FOC 3-go Peru with Def.Det [Sp] 3-work-goal 3Pl.Subj field-Loc, one employee 3.with-Pl
+\l The King went with Peru to work in the fields, an employee with them.
+
+\t O-ho upé-pe o-porandu chupe Peru mba’e erramiénta-pa oi-kotevẽ-va.
+\g 3-go there-Loc 3-ask 3.Pron Peru thing tools-Q 3-need-Rel.
+\l Peru went there to ask him what tools he needed.
+
+\t “Ha e-ru ñandeve mbohapy pála,” he’i chupe Réi.
+\g Conj 2.Imp-bring 1Incl.Pl three shovel, 3.say 3.Pron King
+\l "And bring us three shovels," the King told him.
+
+\t Ha o-ho jey Peru la Palásio-pe.
+\g Conj 3-go again Peru Def.Det [Sp] Palace-Loc
+\l And Peru went again to the Palace.
+
+\t O-guahẽ o-juhu upé-pe mbohapy mitakuña, la Réi kríáda kuéra.
+\g 3-arrive 3-find there-Loc three girls, Def.Det [Sp] King servants Pl
+\l He arrived and found there three misses, the King's servants.
+
+\t --Karai Réi o-hecha-se “che volunta,” ha oi-pota ha’e po-arregla –he’i chupe-kuéra Peru.
+\g Mr. King 3-see-Des “1S will,” Conj 1-want 3.Subj 1Sg.2Pl.Obj-fix –3.say 3.Pron-Pl Peru
+\l "Mr. King wants to see 'my power' and he wants that, 'I fix you all,'” said Peru to them.
+
+\t --Nde-japu-eté-pa –he’i la kuñataĩ nguéra--, mba’e Réi piko ne-mboú-ta.
+\g --2Sg-lie-Superl-total –3.say Def.Det [Sp] girl Pl thing King Q 2Sg.Obj-send-Prosp
+\l "Total liar," said the ladies, "[what the hell] we don’t believe that the King sent you."
+
+\t --Ha pe-porandú-na chupe upéicharamo, na’[oima] amo ñú-me ha’e hína.
+\g Conj 2Pl-ask-Rog 3.Pron then, exist there field-Loc 3.Subj Emph
+\l "And then ask him please, he is there in the field."
+
+\t --E-porandú-na nde –he’i chupe hikuái.
+\g 2.Imp-ask-Rog 2Sg.Subj –3.say 3.Pron 3Pl.Subj
+\l "You ask him," they [the servants] told him.
+
+\t Upé-pe o-je-pepy Peru ha o-sapukái ha o-señea la Réi-pe:
+\g There-Loc 3-bend.over Peru Conj 3-scream Conj 3-signal Def.Det [Sp] King-IO:
+\l There Peru bent over and screamed and made a signal to the King:
+
+\t --Ajépa, karai Réi, nde re-hecha-se la che vountá-pa tuicha!
+\g Right, Mr. King, 2Sg.Pro 2Sg-see-Des Def.Det [Sp] 1Sg.Poss will-Q big!
+\l "Right, Mr. King, you want to see [the extent of] my power!"
+
+\t Ha o-ñakãity upé-pe la Réi.
+\g Conj 3-nod Dem-Loc Def.Det [Sp] King.
+\l And the King assented with a nod.
+
+\t Ha upéi Peru o-hecha-[u]ka Réipe tre [mbohapy] i-kuã:
+\g Conj then Peru 3-see-Caus King-IO three 3.Poss-finger:
+\l And then he showed to the King three fingers:
+
+\t --Ajépa rei-pota lo tre-vé-va-pe!
+\g Really, 2Sg-want Def.Det [Sp] three-more-Rel-DOM
+\l "Really, you want all three of them!"
+
+\t Ha upé-pe o-ñakãity jey la Réi (oi-mo’ã la pála-re he’i chupe ra'e).
+\g Conj Dem-Loc 3-nod again Def.Det [Sp] King (3-believe Def.Det [Sp] shovel-Obl 3.say 3.Pron Evid)
+\l And the King again assented with a nod (he thought he was talking about the shovels).
+
+\t Ha karai Réi he’i-pá-rõ guarã chupe:
+\g Conj Mr. King 3.say-total-Cond for 3.Pron:
+\l And when Mr.King had finished saying it all  to him:
+
+\t ---Pe-hechá-pa, pe-ju mandi ápe! –he’i la kuña-nguéra-pe Peru,
+\g ---2Pl-see-Q, 2.Imp-come now here! –3.say Def.Det [Sp] girl-Pl-Obj Peru
+\l "You see, come here now!" Peru said to the women.
+
+\t ha o-myañana -ma chupe kuéra kotý-pe ha o-mbo-tokoro’o mbohapy-véva-pe.
+\g Conj 3-shove -Asp 3.Pron Pl room-Loc Conj 3-Caus-cluck three-more-Rel-DOM.
+\l And he shoved them into the room and made them cluck outloud, all three of them.

@@ -1,0 +1,379 @@
+\t Oguahẽ ndaje ka’i karai jaguarete rógape, ojerure haguã posáda.
+\m Oguahẽ ndaje ka’i karai jaguarete róga-pe, o-jerure haguã posáda.
+\g 3Sg-arrive Report.Evid monkey man tiger house-Loc.Prep 3Sg-ask Sub.Irrealis lodging
+\l It is said that the monkey arrived at the tiger’s house to ask for lodgings.
+
+\t Ha he’i chupe jaguarete rembireko
+\m Ha he’i chupe jaguarete rembireko
+\g Conj 3Sg-say 3Sg.Pron.IO tiger wife
+\l And the wife’s tiger said to him
+
+\t ndaipori ha iména hína.
+\m nd-aipo-ri- ha i-ména hína.
+\g Neg-exist-Neg- Sub 3.Poss-husband Cont
+\l that her husband is not there.
+
+\t ——Ndaipóri elviého, ndaikatumo’ãi ame’ẽ ndéve la posáda.
+\m ——Nd-aipó-ri elviého, nd-ai-katu-mo’ã-i a-me’ẽ ndéve la posáda.
+\g ——Neg-exist-Neg the.old(man) Neg-1Sg-can-Neg.Irrealis 1Sg-give 2Sg.Pron.IO Def.Det lodging
+\l The old man is not here, I cannot give you lodgings.
+
+\t ——Apemínte, ko nde róga okárape ——he’i chupe ka’i.
+\m ——Ape-mí-nte, ko nde róga okárape ——he’i chupe ka’i.
+\g ——Here-Dim-only Dem 2Sg.Poss house outside ——3Sg.say 3Sg.Pron.IO monkey
+\l "Just here, outside your house," the monkey said to her.
+
+\t Upéi ka’aruvé ma ramo,
+\m Upéi ka’aru-vé -ma ramo,
+\g After afternoon-more -Asp Conj.Temp
+\l When later,
+
+\t oikesé ma ka’i la óga guýpe aveí.
+\m o-ike-sé -ma ka’i la óga guý-pe aveí.
+\g 3Sg-enter-Des -Asp monkey Def.Det house under-Loc.Prep [roof] also
+\l the monkey also wanted to enter inside [under the house’s roof].
+
+\t ——Cháke ndeúne che ména
+\m ——Cháke nde-ú-ne che ména
+\g ——Watch.out 2Sg.Pron.DO-eat-Modal 1Sg.Poss husband
+\l "Watch out, my husband can eat you,"
+
+\t ——he’i chupe la jaguarete kuña.
+\m ——he’i chupe la jaguarete kuña.
+\g ——3Sg.say 3Sg.Pron.IO Def.Det tiger woman
+\l the tiger’s wife said to him.
+
+\t ——Ha ndé[p]iko, nachedefendemo’ãi voi?
+\m ——Ha ndé-[p]iko, na-che-defende-mo’ã-i voi?
+\g ——Conj 2Sg-Pron.Subj-Q Neg-1Sg.Pron.DO-defend-Neg.Irrealis -FOC
+\l "And you will not defend me?"
+
+\t ——he’i chupe ka’i.
+\m ——he’i chupe ka’i.
+\g ——3Sg.say 3Sg.Pron.IO monkey
+\l she said to the monkey.
+
+\t ——Ha reikuaa voíngo,
+\m ——Ha re-ikuaa vo-íngo,
+\g ——Conj 2Sg-know of.course-FOC
+\l "And of course
+
+\t che ménango ndeu mante arã [va’erã]
+\m che ména-ngo nde-u mante arã [va’erã]
+\g 1Sg.Poss husband-FOC 2Sg.Pron.DO-eat hopelessly Mod
+\l my husband will undoubtedly eat you
+
+\t ndejuhúramo ápe.
+\m nde-juhú-ramo ápe.
+\g 2Sg.Pron.DO-find-Temp.Conj here
+\l when he finds you here."
+
+\t ——Nahániri ——he’i ka’i, ——apemínte.
+\m ——Nahániri ——he’i ka’i, ——ape-mí-nte.
+\g ——No ——3Sg.say monkey ——here-Dim-only
+\l "No," said the monkey, "just here."
+
+\t (Ndokyhyjéi ha okyhyje avei.)
+\m (Nd-o-kyhyjé-i ha o-kyhyje avei.)
+\g Neg-3Sg-be.afraid-Neg Conj 3Sg-be.afraid also
+\l (He is afraid and not afraid also.)
+
+\t Upéi amáke ka’aru, ka’i iro’ ý ma
+\m Upéi amáke ka’aru, ka’i i-ro’ ý -ma
+\g Then [a más que] afternoon monkey 3Sg-be.cold -Asp
+\l Then close to the afternoon, the monkey is already cold
+
+\t ha oiké ma óga gúype.
+\m ha o-iké -ma óga gúy-pe.
+\g Conj 3Sg-go.in -Asp house under-Loc.Prep
+\l when he enters inside the house.
+
+\t Upéi kuñakarai ohó ta ma ojepe’e.
+\m Upéi kuñakarai o-hó -ta -ma o-jepe’e.
+\g Then woman 3Sg-go -Prosp -Asp 3Sg-get.warm
+\l Then the female tiger had already gone to warm herself up.
+
+\t Ha ojepe’esete avei ka’i.
+\m Ha o-jepe’e-se-te avei ka’i.
+\g Conj 3Sg-get.warm.Des-Superl also monkey
+\l And the monkey very much desired to warm himself up also.
+
+\t Ha ombojepe’e chupe la kuñakarai.
+\m Ha o-mbo-jepe’e chupe la kuñakarai.
+\g Conj 3Sg-let.get.warm 3.Pron.DO Def.Det woman
+\l And then the female (tiger) let him warm up.
+
+\t Osenamba la óga jára
+\m O-sena-mba la óga jára
+\g 3Sg-have-dinner-completed Def.Det house mistress
+\l The mistress of the house finished dinner
+
+\t ha ohosé ma oñenóvo.
+\m ha o-ho-sé -ma o-ñenó-vo.
+\g Conj 3Sg-go-Des -Asp 3Sg-sleep-goal
+\l and wanted to go to sleep already.
+
+\t ——Cheko ahasé ma añenóvo
+\m ——Che-ko a-ha-sé -ma a-ñenó-vo
+\g ——1Sg.Pron.Subj-FOC 1Sg-go-Des -Asp 1Sg-lie.down-goal
+\l "I already want to go lie down (rest),"
+
+\t ——he’i ndaje chupe,
+\m ——he’i ndaje chupe,
+\g ——3Sg.say Report.Evid 1Sg.Pron.IO
+\l it is said that she said to him,
+
+\t ——ãga ite ou vaerã el viého, ha tereho katu nde.
+\m ——ãga ite o-u vaerã el viého, ha tereho katu nde.
+\g ——but soon 3Sg-come Mod Def.Det old.man Conj Imp.go FOC 2Sg.Pron.Subj
+\l "but soon the old man must/will come, and you go away."
+
+\t ——Ha ndaikatúi piko
+\m ——Ha nd-ai-katú-i piko
+\g ——Conj Neg-1Sg-can-Neg Q
+\l "And it cannot be
+
+\t pe nde kotypemínte jepe chemonge?
+\m pe nde koty-pe-mí-nte je-pe che-mo-nge?
+\g Dem 2Sg.Poss room-Loc.Prep-Dim-FOC also 1Sg.Pron.DO-let-sleep
+\l that you don’t let me also sleep in your room at least?"
+
+\t ——he’i ka'i.
+\m ——he’i ka'i.
+\g ——3Sg.say monkey
+\l said the monkey.
+
+\t ——Nahániri. Upéi oovligaiterei kuñakaraípe.
+\m ——Nahániri. Upéi o-ovliga-iterei kuñakaraí-pe.
+\g ——No Then 3Sg-insisted-Superl-so.much woman-IO
+\l "No." Then he insisted so much to the female.tiger.
+
+\t ——Ha guéno, reké ta la che kotýpe upéicharõ.
+\m ——Ha guéno, re-ké -ta la che kotý-pe upéicharõ.
+\g ——Conj ok 2Sg-sleep -Prosp Def.Det 1Sg.Poss room-Loc.Prep then
+\l "Oh, then you will sleep in my room."
+
+\t Ha oké ma rõ la ikotýpe katu,
+\m Ha o-ké -ma -rõ la i-kotý-pe katu,
+\g Conj 3Sg-sleep -Asp -Cond Def.Det 3.Poss-room-Loc.Prep Emph
+\l And when he was already sleeping in her room,
+
+\t he’i chupe ka’i:
+\m he’i chupe ka’i:
+\g 3Sg.say 3Sg.Pron.IO monkey
+\l the monkey said to her:
+
+\t ——Sokórro, péro chero’y eterei ningo.
+\m ——Sokórro, péro che-ro’y eterei ningo.
+\g ——Help but 1Sg-be.cold too.much FOC
+\l "Help, but I am too cold.
+
+\t Pe nde rupa guypemi aké ta.
+\m Pe nde rupa guy-pe-mi a-ké -ta.
+\g Dem 2Sg.Poss bed under-Loc.Prep-Dim 1Sg-sleep -Prosp
+\l Under your bed I will sleep."
+
+\t Ha omonge chupe.
+\m Ha o-mo-nge chupe.
+\g Conj 3Sg-let-sleep 3.Pron.DO
+\l And she let him sleep.
+
+\t ——Péro anínteke el viého ndepilla;
+\m ——Péro aní-nte-ke el viého nde-pilla;
+\g ——But Neg-Imp-FOC-Imp Def.Det old.man 2Sg.Pron.DO-find
+\l "But do not let the old man find you;
+
+\t háke ndeú va’erã.
+\m háke nde-ú va’erã.
+\g be.careful 2Sg.Pron.Obj-eat Mod
+\l be careful, he will eat you."
+
+\t Upéi ndaje he’i jey chupe ka’i:
+\m Upéi ndaje he’i jey chupe ka’i:
+\g Then Report.Evid 3Sg.say again 3Sg.Pron.IO monkey
+\l Then, it is said, the monkey said to her again:
+
+\t ——Che ro’y etereive ningo,
+\m ——Che ro’y eterei-ve ningo,
+\g ——1Sg.Pron.Subj be.cold Superl-too.much-more FOC
+\l "I am too (much/more) cold,
+
+\t pe nde py gotyomína,
+\m pe nde py gotyo-mí-na,
+\g this 2Sg.Poss feet towards-Dim-Rog
+\l towards your feet,
+
+\t pende rupápe, takemi.
+\m pende rupá-pe, ta-ke-mi.
+\g 2Pl.Poss bed-Loc.Prep Imp-sleep-Dim
+\l in your bed I will sleep a bit."
+
+\t ——Ãga oú ta el viého,
+\m ——Ãga o-ú -ta el viého,
+\g ——Conj 3Sg-came -Prosp Def.Det old.man
+\l "Soon the old man will come,
+
+\t amombe’u porã ndéve, pórke che norodefende mo’ãi.
+\m a-mombe’u porã ndéve, pórke che no-ro-defende -mo’ã-i.
+\g 1Sg-tell well 2Sg.Pron.IO because 1Sg.Pron.Subj Neg-Port-defend -Neg.Prosp
+\l and I clearly tell you, because I will not defend you."
+
+\t ——Ndacherupytýi chéne, ha’eko ipohýi
+\m ——Nda-che-rupytý-i chéne, ha’e-ko i-pohýi
+\g ——Neg-1Sg.Pron.Subj-reach-Neg Mod 3Sg.Pron.FOC 3.Poss-heavy
+\l "He will probably not reach me, he is heavy
+
+\t ha che pe yvyra gáho
+\m ha che pe yvyra gáho
+\g Conj 1Sg.Pron.Subj Dem tree branch
+\l and I least on the branch of this plant
+
+\t ikangyvé va re jepe ahá ta,
+\m i-kangy-vé -va -re jepe ahá -ta,
+\g 3.Poss-weak-more -Rel -Obl at.least 1Sg-go -Prosp
+\l which is weak, will hang on to,
+
+\t ha jaguarete mo’ãi. [ndacherupytymo’ãi].
+\m ha jaguarete -mo’ã-i. [nda-che-rupyty-mo’ã-i].
+\g Conj tiger Prosp.Neg [not-1Sg-reach-Prosp-Neg]
+\l and the tiger will not [reach me]."
+
+\t Ha oké ma ramo ipy gotyo, iro’yeteve jey ka’i.
+\m Ha o-ké -ma -ramo i-py gotyo, i-ro’y-ete-ve jey ka’i.
+\g Conj 3Sg-sleep -Asp -Cond 3.Poss-feet towards 3.Poss-cold-Superl again monkey
+\l And when he was already sleeping towards her feet, the monkey got much colder again.
+
+\t ——Añeprendé ta ko nde pýre,
+\m ——A-ñe-prendé -ta -ko nde pý-re,
+\g ——1Sg-Refl-hold.on -Prosp -Emph 2Sg.Poss foot-Obl
+\l "I will hold on to your foot,
+
+\t che mbyakumi chéko nachepónchoi.
+\m che mbyaku-mi ché-ko na-che-póncho-i.
+\g 1Sg.Pron.Subj get.warm-Dim 1Sg.Pron.Subj-FOC Neg-1Sg.Poss-poncho-Neg
+\l warm me up a bit [because] I do not have a poncho."
+
+\t Upéi iro’yeteve jey ha omoponchoguymi[v]e.
+\m Upéi i-ro’y-ete-ve jey ha o-mo-poncho-guy-mi-[v]e.
+\g Then 3.Poss-cold-Superl-more again Conj 3Sg-put-poncho-under-Dim-more
+\l Then he was much more cold again and he got a bit more under the poncho.
+
+\t ——Neformaleterei nde, tereho mba’e.
+\m ——Ne-formal-eterei nde, te-reho mba’e.
+\g ——Neg-formal-Superl 2Sg.Pron.Subj Imp-2Sg-go [or] what
+\l "You are too informal, [so] go away or what."
+
+\t ——Nahíniri, pe ne lomoremínte akese,
+\m ——Nahíniri, pe ne lomo-re-mí-nte a-ke-se,
+\g ——No Dem 2Sg.Poss-back-Obl-Dim-only 1Sg-sleep-Des
+\l "No, only next to your back I want to sleep,
+
+\t pe che lómo hakumi haguã chéve, pórke cheratã ta ma.
+\m pe che lómo haku-mi haguã chéve, pórke che-ratã -ta -ma.
+\g Dem 1Sg.Poss back warm-Dim Sub.Irrealis 1Sg.IO because 1Sg.Poss-freeze -Prosp -Asp
+\l to get my back warm up a bit, because I am already about to freeze."
+
+\t Upéi katu la ilómo
+\m Upéi katu la i-lómo
+\g Then Emph Def.Det 3.Poss-back
+\l Then, when [those] their backs
+
+\t umí[v]a hakupa porã ma ramo [=porá.ma.rõ],
+\m umí[v]a haku-pa porã -ma ramo [=porá.ma.rõ],
+\g Dem.Pron 3.Poss-warm-Compl well -Asp -Cond
+\l were already very warmed-up,
+
+\t ojere ka’i jaguarete rembirekópe, humby ládope.
+\m o-jere ka’i jaguarete rembirekó-pe, humby ládo-pe.
+\g 3Sg-turn.around monkey tiger wife-Loc.Prep buttock side-Loc.Prep
+\l the monkey turned around towards the buttock of the tiger’s wife.
+
+\t Ha upe riremínte ndaje oguahẽ oúvo la ména,
+\m Ha upe rire-mí-nte ndaje o-guahẽ o-ú-vo la ména,
+\g Conj then after-Dim-only Report.Evid 3Sg-arrive 3-come-goal Def.Det husband
+\l Then after a while, it is said, the husband was arriving,
+
+\t [ág̃a] katu ningo ha’epa pyrepe ma.
+\m [ág̃a] katu ningo ha’e-pa pyre-pe -ma.
+\g Emph FOC 3Sg.said-Compl Part-Loc.Prep -Asp
+\l [but] all was already said.
+
+\t ——Hyakuã ka’i ningo ko ñande koty nde!
+\m ——Hyakuã ka’i ningo ko ñande koty nde!
+\g ——3.Poss.smell monkey Emph Dem 1Pl.Incl.Poss room Excl.Expr
+\l "This room smells of monkey!"
+
+\t ——he’i karai jaguarete.
+\m ——he’i karai jaguarete.
+\g ——3Sg.say mister tiger
+\l said Mister Tiger.
+
+\t Ha ka’i okañy hína tupa guýpe.
+\m Ha ka’i o-kañy hína tupa guý-pe.
+\g Conj monkey 3Sg-hide Cont bed under-Loc.Prep
+\l And the monkey was hidden under the bed.
+
+\t Upéi jaguarete oñeno hembireko pohéi, ha he’i jey:
+\m Upéi jaguarete o-ñeno hembireko pohéi, ha he’i jey:
+\g Then tiger 3Sg-lie.down 3.Poss.wife side Conj 3Sg.say again
+\l Then the tiger laid down next to his wife and said again:
+
+\t ——Hyakuã ka’i ko ñane ñuãha, nde la víéha.
+\m ——Hyakuã ka’i ko ñane ñuãha, nde la víéha.
+\g ——3.Poss.smell monkey Dem 1Pl.Incl.Poss blanket 2Sg.Pron Def.Det old.woman
+\l "Our blanket smells of monkey, you old woman."
+
+\t ——Hẽe ——he’i upépe hembireko,
+\m ——Hẽe ——he’i upé-pe hembireko,
+\g ——Yes ——3Sg.say at.that [moment] 3.Poss.wife
+\l "Yeah," said the wife at that moment,
+
+\t ——ahecha kuri che képe oúrõ peteĩ ka’imi,
+\m ——a-hecha kuri che képe o-ú-rõ peteĩ ka’i-mi,
+\g ——1Sg-see Perf.Asp 1Sg.Poss dream 3Sg-come-Cond one monkey-Dim
+\l "I saw in my dreams when a monkey came,
+
+\t iro’y eteri gua’úko ha ou oike ñande rupápe
+\m i-ro’y eteri gua’úko ha o-u oi-ke ñande rupá-pe
+\g 3.Poss-cold Superl supposedly-Emph Conj 3Sg-come 3Sg-sleep 1Pl.Incl.Poss bed-Loc.Prep
+\l [he] was very cold supposedly and came to sleep in our bed
+
+\t ha heta chemokyrỹi ha upéi reju nde kuri.
+\m ha heta che-mo-kyrỹi ha upéi reju nde kuri.
+\g Conj much 1Sg-cause-tickle Conj then 2Sg-come 2Sg.Pron.Subj Perf.Asp
+\l and tickled me much and then you came."
+
+\t ——He’ẽ ——he’i ndaje jaguarete,
+\m ——He’ẽ ——he’i ndaje jaguarete,
+\g ——Yeah ——3Sg.say Report.Evid Tiger
+\l "Yeah," it is said that the tiger said,
+
+\t ikeguypemí ma, oké ma ohóvo.
+\m i-ke-guy-pe-mí -ma, o-ké -ma o-hó-vo.
+\g 3.Poss-sleep-under-Loc.Prep-Dim -Asp 3Sg-sleep -Asp 3Sg-go-goal
+\l in his sleep [stupor], already falling asleep.
+
+\t ——Igústoité[re]iko añete
+\m ——I-gústo-ité[re]i-ko añete
+\g ——3.Poss-pleasant-Superl-Emph truly
+\l "It is truly very pleasant
+
+\t la ka’imi ñanemokyrỹirõ ra'e ——he’i.
+\m la ka’i-mi ñane-mo-kyrỹi-rõ ra'e ——he’i.
+\g Def.Det monkey-Dim 1Pl.Incl-Caus-tickle-when Evid ——3Sg.say [the tiger]
+\l when the little monkey tickles us," said [the tiger].
+
+\t Ha’e oimo’ã osoña hína ra'e;
+\m Ha’e oi-mo’ã o-soña hína ra'e;
+\g He 3Pl-think 3Pl-dream Cont Evid
+\l He thought he was dreaming;
+
+\t nimbo ka’i opokó ma avei
+\m nimbo ka’i o-pokó -ma avei
+\g Part monkey 3Sg-touch -Asp also
+\l the monkey was already in the process of touching
+
+\t hese ohóvo ra'e la pytũmbýpe.
+\m hese o-hó-vo ra'e la pytũmbý-pe.
+\g 3.Pron.Dat 3Sg-go-goal Evid Def.Det dark-Loc.Prep
+\l him in the darkness.

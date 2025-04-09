@@ -1,0 +1,196 @@
+\t Pe ovráhe Fassardi, San Agustín-pe ndaje, oi-ko petei karai i-ka’ú-va voi.
+\g Dem lumberyard Fassardi, San Agustín-Loc Report.Evid, 3-exist one man 3-drunk-Rel Emph
+\l At that lumberyard Fassardi, in San Agustín, it is said there is a man who drank.
+
+\t Ha o-sé vaerã ndaje o-aperita petei kantína-pe la vía kósta-re.
+\g Conj 3-go.out Mod Report.Evid 3-drink one bar-Loc Def.Det [Sp] track side-Obl
+\l And, it is said, he had to go out to drink at a bar on the side of the train tracks.
+
+\t Ha peteĩ diá-pe o-sé jeý -ma upé-pe la karai o-aperita hína.
+\g Conj one day-Loc 3-go.out again -already Dem-Loc Def.Det [Sp] man 3-drink Emph.
+\l And one day the man already went out again to drink there.
+
+\t Ha upéi pyharé -ma o-u la tren’i, Fassardi pueblo-pe o-hó-va hína.
+\g Conj then night -Asp 3-come Det.Det train-Dim, Fassardi town-Loc 3-go-Simult Cont
+\l And then one night the train came, it was going to the Fassardi town.
+
+\t Ha o-sẽ la karai la vía-pe, o-jupi-se la tren’í-pe.
+\g Conj 3-go.out Def.Det [Sp] man Def.Det [Sp] road-Loc 3-get.on-Des Def.Det [Sp] train-Dim-Loc
+\l And the man went to the train tracks, he wanted to get on the train.
+
+\t Ha la tren nd-o-pytá-i chupe, o-hasa hatá upé-rupi.
+\g Conj Def.Det [Sp] train 3-go.out 3.Pron 3-pass strong Dem-by
+\l And the train did not stay for him, it passed by fast.
+
+\t Ha upémarõ la karaí o-muña la tren.
+\g Conj then Def.Det [Sp] man 3-follow Def.Det [Sp] train.
+\l And then the man followed the train.
+
+\t O-ho i-jyké-re, ha upéi i-pojái -ma petei fiérro-re ha,
+\g 3-go 3-reach-Obl Conj then 3.Poss-held.on -Asp one iron-Obl Conj,
+\l He reached it, and then he held onto a piece of iron rail and,
+
+\t o-jupí-vo la vagon rehe ndaje,
+\g 3-get.on-Conj.Simult Def.Det [Sp] wagon Obl.P Report.Evid
+\l As he got on the wagon, it is said,
+
+\t i-pysyrỹi la tópe-re ha ho’a la tren-guý-pe, ha o-hasa hi'ári-pi [rupi]
+\g 3.Poss-slip Def.Det [Sp] sideboard-Obl Conj 3.fell Det.Det train-under, Conj 3-pass on.topo-over
+\l He slipped on the sideboard and he fell under the train, and it passed over him...
+
+\t oĩ-haguáicha la vagon kuéra: o-hyekue’o-pa-ite voi chupe.
+\g exist-as Def.Det [Sp] wagon Pl: 3-rip-all-Superl Emph 3.Pron
+\l ...the wagons [that were there]: they ripped him apart.
+
+\t Ha upe jeré-pe o-ñerrancheá -ma ra’e che kyvy Alfonso umía.
+\g Conj Dem around-Loc 3-ranching -Asp Evid 1Sg.Poss younger.son Alfonso there.
+\l And around there, it appears that my younger son was ranching there, it turns out.
+
+\t Heta voi o-ho hikuái o-mba’apó-vo la ovráhe-pe.
+\g lots FOC 3-go 3.Pron.Pl 3-work-Simult Def.Det [Sp] lumber.yard-Loc
+\l Lots of them went to work at the lumberyard.
+
+\t Ha la i-ñi-rữ nguéra ndaje, mitarusữ akã hatã,
+\g Conj Def.Det [Sp] 3.Poss-link-friend
+Pl
+Report.Evid
+youngsters
+head
+strong, Pl Report.Evid youngsters head strong,
+\l And, it is said, his friends, hard-headed youngsters...
+
+\t he’i jepi ojupe, péicha karu óra-pe:
+\g 3.say frequently among.them that.way lunch time-Loc
+\l ...said among them frequently, during lunch time, things like:
+
+\t --Re’u pe húlano rye kue, he’i ndaje la finado rehe.
+\g 2Sg.eat Dem guy.Poss innards-Term, 3.say Report.Evid Def.Det [Sp] dead.one Obl.P
+\l "Eat that guy’s innards," it is said that they said about the dead guy.
+
+\t --Kóva i-pysãngue --he’i otro.
+\g Those 3.Poss-toes --3.say another.one
+\l "His toes," said another one.
+
+\t --Ro-konvidá-ta i-kostílla-ku-pe –o-ñe-mõ-kachiãi hikuái upéicha.
+\g 2Sg.Obj-offer-Prosp 3.Poss-ribs –3-Refl-Caus-joke 3.Pron.Pl that.way
+\l "We will offer you          his ribs," they said, they said jokingly,
+
+\t Ha tio Anastacio ndaje (upéva-ngo ore machúta memby, la mama aguéla memby,
+\g Conj uncle Anastacio Report.Evid (that.one-FOC 2Pl.Poss housekeeper son, Def.Det [Sp] mother.Poss grandmother son,
+\l And it is said that uncle Anastacio (that one who is the housekeeper’s son, the son of the grandmother,...
+
+\t ha upéa la ikasíke kuéra) he’i vaerñ chupé kuéra:
+\g Conj Dem Def.Det [Sp] chief Pl) 3.say Mod 3.IO Pl:
+\l ...and the chief) had to say to them:
+
+\t “Umí-cha nda-ja’e-vai [-ri] la o-mano vaekué-re, nda-ja’é-vaerã-i mbaa’eve”.
+\g Dem-way Neg-1Pl-speak-badly [Neg] Def.Det [Sp] 3-die distal-Obl, Neg-1Pl-speak-Mod-Neg nothing
+\l “We don’t speak that way about someone who has died, we must not say anything [about him].”
+
+\t Ha la mitãrusu kuéra n-o-pená-i hese, lomímo-nte he’i.
+\g Conj Def.Det [Sp] youngster Pl Neg-3-worry-Neg 3Pl.Obl, same.way-FOC 3.say
+\l And the youngsters did not worry/heed him, they carried on in the same way.
+
+\t Ha upéi ndaje peteĩ asaje rei, o-karu rire o-ké-pa hína hikuái tarímba-pe okápe,
+\g Conj then Report.Evid one noon-random 3-lunch after 3-sleep-all Cont 3.Pron.Pl pallet-Loc outside
+\l And then, it is said, one random early afternoon after lunch, they were all sleeping on a pallet outside,
+
+\t ha che kyvy Alfonso katu o-ñeno hína ra’e la i-kotý-pe kuéra,
+\g Conj 1Sg.Poss younger.son Alfonso Emph 3-sleep Cont Evid Def.Det [Sp] 3.Poss-room-Loc Pl
+\l ...and my younger son Alfonso was sleeping, it appears in their room,
+
+\t peteĩ rancho’i o-jetakea-reí-va-nte ha i-techo-mi (upé-pe o-ke pyhare-kue hikuái ra’e).
+\g one hut 3-pole-randon-Rel-FOC Conj 3.Poss-roof-Dim (Dem-Loc 3-sleep night-Term 3.Pron.Pl Evid)
+\l ...in a random hut that they put up with poles and a light roof (there they had slept the night before, it appears)
+
+\t O-hecha ndaje la finádo-pe o-guahẽ o-hó-vo, henda moroti ári
+\g 3-see Report.Evid Def.Det [Sp] dead.one-DOM 3-arrive 3-go-Simult, mount white on
+\l He saw, it is said, the dead guy arriving mounted on a white [horse]...
+
+\t (upéva o-guerekó-va voi hekové-pe ra’e).
+\g That.one 3-have-Rel FOC life-Loc Evid
+\l (that one that he had when he was alive).
+
+\t O-mombyta la henda, o-guejy chu-gui, ha o-ho o-guahé la óga-pe:
+\g 3-got.off Def.Det [Sp] mount, 3-bring 3Sg-from.Prep Conj 3-go 3-arrive Def.Det [Sp] house-Loc:
+\l He tied up his horse, got off of him, and arrived at the house:
+
+\t “¡Guéna tárde, Gucna tárde!” he’i hína.
+\g Good afternoon, good afternoon, 3.say Cont.
+\l “Good afternoon, good afternoon!” he was saying.
+
+\t Ha upéi o-ho o-maña porã péicha la oké-va hína rehe, o-mañá-nte hese kuéra.
+\g Conj then 3-go 3-watch well that.way, Def.Det [Sp] sleep-Rel Cont. Obl.P 3.Obl Pl 3-watch-only
+\l And then he went to take a good look at those who were sleeping, he only watched them.
+
+\t Ha che kyvy Alfonso o-nakea hína ra’e,
+\g Conj 1.Poss younger.son Alfonso 3-tobacco.chew Cont. Evid.
+\l And my younger son Alfonso was chewing tobacco, it appears,
+
+\t ha upéi ndaje la o-ndyvú-vo péicha ha o-maña jey
+\g Conj then Report.Evid Def.Det [Sp] 3-spit-Simult that.way Conj 3-look again
+\l And then, it is said, as he spit, he looked again.
+
+\t nd-o-hécha-vé-i -ma la karai o-mano vae-kué-pe.
+\g Neg-3-see-more-Neg -Asp Def.Det [Sp] man 3-die Rel.Term-Loc
+\l He no longer saw the man who had died.
+
+\t O-kañy hese renondé-gui.
+\g 3-disappear 3Pro.Obl in.front-from.Prep
+\l He disappeared from in front of him.
+
+\t Ha pyhare ndaje o-u jey. “¡Guena noche, guena noche!” he’i jey hína.
+\g Conj evening Report.Evid 3-come again. Good night, good night, 3.say again Cont.
+\l And that night, it is said, he came again. “Good night, good night!” he was saying again.
+
+\t O-jere la hóga-re, o-jere la hóga- (la i-koty kuéra rehe).
+\g 3-around Def.Det [Sp] house-Obl 3-around Def.Det [Sp] house (Def.Det [Sp] 3Pos-house Pl Obl.P)
+\l He went around the house, he went around the house (around their room).
+
+\t Heta vése he’i upéicha.
+\g Many times 3.say that.way.
+\l He said that many times.
+
+\t Ha upéi ndaje pyhareve, ko’ẽ-ỹ-re,
+\g Conj that Report.Evid morning, morning-priv-Obl,
+\l And then in the morning, at dawn,
+
+\t tio Anastacio o-mo-pu’ã che kyvy Alfónso-pe o-jatapy-vo, la i-kosiná-me kuéra.
+\g uncle Anastacio 3-Caus-get.up 1Sg.Poss younger.son Alfonso-DOM 3-lit.fire-goal Def.Det [Sp] 3.Poss-kitchen-Loc Pl
+\l Uncle Anastacio got my younger son Alfonso up to light the fire in our kitchen.
+
+\t Ha o-pu’ã ndaje ha’e, ha o-hó-ta-vo la i-kosina-í-me,
+\g Conj 3-got.up Report.Evid 3.Pron.Subj, Conj 3-go-Prosp-Simult Def.Det [Sp] 3.Poss-kitchen-Dim-Loc
+\l And it is said that he got up, and as he was going to go to the kitchen,
+
+\t o-juhu la finádo-pe o-jeko la henda morotí-re hína peteĩ yvyra máta guý-pe.
+\g 3-find Def.Det [Sp] dead.one-DOM 3-lean Def.Det [Sp] mount white-Obl Emph one tree bush under-Loc
+\l ...he found the dead guy leaning against his white horse under a tree.
+
+\t O-jaivy ndaje upé-pe, o-moĩ la hova la kavaju ku’á-re ha o-ĩ hína upé-pe.
+\g 3-lean Report.Evid Dem-Loc, 3-put Def.Det [Sp] face Def.Det [Sp] horse waist Conj 3-exist Cont. Dem-Loc
+\l He was bent down there, it is said; he put his face on his horse waist and he stayed there (that way).
+
+\t O-topa gueteri upé-pe chupe che kyvy Alfonso.
+\g 3-find still Dem-Loc 3.Pron 1Sg.Poss younger.son Alfonso.
+\l He found him there still, my younger son Alfonso.
+
+\t Ha “a-hasá-nte che,” he’i Alfonso, “ha a-ha jatapy.”
+\g Conj 1Sg-pass-FOC 1Sg.Subj, 3.say Alfonso, Conj 1-go lit.fire
+\l And “I am just passing,” said Alfonso, and, “I am going to light the fire.”
+
+\t Ha ko’ẽ mbota-ite peve o-ĩ upé-pe. Ha Alfonso o-güerokirirĩ-nte avei.
+\g Conj morning Incip-Superl after 3-exist Dem-Loc. Conj Alfonso 3-silence-FOC also
+\l And after, in the early morning, he was (still) there. And Alfonso remained silent.
+
+\t “O-mano vaekue ja-hejá -ma va’erã topytu’u.
+\g 3-die distal 1Pl-leave -Asp Mod rest
+\l He died and we must let him rest.
+
+\t "Ãga nda-pe-je-vé-i vove mba’eve hese, nd-o-u-vé-i chéne,”
+\g Now Neg-2Pl-say-more Neg when nothing 3Pl.Obl Neg-3-come-more-Neg Fut.Neg
+\l “Now when you.all don’t say anything more about him, he will not come anymore.”
+
+\t he’i chupe kuéra tío Anastacio.
+\g 3.say 3.Pron Pl uncle Anastacio.
+\l Tio Anastacio said to them.

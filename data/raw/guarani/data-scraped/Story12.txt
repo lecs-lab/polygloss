@@ -1,0 +1,439 @@
+\t Petẽi mbói áripi o-hasa peteĩ karréta ha oi-ku’a mopẽ chupe.
+\g One snake on.top 3-pass one wagon Conj 3-middle break 3.Pron
+\l There was an old treasure hunter, called Mr. Leokadio.
+
+\t Peteĩ diá-pe (árape) o-u che rendá-pe ha he’i chéve:
+\g One day-Loc 3-come 1Sg.Poss place-Loc Conj 3.say 3.IO:
+\l One day he came to my place and said to me:
+
+\t “Ja-ha-mí-na ta-hecha[u]ka-mi ndé-ve peteĩ mba’e a-nohẽ va’ekue che konpádre Vito ndí-ve.”
+\g 1Pl.Incl-go-Dim-Rog Imp-see-Caus-Dim 2Sg-with one thing 1Sg-take.out Rel.Distal 1Sg.Poss friend Vito 2Sg-with
+\l “Let’s go, I will show you something that I found with my friend, Vito”
+
+\t Ha a-je-prepara la ka’aru ha ro-ho la i-konpádre róga-pe.
+\g Conj 1Sg-Refl-prepare Def.Det [Sp] lunch Conj 1Pl.Excl-go Def.Det [Sp] 3.Poss-friend house-Loc
+\l And I got ready in the afternoon and we went to his friend’s house.
+
+\t O-sẽ ore-reciví-vo [ore-mo-guahẽ-vo] karai Vito, ha ro-ñe’ẽ ñe’ẽ-nte,
+\g 3Sg-go.out 2Pl.Obj-receive-goal mister Vito, Conj 1Pl.Excl-speak speak-only
+\l Mr. Vito came out to receive us, and we just chatted,
+
+\t ha Leokádio o-porandú -ma chupe mba’e-pa o-japo ra'e ha’e la mba’e o-guenohẽ va’e-kue hikuái-gui.
+\g Conj Leokadio 3-ask -Asp 3.Pron thing-Q 3-do Evid 3Pl.Subj Def.Det [Sp] thing 3-take.out Rel-Past 3.Pron.Pl-from.Prep
+\l ...and Leokadio already asked what they had done with the things they had dug out.
+
+\t “A-mombo-pa [pórke] che rembirekó-pe ndo-gustái-gui [ndoipotái-gui]
+\g 1Sg-throw.out-Tot [because] 1Sg.Poss wife-IO 2Sg-like-from.Prep
+\l “I threw it all out because my wife did not like it.”
+
+\t ‘E-mo-mbo chéve pe sonseráhe, pe kosina tihéra punta-re re-hupi va’ekue.
+\g Imp-caus-throw.out 1Sg.IO Dem trinkets, Dem kitchen beam end-Obl 2Sg-lift Rel.Distal
+\l “Throw me out all those trinkets, which you had lifted on the end of the beam.” [Vito’s wife ‘quoted’]
+
+\t ‘Che-mo-ngyhyje,’ he.i chéve peteĩ diá-pe.”
+\g 1Sg-Caus-fear, 3-say 1Sg.IO one day-Loc
+\l “It scares me, she told me one day.”
+
+\t Ha ha’e-té-pe upe jave o-sẽ Vito rembireko ha o-porandu chupe Leokádio, che rovake:
+\g Conj Cop-Superl-Loc Dem momento 3-go.out Vito wife Conj 3-ask 3.Pron Leokádio, 1Sg-front:
+\l And at the moment Vito’s wife came out and Leokadio asked her, in front of me:
+
+\t --Ha mba’é-re-pa ne-mo-ngyhyje la ore rembire-nohẽ-ngue.
+\g --Conj thing-Obl-Q 2Sg-caus-fear Def.Det [Sp] 1Pl.Poss thing-dig-former
+\l "And why are you afraid of the thing that we dug out?"
+
+\t --Ha ha’e ningo o-gueru kuri o-jokua trápo-pe ha o-hupi pe yvate, tihéra punta-re.
+\g --Conj 3.Subj FOC 3-bring Retrosp.Asp. 3-tie cloth-DO Conj 3-lift Dem high, beam end-Obl
+\l "And he brought the thing they had dug out and he tied a piece of cloth and he raised up high on the ceiling beam."
+
+\t Ha yvytu hatã ramo, o-va-va upépe la trápo-pe je-jokuapy, ha pyhare ramo o-va-vá-nte avei.
+\g Conj wind strong Cond, 3-move-Rel Dem Def.Det [Sp] cloth-Loc Refl-tie Conj night Cond 2-move-Hab-FOC also
+\l And if there is a lot of wind, that thing tied with the cloth moves [back and forth] and at night it also moves.
+
+\t Ha re-pu’ã ha re-maña ha’óra hesé-nte o-va-va hína.
+\g Conj 2Sg-get.up Conj 2Sg-look time 3.Obl-FOC 3-move-Hab Cont
+\l And whatever time you get up and you look at it, it is moving (back and forth).
+
+\t O-ky ha o-pí-rõ ha’e ndo-pytá-i.
+\g 3-rain Conj 3-stop.rain-Cond 3.Subj Neg-stay-Neg.
+\l And whether it rains or not, it is still moving.
+
+\t Ha upéa la kangue-kue o-guenohẽ va’ekue hikuái yvy-guý-gui ra'e, la entierro reka há-pe.
+\g Conj those Def.Det [Sp] bone-ex 3-take.out Rel.distal 3.Pron.Pl earth-under-from.Prep Evid, Def.Det [Sp] dug search Rel.Loc
+\l And those were the [former] bones that he had dug out from under the ground, it turns out, searching for the treasure.
+
+\t Ha la hembireko upéicha o-kyhyjé -ma ramo la kangue-kue je-jokuapý-gui, karai Vito o-mombo peteĩ akuare’ẽ-ndý-pe.
+\g Conj Def.Det [Sp] wife that.way 3-afraid -Asp Cond Def.Det [Sp] bone-former Refl-tie-from.Prep, Mr. Vito 3-throw.out one reedbed-in-Loc.
+\l And given that the wife was already afraid of the tied up bones, Mr. Vito threw them out in a reedbed.
+
+\t N-o-mombói sementério-pe pórke o-dekonfía hese nda-há’e-i -ha vautisádo kangue-kue.
+\g Neg-3-throw.out cementary-Loc because 3-not.trust 3.Obl Neg-Cop-Neg -Sub baptize bone-former
+\l He did not throw them in the cemetery because he suspected that it had not been baptized.
+
+\t O-ĩ-py-pe la oĩ-va.
+\g 3-exist-inside-Loc Def.Det [Sp] 3-exit-Rel
+\l That it has something, it does.
+
+\t Upéi che a-sẽ-vo karai Vito róga-gui a-ha haguã jey óga-pe, karai Leokádio o-sẽ che-ndive.
+\g Then 1Sg.Pro 1Sg-go.out-Simult Mr. Vito house-from.Prep 1Sg-go Sub.Irr again house-Loc, Mr. Leokadio 3-go.out 1Sg-with
+\l Then when I left Mr.Victor's house to go back to my house, Mr. Locadio went out with me.
+
+\t Ro-sẽ mbuku-mí-vo upé-gui, he’i chéve:
+\g 1Pl-go.out stretch-Dim-Simult there-from.Prep 3.say 1Sg.IO
+\l "When we had gone a stretch from there," he said to me.
+
+\t --Ja-ha-mí-na óga-pe ta-hendu-ka-mi ndéve la che músika.
+\g 1Pl-go-Dim-Rog house-Loc Rog-listen-Caus-Dim 2Sg.ben Def.Det [Sp] 1Sg.Poss music
+\l "Let’s go to my house to have you listen to some of my music."
+
+\t --Mba’éicha-gua-piko la ne músika –ha’e chupe.
+\g --What.kind-source-Q Def.Det [Sp] 2Sg.Poss music –3.say 3.Pron
+\l "What type [of music] is your music?"
+
+\t --Ha ja-ha-mí-na [r]ei-kauaa-mi.
+\g Conj 1Pl-go-Dim-Rog 2Sg-know-Dim
+\l “And let’s go for you get to know."
+
+\t Upéi-ngo a-ju he.ndive la h-óga-pe. Roi-me ro-ína.
+\g Then-FOC 1Sg-com 3Pl-with Def.Det [Sp] 3.Poss-house-Loc 1Pl.Excl-Loc 2Pl.Excl.Cont
+\l "And then I came with him to his house. We were there."
+
+\t Upéi che-avisa: “La ónse ramo o-ñepyrũ-ta hína la músika a-hendu-ka-sé-va ndéve.”
+\g Then 1Sg.Obj-tell: “def eleven Cond 3-begin-Prosp Emph Def.Det [Sp] music 1Sg-listen-Caus-Des-Rel 2Sg.Begin
+\l Then he tells me: “At eleven o’clock the music that I want to make you listen to will begin."
+
+\t Upéi-ngo ro-kay’u, are ro-kay’u ha ro-ñẽ’ẽ ro-ína.
+\g Then-FOC 1Pl-drink.mate, some.time 1Pl.Excl.-drink.mate Conj 1Pl.Excl.-talk 1Pl.Excl-Cont
+\l Then we drank mate; for sometime we drank mate and talked (for a long time).
+
+\t Upéi katu ro-je-deha la kay’ú-gui,
+\g Then Emph 1Pl-Refl-leave Def.Det [Sp] drink.mate-from.Prep,
+\l Then we stopped drinking mate,
+
+\t ha no-ro-senái, ro-ha’arõ hína la músika.
+\g Conj Neg-1Pl.Excl-dinner, 1Pl-wait Cont Def.Det [Sp] music
+\l ...and we didn’t have dinner; we were waiting for the music.
+
+\t Hasý-pe-ngo la ónse sapý’a. Ro-pu’ã ha che-gueraha peteĩ kahõ oĩ- há-pe,
+\g Tired-Loc-FOC Def.Det [Sp] eleven suddenly. 1Pl-get.up Conj 1Sg.Obj-take one a.[funerary].urn 3-exist- Rel.Loc
+\l And finally, it was suddenly eleven o’clock. We got up and he took me where there was a funerary urn,
+
+\t nimbo upéa la o-guenohẽ va’ekue ra'e la i-konpádre Vito ndíve: henyhẽ-te-pype la kritiáno kangue-kue.
+\g Part that Def.Det [Sp] 3-arrive Rel.Distal Evid Def.Det [Sp] 3.Poss.friend Vito with: full-Superl-Part Def.Det [Sp] Christian bone-ex
+\l It turns out that it was what he had taken out with friend Victor [narrator discovers]: it was full of former Christian bones.
+
+\t Upéi ro-ñe-mboja mbegue katu la i-máta-pe.
+\g Then 1Pl-Refl-get.close slowly FOC Def.Det [Sp] 3-plant-Loc
+\l Then we slowly got closer to the place.
+
+\t A-j-apysa-ka porã ha a-hendu “chĩi!” he’i-va peteĩ hendá-pe.
+\g 1Sg-Refl-ear-Caus well Conj 1-hear ‘chii!’ 3.say-Rel one place-Loc
+\l I listened well and heard ‘chii!’, it says in one place.
+
+\t Ha upéi la ótro kahõ ekína-pe “chĩi!" he’i jey.
+\g Conj then Def.Det [Sp] another urn corner-Loc “chii!” 3.say again.
+\l And then in the other corner of the urn “chii!”, it said again.
+
+\t O-ñe-pyrũ o-ño-mbohovái la upéicha he’í-va: “chĩi!” ápe, “chĩi!” amo, pe mbyté-pe.
+\g 3-Refl-begin 3-Rec-reciprocate Def.Det [Sp] that.way 3.say-Rel: “chii!” here, “chii!” there, Det.Det middle-Loc
+\l The ones saying “chĩi!” here and there began to echo one another, here, there, and in between.
+
+\t Heta-ve, heta-ve o-hó-vo la káva o-ñe’ẽ.joá-va upéicha.
+\g Lots-more, lots-more 3-go-Simult Def.Det [Sp] wasp 3-Refl-together-Hab that.way
+\l Each time lots more and more were buzzing all together in that way.
+
+\t Ha’e-te ku o-sẽ-se-tereí-va hikuái.
+\g 3.Cop-Superl Dem 3-go.out-Des-excess-Rel 3.Pl.Subj
+\l It seemed that those were the ones that wanted so much to get out.
+
+\t O-ĩ o-ñe’ẽ po’i-mí-va, po’i rusú-va, o-ñe’ẽ pyrusú-va, opáicha-gua o-ĩ.
+\g 3-exist 3-talk-narrow-Dim-Rel, narrow-medium-Rel, 3-talk acute-Rel, all.types-Source 3-exist
+\l There were those that buzzed low-pitch, those that buzzed medium-pitch, those that buzzed high-pitch, there were all types.
+
+\t Ha’e-te la o-farrea mba’e-va la i-káva kuéra la kahõ guasu ryepý-pe.
+\g 3.Cop-Superl Def.Det [Sp] 3-party thing-Rel Def.Det [Sp] 3-wasp Pl Def.Det [Sp] urn big inside-Loc
+\l It appears that there were very many of the wasps that were partying inside the big urn.
+
+\t Are upe hagué-pe ningo peteĩ ka’arú-pe a-ha a-ína peteĩ anhelíto ñeñotỹ-háme.
+\g Time.some Dem Sub-Term-Loc FOC one afternoon-Loc 1Sg-go 1Sg.Cont one angel burial-place
+\l It was much after that one afternoon I was going to the funeral of an angel,
+
+\t ha o-sẽ karai Leokádio che rendá-pe –ñai-mo’ã ku oi-ko’í-va, hova cha’ĩ-mba ha he’i chéve:
+\g Conj 3-go.out Mr. Leokádio 1Sg-place-Loc --1Pl-believe Dem 3-exist-Hab face wrinkle.all Conj 3.say 1Sg.IO:
+\l ..and Mr. Leokadio came out with me - we think that he lives badly, with a wrinkled face - and he said:
+
+\t --Ja-’e vaekue ningo la che róga a-vendé-ta ha’óra, ndéve a-ofrese raẽ vaerã -ha.
+\g 1Pl-say distal FOC Def.Det [Sp] 1Sg.Poss house 1Sg-seel-Prosp time, 2Sg-IO 1Sg-offer first Mod -Sub
+\l "We said long ago that when the time comes to sell my house, I should offer it to you first."
+
+\t --Hẽe, upéicha vaekue.
+\g Yes, that.way distal
+\l "Yes, it was that way then."
+
+\t --Ha mba’eicha-pa rei-me?
+\g Conj how-Q 2Sg-exist
+\l "And how are you?"
+
+\t --Che-rasy ningo ha che reindy che-gueraha-se h-óga-pe o-ña-tende [oñangareko] haguã che-rehe.
+\g 1Sg-ill FOC Conj 1.Poss sister 1Sg.Obj-take-Des 3.Poss-house-Loc 3-take.care Sub.Irr 1Sg-Obl.P
+\l "I am sick and my sister wants to take me to her house to take care of me."
+
+\t --A-jú-ta ne rendá-pe ãga ña-ñe’ẽ haguã –ha’e chupe.
+\g 1Sg-come-Prosp 2Sg.Poss place-Loc now 1Pl.Incl-talk Sub.Irr --3.say 3.Pron
+\l "I will come to your place to talk," he said to him.
+
+\t Ha upe rire a-ha jey la h-óga-pe ha o-mombe’u-pa chéve la o-jehu va’ekue chupe.
+\g Conj then after 1-go again Def.Det [Sp] 3.Poss-house-Loc Conj 3-tell-Tot 1Sg.IP Def.Det [Sp] 3-happen Rel.Term 3.Pron
+\l And then I went back again to his house and he told me all that had happened.
+
+\t Ijypy-(gua)rã ndaje o-guenohẽ hikuái i-konpádre ndive ra'e pe kahõ o-hecha-ka va’ekue chéve, tenyhẽ-te-pype kritiáno kangue.
+\g 3.start-Irr Report.Evid 3-take.out 3.Pron.Pl 3.Poss-friend with Evid Dem urn 3-see-Caus Rel.Term 1Sg.IO full-Superl-Part Christian bones
+\l It is said that, to start with, they had taken out with his friend that urn that he had shown me, full of Christian bones.
+
+\t O-ño-mboja’o hese hikuái mbyte rupi.
+\g 3-Rec-get.together 3.Obl 3.Pron.Pl half Prep
+\l They split [the bones] in two.
+
+\t Vito o-gueraha la alamitã-re h-óga-pe, ha karai Leokádio la alamitã avei h-óga-pe, la kahõ reheve.
+\g Vito 3-take Def.Det [Sp] half-Obl 3.Poss-house-Loc, Conj Mister Leokádio Def.Det [Sp] half also 3.Poss-house-Loc Def.Det [Sp] urn with
+\l Vito took half to his house, and Mr. Leokádio also [took] the other half to his house, with the [funeral] urn.
+
+\t O-guereko ndaje are h-óga-pe, ha oi-ko pype la káva o-ñe’ẽ-va la ónse-rõ, káda pyhare.
+\g 3-have Report.Evid long.time 3.Poss-house-Loc, Conj 3-exist Part Def.Det [Sp] urn 3-talk-Rel Def.Det [Sp] eleven-Cond each evening.
+\l It is said that he had [the bones] a long time in his house, and the wasps buzzed inside the urn each evening.
+
+\t Ha peteĩ pyharé-pe ndaje n-o-ñe’ẽi la i-káva ha upé ko’ẽrõ-icha na-i-ko’ẽ-i la kahõ guasu, kangue-kue ryru.
+\g Conj one evening-Loc Report.Evid Neg-3-talk-Neg Def.Det [Sp] 3.Poss-urn Conj then next.day-like Neg-3-dawn-Neg Def.Det [Sp] urn big, bones-former container
+\l And one night it is said that the wasps were no longer buzzing, and then, like the next day, the big urn, the container of what had been bones, was no longer there.
+
+\t Are o-heka ha upéi o-je-deha.
+\g long.time 3-search Conj then 3-Refl-leave
+\l He looked for [it] for a long time and then he stopped looking.
+
+\t Ha peteĩ sávado ndaje o-u hendá-pe i-konpádre,
+\g Conj one Saturday Report.Evid 3-come place-Loc 3.Poss-friend
+\l And one Saturday, it is said, his friend came to his place,
+
+\t o-mombe’u chupe o-hecha -ha jepi peteĩ yvy kandú-pe la hendý-va
+\g 3-tell 3.Pron 3-see -Sub frequently one earth mount-Loc Def.Det [Sp] light-Rel
+\l ...and he told him that he frequently sees something that lightens up on a mount of earth.
+
+\t O-ho mokõi-vé-va oi-ty-[u]ka la préva,
+\g 3-go twice-more-Rel 3-throw-Caus Def.Det [Sp] proofs
+\l And they both went to have their cards thrown,
+
+\t ha o-sẽ o-jupe hikuái: i-katú-ta o-ho o-ño-ndive o-jo’o.
+\g Conj 3-go.out 3-find 3.Pron.Pl: 3-can-Prosp 3-go 3-Rec-with 3-dig
+\l ...and it came out for both: you can go dig together.
+
+\t O-ho o-sonda ndaje ha peteĩ ñuatĩ chyryry guý-pe o-juhu la o-juhú-va.
+\g 3-go 3-explore Report.Evid Conj one thorn dry under-Loc 3-find Def.Det [Sp] 3-find-Rel
+\l It is said they went to explore and under a dry thorn they found what they found.
+
+\t O-ñe-moĩ o-jo-pyru hikuái ha o-jo’o.
+\g 3-Refl-put 3-dig-succeed 3.Pron.Pl Conj 3-dig
+\l And they dug taking turns.
+
+\t O-jo’o-vé-rõ o-jo’o-ve ha nd-o-juhú-i mba’e-ve.
+\g 3-dig-more-Cond 3-dig Conj Neg-3-find-Neg thing-more.
+\l When they dug and dug, they did not find anything.
+
+\t Upéi ndaje pe yvykuá-pe o-hetũ Leokádio la i-né-va.
+\g Then Report.Evid Dem well-Loc 3-smell Leokádio Def.Det [Sp] 3.Poss-bad.smell-Rel
+\l And then it is said Leokádio smelled something that smelled bad.
+
+\t Upépe ndaje i-serrado-ve ha’e.
+\g There-Loc Report.Evid 3-persistent-more 3Sg.Subj
+\l It is said that at that point he got more persistent.
+
+\t Ha i-konpádre o-guenohẽ hína la yvy rondána-pe.
+\g Conj 3-friend 3-take.out Cont Def.Det [Sp] earth sheave-Loc.
+\l And his friend was taking out the earth with a sheave.
+
+\t O-sonda jey ha o-juhu jey la hatã-va, la kambuchi.
+\g 3-attempt again Conj 3-find again Def.Det [Sp] hard-Rel, Def.Det [Sp] container.
+\l And then attempted again, and they found something hard again, the container.
+
+\t Ha upéi ndaje, hasý-pe, pe ónse metroha rupi,
+\g Conj then Report.Evid, difficult-Loc, Dem eleven meters around,
+\l And then, it is said, finally, about around eleven meters,
+
+\t O-mboape vera Leokádio la kambuchi tuicha-itereí-va peteĩ, la yvykuá-pe.
+\g 3-cover bright Leokádio Def.Det [Sp] container big-Superl-Rel one, Def.Det [Sp] well-Loc
+\l Leokádio visualizes one biggest container, in the well.
+
+\t Ha o-mongu’e ndaje ha’e ha he’i i-ñi-rũ-me o-hupi haguã chupe.
+\g Conj 3-move Report.Evid 3.Subj Conj 3.say 3.Poss-Pref-friend-Loc 3-raise Sub.Irr 3.Pron
+\l And it is said that he moved the container and told his friend to raise [the container].
+
+\t Ha o-jupi la kambuchi i-pó-pe o-ú-vo,
+\g Conj 3-go.up Def.Det [Sp] Container 3-hand-Loc 3-come-Simult
+\l And he was coming up with the container in his hand,
+
+\t ha pe o-sẽ-vo ndaje, o-mombo la kambuchi oká-pe,
+\g Conj Dem 3-go.out-Simult Report.Evid, 3-throw.out Def.Det [Sp] container out-Loc
+\l ...and, it is said, that when he came out he threw out the container.
+
+\t ha upe-vo o-ú-mi hese peteĩ ára vera tuicha itereí-va pe yvy guio.
+\g Conj Dem-Simult 3-come-Dim 3.Obl one day bright big Superl-Rel Loc earth towards
+\l And at that point one day came a very big lightning towards the earth
+
+\t Pytũ-mby-eté-pe o-pyta, oi-ty chupe ovayvávo,
+\g Dark-middle-Superl-Loc 3-stay, 3-throw 3.Pron face.up
+\l They remained completely in the dark, [the lightning] threw Leokádio backwards,
+
+\t ha o-mbota ndaje la i-núnka peteĩ válde rembé-re.
+\g Conj 3-hit Report.Evid Def.Det [Sp] 3.Poss-neck one bucket rim-Obl
+\l And he hit his neck on the rim of the bucket.
+
+\t Ha la kambuchi o-jeka la pytũ-mbý-pe, la yvy apyté-pe.
+\g Conj Def.Det [Sp] container 3-break Def.Det [Sp] dark-middle-Loc, Def.Det [Sp] earth middle-Loc
+\l And the container broke in the darkness, inside the earth.
+
+\t Upé-gui ndaje Vito nd-oi-kuaa-vé-i la o-japo va’erã ha o-gueraha i-konpádre-pe hóga-pe,
+\g Dem-from.Prep Report.Evid Vito Neg-3-know-more-Neg Def.Det [Sp] 3-do Mod Conj 3-take 3.Poss-friend-DOM 3.Poss-house-Loc,
+\l And it is said that thereof, Vito did not know what he should do and he took his friend to his house,
+
+\t ha hesarái upé-pe la kambuchi jeka-kué-gui.
+\g Conj 3-forgot there-Loc Def.Det [Sp] container break-former-from.Prep
+\l ...and there he forgot about the broken container.
+
+\t (Nda-ha’é-i ra'e Leokádio mba’e-rã, ha ha’e o-guenohẽ-se katu-ete.)
+\g (Neg-be-Neg Evid Leokádio thing-Irr Conj 3Pl 3-take-Des Mod-Superl)
+\l It turns out that it was not for Leokádio, and he very much wanted to take it out.
+
+\t Upé-va oi-ko sávado pyhare.
+\g Dem-Rel 3-exist Saturday evening
+\l That happened on Saturday evening.
+
+\t Ha upe domíngo pyhareve ndaje o-hasa o-hó-vo upé-rupi peteĩ varáha huga -ha tuja.
+\g Conj Dem Sunday morning Report.Evid 3-pass 3-go-Simult Dem-around one cards play -Nom old
+\l And that Sunday morning, it is said, an old card player was passing through around there.
+
+\t O-hecha ndaje la yvykua tuichá-va ha o-ñe-mboja o-maña upé-pe.
+\g 3-see Report.Evid Def.Det [Sp] well big-Rel Conj 3-Refl-get.close 3-look there-Dem
+\l It is said that he saw a big well and he got close to look at it.
+
+\t O-hecha ndaje pe hembére heta o-ĩ kavaju kangue –kuátro rupi--, i-puku pukú-va.
+\g 3-see Report.Evid Dem border lots 3-exist horse bone --four around--, 3-long long-Rel
+\l It is said that he saw that on the border there were many horse bones, around four, that were long, very long.
+
+\t O-jagarra ndaje ha’e peteĩ o-gueraha ha o-ho la trúko ra’ã-vo, la volícho gotyo.
+\g 3-grab Report.Evid 3.Subj one 3-took Conj 3-go Def.Det [Sp] cards play-goal, Def.Det [Sp] store towards.
+\l It is said that he [the card player] grabbed one and went towards the store where they play cards.
+
+\t O-puka-pa ndaje hese hapicha kuéra la almacén-pe.
+\g 3-laugh-Tot Report.Evid 3.Obl 3.Poss.peers Pl Def.Det [Sp] store-Loc.
+\l It is said that his peers in the store laughed at him.
+
+\t Ha o-ĩ mokõi o-hugá-va hína la varáha.
+\g Conj 3-exist two 3-play-Rel Cont Def.Det [Sp] card
+\l And two were playing cards.
+
+\t Ha “e-jú-py ja-huga, e-jú-py ja-huga!”, he’í -ma voi chupe peteĩ,
+\g Conj 2.Imp-come-Part 1Pl.Incl-play, 2.Imp-come-Part 1Pl.Incl-play, 3.say -Asp FOC 3.Pron one.Subj
+\l And, "Come, we will play cards, come, we will play cards!" one (of them) said to him.
+
+\t O-ho ha’e o-huga.
+\g 3-go 3.Subj 3-play
+\l And he went to play.
+
+\t Ha o-mboguejy la mesa ári la i-kavaju kangue.
+\g Conj 3-put.down Def.Det [Sp] table on Def.Det [Sp] 3.Poss-horse bone.
+\l And he put down on the table his horse bone.
+
+\t Upéi káda huégo o-perde, ha o-só -ma.
+\g Then each game 3-loose, Conj 3-without.money -Asp
+\l Then he lost each game, and he ended with no money.
+
+\t Nd-oi-kuaa-vé-i -ma mba’ére-pa o-hugá-ta. Ha:
+\g Neg-3-know-more-Neg -Asp thing-all 3-play-Prosp. Conj:
+\l He no longer knew what to play for. And:
+
+\t --Ja-huga ko che kavaju kangué-re –he’i la i-ñ-iru-me---;
+\g --1Pl-play Dem 1Pos horse bone-Obl –3.say Def.Det [Sp] 3.Poss-Pref-friend--;
+\l "Let’s play for this horse bone," he said to his friend,
+
+\t Péa-re ja-hugá-ta-rõ mante ja-huga-vé-ta.
+\g Dem-Obl 1Pl.Incl-play-Prosp-Cond FOC 1Pl.Incl-more-Prosp.
+\l If we are going to bet on this, then we can keep playing.
+
+\t --Ja-huga —he’i chupe la ótro.
+\g 1Pl.Incl-play –3.say 3.Pron Def.Det [Sp] other
+\l "Let’s play," the other [guy] said to him.
+
+\t --Mboy huégo-pe-pa?
+\g --How game-Loc-Q
+\l "How many games?"
+
+\t --Ha tanto píka-pe.
+\g Conj as.many win-Loc
+\l "And as many as [I] win."
+
+\t Ha la karia’y o-ñe-moĩ o-perde, o-perde voi.
+\g Conj Def.Det [Sp] guy 3-Refl-put 3-lose 3-lose FOC.
+\l And the guy started to lose and lose.
+
+\t Ha pe o-perde-pa pota-ite jave, o-ñe-mono’õ jey.
+\g Conj Dem 3-lose-Tot about-Superl at.moment, 3-Refl-gather again.
+\l And when he was about to lose, he gathered [the cards] again.
+
+\t Ha o-ño-npata hikuái, ha ka’arú -ma, i-ñembyahýi -ma hikuái.
+\g Conj 3-Rec-tie 3.Pron.Pl, Conj afternoon -Asp, 3Pos-hunger -Asp 3Pl.Subj
+\l And they were tied, and it was already afternoon, and they were hungry.
+
+\t Upé -ma -rõ opi la varáha-gui.
+\g Dem -Asp -Cond, stop Def.Det [Sp] card-from.Prep
+\l Then when they stopped [playing] cards.
+
+\t “la nde kavaju kangué-ngo ña-mombo vaerã mante o-vale,” he’i chupe hikuái.
+\g Def.Det [Sp] 2Sg.Poss horse bone-FOC 1Pl-throw Mod FOC 3-worth, 3.say 3.Pron 3.Pron.Pl
+\l "Your horse bones are useful only to throw them away," they told him.
+
+\t O-pa la huégo, o-jagarra ha’e la i-kavaju kangue,
+\g 3-finish Def.Det [Sp] game 3-grab 3.Subj Def.Det [Sp] 3Pos-horse bone
+\l He finished the game, he grabbed his horse’s bone,
+
+\t ha o-ho h-óga-pe i-patrõ róga-pe nga’u;
+\g Conj 3-go 3.Poss-house-Loc 3Pos-boss house-Loc supposedly
+\l ...and went to his house, or his boss’ house, supposedly.
+
+\t Ha’e oi-ko i-patrõ róga-pe-nte voi ra'e.
+\g 3.Subj 3-exist 3Pos-boss house-Loc-only FOC Evid
+\l He actually lives in his boss’ house, it turns out.
+
+\t O-guahẽ ndaje la óga-pe, ha o-mombó-vo la kosina ekína-pe,
+\g 3-arrive Report.Evid Def.Det [Sp] house-Loc, Conj 3-throw-Simult Def.Det [Sp] kitchen corner-Loc
+\l He arrived, it is said, at the house, and he threw [the bone] in a corner of the kitchen,
+
+\t o-hendu “mbrim!” i-pu la i-kavaju kangue.
+\g 3-hear ‘mbrim!’ 3Pos-sound Def.Det [Sp] 3Pos-horse bone
+\l ...he heard ‘mbrim!, the horse’s bone’s sound.
+
+\t O-ñe-mondýi, o-ho o-gueru machete, oi-karãi pype ha o-juhu o-mimbí:
+\g 3-Refl-fear, 3-go 3-bring machete, 3-scratch Part Conj 3-find 3-shine
+\l He was frightened, he went to bring a machete, he scratched with it and found [something] shining:
+
+\t [nimbo] óro meme-te nimbo ra'e la i-kavaju kangue!
+\g [Part] gold habitually-Superl Part Evid Def.Det [Sp] 3.Poss-horse bone
+\l It was all gold, it turns out, the horse’s bone!
+
+\t Upé-pe ndaje la i-patrõ o-u avei o-hecha ha o-porandu chupe moõ-pa o-juhu:
+\g Dem-Loc Report.Evid Def.Det [Sp] 3.Poss-boss 3-come also 3-see Conj 3-ask 3.Pron where-Q 3-find:
+\l And there, it is said, the boss also came to see and asked him where he had found it [the horse’s bone]:
+
+\t --Kuátro a-juhu kuri peteĩ yvy-kua rembé-re –he’i chupe la karia’y.
+\g Four 1-find Retrosp.Asp. one well border-Obl –3.say 3.Pron Def.Det [Sp] guy.
+\l "Four I found on the border [edge] of the well," the guy told him.
+
+\t --Te-re-ho pya’e [t]e-ru-pa ñandéve umi re-heja vaekue! –he’i chupe la i-patrõ.
+\g Imp-2Sg-go fast [imp] 2-bring-Tot 1Pl.IO that 2Sg-leave vaekue -3.ask 3.Pron Def.Det [Sp] 3.Poss-boss.
+\l "Go fast to bring us all that you left!" his boss said to him.
+
+\t Ha o-ho jeý-rõ guarã la o-gueru-pa haguã,
+\g Conj 3-go again-Cond purpose.Sub Def.Det [Sp] 3-bring-Tot Sub.Irr,
+\l And when he went back to bring it all back,
+
+\t nd-o-juhu-vé-i -ma ni peteĩ la kavaju kangue.
+\g Neg-find-more-Neg -Asp not.even one Def.Det [Sp] horse bone.
+\l ...he no longer found anything, not even one horse’s bone.

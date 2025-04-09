@@ -1,0 +1,175 @@
+\t Ñandu ningo la i-ñ-akuã-vé -va vícho kuéra [mymba-kuéra] apyté-pe
+\g Ostrich FOC Def.Det 3.Poss-fast-more -Rel animal Pl among-Loc
+\l Ostrich is the fastest among the animals,
+
+\t ha hetá-pe upéa nd-o-gustá-i
+\g Conj lots-DAT those Neg-3Pl-like-Neg
+\l and many do not like that.
+
+\t Peteĩ diá-pe o-ño-mongeta joa hína animal kuéra,
+\g One day-Loc 3Pl-Rec-converse together Cont animal Pl
+\l One day the animals were having a conversation,
+
+\t o-hecha haguã máva-pa i-katu o-mo-ha’ã ñandu ndive karréra.
+\g 3Pl-see Sub.Irrealis who-Q 3.Poss-ability 3Sg-TR-play [compete] ostrich with race
+\l to see who could compete in the race with the ostrich.
+
+\t O-guahẽ karumbe avei upé-pe, la ño-mongeta- há-pe.
+\g 3Sg-arrive turtle also there-Loc Def.Det Rec-converse Rel-Loc
+\l The turtle also arrived there, where they were having a conversation.
+
+\t O-hendu hína ha’e avei.
+\g 3Sg-listen Cont 3Sg.Pron.Subj also
+\l She was also listening.
+
+\t O-je-puka-pa voi kuri ha’e o-guahẽ-vo.
+\g 3Pl-Refl-laugh-Compl Emph Perf.Asp 3Sg.Pron.Subj 3Sg-arrive-Temp.Conj
+\l They all laughed when she arrived.
+
+\t Ha upéi-ngo o-sẽ karumbe he’i:
+\g Conj then-FOC 3Sg-go.out turte 3Sg.say
+\l And then the turtle came out and said:
+
+\t ––Che a-ha’ã -ta ñandú-pe la karréra.
+\g ––1Sg.Pron.Subj 1Sg-play -Prosp ostrich-IO Def.Det race
+\l "I will compete with the ostrich at the race."
+
+\t O-ĩ o-puká -va hese, o-ĩ i-pochý -va,
+\g 3Sg-exist 3Sg-laugh -Rel 3Sg.Obl 3Sg-exist 3.Poss-angry -Rel
+\l There were those that laughed at her, those that got angry,
+
+\t ha o-ĩ katu o-hendu-’ỹ-õ guáicha-nte o-hó [va] upé-gui
+\g Conj 3Sg-exit Emph 3Sg-listen-Neg-Cond like-only 3Pl-go [Rel] there-from
+\l and those, as if they hadn’t heard anything, left.
+
+\t Upéi o-guahẽ ñandu apysá-pe upéa,
+\g Then 3Sg-arrive ostrich ear-Loc that
+\l And then that arrived at the ostrich’s ear,
+
+\t ha ijypyrã n-o-pená-i voi hese ha’e.
+\g Conj beginning Neg-3Sg-pay.attention-Neg Emph 3Pl.Pron.Obl 3Sg.Pron.Subj
+\l and at the beginning he did not pay attention.
+
+\t Ha upéi-ngo o-u voi hendá-pe karumbe:
+\g Conj then-FOC 3Sg-come Emph 3.Poss.place-Loc turtle
+\l And then he came to the turtle [to the place where the turtle was]
+
+\t ––Che la a-jeruré -va ndéve ––he’i chupe karumbe
+\g ––1Sg.Pron.Subj Def.Det 1Sg-ask -Rel 2Sg.Pron.IO ––3Sg.say 3Sg.Pron.IO turtle
+\l "What I ask you," the turtle said to him,
+
+\t ––e-me’ẽ chéve tiémpo ta-ñe-ntrena-mi.
+\g ––2Sg.Imp-give 1Sg.Pron.IO time Imp-Refl-train-Dim
+\l "give me time so that I can train a bit."
+
+\t Upéi o-moĩ -ma hikuái la fécha, ha o-ñaní -ta mokõi-ve.
+\g Then 3Pl-put -Asp 3Pl.Pron.Subj Def.Det date Conj 3Pl-run -Prosp two-more
+\l Then they set a date, and the two will be racing.
+
+\t Ha la karréra dia o-guahẽ mboyve,
+\g Conj Def.Det race day 3Sg-arrive before
+\l And before the day of the race arrived,
+
+\t o-ho-pa-ite la karumbe hénte kuéra la káncha-pe.
+\g 3Pl-go-Compl-Superl Def.Det turtle people Pl Def.Det race.field-Loc
+\l all the turtle’s people went to the race field.
+
+\t O-je-kuaa-se maerã-pa.
+\g 3Pl-Refl-know-Des what.for-Q
+\l They wanted to know what for.
+
+\t Upéi-ngo o-guahẽ la ára, ha o-sẽ -ta -ma hikuái.
+\g Then-FOC 3Sg-arrive Def.Det day Conj 3Sg-go.out -Prosp -Asp 3Pl.Pron.Subj
+\l Then the day arrived and everybody was already coming out.
+
+\t Kapi’í-pe ravuku la káncha-pe.
+\g Grass-Loc long Def.Det field-Loc
+\l The grass on the field was long.
+
+\t O-ja karumbe la káncha akã-me ha o-ja aveí ñandu
+\g 3Sg-get.close turtle Def.Det field head-Loc Conj 3Sg-get.close also ostrich
+\l The turtle got close to the head of the field and the ostrich also got close.
+
+\t O-mbo-kapu la hue ha o-ho mokõi-vé -va o-sẽ.
+\g 3Sg-TR-shot Def.Det judge Conj 3Pl-go two-more -Rel 3Pl-go.out
+\l The judge shot and both got started.
+
+\t Ha karumbé-ngo nd-o-je-kuaá-i voi la kapi’í-pe kuápe.
+\g Conj turtle-FOC Neg-3Sg-Refl-know-Neg Emph Def.Det grass-Loc inside
+\l And the turtle could not be seen in the long grass.
+
+\t O-dipara hatã o-ho-vo ñandu,
+\g 3Sg-run strong 3Sg-go-Temp.Conj ostrich
+\l The ostrich went running fast
+
+\t ha oi-kuaa-se mba’é-pa oi-ko karumbé-gui:
+\g Conj 3Sg-know-Des what-Q 3Sg-exist turtle-from
+\l and he wanted to know what happened to the turtle.
+
+\t ––Moõ-pa rei-me ––he’i chupe.
+\g ––where-Q 2Sg-be ––3Sg.say 3Sg.Pron.IO
+\l "Where are you?" he said to her.
+
+\t ––Ápe ai-me ––he’i chupe karumbe, pe mokõi paso há-pe henonde-rã.
+\g ––Here 1Sg-am ––3Sg.say 3Sg.Pron.IO turtle Dem two step Rel-Loc place-Irrealis
+\l "Here I am," the turtle said to him, "two steps away from you."
+
+\t Tuicha-iterei ñandu o-ñe-mondýi, ha upe- -ma hatã-terei-ve o-dipara.
+\g Big-Superl ostrich 3Sg-Refl-frighten Conj then Asp-Cond strong-Superl-more 3Sg-ran
+\l The ostrich got very frightened and then ran even faster.
+
+\t Ha pe o-ho mbyte rupi:
+\g Conj Dem 3Sg-go middle around
+\l And then around midway:
+
+\t ––Moõ-pa rei-me ––he’i jey chupe.
+\g ––Where-Q 2Sg.-exist ––3Sg-say again 3Sg.Pron.IO
+\l "Where are you?" he said to her again.
+
+\t ––Ápe ai-me ––he’i jey avei chupe karumbe,
+\g ––Here 1Sg-be ––3Sg.say again also 3Sg.Pron.IO turtle
+\l "Here I am," she said to him again,
+
+\t ––pe mokõi paso- há-pe henonde-rã.
+\g ––Dem two step- Rel-Loc place-Irrealis
+\l "two steps away from where you are."
+
+\t I-tavý -ta ñandu, o-dipara-pa-ite
+\g 3.Poss-crazy -Prosp ostrich 3Sg-run-Compl-Superl
+\l The ostrich will go crazy, he goes faster
+
+\t ha o-ho o-guahẽ-vo la kancha akã-me
+\g Conj 3Sg-go 3Sg-arrive-Temp.Conj Def.Det field head-Loc
+\l and when it arrived at the head of the field,
+
+\t o-juhu karumbe o-ĩ -ma hína upé-pe.
+\g 3Sg-find turtle 3Sg-be -Asp Cont there-Loc
+\l he found that the turtle was already there.
+
+\t Nimbo ha’e umi i-hénte o-ho va’ekue la karrera- há-pe -rãicha
+\g Part 3Sg.Cop Dem 3.Poss-people 3Sg-go Rel.Distal Def.Det race- Rel-Loc -like
+\l It turned out that her people that had gone to the race,
+
+\t o-moĩ-mba-ite ra'e la káncha puku-kue javeve, pe kapi’í-pe kuápe.
+\g 3Sg-put-Compl-Superl Evid Def.Det field length-Term meanwhile Dem grass-Loc inside
+\l had meanwhile fully positioned themselves along the entire length of the field, inside the grass. [the narrator realizes]
+
+\t Ha káda [vez] ñandu o-porandu ichupe moõ-pa oi-me,
+\g Conj each [time] ostrich 3Sg-ask 3Sg.Pron.IO where-Q 3Sg-exist
+\l And each time that the ostrich asked her where she was,
+
+\t Pe henonde-rã o-ĩ -va -nte o-mbo-hovái chupe.
+\g Dem place-Irrealis 3Sg-exist -Rel -only 3Sg-TR-front 3Sg.Pron.IO
+\l The one that was in front [of the ostrich] was the one who responded.
+
+\t Ha o-jo-jogua-iterei rupi hikuái,
+\g Conj 3Pl-Rec-alike-Superl around 3Pl.Pron.Subj
+\l And all of them looked very much alike,
+
+\t mavave nd-o-pillá-i la oi-kó -va,
+\g nobody Neg-3Sg-find.out-Neg Def.Det 3Sg-exist -Rel
+\l nobody found out what was going on,
+
+\t ha o-gana karumbe ñandú-pe.
+\g Conj 3Sg-win turtle ostrich-Loc
+\l and the turtle won the race.

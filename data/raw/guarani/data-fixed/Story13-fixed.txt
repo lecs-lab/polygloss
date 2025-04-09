@@ -1,0 +1,214 @@
+\t Oñembyatými vaerã ningo yma heta arriéro la ore rógape.
+\m O-ñe-mbyatý-mi vaerã ningo yma heta arriéro la ore róga-pe.
+\g 3-Refl-get.togeter-Dim Mod FOC time.ago many men Def.Det [Sp] 1Pl.Excl.Poss house-Loc
+\l Many men used to get together in our house a long time ago.
+
+\t Oñembyatými vaerã ningo yma heta arriéro la ore rógape.
+\m O-ñe-mbyatý-mi vaerã ningo yma heta arriéro la ore róga-pe.
+\g 3-Refl-get.togeter-Dim Mod FOC time.ago many men Def.Det [Sp] 1Pl.Excl.Poss house-Loc
+\l I had many brothers.
+
+\t Umía la heta ijúntava.
+\m Umía la heta i-júnta-va.
+\g Those Def.Det [Sp] many 3Pos-friend-Rel.
+\l Those did have many friends.
+
+\t Ha ógagui oho jepi hikuái ojo’óvo plátayvyguy
+\m Ha óga-gui o-ho jepi hikuái o-jo’ó-vo pláta-yvy-guy
+\g Conj house-from.Prep 3-go frequently 3.Pron.Pl 3-dig-goal treasure
+\l And they used to leave the house to go dig for treasure...
+
+\t la vía kóstare, márte kue ha viérne kue.
+\m la vía kósta-re, márte kue ha viérne kue.
+\g Def.Det [Sp] road side-Obl Tuesday former Conj Friday former
+\l ...at the side of the road last Tuesday and Friday.
+
+\t Ha Agui la oñembo’árteva.
+\m Ha Agui la o-ñembo’árte-va.
+\g Conj Agustin Def.Det [Sp] 3-did.art-Rel
+\l And Agustin was the one who made art out of it.
+
+\t Ha’e oikuaa aipo tataindy karai remyendy vaerã ha pono
+\m Ha’e oi-kuaa aipo tataindy karai re-myendy vaerã -ha pono
+\g 3Pron 3-know Dem fire blessed 2Sg-light Mod -Sub So.that
+\l He knew that you must light a blessed candle so that neither the owner...
+
+\t la pláta jára ni demonio oguahẽ oñemotie’ỹ.
+\m la pláta jára ni demonio o-guahẽ o-ñe-mo-tie’ỹ.
+\g Def.Det [Sp] money owner nor devil 3-arrive 3-Refl-Caus-fright
+\l ...of the treasure nor the devil appear to frighten (them).
+
+\t Oñemoarandu la otro kuérape Agui,
+\m O-ñe-mo-arandu la otro kuéra-pe Agui,
+\g 3-Refl-Caus-knowledge Def.Det [Sp] other Pl-Loc Agustin,
+\l Agustin was the know-all for the others,
+
+\t ha oho jepi omyendy ha’e la tataindy la yvy.kua kóstare.
+\m ha o-ho jepi o-myendy ha’e la tataindy la yvy.kua kósta-re.
+\g Conj 3-go frequently 3-light 3Pro Def.Det [Sp] candle Def.Det [Sp] hole side-Obl
+\l and frequently he went to light the candle near the hole.
+
+\t Siéte tataindy omyendy la umi otro osonda ha ojo’o aja.
+\m Siéte tataindy o-myendy la umi otro o-sonda ha o-jo’o aja.
+\g Seven candles 3-light Def.Det [Sp] Dem others 3-search Conj 3-dig while.
+\l He lit seven candles while the others searched and dug.
+
+\t Ha Agui oñembo’e la tataindy rendýpe hína, mombyrymi la viágui.
+\m Ha Agui o-ñembo’e la tataindy rendý-pe hína, mombyry-mi la viá-gui.
+\g Conj Agustin 3-pray Def.Det [Sp] candle lit-Loc Emph, far-Dim Def.Det [Sp] road-from.Prep
+\l And Agustin was praying with the lit candles, a little away from the road.
+
+\t Upéi nimbo ou hína ra'e heta kavaju arigua la pueblogui, la vía yképe.
+\m Upéi nimbo o-u hína ra'e heta kavaju ari-gua la pueblo-gui, la vía yké-pe.
+\g After Part 3-come Cont Evid many horses on-source Def.Det [Sp] town-from.Prep Def.Det [Sp] train-rail side-Loc.
+\l Then it turns out many were coming on horse-back from the town, at the side of the road.
+
+\t Ha Agui ohendu la kavaju pyambu ha la oñe’ẽva oúvo.
+\m Ha Agui o-hendu la kavaju py-ambu ha la o-ñe’ẽ-va o-ú-vo.
+\g Conj Agustin 3-hear Def.Det [Sp] horse foot-noise Conj Def.Det [Sp] 3-say-Rel 3-come-Simul
+\l And Agustin heard horse’s hoof and of some that were talking as they came.
+
+\t Ha’e okyhyjetereive umi otrogui.
+\m Ha’e o-kyhyje-terei-ve umi otro-gui.
+\g 3Pro 3-fear-Superl-more Dem other-from.Prep
+\l He was much more afraid than the others.
+
+\t Upépe ha’e hatãve oñembo’e pórke oimo’ã la Mariskal Lópe ehérsito ma la oñembojáva hese ohóvo.
+\m Upé-pe ha’e hatã-ve o-ñembo’e pórke oi-mo’ã la Mariskal Lópe ehérsito -ma la o-ñe-mbojá-va hese o-hó-vo.
+\g There-Loc 3.Pro strong-more 3-pray because 3-believe Def.Det [Sp] Mariscal Lopez troop -Asp Def.Det [Sp] de-Refl-get.close-Rel 3Pro.Obl 3-go-Simult
+\l There he prayed more strongly because he thought that the troops of Mariscal Lopez were getting close to them.
+
+\t Heta la kavaju arigua ou opyta peteĩ ráha atýra rovái,
+\m Heta la kavaju ari-gua o-u o-pyta peteĩ ráha atýra rovái,
+\g Many Def.Det [Sp] horse on-source 3-come 3-stay one slits pile front,
+\l Many riders came to stop in front of the firewood pile.
+
+\t okirirĩmba ha omaña hikuái la tataindy hendy joáva hína rehe.
+\m o-kirirĩ-mba ha o-maña hikuái la tataindy hendy joá-va hína rehe.
+\g 3-silent-all Conj 3-look 3.Pron.Pl Def.Det [Sp] fire light together-Rel Cont. Obl.P.
+\l Everyone kept silent and looked at the bunch of lit candles.
+
+\t Ndoikuaái mba’épa la oikóva upépe.
+\m Nd-oi-kuaái mba’é-pa la oi-kó-va upé-pe.
+\g Neg-3-know what-Q Def.Det [Sp] 3-exist-Rel there-Loc
+\l They did not know what was happening there.
+
+\t Ohecha la karai’imi oñesῦva hína la tataindy kuéra renondépe.
+\m O-hecha la karai’i-mi o-ñesῦ-va hína la tataindy kuéra renondé-pe.
+\g 3-saw Def.Det [Sp] men-Dim 3-kneel-Rel Cont. Def.Det [Sp] candle Pl in.front.of-Loc
+\l They saw a guy that was kneeling in front of the candles.
+
+\t Okyhyje avei hikuái la ohechávagui; oimo’ã hikuái plátayvyguy ra'e.
+\m O-kyhyje avei hikuái la o-hechá-va-gui; oi-mo’ã hikuái pláta-yvy-guy ra'e.
+\g 3-fear also 3.Pron.Pl Def.Det [Sp] 3-see-Rel-from.Prep; 3-believe 3Pl.Subj hidden.treasure Evid
+\l They were also very afraid of what they saw; they believed that it was the hidden treasure (they realized).
+
+\t Ha upéi pe ijapytéguikuéra osẽ peteĩ ojagarra la ráha pehẽngue guasu,
+\m Ha upéi pe ijapyté-gui-kuéra o-sẽ peteĩ o-jagarra la ráha pehẽ-ngue guasu,
+\g Conj then Dem middle-from.Prep-Pl 3-come.out one 3-grab Def.Det [Sp] log piece-former big
+\l And from among them one came out and grabbed a big piece of log,
+
+\t ha opoi la tataindy hendy ha gotyo: Ple! [sound]
+\m ha o-poi la tataindy hendy -ha gotyo: Ple! [sound]
+\g Conj 3-threw Def.Det [Sp] candle lit -Nom towards Ple! [sound]
+\l and he threw it towards where the lit candles were: ple!
+
+\t Ndaje peteĩ garróte opoi José Domingo –upéicha héra peteïva la kavaju arigua ra'e –la Agui oĩ ha ypyeté pe.
+\m Ndaje peteĩ garróte o-poi José Domingo –upéicha héra peteï-va la kavaju ari-gua ra'e –la Agui oĩ -ha ypy-eté -pe.
+\g Report.Evid one big.stick 3-throw José Domingo –that.way name one-Rel Def.Det [Sp] horse on-Loc Evid -Def.Det [Sp] Agustin 3-exit -Rel.Loc close-Superl -Loc
+\l It is said that José Domingo threw a big stick –that was the name of one of those coming on horseback, it turns out - right next to where Agui was.
+
+\t Ha upépe ndaje Agui ho’aite vera voi, ijatáke.
+\m Ha upé-pe ndaje Agui ho’a-ite vera voi, i-j-atáke.
+\g Conj there-Loc Report.Evid Agustin 3.fall-Superl suddenly FOC, 3-Refl-attack
+\l And there it is said that Augustin suddenly fell, he had an attack.
+
+\t Ha la kavaju ariguakuéra ohasapa.
+\m Ha la kavaju ari-gua-kuéra o-hasa-pa.
+\g Conj Def.Det [Sp] horse on-source-Pl 3-pass-all
+\l And those on horseback all passed on.
+
+\t Upéi ndaje la Agui irῦnguéra ou ojuhu chupe ojepyso hína la tataindy kuéra renondépe.
+\m Upéi ndaje la Agui irῦ-nguéra o-u o-juhu chupe o-jepyso hína la tataindy kuéra renondé-pe.
+\g Then Report.Evid Def.Det [Sp] Agustin friend-Pl 3-come 3-find 3.Pron 3-extended Cont Def.Det [Sp] candle Pl front.of-Loc
+\l And then it is said that Augustin’s friends came and found him lying down in front of the candles.
+
+\t Ijatake ndaje, sin poder ogueruve la ipytu ni mba’eve.
+\m I-j-atake ndaje, sin poder o-gueru-ve la i-pytu ni mba’eve.
+\g 3.Poss-Refl-attack Report.Evid, without Mod 3-bring-more Def.Det [Sp] breath nor nothing
+\l With his attack, they say, without being able to recover his breath or anything.
+
+\t Ha upépe opoipa mante iñ.irῦnguéra la pláta jehekágui,
+\m Ha upé-pe o-poi-pa mante i-ñ.irῦ-nguéra la pláta je-heká-gui,
+\g Conj there-Loc 3-let.go-tot after.all 3Pos-friend-Pl Def.Det [Sp] money pass-search-from.Prep
+\l And there his friends stopped looking for the treasure,
+
+\t ha ohupi hikuái Aguípe ogueraha chupe la mama rógape.
+\m ha o-hupi hikuái Aguí-pe o-gueraha chupe la mama róga-pe.
+\g Conj 3-pick.up 3.Pron.Pl Agustin-DOM 3-take 3.Pron Def.Det [Sp] mother house-Loc
+\l ...and they picked Agustin up and they took him to his mother’s house. [narrator’s mother’s house]
+
+\t Ha nimbo ha’e ndokéi voi hína ra'e.
+\m Ha nimbo ha’e nd-o-ké-i voi hína ra'e.
+\g Conj Part 3Pron.Subj Neg-3-sleep FOC Cont Evid
+\l And it turns out that he wasn’t sleeping.
+
+\t Ohendu la oñe’ẽ joáva portónpe:
+\m O-hendu la o-ñe’ẽ joá-va portón-pe:
+\g 3-hear Def.Det [Sp] 3-speak-on.top-Rel gate-Loc
+\l She heard those that were speaking (all at the same time) by the gate:
+
+\t Peavríke ija haguã –ohendu he’írõ peteĩ.
+\m --Pe-avrí-ke i-ja haguã –o-hendu he’í-rõ peteĩ.
+\g --Imp.2Pl-open-Imp 3Pos.enter Sub.Purp --3-hear 3.say-Cond one.
+\l "Open up so we can go in," she heard when one (of them) say.
+
+\t Peñeprendeporãke, háke che chepoíta chugui! he’i otro.
+\m --Pe-ñe-prende-porã-ke, háke che che-poí-ta chu-gui! --he’i otro.
+\g --Imp.2Pl-Refl-catch-well-Imp, watch.out 1Pron 1Sg-let.go-Prosp 3Pro-of --3.say another
+\l "Catch him well, watch out, I am about to let him go," said another.
+
+\t Ha mama oimo’ã la pláta tuichaitereíva ryru ra'e la ogueraháva hína hikuái.
+\m Ha mama oi-mo’ã la pláta tuicha-itereí-va ryru ra'e la o-guerahá-va hína hikuái.
+\g Conj mother 3-believe Def.Det [Sp] money big-too.much-Rel container Evid Def.Det [Sp] 3-take-Rel Cont 3.Pron.Pl
+\l And mother believed that it was the very big container that was the thing they were carrying.
+
+\t Ha ogueru la oguerúva omoinge hikuái ha omboguejy peteĩ vánko puku ári.
+\m Ha o-gueru la o-guerú-va o-moinge hikuái ha o-mboguejy peteĩ vánko puku ári.
+\g Conj 3-bring Def.Det [Sp] 3-bring-Rel 3-put.in 3.Pron.Pl Conj 3-put.down one bench long on
+\l And they brought what they had, they put it in and lowered it onto a long bench.
+
+\t “Visshh!” he’i, ikane’õ hikuái.
+\m “Visshh!” he’i, i-kane’õ hikuái.
+\g Shh, 3.say, 3-tire 3.Pron.Pl
+\l "Shh!" they said, tired.
+
+\t Perúiko! –he’i ndaje chupekuéra mama.
+\m --Pe-rú-iko! –he’i ndaje chupe-kuéra mama.
+\g --3Pl-bring-Imp --3.say Report.Evid 3.Pron-Pl mother
+\l "They brought it," it is said that mother said.
+
+\t Ha lo mitakaria’y oimo’ã oikuaá ma mama ra'e la ojehu vaekue Aguípe.
+\m Ha lo mitakaria’y oi-mo’ã oi-kuaá -ma mama ra'e la o-jehu vaekue Aguí-pe.
+\g Conj Def.Det [Sp] guys 3-believe 3-know -Asp mother Evid Def.Det [Sp] 3-happen Temp.Distal Augustin.DOM
+\l And the guys suspected that mother already knew what had happened to Agustin.
+
+\t Rogueru, apéna ite orepu’aka hese! –he’i chupe hikuái.
+\m --Ro-gueru, apéna ite ore-pu’aka hese! –he’i chupe hikuái.
+\g --1Pl.Excl-bring, as.soon Superl 3Pl.Poss-strength 3Pro.Obl --3.say 3.Pron 3.Pron.Pl
+\l "We brought him, as soon as we had strength for him," they said (to her).
+
+\t Imposívle! –he’i ndaje mama —hasypeve piko pesẽ chupe,
+\m --Imposívle! –he’i ndaje mama —hasy-peve piko pe-sẽ chupe--,
+\g --Impossible --3.say Report.Evid mother –3.difficult.after Expr 2Pl-go.out 3.Pron
+\l "Impossible!" it is said that mother said, "finally you got it out."
+
+\t Ha opu’ã omyendy la lámpara,
+\m Ha o-pu’ã o-myendy la lámpara,
+\g Conj 3-got.up 3-light Def.Det [Sp] lamp
+\l And she got up to light the lamp,
+
+\t ha osẽvo la okẽme otopa Agui morotĩ sakã la hova hína la vánko áripe.
+\m ha o-sẽ-vo la okẽ-me o-topa Agui morotĩ sakã la hova hína la vánko ári-pe.
+\g Conj 3-go.out-Simult Def.Det [Sp] door-Loc 3-found Agui white transparent Def.Det [Sp] face Emph Def.Det [Sp] bench on-Loc
+\l ...and as she went to the door she found Agustin with a pale face.

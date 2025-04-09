@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Lato", sans-serif}
+h1,button {font-family: "Montserrat", sans-serif}
+.w3-bar {font-family: "Montserrat", sans-serif;
+align-items: center; background-color: white;}
+
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  text-align:center;
+}
+
+.navbar a {
+  float: left; 
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  text-align:center;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+td {
+	white-space: wrap;
+}
+
+.dropdown .dropbtn {
+  font-size: 18px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  font-family: "Montserrat", sans-serif
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: whitesmoke;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  background-color: white;
+
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  background-color: whitesmoke;
+}
+
+.dropdown-content a:hover {
+  background-color: whitesmoke;
+  font-family: "Montserrat", sans-serif
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+        #MyTable{
+            border: 1px solid black;
+        }
+        #MyTable td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+        .parentCell{
+            position: relative;
+        }
+        .tooltip{
+            display: none;
+            position: absolute; 
+            z-index: 100;
+            border: 1px;
+            background-color: white;
+            border: 1px solid green;
+            padding: 3px;
+            color: green; 
+            top: 20px; 
+            left: 20px;
+        }
+        .parentCell:hover span.tooltip{
+            display:block;
+        }
+
+</style>
+	<title>Story #11</title>
+	<link rel="stylesheet" type="text/css" href="cssstory1/style.css">
+</head>
+
+<body>
+
+
+	<!-- Header -->
+	<header class="w3-center" style="color:#40B5AD; background-color: #40B5AD; padding-top:115px; padding-bottom: 8px;" id="main">
+		<h1 style="color: white; font-weight: bold; font-size: 45px;">Guarani Corpus</h1>
+		<p class="w3-large" style="color: black">Funded by NSF BCS-1917619</p>
+		<button class="w2-button w3-black" style="font-size: 12px; padding-bottom: 2px">Glossed, translated, and annotated by Maria Luisa Zubizarreta<br>Web Designers: Abigail Jarvis and Claire Benet Post</button>
+	</header>
+
+	  
+	<!-- Navbar -->
+	<div class="w3-top">
+		<div class = "w3-bar" style="background-color:#40B5AD">
+	
+		  
+			<div class="w3-navbar" style="background-color: #40B5AD; display: flex; justify-content: space-around; list-style-type: none;">
+				<div class="w3-left-align w3-large">
+					<a class="w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-light-grey w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"></a>
+					<a href="index.html" style="color:white" class="w3-button w3-padding-large w3-hover-light-grey">Home</a>
+				</div>
+			
+				<div class="dropdown">
+					<button class="dropbtn w3-hover-light-grey">Glossed Stories 
+					<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content w3-small">
+						<a href="Story1.html">Story #1</a>
+						<a href="Story2.html">Story #2</a>
+						<a href="Story3.html">Story #3</a>
+						<a href="Story4.html">Story #4</a>
+						<a href="Story5.html">Story #5</a>
+						<a href="Story6.html">Story #6</a>
+						<a href="Story7.html">Story #7</a>
+						<a href="Story8.html">Story #8</a>
+						<a href="Story9.html">Story #9</a>
+						<a href="Story10.html">Story #10</a>
+						<a href="Story11.html">Story #11</a>
+						<a href="Story12.html">Story #12</a>
+						<a href="Story13.html">Story #13</a>
+						<a href="Story14.html">Story #14</a>
+						<a href="Story15.html">Story #15</a>
+					</div>
+				</div>
+			
+			
+					<div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Search by Morpheme 
+							<i class="fa fa-caret-down"></i>
+						</button>
+					<div class="dropdown-content">
+						<a href="Subordinator 'ha'.html">ha (Subordinator)</a>
+						<a href="Locational Relative Pronoun 'ha'.html">há(-pe), há(-gui) (Locational Relativizer)</a>
+						<a href="Irrealis 'ha' Subordinator.html">haguã (Irrealis Subordinador)</a>
+						<a href="'hague' Terminative Subordinador.html">hague (Terminative Subordinador)</a>
+						<a href="Nominalizer 'ha'.html">ha (Nominalizer)</a>
+						<a href="Past Morpheme 'kuri'.html">kuri (Retrospective Aspect)</a>
+						<a href="va'ekue-akue distal perfect aspect.html">va'ekue/akue (Distal Aspect)</a>
+						<a href="va'ekue-akue relative distal.html">va'ekue/akue (Relative Distal)</a>
+						<a href="Progressive Morpheme 'ina' Inflections.html">hína (Continuative Aspect / Focalizer)</a>
+						<a href="-ta 'Prospective Aspect'.html">-ta (Prospective Aspect)</a>
+						<a href="-ma 'Already'.html">-ma (Aspect/Focalizer)</a>
+						<a href="Relativizer 'va'.html">-va (Relativizer)</a>
+						<a href="Focalizer Particle 'voi'.html">voi (Focalizer Particle)</a>
+						<a href="Ra'e Evidential.html">ra'e (Indirect Evidential)</a>
+						<a href="'Ndaje_-je' Reportative Evidential.html">ndaje/je (Reportative Evidential)</a>
+						<a href="Overt Direct Object Pronoun.html">Overt DO Pronoun</a>
+						<a href="Covert Direct Object Pronoun.html">Covert DO pronoun</a>
+					</div>
+					</div>
+
+
+                    <div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Children's Narratives 
+						<i class="fa fa-caret-down"></i>
+						</button>
+					<div class="dropdown-content w3-small">
+						<a href="ChildrensNarrativesAge4.html">4 Years Old</a>
+						<a href="ChildrensNarrativesAge5.html">5 Years Old</a>
+						<a href="ChildrensNarrativesAge6.html">6 Years Old</a>
+						<a href="TeacherNarratives.html">Teachers</a>
+					</div>
+					</div>
+	
+					<a href="Additional Resources.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Additional Resources</a>
+				<a href="Publications.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Publications</a>
+
+				<!--Side Menu-->
+				<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-border w3-light-grey" style="width:180px;right:0" id="mySidebar">
+					
+					<button class="w3-bar-item w3-button w3-large w3-black"
+					onclick="w3_close()">Hide &times;</button> 
+                        <h5 class="w3-bar-item">Gloss Abbreviations</h5>
+                        <h5 class="w3-bar-item">Gloss Abbreviations</h5>
+					    <a class="w3-bar-item">Asp = Aspect</a>
+                        <a class="w3-bar-item">Compl = Completitive</a>
+						<a class="w3-bar-item">Conj = Conjunction</a>
+						<a class="w3-bar-item">Cont = Continuitive</a>
+						<a class="w3-bar-item">Def = Definite</a>
+						<a class="w3-bar-item">Dem = Demonstrative Pronoun</a>
+						<a class="w3-bar-item">Des = Deserative</a>
+						<a class="w3-bar-item">Det = Determiner</a>
+						<a class="w3-bar-item">Dim = Diminuitive</a>
+						<a class="w3-bar-item">DO = Direct Object</a>
+						<a class="w3-bar-item">DOM = Direct Object Marker</a>
+						<a class="w3-bar-item">Emph = Emphasis</a>
+						<a class="w3-bar-item">Evid = Evidential</a>
+						<a class="w3-bar-item">Excl = Exclusive</a>
+						<a class="w3-bar-item">FOC = Focus</a>
+						<a class="w3-bar-item">Fut = Future Tense</a>
+						<a class="w3-bar-item">Incl = Inclusive</a>
+						<a class="w3-bar-item">IO = Indirect Object</a>
+						<a class="w3-bar-item">Irr = Irrealis Mood</a>
+						<a class="w3-bar-item">Loc = Locative</a>
+						<a class="w3-bar-item">Mod = Modal</a>
+						<a class="w3-bar-item">Nom = Number</a>
+						<a class="w3-bar-item">Neg = Negation</a>
+						<a class="w3-bar-item">Obl = Oblique</a>
+						<a class="w3-bar-item">Part = Participle</a>
+						<a class="w3-bar-item">Pl = Plural</a>
+						<a class="w3-bar-item">Port = Portmanteau morpheme (1P Subj and 2PObj)</a>
+						<a class="w3-bar-item">Poss = Possesive</a>
+						<a class="w3-bar-item">Prep = Preposition</a>
+						<a class="w3-bar-item">Pron = Pronoun</a>
+						<a class="w3-bar-item">Prosp = Prospective Aspect</a>
+						<a class="w3-bar-item">Q = Question</a>
+						<a class="w3-bar-item">Rec = Reciprocal</a>
+						<a class="w3-bar-item">Refl = Reflexive</a>
+						<a class="w3-bar-item">Rel = Relative Marker</a>
+						<a class="w3-bar-item">Rog = Rogative</a>
+						<a class="w3-bar-item">Sg = Singular</a>
+						<a class="w3-bar-item">Simult = Simultaneous</a>
+						<a class="w3-bar-item">[Sp] = Spanish Origin</a>
+						<a class="w3-bar-item">Sub = Subordinate </a>
+						<a class="w3-bar-item">Subj = Subject </a>
+						<a class="w3-bar-item">Superl = Superalitive</a>
+                        <a class="w3-bar-item">Temp = Temporal Conjunction</a>
+                        <a class="w3-bar-item">Term = Termantive</a>
+						<a class="w3-bar-item">1 = First Person</a>
+						<a class="w3-bar-item">2 = Second Person</a>
+						<a class="w3-bar-item">3 = Third Person</a>
+						<a class="w3-bar-item">[] = Dropped Morpheme</a>
+						<a class="w3-bar-item">. = One morpheme encodes multiple meaning pieces</a>
+						<a class="w3-bar-item">- = Morphemic constituents of a word</a>
+				</div>
+				<!-- clickable gloss menu-->
+				<div style="color:#40B5AD">
+					<button id="openNav" class="w3-button w3-large w3-right" style="color:black; margin-top:10px; background-color:#40B5AD; margin-right:10px"onclick="w3_open()"> Gloss Menu &#9776;</button>
+				</div>
+			</div>
+    	</div>
+	</div>
+		
+	<div class="w3-container w3-teal">
+		<div class="w3-main" id="main">
+			<div class="w3-teal">
+				<div class="w3-container">
+					<h2>Story #11</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</body>	  
+		
+		
+<body>
+	<div class="w3-container" id="mainText">
+		<div class="w3-container">
+			<section id="firstline">
+				<h1 class="parentCell" style="padding-top: 12px; padding-bottom: 19px; padding-right: 12px; width: 1000px;;">Peru ikuaãirũ de virtu ramo guare</h1>
+			</section>
+		</div>
+		<div class="w3-container" style="padding-top: 18px; width: 1000px">
+			<section id="title" >
+				<h3>'When Peru Had His Ring of Virtue'</h3>
+				<h3>'Cuando Peru tenía su anillo de virtud'</h3>
+			</section>
+		</div>
+	</div>
+	<hr>
+	<body>
+		<div class="w3-container">
+			<div class="gloss">
+				<p>Hover over Guaraní morphemes written in purple to see their syntactic function.</p>
+			</div>
+
+
+
+			<div class="gloss">
+				<p>Audio for Story #11:</p>
+				<iframe src="https://drive.google.com/file/d/1Gu_3xAiFQ7hjFKtu3vQ6n4kpWOqU0TdB/preview" width="450" height="70" allow="autoplay"></iframe>
+			</div>
+
+			<hr>
+			<table>
+				<thead>
+					<tr>
+						<td>Petẽi</td>
+						<td>mbói</td>
+						<td>áripi</td>
+						<td>o-hasa</td>
+						<td>peteĩ</td>
+						<td>karréta</td>
+						<td>ha</td>
+						<td>oi-ku’a</td>
+						<td>mopẽ</td>
+						<td>chupe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>One</td>
+						<td>snake</td>
+						<td>on.top</td>
+						<td>3-pass</td>
+						<td>one</td>
+						<td>wagon</td>
+						<td>Conj</td>
+						<td>3-middle</td>
+						<td>break</td>
+						<td>3.Pron</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">A wagon passed on top of a snake and broke it in half.</p>
+				<p style="color:#CD5C5C">Sobre una víbora pasó una carreta y le trozó la cintura.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>upéi</td>
+						<td>o-u</td>
+						<td>Peru</td>
+						<td>o-juhu</td>
+						<td>la</td>
+						<td>mbói</td>
+						<td>o-padese</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#hina 29">hína<span class="tooltip">Continuative/Emphasis</span></div></a></td>
+						<td>upé-pe,</td>
+						<td>o-japajeréi</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#hina 29">hína.<span class="tooltip">Continuative/Emphasis</span></div></a></td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>then</td>
+						<td>3-come</td>
+						<td>Peru</td>
+						<td>3-find</td>
+						<td>Def.Det [Sp]</td>
+						<td>snake</td>
+						<td>3-suffering</td>
+						<td>Cont/Emph</td>
+						<td>there-Loc</td>
+						<td>3-wallow</td>
+						<td>Cont/Emph</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And then Peru came to find a snake that was suffering there and was wallowing.</p>
+				<p style="color:#CD5C5C">Y después Peru vino a encontrar a la víbora que estaba padeciendo ahí [y] se estaba revolcando.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+							<td>Ha</td>
+						<td>o-hasa-vé-ta</td>
+						<td>otro</td>
+						<td>karréta</td>
+						<td>hi’áripi</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#hina 30">hína.<span class="tooltip">Emphasis on 'hi’áripi’</span></div></a></td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-pass-more-Prosp</td>
+						<td>another</td>
+						<td>wagon</td>
+						<td>3-on.top</td>
+						<td>Emph</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And that another wagon more will pass on top of him.</p>
+				<p style="color:#CD5C5C">Y que le pasará encima otra carreta más.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>upé</td>
+						<td style="font-weight:bold; color:#990099">-ma</td>
+						<td>-rõ</td>
+						<td>Peru</td>
+						<td>o-ja</td> 
+						<td>hese</td>
+						<td>ha:</td>
+						<td>“Aichéjaranga</td>
+						<td>ko</td>
+						<td>mbói,”</td>
+						<td>he’i,</td>
+						<td>“o-ĩ</td>
+						<td>vai</td>
+						<td>eterei</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#hina 31">hína.”<span class="tooltip">Emphasis on superlative</span></div></a></td>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Dem</td>
+						<td>-Asp</td>
+						<td>-Cond</td>
+						<td>Peru</td>
+						<td>3-get.close</td>
+						<td>3.Obl</td>
+						<td>Conj:</td>
+						<td>“Poor.thing</td>
+						<td>Dem</td>
+						<td>snake,"</td>
+						<td>3-say,</td>
+						<td>“3-exist</td>
+						<td>badly</td>
+						<td>Superl</td>
+						<td>Emph.”</td>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And then Peru got closer to it: “Poor thing, this snake,” he said, “it is doing very badly.”</p>
+				<p style="color:#CD5C5C">Y entonces ya Peru sea acerca a él: “Pobrecito, esta víbora,” dijo, “está muy mal.”</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>o-gerrea</td>
+						<td>mbegue</td>
+						<td>katu</td>
+						<td>hese,</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-fight</td>
+						<td>slowly</td>
+						<td>FOC</td>
+						<td>3.Obl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And he slowly fought with it,</p>
+				<p style="color:#CD5C5C">Y guerreó despacito con él,</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>o-moinge</td>
+						<td>iguý-pe</td>
+						<td>peteĩ</td>
+						<td>garróte,</td>
+						<td>o-mboguapy</td>
+						<td>porã,</td>
+						<td>pasiénsia-pe</td>
+						<td>o-hupi</td>
+						<td>chupe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-put</td>
+						<td>3.Poss-under-Loc</td>
+						<td>one</td>
+						<td>stick</td>
+						<td>3-sit</td>
+						<td>well,</td>
+						<td>patience-Loc</td>
+						<td>3-lift</td>
+						<td>3.Pron</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">...he put a stick under it, he sat it down, and with patience lifted it.</p>
+				<p style="color:#CD5C5C">...puso debajo [de la víbora] un garrote [un palo], le sentó bien, con paciencia le alzó.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Oi-pe’a</td>
+						<td>chupe</td>
+						<td>la</td>
+						<td>tapé-gui.</td>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-take.out</td>
+						<td>3.Pron</td>
+						<td>Def.Det [Sp]</td>
+						<td>trail-from.Prep</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">He removed it from the trail.</p>
+				<p style="color:#CD5C5C">Lo sacó del camino.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Upéi</td>
+						<td>o-ho</td>
+						<td>o-juhu</td>
+						<td>peteĩ</td>
+						<td>takuru</td>
+						<td>i-kuáva</td>
+						<td>ha</td>
+						<td>o-moinge</td>
+						<td>hakykuévo</td>
+						<td>upépe</td>
+						<td>la</td>
+						<td>mbói-pe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Then</td>
+						<td>3-go</td>
+						<td>3-find</td>
+						<td>one</td>
+						<td>ant.hill</td>
+						<td>3.Poss-hole</td>
+						<td>Conj</td>
+						<td>3-put</td>
+						<td>behind</td>
+						<td>there-Loc</td>
+						<td>Def.Det [Sp]</td>
+						<td>snake-DO</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">Then he went and found an anthill with a hole and put the snake there behind it.</p>
+				<p style="color:#CD5C5C">Después se fue a encontrar un hormiguero con agujero y le metió ahí detrás a la víbora.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Mbegue</td>
+						<td>katu</td>
+						<td>o-myaña,</td>
+						<td>huguái</td>
+						<td>o-mondo</td>
+						<td>la</td>
+						<td>takuru-kuá-pe</td>
+						<td>chupe,</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Slowly</td>
+						<td>FOC</td>
+						<td>3-push,</td>
+						<td>tail</td>
+						<td>3-send</td>
+						<td>Def.Det [Sp]</td>
+						<td>ant.hill-end-Loc</td>
+						<td>3.Pron</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">Slowly he pushed it, sending the tail to the end of the anthill,</p>
+				<p style="color:#CD5C5C">Lentamente le empujó, la cola mandó al fondo del hormiguero,</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>ha</td>
+						<td>o-heja</td>
+						<td>la</td>
+						<td>i-ñakãmi,</td>
+						<td>o-maña</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">haguã,<span class="tooltip">Irrealis Subordinator 'ha'</span></div></td>
+						<td>la</td>
+						<td>i-kua</td>
+						<td>rokẽ-me.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-leave</td>
+						<td>Def.Det [Sp]</td>
+						<td>3Pos-head-Dim,</td>
+						<td>3-look</td>
+						<td>Sub.Purp,</td>
+						<td>Def.Det [Sp]</td>
+						<td>3Pos-hole</td>
+						<td>entrance-Loc</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">...and he left her head out [in the entrance hole] so it could look out.</p>
+				<p style="color:#CD5C5C">...y le dejó la cabecita afuera [en el agujero de la entrada] para mirar.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>o-hó-ta-vo</td>
+						<td>Peru,</td>
+						<td>la</td>
+						<td>mbói</td>
+						<td>he’i</td>
+						<td>chupe:</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-go-Prosp-Simult</td>
+						<td>Peru,</td>
+						<td>Def.Det [Sp]</td>
+						<td>snake</td>
+						<td>3.say</td>
+						<td>3.Pron</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And when Peru was going to leave, the snake said to him:</p>
+				<p style="color:#CD5C5C">Cuando Peru se iba a ir, la víbora le dijo:</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--E-[gue]ru</td>
+						<td>pe</td>
+						<td>ne</td>
+						<td>kuã</td>
+						<td>ha</td>
+						<td>e-moi-nge</td>
+						<td>pe</td>
+						<td>che</td>
+						<td>jurú-pe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>2.Imp-bring</td>
+						<td>Dem</td>
+						<td>2Sg.Poss</td>
+						<td>finger</td>
+						<td>Conj</td>
+						<td>2.Imp-put-FOC</td>
+						<td>dem</td>
+						<td>1Sg.Poss</td>
+						<td>mouth-Loc</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">Bring your finger and put it in my mouth.</p>
+				<p style="color:#CD5C5C">Trae tu dedo y lo mete en mi boca.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Añá-mona,</td>
+						<td>che-su’u</td>
+						<td>mba’e!</td>
+						<td>–he’i</td>
+						<td>chupe</td>
+						<td>Peru.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Devil-Part,</td>
+						<td>1Sg.Obj-bite</td>
+						<td>what</td>
+						<td>–3.say</td>
+						<td>3.Pron</td>
+						<td>Peru</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">“What the devil, you will bite me or what!” said Peru to him.</p>
+				<p style="color:#CD5C5C">¡Al diablo, me has de morder! –le dijo Peru.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Nahániri,</td>
+						<td>ndo-roi-su’u</td>
+						<td>mo’ãi.</td>
+						<td>E-mbou</td>
+						<td>katu</td>
+						<td>la</td>
+						<td>ne</td>
+						<td>kuã.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>No,</td>
+						<td>Neg-1Sg.2O-bite</td>
+						<td>Neg.</td>
+						<td>2.Imp.pass</td>
+						<td>FOC</td>
+						<td>Def.Det [Sp]</td>
+						<td>2Sg.Poss</td>
+						<td>finger</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"No, I will not bite you. Pass me your finger."</p>
+				<p style="color:#CD5C5C">“No, no te voy a morder. Pasame si que tu dedo.”</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Che-su’ú-ne</td>
+						<td>–he’i</td>
+						<td>jey</td>
+						<td>chupe</td>
+						<td>Peru.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>1.Obj-bite-Mod</td>
+						<td>–3.say</td>
+						<td>again</td>
+						<td>3.Pron</td>
+						<td>Peru</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"You might bite," Peru said to him again.</p>
+				<p style="color:#CD5C5C">--Me has de morder—le volvió a decir Peru.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--E-mbou</td>
+						<td>katu,</td>
+						<td>anive</td>
+						<td>rekyhyje.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>2.Imp-pass</td>
+						<td>FOC,</td>
+						<td>Neg</td>
+						<td>be.afraid</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"Pass me your finger, don’t be afraid."</p>
+				<p style="color:#CD5C5C">"Pasame si que, no tengas miedo."</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ne-mbovy’a</td>
+						<td>va’erã-ko</td>
+						<td>o-ĩ</td>
+						<td>che-jurú-pe</td>
+						<td>–he’i</td>
+						<td>chupe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>2Sg-happy</td>
+						<td>Mod-FOC</td>
+						<td>3-exist</td>
+						<td>1Sg.Poss-mouth-Loc</td>
+						<td>–3.say</td>
+						<td>3.Pron</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"What I have in my mouth will make you happy," he said to him.</p>
+				<p style="color:#CD5C5C">Te va alegrar lo que hay en mi boca –le dijo.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>pe</td>
+						<td>tre</td>
+						<td>vése</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">hápe,<span class="tooltip">Locational Relative Pronoun 'ha'</span></div></td>
+						<td>o-po’ẽ</td>
+						<td>Peru</td>
+						<td>la</td>
+						<td>mbói</td>
+						<td>jurú-pe</td>
+						<td>ha,</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Dem</td>
+						<td>three</td>
+						<td>times</td>
+						<td>Loc,</td>
+						<td>3-hand</td>
+						<td>Peru</td>
+						<td>Def.Det [Sp]</td>
+						<td>snake</td>
+						<td>mouth-Loc</td>
+						<td>Conj,</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And on the third time, Peru put his hand in the snake’s mouth and,</p>
+				<p style="color:#CD5C5C">Y a la tercera vez, metió la mano Peru en la boca de la víbora y,</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>o-guenohẽ-vo</td>
+						<td style="font-weight:bold; color:#990099">ndaje,</td>
+						<td>o-sẽ</td>
+						<td>peteĩ</td>
+						<td>kuãirũ</td>
+						<td>la</td>
+						<td>i-kuã-re.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-take.out-Simult</td>
+						<td>Report.Evid</td>
+						<td>3-come.out</td>
+						<td>one</td>
+						<td>ring</td>
+						<td>Def.Det [Sp]</td>
+						<td>3.Poss-finger-Obl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">...when removing it, it is said that a ring came out on his finger.</p>
+				<p style="color:#CD5C5C">...al sacar, dice que salió un anillo por su dedo.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Péa [upéva],</td>
+						<td>pe</td>
+						<td>kuãirũ</td>
+						<td>i-virtu;</td>
+						<td>nde</td>
+						<td>rei-jeruré-ta</td>
+						<td>chupe</td>
+						<td>la</td>
+						<td>rei-potá-va-re,</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>That</td>
+						<td>Dem</td>
+						<td>ring</td>
+						<td>3Pos-virtue;</td>
+						<td>2Sg</td>
+						<td>2Sg.ask-Prosp</td>
+						<td>3.Pron</td>
+						<td>Def.Det [Sp]</td>
+						<td>2Sg-ask-Rel-Obl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"That your ring that has virtue; you will ask it what[ever] you want,"</p>
+				<p style="color:#CD5C5C">"Ese, ese anillo que tiene virtud; vos le vas a pedir [por] lo que quieras,"</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>ha</td>
+						<td>nd-aipó-ri</td>
+						<td>re-konsegi-'ỹ</td>
+						<td>va’erã</td>
+						<td>–he’i</td>
+						<td>chupe</td>
+						<td>la</td>
+						<td>mbói.</td>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Neg-exist-Neg</td>
+						<td>2Sg-obtain-Neg</td>
+						<td>Mod</td>
+						<td>–3.say</td>
+						<td>3.Pron</td>
+						<td>Def.Det [Sp]</td>
+						<td>snake</td>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"...there is nothing that you wouldn’t be able to obtain," said the snake to him.</p>
+				<p style="color:#CD5C5C">...no hay cosa que no vas a poder conseguir –le dijo la víbora.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Nde</td>
+						<td>che</td>
+						<td>salva</td>
+						<td>la</td>
+						<td>muérte-gui.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>2Sg</td>
+						<td>1Sg.Obj</td>
+						<td>sabe</td>
+						<td>Def.Det [Sp]</td>
+						<td>death-from.Prep</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"You saved me from death."</p>
+				<p style="color:#CD5C5C">"Vos me salvaste de la muerte."</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Upéi</td>
+						<td>o-sẽ</td>
+						<td>o-ho</td>
+						<td>Peru</td>
+						<td>o-guapy</td>
+						<td>peteĩ</td>
+						<td>tajy</td>
+						<td>máta-kue</td>
+						<td>ári</td>
+						<td>ha</td>
+						<td>o-pensa</td>
+						<td>mba’é-pa</td>
+						<td>la</td>
+						<td>i-katú-va</td>
+						<td>o-jeru-re.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Then</td>
+						<td>3-go.out</td>
+						<td>3-go</td>
+						<td>Peru</td>
+						<td>3-sit</td>
+						<td>one</td>
+						<td>tree</td>
+						<td>trunk-former</td>
+						<td>on</td>
+						<td>Conj</td>
+						<td>3-think</td>
+						<td>what-Q</td>
+						<td>Def.Det [Sp]</td>
+						<td>3.Poss-able-Rel</td>
+						<td>3-ask-Obl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">Then Peru went out and went to sit on a former tree trunk and thought about what thing that he could ask for.</p>
+				<p style="color:#CD5C5C">Después salió y se fué a sentarse Peru sobre un tronco de tajy y pensó que cosa es lo que podría pedir.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>« Hẽe,</td>
+						<td>ai-kuaá</td>
+						<td style="font-weight:bold; color:#990099">-ma »,</td>
+						<td>he’i</td>
+						<td>sapy’a.</td>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Hee,</td>
+						<td>1Sg-know</td>
+						<td>-Asp,</td>
+						<td>3.say</td>
+						<td>suddenly.</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">“Yes, I know already,” he said suddenly.</p>
+				<p style="color:#CD5C5C">Ya sé, dijo de repente.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>o-ho</td>
+						<td>o-jerure</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></td>
+						<td>karai</td>
+						<td>Réi-pe</td>
+						<td>tajýra-re.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-go</td>
+						<td>3-ask</td>
+						<td>Sub.Irr</td>
+						<td>mister</td>
+						<td>King-DOM</td>
+						<td>daughter-Obl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And he went to ask for the King’s daughter’s hand.</p>
+				<p style="color:#CD5C5C">Y fue para a pedir por la hija del señor Rei.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>O-guahẽ</td>
+						<td>Palásio-pe</td>
+						<td>ha</td>
+						<td>oi-ke</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></td>
+						<td>o-ñomongeta</td>
+						<td>Réi</td>
+						<td>ndive.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-arrive</td>
+						<td>Palace-Loc</td>
+						<td>Conj</td>
+						<td>3-enter</td>
+						<td>FOC</td>
+						<td>3-converse</td>
+						<td>King</td>
+						<td>with</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">He arrived at the palace and entered to talk with the King.</p>
+				<p style="color:#CD5C5C">Llegó al Palacio y entró luego a conversar con el Rey.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>He’i</td>
+						<td>chupe</td>
+						<td>ha’e</td>
+						<td>o-menda-se</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">-ha<span class="tooltip">Subordinate 'ha'</span></div></td>
+						<td>la</td>
+						<td>[i-]tajýrare.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3.say</td>
+						<td>3.Pron</td>
+						<td>3.Subj</td>
+						<td>3-marry-Des</td>
+						<td>-Sub</td>
+						<td>Def.Det [Sp]</td>
+						<td>3.Poss-daughter.</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">He told him he wanted to marry his daughter.</p>
+				<p style="color:#CD5C5C">Le dijo él que quiere casarse con su hija.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>“nd-aipó-ri</td>
+						<td>provléma,”</td>
+						<td>he’i</td>
+						<td>karai</td>
+						<td>Rei.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Neg-exist-Neg</td>
+						<td>problem,</td>
+						<td>3.say</td>
+						<td>Mister</td>
+						<td>King</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And “there is no problem,” he said to the King.</p>
+				<p style="color:#CD5C5C">Y “no hay problema”, le dijo el señor Rey.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>“A-hecha-se</td>
+						<td>raẽ-nte</td>
+						<td>ne</td>
+						<td>volunta,”</td>
+						<td>he’i</td>
+						<td>chupe,</td>
+						<td>“Ña-mba’apó-ta."</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>1Sg-see-Des</td>
+						<td>first-only</td>
+						<td>2Sg</td>
+						<td>will,</td>
+						<td>3.say</td>
+						<td>3.Pron,</td>
+						<td>1Incl.Pl-work-Prosp</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">“I only want to first see your will,” he said, “Let’s work [on it].”</p>
+				<p style="color:#CD5C5C">“Quiero ver primero tu voluntad,” le dijo, “Vamos a trabajar."</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Réi</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell">voi<span class="tooltip">Focalizer Particle 'voi'</span></div></td>
+						<td>o-ho</td>
+						<td>Peru</td>
+						<td>ndive</td>
+						<td>la</td>
+						<td>o-mba’apó-vo</td>
+						<td>hikuái</td>
+						<td>ñú-me,</td>
+						<td>peteĩ</td>
+						<td>hembiguái</td>
+						<td>hendive-kuéra.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>King</td>
+						<td>FOC</td>
+						<td>3-go</td>
+						<td>Peru</td>
+						<td>with</td>
+						<td>Def.Det [Sp]</td>
+						<td>3-work-goal</td>
+						<td>3Pl.Subj</td>
+						<td>field-Loc,</td>
+						<td>one</td>
+						<td>employee</td>
+						<td>3.with-Pl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">The King went with Peru to work in the fields, an employee with them.</p>
+				<p style="color:#CD5C5C">El Rey luego se fué con Peru para trabajar ellos en el campo, un empleado con ellos.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>O-ho</td>
+						<td>upé-pe</td>
+						<td>o-porandu</td>
+						<td>chupe</td>
+						<td>Peru</td>
+						<td>mba’e</td>
+						<td>erramiénta-pa</td>
+						<td>oi-kotevẽ-va.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-go</td>
+						<td>there-Loc</td>
+						<td>3-ask</td>
+						<td>3.Pron</td>
+						<td>Peru</td>
+						<td>thing</td>
+						<td>tools-Q</td>
+						<td>3-need-Rel.</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">Peru went there to ask him what tools he needed.</p>
+				<p style="color:#CD5C5C">Se fue ahí a preguntarle Peru qué herramientas necesitaba.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>“Ha</td>
+						<td>e-ru</td>
+						<td>ñandeve</td>
+						<td>mbohapy</td>
+						<td>pála,”</td>
+						<td>he’i</td>
+						<td>chupe</td>
+						<td>Réi.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>2.Imp-bring</td>
+						<td>1Incl.Pl</td>
+						<td>three</td>
+						<td>shovel,</td>
+						<td>3.say</td>
+						<td>3.Pron</td>
+						<td>King</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"And bring us three shovels," the King told him.</p>
+				<p style="color:#CD5C5C">“Y traenos tres palas," le dijo el Rey.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>o-ho</td>
+						<td>jey</td>
+						<td>Peru</td>
+						<td>la</td>
+						<td>Palásio-pe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-go</td>
+						<td>again</td>
+						<td>Peru</td>
+						<td>Def.Det [Sp]</td>
+						<td>Palace-Loc</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And Peru went again to the Palace.</p>
+				<p style="color:#CD5C5C">Y se fue de vuelta Peru al palacio.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>O-guahẽ</td>
+						<td>o-juhu</td>
+						<td>upé-pe</td>
+						<td>mbohapy</td>
+						<td>mitakuña,</td>
+						<td>la</td>
+						<td>Réi</td>
+						<td>kríáda</td>
+						<td>kuéra.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>3-arrive</td>
+						<td>3-find</td>
+						<td>there-Loc</td>
+						<td>three</td>
+						<td>girls,</td>
+						<td>Def.Det [Sp]</td>
+						<td>King</td>
+						<td>servants</td>
+						<td>Pl</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">He arrived and found there three misses, the King's servants.</p>
+				<p style="color:#CD5C5C">Llegó y encontró ahí tres señoritas, las criadas del Rey.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Karai</td>
+						<td>Réi</td>
+						<td>o-hecha-se</td>
+						<td>“che</td>
+						<td>volunta,”</td>
+						<td>ha</td>
+						<td>oi-pota</td>
+						<td>ha’e</td>
+						<td>po-arregla</td>
+						<td>–he’i</td>
+						<td>chupe-kuéra</td>
+						<td>Peru.</td>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Mr.</td>
+						<td>King</td>
+						<td>3-see-Des</td>
+						<td>“1S</td>
+						<td>will,”</td>
+						<td>Conj</td>
+						<td>1-want</td>
+						<td>3.Subj</td>
+						<td>1Sg.2Pl.Obj-fix</td>
+						<td>–3.say</td>
+						<td>3.Pron-Pl</td>
+						<td>Peru</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"Mr. King wants to see 'my power' and he wants that, 'I fix you all,'” said Peru to them.</p>
+				<p style="color:#CD5C5C">El Señor Rey quiere ver mi voluntad, y quiere él que “les arregle” –les dijo Peru.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Nde-japu-eté-pa</td>
+						<td>–he’i</td>
+						<td>la</td>
+						<td>kuñataĩ</td>
+						<td>nguéra--,</td>
+						<td>mba’e</td>
+						<td>Réi</td>
+						<td>piko</td>
+						<td>ne-mboú-ta.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>--2Sg-lie-Superl-total</td>
+						<td>–3.say</td>
+						<td>Def.Det [Sp]</td>
+						<td>girl</td>
+						<td>Pl</td>
+						<td>thing</td>
+						<td>King</td>
+						<td>Q</td>
+						<td>2Sg.Obj-send-Prosp</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"Total liar," said the ladies, "[what the hell] we don’t believe that the King sent you."</p>
+				<p style="color:#CD5C5C">Mentiroso –dijeron las señoritas--, qué Rey te va a enviar.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Ha</td>
+						<td>pe-porandú-na</td>
+						<td>chupe</td>
+						<td>upéicharamo,</td>
+						<td>na’[oima]</td>
+						<td>amo</td>
+						<td>ñú-me</td>
+						<td>ha’e</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#hina 32">hína.<span class="tooltip">Emphasis on Subject Pronoun</span></div></a></td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>2Pl-ask-Rog</td>
+						<td>3.Pron</td>
+						<td>then,</td>
+						<td>exist</td>
+						<td>there</td>
+						<td>field-Loc</td>
+						<td>3.Subj</td>
+						<td>Emph</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"And then ask him please, he is there in the field."</p>
+				<p style="color:#CD5C5C">"Y pregúntenle un poco entonces, está allá en el campo él."</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--E-porandú-na</td>
+						<td>nde</td>
+						<td>–he’i</td>
+						<td>chupe</td>
+						<td>hikuái.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>2.Imp-ask-Rog</td>
+						<td>2Sg.Subj</td>
+						<td>–3.say</td>
+						<td>3.Pron</td>
+						<td>3Pl.Subj</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"You ask him," they [the servants] told him.</p>
+				<p style="color:#CD5C5C">Preguntale vos –le dijeron [las criadas].</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Upé-pe</td>
+						<td>o-je-pepy</td>
+						<td>Peru</td>
+						<td>ha</td>
+						<td>o-sapukái</td>
+						<td>ha</td>
+						<td>o-señea</td>
+						<td>la</td>
+						<td>Réi-pe:</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>There-Loc</td>
+						<td>3-bend.over</td>
+						<td>Peru</td>
+						<td>Conj</td>
+						<td>3-scream</td>
+						<td>Conj</td>
+						<td>3-signal</td>
+						<td>Def.Det [Sp]</td>
+						<td>King-IO:</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">There Peru bent over and screamed and made a signal to the King:</p>
+				<p style="color:#CD5C5C">Ahi se encorvó Peru y gritó y le hizo seña al rey:</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Ajépa,</td>
+						<td>karai</td>
+						<td>Réi,</td>
+						<td>nde</td>
+						<td>re-hecha-se</td>
+						<td>la</td>
+						<td>che</td>
+						<td>vountá-pa</td>
+						<td>tuicha!</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Right,</td>
+						<td>Mr.</td>
+						<td>King,</td>
+						<td>2Sg.Pro</td>
+						<td>2Sg-see-Des</td>
+						<td>Def.Det [Sp]</td>
+						<td>1Sg.Poss</td>
+						<td>will-Q</td>
+						<td>big!</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"Right, Mr. King, you want to see [the extent of] my power!"</p>
+				<p style="color:#CD5C5C">"¡Verdad, señor Rey, queres ver mi gran voluntad!"</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>o-ñakãity</td>
+						<td>upé-pe</td>
+						<td>la</td>
+						<td>Réi.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-nod</td>
+						<td>Dem-Loc</td>
+						<td>Def.Det [Sp]</td>
+						<td>King.</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And the King assented with a nod.</p>
+				<p style="color:#CD5C5C">Y asintió con la cabeza el Rey.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>upéi</td>
+						<td>Peru</td>
+						<td>o-hecha-[u]ka</td>
+						<td>Réipe</td>
+						<td>tre [mbohapy]</td>
+						<td>i-kuã:</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>then</td>
+						<td>Peru</td>
+						<td>3-see-Caus</td>
+						<td>King-IO</td>
+						<td>three</td>
+						<td>3.Poss-finger:</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And then he showed to the King three fingers:</p>
+				<p style="color:#CD5C5C">Y después le mostró al Rey tres dedos:</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>--Ajépa</td>
+						<td>rei-pota</td>
+						<td>lo</td>
+						<td>tre-vé-va-pe!</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Really,</td>
+						<td>2Sg-want</td>
+						<td>Def.Det [Sp]</td>
+						<td>three-more-Rel-DOM</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"Really, you want all three of them!"</p>
+				<p style="color:#CD5C5C">"Verdad que querés a todas las tres!"</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>upé-pe</td>
+						<td>o-ñakãity</td>
+						<td>jey</td>
+						<td>la</td>
+						<td>Réi</td>
+						<td>(oi-mo’ã</td>
+						<td>la</td>
+						<td>pála-re</td>
+						<td>he’i</td>
+						<td>chupe</td>
+						<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#ra'e 22">ra'e).<span class="tooltip">Embedded, declarative, narrator/speaker oriented</span></div></a></td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Dem-Loc</td>
+						<td>3-nod</td>
+						<td>again</td>
+						<td>Def.Det [Sp]</td>
+						<td>King</td>
+						<td>(3-believe</td>
+						<td>Def.Det [Sp]</td>
+						<td>shovel-Obl</td>
+						<td>3.say</td>
+						<td>3.Pron</td>
+						<td>Evid)</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And the King again assented with a nod (he thought he was talking about the shovels).</p>
+				<p style="color:#CD5C5C">Y asintió con la cabeza otra vez el Rey (creyó que le decía por las palas, había sido).</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>Ha</td>
+						<td>karai</td>
+						<td>Réi</td>
+						<td>he’i-pá-rõ</td>
+						<td>guarã</td>
+						<td>chupe:</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>Mr.</td>
+						<td>King</td>
+						<td>3.say-total-Cond</td>
+						<td>for</td>
+						<td>3.Pron:</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And when Mr.King had finished saying it all  to him:</p>
+				<p style="color:#CD5C5C">Y cuando el Señor Rey terminó de decirle:</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>---Pe-hechá-pa,</td>
+						<td>pe-ju</td>
+						<td>mandi</td>
+						<td>ápe!</td>
+						<td>–he’i</td>
+						<td>la</td>
+						<td>kuña-nguéra-pe</td>
+						<td>Peru,</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>---2Pl-see-Q,</td>
+						<td>2.Imp-come</td>
+						<td>now</td>
+						<td>here!</td>
+						<td>–3.say</td>
+						<td>Def.Det [Sp]</td>
+						<td>girl-Pl-Obj</td>
+						<td>Peru</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">"You see, come here now!" Peru said to the women.</p>
+				<p style="color:#CD5C5C">Ya vieron, vengan ya aca! –le dijo Peru a las mujeres.</p>
+			</div>
+			<table>
+				<thead><br>
+					<tr>
+						<td>ha</td>
+						<td>o-myañana</td>
+						<td style="font-weight:bold; color:#990099">-ma</td>
+						<td>chupe</td>
+						<td>kuéra</td>
+						<td>kotý-pe</td>
+						<td>ha</td>
+						<td>o-mbo-tokoro’o</td>
+						<td>mbohapy-véva-pe.</td>
+					</tr>
+				</thead>
+				<tbody id="table_body">
+					<tr style="color:#157a32">
+						<td>Conj</td>
+						<td>3-shove</td>
+						<td>-Asp</td>
+						<td>3.Pron</td>
+						<td>Pl</td>
+						<td>room-Loc</td>
+						<td>Conj</td>
+						<td>3-Caus-cluck</td>
+						<td>three-more-Rel-DOM.</td>
+				</tbody>
+			</table>
+			<div class="gloss">
+				<p style="color:#6495ED">And he shoved them into the room and made them cluck outloud, all three of them.</p>
+				<p style="color:#CD5C5C">Y ya a empujones ya les metió en la pieza, y les hizo cacarear a todas las tres.</p>
+			</div>
+		</tr>
+		</tbody>
+	</div>
+	</body>
+</body>
+
+<body>
+	<!-- Footer -->
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-grey">  
+		<div class="w3-large">
+		<i class="fa fa-envelope w3-hover-opacity"><p>zubizarr@usc.edu</p></i>
+	</div>
+	</footer>
+</body>
+
+
+
+
+
+<script>
+	function w3_open() {
+		document.getElementById("main").style.marginRight = "0%";
+		document.getElementById("mainText").style.marginRight = "0%";
+		document.getElementById("mySidebar").style.display = "block";
+		document.getElementById("openNav").style.display = 'none';
+	  }
+
+	function w3_close() {
+		document.getElementById("main").style.marginLeft = "0%";
+		document.getElementById("mySidebar").style.display = "none";
+		document.getElementById("openNav").style.display = "inline-block";
+	}
+</script>
+
+
+</html>
+
+

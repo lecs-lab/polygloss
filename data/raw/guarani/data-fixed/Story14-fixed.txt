@@ -1,0 +1,219 @@
+\t Onase ndaje ko peteï mitä’i indiokuéra apytépe,
+\m O-nase ndaje -ko peteï mitä’i indio-kuéra apyté-pe,
+\g 3-born Report.Evid -FOC one child indian-Pl middle-Loc
+\l It is said that a boy was born among the Indians.
+
+\t ha michï ra’ymi nomondeséi voi mba’evéichagua ao.
+\m ha michï ra’y-mi n-o-monde-sé-i voi mba’evé-icha-gua ao.
+\g Conj small son-Dim Neg-3-put-Des-Neg FOC any-type-place clothes
+\l And since he was a little kid he never wanted to put clothes on.
+
+\t Itúva ha isy omondéva hese, ha’e omboipa jey.
+\m I-túva ha i-sy o-mondé-va hese, ha’e o-mboi-pa jey.
+\g 3-father Conj 3-mother 3-put-Hab 3Pron.Obl, 3Pro 3-remove-Tot again
+\l Whatever his dad and mom put on him, he would take it off again.
+
+\t Ha’e ndoikutúi voi chupe ñuatï, ku tapiti ra’ýicha.
+\m Ha’e nd-oi-kutú-i voi chupe ñuatï, ku tapiti ra’ý-icha.
+\g 3Pro Neg-3-pinch-Neg FOC 3.Pron thorns, Dem rabbit son-similar
+\l No thorn pricked him ever, just like those little rabbits.
+
+\t odipara oike pe karaguatatýre, ha upéinte osë jey.
+\m o-dipara oi-ke pe karaguata-tý-re, ha upéi-nte o-së jey.
+\g 3-run 3-go.in Dem plant-pile-Obl, Conj Dem-only 3-go.out again
+\l He would go in running among the karaguata (plants) and then could come out again.
+
+\t Sapy’ánte oho mombyry mbyry umi otro tolderíarupi
+\m Sapy’á-nte o-ho mombyry mbyry umi otro toldería-rupi
+\g Some.time-only 3-go far far Dem another camps-around
+\l Sometimes he would go very far close to the (Indian) camps.
+
+\t Ha do tre dia haguépe isy umía ogueru jey chupe.
+\m Ha do tre dia hagué-pe i-sy umía o-gueru jey chupe.
+\g Conj two three days Sub.Term-Loc 3-mother those 3-bring again 3.Pron
+\l And after two or three days his parents would bring him back again.
+
+\t 7 año oguereko rire ha’e, oñemboipaite opívo vera hóga renondépe,
+\m 7 año o-guereko rire ha’e, o-ñe-mboi-pa-ite o-pívo vera hóga renondé-pe,
+\g 7 year 3-have after 3Pro, 3-Refl-remove-Tot-Max 3-naked completely 3.Poss-house front-Loc
+\l After he turned 7 years old, he undressed entirely in front of his house
+
+\t Ha upeguive ndojehechavéi.
+\m Ha upe-guive nd-o-je-hecha-vé-i.
+\g Conj Dem-from.Prep Neg-3-Refl-see-more-Neg
+\l And from then on no one saw him again.
+
+\t Upéi ojuhu jeýrö jepe chupe
+\m Upéi o-juhu jeý-rö jepe chupe
+\g Then 3-find again-Cond again 3.Pron
+\l After whenever his parents found him again around there,
+
+\t la isy ha itúva pe oiko ha rupi, ndoikuaavéi ma chupe hikuái.
+\m la i-sy ha i-túva pe oiko -ha rupi, nd-oi-kuaa-vé-i -ma chupe hikuái.
+\g Det.Det 3Pos-mother Conj 3.Poss-father Dem 3-exist -Rel.Loc around, Neg-3-know-more-Neg -Asp 3.Pron 3.Pron.Pl
+\l ...his mother and father did not recognize him.
+
+\t Upéingo peteï karai, pueblo Valenzuelagua, Médico Pombéro oje’e ha,
+\m Upéi-ngo peteï karai, pueblo Valenzuela-gua, Médico Pombéro o-je-’e -ha,
+\g After-FOC one man, town Valenzuela-place, doctor Pombéro 3-Refl-say -Nom
+\l After a man from the town Valenzuela, Doctor Pombero, they called him,
+
+\t oïva Sapukáipe, omombe’u itúva oporojuka hague Valenzuela távape upe jave.
+\m o-ï-va Sapukái-pe, o-mombe’u i-túva o-poro-juka -hague Valenzuela táva-pe upe jave.
+\g 3-exist-Hab Sapukái-Loc, 3-tell 3Pos-father 3-Indef-kill -Sub.Term Valenzuela town-Loc Dem then
+\l ...who was in Sapukai, said that his father had killed someone in the town of Valenzuela long ago.
+
+\t (ha ymángo nde reikuaa, ñane retäme reikérö peteï ka’aguýpe
+\m (ha ymá-ngo nde rei-kuaa, ñane retä-me rei-ké-rö peteï ka’aguý-pe
+\g Conj time.ago-FOC 2SPro 2Sg-know 1Pl.Incl-country-Loc 2Sg-go.in-Cond one forest-Loc
+\l (and you know that for long time in our country, if you go into the forest...)
+
+\t ndereikuaái moõpa rehóta resë reína.)
+\m nde-rei-kuaá-i moõ-pa re-hó-ta re-së reína.)
+\g Neg-2Sg-know-Neg where-Q 2Sg-go-Prosp 2Sg-go.out 2Sg.Emph
+\l (...you don’t know where you would go out)
+
+\t Oporojuka la karai upéa ha oike la ka’aguýpe ra'e.
+\m O-poro-juka la karai upéa ha oi-ke la ka’aguý-pe ra'e.
+\g 3-Indef-kill Def.Det [Sp] man Dem Conj 3-go.in Def.Det [Sp] forest-Loc Evid
+\l This man killed someone and entered the forest again, it appears.
+
+\t Upéi ndaje oho oike peteï tolderia tuichávape,
+\m Upéi ndaje o-ho oi-ke peteï tolderia tuichá-va-pe,
+\g Then Report.Evid 3-go 3-go.in one camp big-Rel-Loc
+\l Then it is said that he went to enter a large camp.
+
+\t Ha ha’e ndoikuaáiva upe tolderia oïva ha upépe.
+\m Ha ha’e nd-oi-kuaá-i-va upe tolderia o-ï-va -ha upé-pe.
+\g Conj 3Sg-Pron Neg-3-know-Neg-Hab Dem camp 3-exit-Hab -Sub Dem-Loc
+\l And he did not know that there was a camp there.
+
+\t Oho oñe’ë la kasíke ndive:
+\m O-ho o-ñe’ë la kasíke ndive:
+\g 3-go 3-speak Def.Det [Sp] indian.chief with
+\l He went to speak to the Indian chief:
+
+\t Péango la che káso, ha ndaikatúi piko aiko penendive.
+\m -Péa-ngo la che káso, ha nd-ai-katú-i piko ai-ko pene-ndive.
+\g that-FOC Def.Def 1Sg.Poss case, Conj Neg-1Sg-can-Neg Q 1Sg-live 2.Pl-with
+\l "This is my case and I couldn’t live with you all."
+
+\t Guéno –he’i chupe la kasíke, ha opyta oiko hendivekuéra.
+\m -Guéno –he’i chupe la kasíke, ha o-pyta oi-ko hendive-kuéra.
+\g Okay -3.say 3.Pron Def.Det [Sp] chief, Conj 3-stay 3-live 3Pl.with-Pl
+\l "Okay," the chief said to him, and he stayed to live with them.
+
+\t Ojuka la guyra’i, opáichagua tymba ka’aguy.
+\m O-juka la guyra’-i, opáicha-gua tymba ka’aguy.
+\g 3-kill Def.Det [Sp] bird-Dim, variety-source animal forest
+\l They killed small birds, (and) all kinds of forest animals.
+
+\t Ho’úva la indiokuéra ho’u hendivekuéra. Oke hendivekuéra.
+\m Ho’ú-va la indio-kuéra ho’u hendive-kuéra. O-ke hendive-kuéra.
+\g 3.eat-Rel Def.Det [Sp] indian-Pl 3.eat 3Pl.with-Pl. 3-sleep 3Pl.with-Pl
+\l What the Indians ate, he ate with them. He slept with them.
+
+\t Upéingo pe un me, omboty pota rupi hína, he’i chupe la kasíke:
+\m Upéi-ngo pe un me, o-mboty pota rupi hína, he’i chupe la kasíke:
+\g after-FOC Dem Indef month 3-close Asp around Emph 3.say 3.Pron Def.Det [Sp] chief:
+\l Then after almost a month, the chief said to him:
+
+\t Nderehoséi piko nde rógape revisita nde rogayguakuéra.
+\m -Nde-re-ho-sé-i piko nde róga-pe re-visita nde roga-ygua-kuéra.
+\g -Neg-2Sg-go-Des-Neg Q 2Sg.Poss house-Loc 2Sg-visit 2Sg.Poss house-place-Pl
+\l "Don’t you want to go to visit your family?"
+
+\t Ahase, áça katu akyhyjéngo.
+\m -A-ha-se, áça katu a-kyhyjé-ngo.
+\g 1Sg-go-Des, but.Conj 1Sg-afraid-FOC
+\l "I want to, but I am afraid."
+
+\t Ani rekyhyjetei –he’i chupe; che amondóta nendive peteï che ra’y.
+\m -Ani re-kyhyje-te-i –he’i chupe; che a-mondó-ta nendive peteï che ra’y.
+\g --Neg 2Sg-afraid-Superl-Neg 3.say 3.Pron 1Sg.Pro 1Sg-send-Prosp 2Sg.with one 1Sg.Poss son
+\l "Don’t be afraid," he said to him, "I will send my son with you..."
+
+\t Oñangareko va’erä nde rehe.
+\m O-ñangareko -va’erä nde rehe.
+\g 3-take.care -Mod 2Sg Obl.P
+\l ...he can take care of you,
+
+\t ha upéi osë la tóldo guýgui la indioi peteï ijao’ÿva,
+\m ha upéi o-së la tóldo guý-gui la indio-i peteï i-jao’-ÿ-va,
+\g Conj then 3-go.out Def.Det [Sp] tent under-from.Prep Def.Det [Sp] indian-Dim one 3.Poss-clothes-Neg-Rel
+\l ...and then a little indian without clothes came from.Prep under the tent,
+
+\t áça katu ndohechái la ipire; oñemoï la karai ykére.
+\m áça katu ndo-hechá-i la i-pire; o-ñe-moï la karai yké-re.
+\g But.Conj Neg-see-Neg Def.Det [Sp] 3.Poss skin; 3-Refl-put Def.Det [Sp] man next-Obl
+\l ...but he did not see [the color of] his skin; he put himself next to the man.
+
+\t Ha ndaje osëvo la tolderiágui la karai, noñeñanduvéi.
+\m Ha ndaje o-së-vo la tolderiá-gui la karai, no-ñe-ñandu-vé-i.
+\g Conj Report.Evid 3-go.out-Simult Def.Det [Sp] tent-from.Prep Def.Det [Sp] man, Neg-Refl-remember-more-Neg.
+\l And it is said that when the man came out of the tent, he did not remember anything anymore.
+
+\t "Ndaikuaáiko che aképa ra'e téräpa mba’e la oikóva" he’i.
+\m "Nd-ai-kuaá-iko che a-ké-pa ra'e térä-pa mba’e la oi-kó-va" --he’i.
+\g Neg-1Sg-know-FOC 1Sg.Pro 1Sg-sleep-Q Evid but.Conj-Q thing Def.Det[Sp] 3-happen-Rel 3.say
+\l “I didn’t know whether I was sleeping or what was happening,” he said.
+
+\t Ha áçaiterante ha ha’ete ku opáyva: “Ha péango che róga,” he’i la karai.
+\m Ha áçaite-rante ha ha’e-te ku o-páy-va: “Ha péa-ngo che róga,” he’i la karai.
+\g Conj soon-FOC Conj 3.be-Superl Dem 3-wake.up-Rel: “Conj Dem-FOC 1Sg.Poss house" 3.say Def.Det [Sp] man
+\l And soon, it seemed like he was waking up: “And that is my house,” said the man.
+
+\t Oñeñandu hóga portónpe ma.
+\m O-ñe-ñandu hóga portón-pe -ma.
+\g 3-Refl-feel 3.Poss-house gate-Loc -Asp.
+\l He felt like he was at the gate of his house.
+
+\t Oguahë pyharereí ma,
+\m O-guahë pyhare-reí -ma,
+\g 3-arrive night-mid -Asp
+\l It was midnight already when he arrived,
+
+\t Ha ndaje hembireko oikutu ryguasu oke hágui hína,
+\m Ha ndaje hembireko oi-kutu ryguasu o-ke -há-gui hína,
+\g Conj Report.Evid 3.Poss-wife 3-stick chicken 3-sleep -Rel.Loc Cont
+\l ...And it is said that his wife stuck a knife where a chicken was sleeping,
+
+\t Ojuka, ombochyryry chupe ha osena ha’e la indio karapemi avei, imesápe.
+\m O-juka, o-mbochyryry chupe ha o-sena ha’e la indio karape-mi avei, i-mesá-pe.
+\g 3-kill, 3-fried 3.Pron Conj 3-dine 3.Pron Def.Det [Sp] indian small-Dim also 3Pos-table-Loc
+\l She killed and fried for him, and he had dinner, with the little Indian also, at his table.
+
+\t Osenamba porã upépe hikuái,
+\m O-sena-mba porã upé-pe hikuái,
+\g 3-dine-all well there-Loc 3.Pron.Pl,
+\l They all dined well there,
+
+\t ha “aníke ne ko’ẽ, háke akói rejeheka,” he’i chupe la hembireko,
+\m ha “aní-ke ne ko’ẽ, háke akói re-je-heka,” he’i chupe la hembireko,
+\g Conj “Neg-Imp 2Sg-dawn, watch.out always 2Sg-Refl-search," 3.say 3.Pron Def.Det [Sp] 3Pos.wife
+\l ...and, “Don’t stay up until dawn, watch out that they are always looking for you,” said his wife,
+
+\t “ojepeka nderehe hína."
+\m “o-je-peka nde-rehe hína."
+\g “3-Refl-fish 2Sg-Obl.P Cont.”
+\l “They are out fishing for you.”
+
+\t Upéi osë ojedepedi la hembirekógui,
+\m Upéi o-së o-je-depedi la hembirekó-gui,
+\g Then 3-go.out 3-Refl-goodbye Def.Det [Sp] 3.Poss.wife-from.Prep
+\l Then he came out to say goodbye to his wife,
+
+\t ha osëvo pe portónpe ha’e, noñeñanduvéi jey.
+\m ha o-së-vo pe portón-pe ha’e, no-ñe-ñandu-vé-i jey.
+\g Conj 3-go.out-Simult Dem gate-Loc 3.Subj, Neg-Refl-feel-more-Neg again.
+\l ...and when he went out to the gate, again he did not feel anything.
+
+\t Ha oke vaicha jey –ndoikuaái mboy aravópa
+\m Ha o-ke vaicha jey –nd-oi-kuaá-i mboy aravó-pa
+\g Conj 3-sleep seem again –Neg-3-know-Neg how.much time-Q
+\l And it seemed like he was sleeping again –he did not know how long.
+
+\t Ha upéi ha’ete ku opáy jeý ma va ha ojejuhú ma la te’ýi reko hápe jey.
+\m Ha upéi ha’e-te ku o-páy jeý -ma -va ha o-je-juhú -ma la te’ýi reko -hápe jey.
+\g Conj then be-Superl Dem 3-wake.up again -Asp -Rel Conj 3-Refl-find -Asp Def.Det [Sp] people live -Rel.Loc again.
+\l And then it seemed that he woke up again and found himself again where people [of the camp] lived.

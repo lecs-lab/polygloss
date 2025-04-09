@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Lato", sans-serif}
+h1,button {font-family: "Montserrat", sans-serif}
+.w3-bar {font-family: "Montserrat", sans-serif;
+align-items: center; background-color: white;}
+
+.navbar {
+  overflow: auto;
+  background-color: white;
+  text-align:center;
+}
+
+.navbar a {
+  float: left; 
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  text-align:center;
+}
+
+td {
+	white-space: wrap;
+}
+
+.dropdown {
+  float: left;
+  overflow: auto;
+}
+
+.dropdown .dropbtn {
+  font-size: 18px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: whitesmoke;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  background-color: whitesmoke;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown-content a:hover {
+  background-color: lightslategrey;
+  font-family: "Montserrat", sans-serif;
+  max-height:90fr;
+  overflow:auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  max-height:250px;
+  overflow:auto;
+}
+
+
+        #MyTable{
+            border: 1px solid black;
+        }
+        #MyTable td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+        .parentCell{
+            position: relative;
+        }
+        .tooltip{
+            display: none;
+            position: absolute; 
+            z-index: 100;
+            border: 1px;
+            background-color: white;
+            border: 1px solid green;
+            padding: 3px;
+            color: green; 
+            top: 20px; 
+            left: 20px;
+        }
+        .parentCell:hover span.tooltip{
+            display:block;
+        }
+
+</style>
+	<title>Story #1</title>
+	<link rel="stylesheet" type="text/css" href="cssstory1/style.css">
+</head>
+
+
+
+
+<body id="contentLeft">
+	<body>
+
+
+		<!-- Header -->
+		<header class="w3-center" style="color:#40B5AD; background-color: #40B5AD; padding-top:115px; padding-bottom: 8px;" id="main">
+			<h1 style="color: white; font-weight: bold; font-size: 45px;">Guarani Corpus</h1>
+			<p class="w3-large" style="color: black">Funded by NSF BCS-1917619</p>
+			<button class="w2-button w3-black" style="font-size: 12px; padding-bottom: 2px">Glossed, translated, and annotated by Maria Luisa Zubizarreta<br>Web Designers: Abigail Jarvis and Claire Benet Post</button>
+		</header>
+	
+		  
+		<!-- Navbar -->
+		<div class="w3-top">
+			<div class = "w3-bar" style="background-color:#40B5AD">
+		
+			  
+				<div class="w3-navbar" style="background-color: #40B5AD; display: flex; justify-content: space-around; list-style-type: none;">
+					<div class="w3-left-align w3-large">
+						<a class="w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-light-grey w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"></a>
+						<a href="index.html" style="color:white" class="w3-button w3-padding-large w3-hover-light-grey">Home</a>
+					</div>
+				
+					<div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Glossed Stories 
+						<i class="fa fa-caret-down"></i>
+						</button>
+						<div class="dropdown-content w3-small">
+							<a href="Story1.html">Story #1</a>
+							<a href="Story2.html">Story #2</a>
+							<a href="Story3.html">Story #3</a>
+							<a href="Story4.html">Story #4</a>
+							<a href="Story5.html">Story #5</a>
+							<a href="Story6.html">Story #6</a>
+							<a href="Story7.html">Story #7</a>
+							<a href="Story8.html">Story #8</a>
+							<a href="Story9.html">Story #9</a>
+							<a href="Story10.html">Story #10</a>
+							<a href="Story11.html">Story #11</a>
+							<a href="Story12.html">Story #12</a>
+							<a href="Story13.html">Story #13</a>
+							<a href="Story14.html">Story #14</a>
+							<a href="Story15.html">Story #15</a>
+						</div>
+					</div>
+				
+				
+					<div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Search by Morpheme 
+							<i class="fa fa-caret-down"></i>
+						</button>
+						<div class="dropdown-content">
+							<a href="Subordinator 'ha'.html">ha (Subordinator)</a>
+							<a href="Locational Relative Pronoun 'ha'.html">há(-pe), há(-gui) (Locational Relativizer)</a>
+							<a href="Irrealis 'ha' Subordinator.html">haguã (Irrealis Subordinador)</a>
+							<a href="'hague' Terminative Subordinador.html">hague (Terminative Subordinador)</a>
+							<a href="Nominalizer 'ha'.html">ha (Nominalizer)</a>
+							<a href="Past Morpheme 'kuri'.html">kuri (Retrospective Aspect)</a>
+							<a href="va'ekue-akue distal perfect aspect.html">va'ekue/akue (Distal Aspect)</a>
+							<a href="va'ekue-akue relative distal.html">va'ekue/akue (Relative Distal)</a>
+							<a href="Progressive Morpheme 'ina' Inflections.html">hína (Continuative Aspect / Focalizer)</a>
+							<a href="-ta 'Prospective Aspect'.html">-ta (Prospective Aspect)</a>
+							<a href="-ma 'Already'.html">-ma (Aspect/Focalizer)</a>
+							<a href="Relativizer 'va'.html">-va (Relativizer)</a>
+							<a href="Focalizer Particle 'voi'.html">voi (Focalizer Particle)</a>
+							<a href="Ra'e Evidential.html">ra'e (Indirect Evidential)</a>
+							<a href="'Ndaje_-je' Reportative Evidential.html">ndaje/je (Reportative Evidential)</a>
+							<a href="Overt Direct Object Pronoun.html">Overt DO Pronoun</a>
+							<a href="Covert Direct Object Pronoun.html">Covert DO pronoun</a>
+						</div>
+					</div>
+
+
+                    <div class="dropdown">
+						<button class="dropbtn w3-hover-light-grey">Children's Narratives 
+						<i class="fa fa-caret-down"></i>
+						</button>
+					<div class="dropdown-content w3-small">
+						<a href="ChildrensNarrativesAge4.html">4 Years Old</a>
+						<a href="ChildrensNarrativesAge5.html">5 Years Old</a>
+						<a href="ChildrensNarrativesAge6.html">6 Years Old</a>
+						<a href="TeacherNarratives.html">Teachers</a>
+					</div>
+					</div>
+	
+					<a href="Additional Resources.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Additional Resources</a>
+	
+					<a href="Publications.html" style="color:white" class="w3-button w3-hide-small w3-padding-large w3-hover-light-grey">Publications</a>
+	
+					<!--Side Menu-->
+					<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-border w3-light-grey" style="width:180px;right:0" id="mySidebar">
+						
+						<button class="w3-bar-item w3-button w3-large w3-black"
+						onclick="w3_close()">Hide &times;</button> 
+						<h5 class="w3-bar-item">Gloss Abbreviations</h5>
+						<a class="w3-bar-item">Asp = Aspect</a>
+						<a class="w3-bar-item">Conj = Conjunction</a>
+						<a class="w3-bar-item">Cont = Continuitive</a>
+						<a class="w3-bar-item">Def = Definite</a>
+						<a class="w3-bar-item">Dem = Demonstrative Pronoun</a>
+						<a class="w3-bar-item">Des = Deserative</a>
+						<a class="w3-bar-item">Det = Determiner</a>
+						<a class="w3-bar-item">Dim = Diminuitive</a>
+						<a class="w3-bar-item">DO = Direct Object</a>
+						<a class="w3-bar-item">DOM = Direct Object Marker</a>
+						<a class="w3-bar-item">Emph = Emphasis</a>
+						<a class="w3-bar-item">Evid = Evidential</a>
+						<a class="w3-bar-item">Excl = Exclusive</a>
+						<a class="w3-bar-item">FOC = Focus</a>
+						<a class="w3-bar-item">Fut = Future Tense</a>
+						<a class="w3-bar-item">Incl = Inclusive</a>
+						<a class="w3-bar-item">IO = Indirect Object</a>
+						<a class="w3-bar-item">Irr = Irrealis Mood</a>
+						<a class="w3-bar-item">Loc = Locative</a>
+						<a class="w3-bar-item">Mod = Modal</a>
+						<a class="w3-bar-item">Nom = Number</a>
+						<a class="w3-bar-item">Neg = Negation</a>
+						<a class="w3-bar-item">Obl = Oblique</a>
+						<a class="w3-bar-item">Part = Participle</a>
+						<a class="w3-bar-item">Pl = Plural</a>
+						<a class="w3-bar-item">Port = Portmanteau morpheme (1P Subj and 2PObj)</a>
+						<a class="w3-bar-item">Poss = Possesive</a>
+						<a class="w3-bar-item">Prep = Preposition</a>
+						<a class="w3-bar-item">Pron = Pronoun</a>
+						<a class="w3-bar-item">Prosp = Prospective Aspect</a>
+						<a class="w3-bar-item">Q = Question</a>
+						<a class="w3-bar-item">Rec = Reciprocal</a>
+						<a class="w3-bar-item">Refl = Reflexive</a>
+						<a class="w3-bar-item">Rel = Relative Marker</a>
+						<a class="w3-bar-item">Rog = Rogative</a>
+						<a class="w3-bar-item">Sg = Singular</a>
+						<a class="w3-bar-item">Simult = Simultaneous</a>
+						<a class="w3-bar-item">[Sp] = Spanish Origin</a>
+						<a class="w3-bar-item">Sub = Subordinate </a>
+						<a class="w3-bar-item">Subj = Subject </a>
+						<a class="w3-bar-item">Superl = Superalitive</a>
+						<a class="w3-bar-item">Term = Termantive</a>
+						<a class="w3-bar-item">1 = First Person</a>
+						<a class="w3-bar-item">2 = Second Person</a>
+						<a class="w3-bar-item">3 = Third Person</a>
+						<a class="w3-bar-item">[] = Dropped Morpheme</a>
+						<a class="w3-bar-item">. = One morpheme encodes multiple meaning pieces</a>
+						<a class="w3-bar-item">- = Morphemic constituents of a word</a>
+					</div>
+					<!-- clickable gloss menu-->
+					<div style="color:#40B5AD">
+						<button id="openNav" class="w3-button w3-large w3-right" style="color:black; margin-top:5px; background-color:#40B5AD; margin-right:10px"onclick="w3_open()"> Gloss Menu &#9776;</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w3-container w3-teal">
+			<div class="w3-main" id="main">
+				<div class="w3-teal">
+					<div class="w3-container">
+						<h2>Story #1</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+  
+
+
+	<body>
+		<div class="w3-container">
+		<div class="w3-container" id="mainText">
+			<div class="w3-container">
+				<section id="firstline">
+					<h1><a id="Nom ha 1"></a></h1>
+					<h1 class="parentCell" style="padding-top: 12px; padding-bottom: 19px; padding-right: 12px; padding-left: 0px; width: 1000px;"><a href="Nominalizer 'ha'.html#Story 1 Nom ha 1">Mbói ho’u-se va'ekue i-salva-ha-re-pe<span class="tooltip">Nominalizer 'ha'</span></div></a></h1>
+				</section>
+			</div>
+			<div class="w3-container">
+				<section id=syntax_description>
+					<p>Snake 3Sg.eat.Des Distal.Pst 3.Poss.save.Nom.Pst.DOM</p>
+				</section>
+			</div>
+			<div class="w3-container" style="padding-top: 18px;">
+				<section id="title" >
+					<h3>'The Snake Who Wanted to Eat His Savior.'</style></h3>
+					<h3>'La vibora que quiso comer a su salvador.'</h3>
+				</section>
+			</div>
+			<hr>
+			<body>
+				<div>
+					<div class="gloss">
+							<p>Hover over Guaraní morphemes written in purple to see their syntactic function.</p>
+					</div>
+
+
+					<div class="gloss">
+						<p>Audio for Story #1:</p>
+						<iframe src="https://drive.google.com/file/d/1I8axH9f0iriQHdj_xywOZAulqFA-hNjd/preview" width="450" height="70" allow="autoplay"></iframe>
+					</div>
+				</div>
+				<hr>
+				<table style="overflow-x:scroll">
+					<thead>
+						<tr>
+							<td>O-ho</td>
+							<td>peteĩ</td> 
+							<td>karia’y</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 1">hína<span class="tooltip">Emphasis on 'peteĩ karia’y’ - Does not add temporary information.</span></div></a></td>
+							<td>peteĩ</td>
+							<td>ñú-re.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-go</td>
+							<td>one</td>
+							<td>young.man</td>
+							<td>Cont</td>
+							<td>one</td>
+							<td>field-Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">A young man was going on/across a field.</p>
+					<p style="color:#CD5C5C">Iba un joven por el campo.</p>
+				</div>
+				<table>
+					<thead><br>
+						<br>
+						<tr>
+							<td>Upéi</td>
+							<td>o-maña</td>
+							<td>o-hó-vo</td>
+							<td>i-jyké-pe</td>
+							<td>ha</td>
+							<td>hesa</td>
+							<td>[o-]ho</td>
+							<td>sapy’a</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Then</td>
+							<td>3Sg-saw</td>
+							<td>3Pl-go-Simult</td>
+							<td>3.Poss-side-Loc.Prep</td>
+							<td>Conj</td>
+							<td>3.Poss.sight</td>
+							<td>[3Sg-]go</td>
+							<td>suddenly</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Then he was looking at his side and his sight went [saw] towards</p>
+					<p style="color:#CD5C5C">Después fue mirando a su costado y vio [su mirada fue hacia]</p>
+
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 2"></a></td>
+						<tr>
+							<td>peteĩ</td>
+							<td>mbói</td>
+							<td>guasú-re.</td>
+							<td>Hesa</td>
+							<td>sẽmba</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 2">hína<span class="tooltip">Continuative/Emphasis on verb</span></div></a></td>
+							<td>la</td> 
+							<td>mbói,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>one</td>
+							<td>snake</td>
+							<td>big-Prep</td>
+							<td>Eyes</td>
+							<td>protrude</td>
+							<td>Cont</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">a big snake. The snake's eyes were protruding</p>
+					<p style="color:#CD5C5C">una víbora grande. Ojo saltones tenía la víbora</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>nd-oi-kuaá-i</td>
+							<td>mba’é-pa</td>
+							<td>o-jehu</td>
+							<td>chupe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>Def.Det</td>
+							<td>young.man</td>
+							<td>Neg-3Sg-know-Neg</td>
+							<td>what-Q</td>
+							<td>3Sg-happen</td>
+							<td>3Sg.Pron.IO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and the young man did not know what was happening.</p></p>
+					<p style="color:#CD5C5C">y el joven no supo qué le pasaba.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Upéi</td>
+							<td>o-jave</td>
+							<td>ha</td>
+							<td>o-hecha</td>
+							<td>nimbo</td>
+							<td>peteĩ</td>
+							<td>ita</td>
+							<td>guasu</td>
+							<td>o-jopy</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Then</td>
+							<td>3Sg-get.closer</td>
+							<td>Conj</td>
+							<td>3Sg-saw</td>
+							<td>Part</td>
+							<td>one</td>
+							<td>rock</td>
+							<td>big</td>
+							<td>3Sg-squeeze</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Then he got closer and he saw that a large rock was squeezing</p>
+					<p style="color:#CD5C5C">Después se acercó más y vio que una piedra grande le apretaba</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ra'e 1"></a></td>
+						<tr>
+							<td style="font-weight:bold; white-space: nowrap;color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 1 ra'e 1">ra'e<span class="tooltip">Embedded speaker-oriented evidential, slight surprise/ra'e scope over. Possible insertion of Sub 'ha': ...o-jopy ha ra'e</span></div></a></td>
+							<td>la</td>
+							<td>mbó-ipe</td>
+							<td>ha</td>
+							<td>nd-oi-katu-vé-i</td>
+							<td>o-sẽ</td>
+							<td>iguýgui.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Evid</td>
+							<td>Def.Det</td>
+							<td>snake-DOM</td>
+							<td>Conj</td>
+							<td>Neg-3Sg-can.more</td>
+							<td>Neg 3Sg-go.out</td>
+							<td>under-from</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">the snake [he realized] and he could not get out from under it.</p></p>
+					<p style="color:#CD5C5C">a la víbora [había sido que] y no podía salir de debajo de ella.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 1"></a></td>
+						<tr>
+							<td>O-hechá-vo</td>
+							<td>la</td>
+							<td>mbói</td>
+							<td>la</td>
+							<td>karia’y-pe,</td>
+							<td>o-sapukái</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 1">voi
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+							<td>[i]chupe:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-see.Temp.Conj</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+							<td>Def.Det</td>
+							<td>lad-DOM</td>
+							<td>3Sg-scream</td>
+							<td>Emph</td>
+							<td>3Sg.Pron.IO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">When the snake saw the young man, he screamed at him:</p>
+					<p style="color:#CD5C5C">Al ver la víbora al muchacho, le gritó:</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Loc ha 1"></a></td>
+						<tr>
+							<td>——Che-[gue]ronohẽ-mí-na-ko</td>
+							<td>ai-me-</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Locational Relative Pronoun 'ha'.html#Story 1 Loc ha 1">há-<span class="tooltip">Locational Relative Pronoun 'ha'</span></div></a></td>
+							<td>gui!</td>
+							<td>——he’i,</td>
+							<td>i-juku’a</td>
+							<td>pepe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——1Sg.DO-take-out-Dim-Rog</td>
+							<td>1Sg-be-</td>
+							<td>Rel-</td>
+							<td>Prep</td>
+							<td>——3Sg-say</td>
+							<td>3Sg-agitated</td>
+							<td>palpitate</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"Please take me out of this place," he said, very agitated.</p>
+					<p style="color:#CD5C5C">"Sácame por favor de este lugar," dijo, demasiado agitado.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Ha</td>
+							<td>tuicha</td>
+							<td>iterei</td>
+							<td>la</td>
+							<td>mbói,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>big</td>
+							<td>too.much</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And [since] the snake was so big,</p>
+					<p style="color:#CD5C5C">Y [como] la víbora [era] muy grande,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>o-kyhyje</td>
+							<td>chu-gui</td>
+							<td>la</td>
+							<td>karia’y.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-fear</td>
+							<td>3Sg.Pron-Prep</td>
+							<td>Def.Det</td>
+							<td>young.man</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">the young man was afraid of it.</p>
+					<p style="color:#CD5C5C">le tuvo miedo el muchacho.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="mo'a 1"></a></td>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 1"></a></td>
+						<tr>
+							<td>——Nd-ai-katu</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 mo'a 1">mo’ã-i<span class="tooltip">Negative Prospective Aspect</span></div></a></td>
+							<td>ai-pe’a</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 1">ndéve,
+								<span class="tooltip">Overt Direct Object (DO) Pronoun</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Neg-1Sg-be.able</td>
+							<td>Prosp-Neg</td>
+							<td>1Pl-take.out</td>
+							<td>2Sg.Pron.DO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"I will not be able to take you out,</p>
+					<p style="color:#CD5C5C">"No podré sacarte,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>pórke</td>
+							<td>nde</td>
+							<td>che-apeligra</td>
+							<td>——he’i</td>
+							<td>chupe</td>
+							<td>la</td>
+							<td>típo.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>because</td>
+							<td>2Sg.Pron.Subj</td>
+							<td>1Sg.DO-endanger</td>
+							<td>——3Sg-say</td>
+							<td>3.Pron.IO</td>
+							<td>Def.Det</td>
+							<td>guy</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">because you put me in danger," the guy said to him [snake]. </p>
+					<p style="color:#CD5C5C">porque vos me ponés en peligro," le dijo el tipo. </p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							
+							<td>——Mba’éicha</td>
+							<td>piko</td>
+							<td>nde</td>
+							<td>re-japó-rõ</td>
+							<td>che-rehe</td>
+							<td>peteĩ</td>
+							<td>favor,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——How</td>
+							<td>Q</td>
+							<td>2Pl.Subj</td>
+							<td>2Sg-do-Cond</td>
+							<td>1Sg-Obl.Pl</td>
+							<td>one</td>
+							<td>favor</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"How if you do me a favor,</p>
+					<p style="color:#CD5C5C">"Como si me hacés un favor,</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ta 1"></a></td>
+						<td><a class="anchor" id="hina 3"></a></td>
+						<tr>
+							<td>che</td>
+							<td>a-pu’ã</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 ta 1">-ta<span class="tooltip">Prospective Aspect</span></div></a></td>
+							<td>nde-rehe?</td>
+							<td>Ne-ñembyahýi-ko</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 3">reína?<span class="tooltip">Emphasis on state</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Sg.Pron</td>
+							<td>1Sg-get.up</td>
+							<td>-Prosp</td>
+							<td>2Sg-Obl.Pl</td>
+							<td>2Sg-hungry-Emph</td>
+							<td>2Sg-Cont</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">I'm going to jump on you? Are you hungry?</p>
+					<p style="color:#CD5C5C">te voy a saltar? ¿Estás hambriento?</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Nd-a-japo</td>
+							<td>moã-i</td>
+							<td>nde-rehe</td>
+							<td>mba’eve.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Neg-1Sg-do</td>
+							<td>Fut-Neg</td>
+							<td>2Sg.Obl.Pl</td>
+							<td>nothing</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">I will not do anything to you.</p>
+					<p style="color:#CD5C5C">No te voy a hacer nada.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ma 1"></a></td>
+						<td><a class="anchor" id="ta 2"></a></td>
+						<tr>
+							<td>Ndé-ngo</td>
+							<td>re-mboguý</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 ta 2">-ta<span class="tooltip">Prospective Aspect</span></div></a></td>
+							<td>-nte</td>
+							<td>ko</td>
+							<td>ita</td>
+							<td>ha</td>
+							<td>che-salvá</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 1 ma 1">-ma.<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>2Sg-only</td>
+							<td>2Sg-raise</td>
+							<td>-Prosp</td>
+							<td>-only</td>
+							<td>this</td>
+							<td>rock</td>
+							<td>Conj</td>
+							<td>1Sg.Obj-save-Perf</td>
+							<td>-Asp</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">You only have to raise this rock and you will have saved me already."</p>
+					<p style="color:#CD5C5C">Tú solo [tienes que] levantar esta piedra y ya me habrás salvado."</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>Are</td>
+							<td>upéicha</td>
+							<td>o-ño-mongeta</td>
+							<td>hikuái,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>[long] time</td>
+							<td>that.way</td>
+							<td>3Pl-Rec-converse</td>
+							<td>3Pl.Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They talked a long time,</p>
+					<p style="color:#CD5C5C">Mucho tiempo estuvieron conversando ellos,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 2"></a></td>
+						<td><a class="anchor" id="ra'e 2"></a></td>
+						<tr>
+							<td>ha</td>
+							<td>upéi</td>
+							<td>hasý-pe</td>
+							<td>la</td>
+							<td>karai’y</td>
+							<td>o-guenohẽ</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 2">chupe<span class="tooltip">Overt Direct Object Pronoun</span></div></a></td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 1 ra'e 2">ra'e.<span class="tooltip">Matrix, speaker oriented evidentiality/slight surprise</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>then</td>
+							<td>fatigue-Loc.Prep</td>
+							<td>Def.Det</td>
+							<td>young.man</td>
+							<td>3Sg-remove</td>
+							<td>3.Pron.DO</td>
+							<td>Evid</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and then in the end the young man took him out, it turns out.</p>
+					<p style="color:#CD5C5C">y después a la cansada el muchacho lo sacó.</p>
+				</div>
+
+
+				
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 2"></a></td>
+						<tr>
+							<td>Ha</td>
+							<td>o-sẽ-re[he]</td>
+							<td>upé-gui</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 2">voi,
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Sg-out-at-cause</td>
+							<td>there-from</td>
+							<td>Emph</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And having got out of that place,</p>
+					<p style="color:#CD5C5C">Y por haber salido de ahí,</p>
+				</div>
+
+
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 3"></a></td>
+						<td><a class="anchor" id="hagua 1"></a></td>
+						<td><a class="anchor" id="ma 2"></a></td>
+						<tr>
+							<td>o-ú</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 1 ma 2">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></div></a></td>
+							<td>la</td>
+							<td>mbói</td>
+							<td>ho’u</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Irrealis 'ha' Subordinator.html#Story 1 hagua 1">haguã<span class="tooltip">Irrealis Subordinator 'ha'</span></div></a></td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 3">chupe.<span class="tooltip">Overt Direct Object Pronoun</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-eat</td>
+							<td>-Asp</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+							<td>3Sg-eat</td>
+							<td>Sub.Irrealis</td>
+							<td>3.Pron.DO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">the snake came to eat him.</p>
+					<p style="color:#CD5C5C">ya vino la víbora para comerle.</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>Upépe</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>he’i</td>
+							<td>la</td>
+							<td>mbói-pe:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>At.that.moment</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>3Sg-say</td>
+							<td>Def.Det</td>
+							<td>snake-DOM</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">At that moment, the young man said to the snake:</p>
+					<p style="color:#CD5C5C">En ese momento el muchacho le dijo a la víbora:</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>——La</td>
+							<td>che’u-se</td>
+							<td>katu-eté-rõ-na,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Def.Det</td>
+							<td>1Sg-eat-Des</td>
+							<td>Mod-Superl-Cond-Rog</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"If you want to eat me so much,</p>
+					<p style="color:#CD5C5C">"Si demasiado quieres comerme,</p>
+				</div>
+
+				<table>
+					<thead><br> 
+						<tr>
+							<td>ja-ha</td>
+							<td>ja-heka</td>
+							<td>mi</td>
+							<td>tetígo.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Sg.Pl.Incl-go</td>
+							<td>1Pl.Incl-look-for</td>
+							<td>my</td>
+							<td>witness</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">let’s go find a witness.</p>
+					<p style="color:#CD5C5C">vamos a buscar un testigo.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="va 1"></a></td>
+						<tr>
+							<td>Ja-hechá-ke</td>
+							<td>mba’é-pa</td>
+							<td>he’i</td>
+							<td>ñandé-va</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 1">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+							<td>hikuái.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Pl-Incl-see-Imp</td>
+							<td>what-Q</td>
+							<td>3Sg-say</td>
+							<td>1Pl.Incl.Pron.IO</td>
+							<td>-Rel</td>
+							<td>3Pl.Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Let’s see what they say to us."</p>
+					<p style="color:#CD5C5C">Véamos qué nos dicen ellos."</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Ha</td>
+							<td>o-ho</td>
+							<td>oñondive</td>
+							<td>la</td>
+							<td>tetígo</td>
+							<td>reka.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Sg-go</td>
+							<td>together</td>
+							<td>Def.Det</td>
+							<td>witness</td>
+							<td>find</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And they went together to find a witness.</p>
+					<p style="color:#CD5C5C">Y se fueron juntos a buscar el testigo.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>O-ho</td>
+							<td>o-guahẽ</td>
+							<td>hikuái</td>
+							<td>peteĩ</td>
+							<td>yvyra</td>
+							<td>guý-pe</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-go</td>
+							<td>3Pl-arrive</td>
+							<td>3Pl.Pron.Subj</td>
+							<td>one</td>
+							<td>tree</td>
+							<td>under-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They arrived under a tree</p>
+					<p style="color:#CD5C5C">Fueron a llegar ellos debajo de un árbol</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 4"></a></td>
+						<tr>
+							<td>ha</td>
+							<td>o-hecha</td>
+							<td>peteĩ</td>
+							<td>kavaju</td>
+							<td>o-karu</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 4">hína.<span class="tooltip">Past Continuative</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Pl-saw</td>
+							<td>one</td>
+							<td>horse</td>
+							<td>3Sg-eat</td>
+							<td>Cont</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and found a horse that was eating.</p>
+					<p style="color:#CD5C5C">y vieron un caballo [que] estaba comiendo.</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>O-ñemboja</td>
+							<td>ijypý-pe</td>
+							<td>hikuái</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-approach</td>
+							<td>close-Loc.Prep</td>
+							<td>3Pl.Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They got up close [to the horse]</p>
+					<p style="color:#CD5C5C">Se acercaron juntos [al caballo] ellos</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 5"></a></td>
+						<td><a class="anchor" id="ra'e 3"></a></td>
+						<tr>
+							<td>ha</td>
+							<td>o-mombe’u</td>
+							<td>chupe</td>
+							<td>mba’éicha-pa</td>
+							<td>la</td>
+							<td>mbói</td>
+							<td>o-ĩ</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 1 ra'e 3">ra'e<span class="tooltip">Ra'e is goal oriented. Element of surprise.</span></div></a></td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 5">hína<span class="tooltip">Does not contribute to the temporality.</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Pl-tell</td>
+							<td>3Sg.Pron.IO</td>
+							<td>manner-Q</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+							<td>3Sg.be.Loc</td>
+							<td>Evid</td>
+							<td>Emph/Assert</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and told him how the snake was/had been (ra’e progessive)</p>
+					<p style="color:#CD5C5C">y [ellos] le contaron [al caballo] como [la manera en que] estaba la víbora</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ra'e 4"></a></td>
+						<tr>
+							<td>ha</td>
+							<td>mba’é-pa</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>o-japo</td>
+							<td>hese</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#ra'e 4">ra'e.<span class="tooltip">Ra'e is goal oriented</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>what-Q</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>3Sg-do</td>
+							<td>3Sg.Pron.Obl</td>
+							<td>Evid</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and told him what the young man had done for him ra’e.</p>
+					<p style="color:#CD5C5C">y lo que el muchacho le hizo.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>——Mba’e-pa</td>
+							<td>nde</td>
+							<td>ere</td>
+							<td>——he’i</td>
+							<td>chupe</td>
+							<td>la</td>
+							<td>mbói,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——What-Q</td>
+							<td>2Sg.Pron.Subj</td>
+							<td>2Sg.say</td>
+							<td>——3Sg.say</td>
+							<td>3Sg.Pron.IO</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"What do you say," the snake told him,</p>
+					<p style="color:#CD5C5C">"Qué decís," le dijo la víbora,</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Covert Direct Object Pronoun 1/2"></a></td>
+						<tr>
+							<td>——ha’ú-pa</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 1/2">∅<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+							<td>térã</td>
+							<td>a-hejá-nte</td>
+							<td>o-ho</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 1/2">∅?<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——1Sg.eat-tot.Asp</td>
+							<td>3.Pron.DO</td>
+							<td>or</td>
+							<td>1Sg-let-just</td>
+							<td>3Sg-go</td>
+							<td>3.Pron.DO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"do I eat him up or do I just let him go?"</p>
+					<p style="color:#CD5C5C">"le como o le dejo ir?"</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 3"></a></td>
+						<tr>
+							<td>Kavaju</td>
+							<td>nda-hesa</td>
+							<td>pirĩri</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 3">voi:
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Horse</td>
+							<td>Neg-sight</td>
+							<td>thin</td>
+							<td>FOC</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The horse without blinking [said]:</p>
+					<p style="color:#CD5C5C">El caballo sin pestañear [dijo]:</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Covert Direct Object Pronoun 3"></a></td>
+						<tr>
+							<td>——He'u</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 3">∅<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+							<td>katu</td>
+							<td>——he’i,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——3Sg-eat</td>
+							<td>3.Pron.DO</td>
+							<td>FOC</td>
+							<td>——3Sg-say</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"Eat him," he said,</p>
+					<p style="color:#CD5C5C">"Comele sique," le dijo,</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>——ko’ãva</td>
+							<td>nd-oi-kuaa-sé-i</td>
+							<td>ñande-hegui</td>
+							<td>mba’eve,</td>
+							<td>na-i-korasõi-ri.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——these [men]</td>
+							<td>Neg-3Sg-know-Des-Neg</td>
+							<td>1Pl.Incl-Pl.Obl</td>
+							<td>nothing</td>
+							<td>Neg-3.Poss-heart-Neg</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"these men do not want to know anything about us, they do not have a heart.</p>
+					<p style="color:#CD5C5C">"estos hombres no quieren saber nada de nosotros, no tienen corazón.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 4"></a></td>
+						<tr>
+							<td>Péa</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 4">oréve<span class="tooltip">Overt Direct Object Pronoun</span></div></a></td>
+							<td>ore-jagarra,</td>
+							<td>ore-mosã,</td>
+							<td>o-jupi</td>
+							<td>ore ári,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Dem.Pron-This</td>
+							<td>1Pl.Excl.Pron.DO</td>
+							<td>1Pl.Excl.DO-grab</td>
+							<td>1Pl.Excl.DO-rope</td>
+							<td>3Pl-get.on</td>
+							<td>1Pl.Excl-on</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Those ones grab us, rope us, get on us,</p>
+					<p style="color:#CD5C5C">Esos a nosotros nos agarran, nos enlazan,</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ore-nupã</td>
+							<td>ore-ajúrape,</td>
+							<td>ore-kutu,</td>
+							<td>ore-ruguái</td>
+							<td>mopẽ-mba,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Pl.Excl.DO-spank</td>
+							<td>1Pl.Excl.DO-mount</td>
+							<td>1Pl.Excl.DO-prick</td>
+							<td>1Pl.Excl.Poss-tail</td>
+							<td>twist-all</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">they spank and mount us, they prick us, [and] twist our tails,</p>
+					<p style="color:#CD5C5C">nos pegan y se suben sobre nosotros, nos incan, nos tuercen la cola,</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>o-moinge</td>
+							<td>ore</td>
+							<td>jurú-pe</td>
+							<td>fiérro.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Pl-put</td>
+							<td>1Pl.Excl.Poss</td>
+							<td>mouth-Loc.Prep</td>
+							<td>iron</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and they put an iron in our mouth."</p>
+					<p style="color:#CD5C5C">y nos meten en nuestra boca un hierro."</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>O-hasa-ve</td>
+							<td>upégui</td>
+							<td>hikuái</td>
+							<td>ha</td>
+							<td>o-juhu</td>
+							<td>peteĩ</td>
+							<td>guéi.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-pass.more</td>
+							<td>there.Prep</td>
+							<td>3Pl.Pron.Subj</td>
+							<td>Conj</td>
+							<td>3Pl-find</td>
+							<td>one</td>
+							<td>ox</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They went further and found an ox.</p>
+					<p style="color:#CD5C5C">Pasaron más de ahí [pasaron de largo] ellos y encontraron un buey.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 6"></a></td>
+						<tr>
+							<td>O-mombe’u</td>
+							<td>chupe</td>
+							<td>hikuái</td>
+							<td>mba’ére-pa</td>
+							<td>o-ja’yvere</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 6">hína.<span class="tooltip">Continuative Present. Prolongs/enhances the duration of state.</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-tell</td>
+							<td>3Pl.Pron.IO</td>
+							<td>3Pl.Pron.IO</td>
+							<td>reason-Q</td>
+							<td>3Pl-be in litigation</td>
+							<td>Cont</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They told him why they were arguing.</p>
+					<p style="color:#CD5C5C">Le contaron ellos porque están en litigio.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>La</td>
+							<td>guéi</td>
+							<td>avei,</td>
+							<td>ñe’ẽ</td>
+							<td>peteĩ-me,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Def.Det</td>
+							<td>ox</td>
+							<td>also</td>
+							<td>word</td>
+							<td>one-Loc</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The ox also, said in one word,</p>
+					<p style="color:#CD5C5C">El buey también, dijo en una palabra,</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 4"></a></td>
+						<tr>
+							<td>ni</td>
+							<td>n-o-hendu-pá-i</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 4">voi
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+							<td>la</td>
+							<td>h-e’í</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 2">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+							<td>chupe</td>
+							<td>umi</td>
+							<td>mokõi:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>not-even</td>
+							<td>Neg-3Sg-hear-all-Neg</td>
+							<td>Emph</td>
+							<td>Def.Det</td>
+							<td>3Pl-say</td>
+							<td>-Rel</td>
+							<td>3Sg.Pron.IO</td>
+							<td>those</td>
+							<td>two</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">not even hearing all of what those two were saying:</p>
+					<p style="color:#CD5C5C">ni escuchó todo luego lo que le decían esos dos:</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Covert Direct Object Pronoun 4"></a></td>
+						<tr>
+							<td>——He'u</td>
+							<td>katu</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 4">∅<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+							<td>——he’i</td>
+							<td>mbói-pe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——3Sg-eat</td>
+							<td>Emph</td>
+							<td>3.Pron.DO</td>
+							<td>——3Sg-say</td>
+							<td>snake-IO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"Eat him," he said to the snake.</p>
+					<p style="color:#CD5C5C">"Comele sique," le dijo a la víbora.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 5"></a></td>
+						<tr>
+							<td>——Péa</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 5">oréve<span class="tooltip">Overt Direct Object Pronoun"</span></div></a></td>
+							<td>ore-jokua</td>
+							<td>ore</td>
+							<td>akã-gui</td>
+							<td>yvyrá-re,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Dem.Pron-This</td>
+							<td>1Pl.Excl.Pron.DO</td>
+							<td>1Pl.Excl.DO-tie</td>
+							<td>1Pl.Excl.Poss</td>
+							<td>head-Prep</td>
+							<td>wood-Pl.Obl</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"This one ties our head to the wood,</p>
+					<p style="color:#CD5C5C">"Este nos ata nuestra cabeza por la madera,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>		
+							<td>ore-juru</td>
+							<td>jokua</td>
+							<td>ha</td>
+							<td>ore</td>
+							<td>ape,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Pl.Excl.Poss-mouth</td>
+							<td>tie</td>
+							<td>Conj</td>
+							<td>1Pl.Excl.Poss</td>
+							<td>back</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">ties our mouth and our back,</p>
+					<p style="color:#CD5C5C">ata nuestra boca y nuestra espalda,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>ore</td>
+							<td>rumby</td>
+							<td>o-mbohuguypa</td>
+							<td>yvyra</td>
+							<td>akuá-pe,</td>
+							<td>ha</td>
+							<td>upéi</td>
+							<td>no-ñe-kontentá-i,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>1Pl.Excl.Poss</td>
+							<td>buttock</td>
+							<td>3Sg-bleed</td>
+							<td>stick</td>
+							<td>pointy-Loc.Prep</td>
+							<td>Conj</td>
+							<td>then</td>
+							<td>Neg.3-Refl.content-Neg</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and makes our buttock bleed with a pointy stick, and then not content,</p>
+					<p style="color:#CD5C5C">y nuestra nalga nos hace sangrar con un palo puntiagudo, y después no se contentan,</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>ore-juka</td>
+							<td>rire,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>1Pl.Excl.DO-kill</td>
+							<td>after</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and after they kill us,</p>
+					<p style="color:#CD5C5C">y después de matarnos,</p>
+				</div>
+
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 5"></a></td>
+						<tr>
+							<td>ho’u</td>
+							<td>terere</td>
+							<td>ore</td>
+							<td>ratĩ-ngué-pe</td>
+							<td>——he’i</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 5">voi
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+							<td>la</td>
+							<td>guéi.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-drink</td>
+							<td>terere</td>
+							<td>1Pl.Excl.Poss</td>
+							<td>horn-former-Loc.Prep</td>
+							<td>3Sg-say</td>
+							<td>Emph</td>
+							<td>Def.Det</td>
+							<td>ox</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">they drink ‘terere’ from our horn."</p>
+					<p style="color:#CD5C5C">toman terere con nuestro cuerno."</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ma 3"></a></td>
+						<td><a class="anchor" id="va 3"></a></td>
+						<tr>
+							<td>Mokõi</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ma 'Already'.html#Story 1 ma 3">-ma<span class="tooltip">Aspect/Focalizer '-ma'</span></a></td>
+							<td>o-ĩ</td>
+							<td>la</td>
+							<td>mbói</td>
+							<td>ndive</td>
+							<td>o-ĩ</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 3">-va.<span class="tooltip">Relativizer 'va'</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Two-already</td>
+							<td>-Asp</td>
+							<td>3Sg-be.Loc</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+							<td>with</td>
+							<td>3Sg.be.Loc</td>
+							<td>-Rel</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Two already are with the snake.</p>
+					<p style="color:#CD5C5C">Dos ya son los que están con la vibora.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Ha</td>
+							<td>o-ho</td>
+							<td>o-heka</td>
+							<td>hikuái</td>
+							<td>la</td>
+							<td>mbohapy-ha.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Pl-go</td>
+							<td>3Pl-look</td>
+							<td>3Pl.Pron.Subj</td>
+							<td>Def.Det</td>
+							<td>third-Nom</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And they went to look for a third one.</p>
+					<p style="color:#CD5C5C">Y se fueron a buscar los dos a la tercera.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 7"></a></td>
+						<tr>
+							<td>O-juhu</td>
+							<td>peteĩ</td>
+							<td>aguara,</td>
+							<td>takuru</td>
+							<td>ári,</td>
+							<td>o-maña</td>
+							<td>mombyry</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 7">hína,<span class="tooltip">Emphasis on Adv ‘mombyry’ (no temporal contribution)</span></div></a></td>
+							<td>ka’aguy</td>
+							<td>rembe’ý-pe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-find</td>
+							<td>one</td>
+							<td>fox</td>
+							<td>anthill</td>
+							<td>on</td>
+							<td>3Pl-look</td>
+							<td>far.away</td>
+							<td>Cont</td>
+							<td>forest</td>
+							<td>edge-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They found a fox on an anthill. He was looking far away to the edge of the forest.</p>
+					<p style="color:#CD5C5C">Encontraron un zorro, sobre un hormiguero, estaba mirando lejos, a la orilla del bosque.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="va'ekue 1"></a></td>
+						<tr>
+							<td>O-mombe’u</td>
+							<td>chupe</td>
+							<td>hikuái</td>
+							<td>la</td>
+							<td>oi-ko</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="va'ekue-akue relative distal.html#Story 1 va'ekue 1">va’ekue:<span class="tooltip">Relative Distal</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Pl-tell</td>
+							<td>3Sg.Pron.IO</td>
+							<td>3Pl-Pron.Subj</td>
+							<td>Def.Det</td>
+							<td>3Sg-live</td>
+							<td>Rel.Term.Asp</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">They told him what had happened:</p>
+					<p style="color:#CD5C5C">Le contaron los dos lo que pasó:</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Mba’eicha-pa</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>o-guenohẽ</td>
+							<td>mbói-pe</td>
+							<td>la</td>
+							<td>ita</td>
+							<td>guýgui,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>How-Q</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>3Sg-took.out</td>
+							<td>snake-DOM</td>
+							<td>Def.Det</td>
+							<td>rock</td>
+							<td>under.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">How is it that the young man had taken the snake out from under the rock,</p>
+					<p style="color:#CD5C5C">Cómo es que el muchacho le sacó a la víbora de debajo de la piedra,</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Overt Direct Object Pronoun 6"></a></td>
+						<td><a class="anchor" id="hina 8"></a></td>
+						<tr>
+							<td>ha</td>
+							<td>ko’ãga</td>
+							<td>ha’e</td>
+							<td>ho’u-se</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Overt Direct Object Pronoun.html#Story 1 Overt Direct Object Pronoun 6">chupe<span class="tooltip">Overt Direct Object Pronoun</span></div></a></td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 8">hína?<span class="tooltip">Emphasis on the pronoun ‘chupe’. No temporal contribution.</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>now</td>
+							<td>3Sg.Pron.Subj</td>
+							<td>3Sg-eat-Des</td>
+							<td>3.Pron.DO</td>
+							<td>Emph</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and now he wants to eat him?</p>
+					<p style="color:#CD5C5C">y ahora él le quiere comer a él?</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>La</td>
+							<td>karia’y</td>
+							<td>o-jaivy</td>
+							<td>gua’u</td>
+							<td>ha</td>
+							<td>pe</td>
+							<td>aguara</td>
+							<td>apysa</td>
+							<td>ypyeté-pe</td>
+							<td>he’i:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>3Sg-bend.down</td>
+							<td>pretend</td>
+							<td>Conj</td>
+							<td>that</td>
+							<td>fox</td>
+							<td>ear</td>
+							<td>close-Loc.Prep</td>
+							<td>3Sg-say</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The young man pretended to bend down and said very close to the fox’s ear:</p>
+					<p style="color:#CD5C5C">El hombre disimuló agacharse y muy cerca del oído del zorro dijo:</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="va 4"></a></td>
+						<tr>
+							<td>——Heta</td>
+							<td>a-reko</td>
+							<td>la</td>
+							<td>ipýre</td>
+							<td>o-ké</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 4">-va!<span class="tooltip">Relativizer 'va'</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Many</td>
+							<td>1Sg-have</td>
+							<td>Def.Det</td>
+							<td>standing.up</td>
+							<td>3Pl-sleep</td>
+							<td>-Rel</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"I have many hens that are sleeping!" [standing up]</p>
+					<p style="color:#CD5C5C">"¡Tengo muchas gallinas que duermen!" [duerme parado]</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="va 5"></a></td>
+						<tr>
+							<td>O-hendu-pa</td>
+							<td>aguara</td>
+							<td>la</td>
+							<td>o-mombe’ú</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 5">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+							<td>chupe</td>
+							<td>hikuái,</td>
+							<td>ha</td>
+							<td>upépe</td>
+							<td>o-sẽ:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-hear-Tot.Asp</td>
+							<td>fox</td>
+							<td>Def.Det</td>
+							<td>3Pl-tell</td>
+							<td>-Rel</td>
+							<td>3Sg.Pron.IO</td>
+							<td>3Pl.Pron.Subj</td>
+							<td>Conj</td>
+							<td>there</td>
+							<td>3Sg-go.out</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The fox heard all that they were telling him, and came out to say:</p>
+					<p style="color:#CD5C5C">Escuchó todo el zorro lo que le contaron los dos, y ahí salió [a decir]:</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ta 3"></a></td>
+						<tr>
+							<td>——Che-piko</td>
+							<td>moõ-pa</td>
+							<td>ai-kuaá-ta</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 ta 3">-ta<span class="tooltip">Prospective Aspect</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——1Sg.Pron.Subj-Q</td>
+							<td>where-Q</td>
+							<td>1Sg-know</td>
+							<td>-Prosp</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"How [from-where] am I going to know</p>
+					<p style="color:#CD5C5C">"Acaso de dónde voy a saber</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 6"></a></td>
+						<td><a class="anchor" id="va 6"></a></td>
+						<tr>
+							<td>añeté-pa</td>
+							<td>la</td>
+							<td>pe</td>
+							<td>mombe’ú</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Relativizer 'va'.html#Story 1 va 6">-va<span class="tooltip">Relativizer 'va'</span></div></a></td>
+							<td>chéve?</td>
+							<td>——he’i</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 6">voi.
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>truly-Tot.Asp</td>
+							<td>Def.Det</td>
+							<td>Dem</td>
+							<td>2Pl-tell</td>
+							<td>-Rel</td>
+							<td>1Sg.Pron.IO</td>
+							<td>——3Sg-say</td>
+							<td>Emph</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">if it is the truth that which they tell me?" said he.</p>
+					<p style="color:#CD5C5C">[si es] la verdad eso que  me cuentan?" le dijo [luego].</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>——A-hecha-rire</td>
+							<td>ae</td>
+							<td>che</td>
+							<td>ikatu</td>
+							<td>ha’e</td>	
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——1Sg-see-Pst.Cond</td>
+							<td>really</td>
+							<td>1Sg.Pron.Subj</td>
+							<td>3Sg-Mod</td>
+							<td>1Sg-say</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"If I had really seen it I could say</p>
+					<p style="color:#CD5C5C">"Si hubiera visto yo realmente podría decir</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Covert Direct Object Pronoun 5/6"></a></td>
+						<tr>
+							<td>'he’u-ke'</td>				
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 5/6">∅<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+							<td>térã</td>
+							<td>'anike re’u'</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 5/6">∅.<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>eat-Imp</td>
+							<td>3.Pron.DO</td>
+							<td>Prep</td>
+							<td>Neg.Imp-eat</td>
+							<td>3.Pron.DO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">'eat him' or 'do not eat him.'</p>
+					<p style="color:#CD5C5C">'comele' o 'no le comas.'</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Ha</td>
+							<td>upea-rã [upeguarã]</td>
+							<td>ja-ha</td>
+							<td>mante</td>
+							<td>vaerã</td>
+							<td>ja-hecha</td>
+							<td>la</td>
+							<td>pende</td>
+							<td>apykuere,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>that-Irrealis</td>
+							<td>1Pl.Incl-go</td>
+							<td>FOC</td>
+							<td>Mod.nec</td>
+							<td>1Pl.Incl-see</td>
+							<td>Def.Det</td>
+							<td>2Pl-Poss</td>
+							<td>facts</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And for that we must at least go see your facts,</p>
+					<p style="color:#CD5C5C">Y para eso tenemos que irnos solamente a ver los hechos,</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ra'e 5"></a></td>
+						<td><a class="anchor" id="ta 4"></a></td>
+						<tr>
+							<td>ani[ke]</td>
+							<td>che-mbotavy.</td>
+							<td>Ja-hechá</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 ta 4">-ta<span class="tooltip">Prospective Aspect</span></div></a></td>
+							<td>moõ-pa</td>
+							<td>la</td>
+							<td>reime</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 1 ra'e 5">ra'e,<span class="tooltip">Ra'e goal oriented - Ra'e puts emphasis on the locative predicate.</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Neg.Imp</td>
+							<td>1Sg-trick</td>
+							<td>1Pl-see</td>
+							<td>-Prosp</td>
+							<td>where-Q</td>
+							<td>Def.Det</td>
+							<td>2Sg-be.Loc</td>
+							<td>Evid</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">don’t trick me. Let’s go see where you have been,"</p>
+					<p style="color:#CD5C5C">no me vayan a enganãr. Vamos a ver donde es lo que estuviste,"</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>——he’i</td>
+							<td>la</td>
+							<td>mbói-pe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——3Sg-say</td>
+							<td>Def.Det</td>
+							<td>snake-DOM</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">he said to the snake.</p>
+					<p style="color:#CD5C5C">le dijo a la víbora.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ta 5"></a></td>
+						<tr>
+							<td>——Ha</td>
+							<td>añeté-ramo-nte</td>
+							<td>che</td>
+							<td>a-ñe-komprometé</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="-ta 'Prospective Aspect'.html#Story 1 ta 5">-ta.<span class="tooltip">Prospective Aspect</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Conj</td>
+							<td>true-Cond.Pres-only</td>
+							<td>1Sg.Pron.Subj</td>
+							<td>1Sg-Refl-commit</td>
+							<td>-Prosp</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"And only it is the truth I will commit myself."</p>
+					<p style="color:#CD5C5C">"Y solamente si es la verdad voy a comprometerme."</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="voi 7"></a></td>
+						<tr>
+							<td>——Ja-ha</td>
+							<td>ja-hecha</td>
+							<td>——he’i</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Focalizer Particle 'voi'.html#Story 1 voi 7">voi
+								<span class="tooltip">'Voi' Focalizer Particle</span></div></a></td>
+							<td>la</td>
+							<td>karia’y,</td>
+							<td>ha</td>
+							<td>o-jogueraha</td>
+							<td>hikuái.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——1Pl.Incl-go</td>
+							<td>1Pl.Incl-see</td>
+							<td>——3Sg-say</div></td>
+							<td>Emph</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>Conj</td>
+							<td>3Sg-Rec-take</td>
+							<td>3Pl-Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"Let’s go see," he told the lad, and they went together all of them.</p>
+					<p style="color:#CD5C5C">"Vamos a ver," le dijo [énfasis] el muchacho, y se acompañaron [se fueron juntos] todos ellos.</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>Mombyry</td>
+							<td>o-ho</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>ha</td>
+							<td>la</td>
+							<td>mbói</td>
+							<td>rapykuerévo</td>
+							<td>hikuái,</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Far</td>
+							<td>3Sg-go</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>Conj</td>
+							<td>Def.Det</td>
+							<td>snake</td>
+							<td>on.their.footsteps</td>
+							<td>3Pl.Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">Far went the lad and the snake back on their footsteps,</p>
+					<p style="color:#CD5C5C">Lejos se fueron el muchacho y la víbora [sobre sus pasos/por sus huellas],</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>o-ho</td>
+							<td>o-sẽ</td>
+							<td>la</td>
+							<td>ita</td>
+							<td>guasu,</td>
+							<td>mbói</td>
+							<td>renda-gué-pe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3Sg-go</td>
+							<td>3Pl-got.out</td>
+							<td>Def.Det</td>
+							<td>rock</td>
+							<td>big</td>
+							<td>snake</td>
+							<td>place-former-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and they arrived at the place of the big rock, the snake’s former place.</p>
+					<p style="color:#CD5C5C">y fueron a salir al lugar de  la piedra grande, el lugar de la víbora.</p>
+				</div>
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="hina 9"></a></td>
+						<tr>
+							<td>O-maña</td>
+							<td>aguara</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Progressive Morpheme 'ina' Inflections.html#Story 1 hina 9">hína<span class="tooltip">Emphasis on subject ‘aguara’. Event is not continuative.</span></div></a></td>
+							<td>la</td>
+							<td>itá-re,</td>
+							<td>ha</td>
+							<td>he’i</td>
+							<td>mbói-pe:</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-look</td>
+							<td>fox</td>
+							<td>Emph</td>
+							<td>Def.Det</td>
+							<td>rock-at</td>
+							<td>Conj</td>
+							<td>3Sg-say</td></td>
+							<td>snake-to.IO</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The fox looked at the rock, and he said to the snake:</p>
+					<p style="color:#CD5C5C">Miró el zorro a la piedra, y le dijo a la víbora:</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Covert Direct Object Pronoun 7"></a></td>
+						<td><a class="anchor" id="Loc ha 2"></a></td>
+						<tr>
+							<td>——E-ñe-moĩ-mi</td>
+							<td>jey</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Covert Direct Object Pronoun.html#Story 1 Covert Direct Object Pronoun 7">∅<span class="tooltip">Covert Direct Object Pronoun</span></div></a></td>
+							<td>pe</td>
+							<td>rei-me</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Locational Relative Pronoun 'ha'.html#Story 1 Loc ha 2">hagué-pe,<span class="tooltip">Locational Relative Pronoun 'ha'</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>——Imp-Refl-put-Dim</td>
+							<td>again</td>
+							<td>2Sg.Pron.DO</td>
+							<td>Dem</td>
+							<td>2Sg-be.Loc</td>
+							<td>Rel.Term-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">"Please put yourself again at the place where you were, </p>
+					<p style="color:#CD5C5C">"Ponete otra vez en el lugar donde estabas,</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="ra'e 6"></a></td>
+						<tr>
+							<td>ja-hecha</td>
+							<td>añeté-pa</td>
+							<td>la</td>
+							<td>rei-me</td>
+							<td>asy</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Ra'e Evidential.html#Story 1 ra'e 6">ra'e.<span class="tooltip">Matrix subject oriented</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>1Pl.Incl-see</td>
+							<td>true-Tot</td>
+							<td>Def.Det</td></td>
+							<td>2Sg-be.Loc</td>
+							<td>suffer</td>
+							<td>Evid</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">let us truly see the place where you were suffering."</p>
+					<p style="color:#CD5C5C">vamos a ver de verdad el lugar [donde] estuviste sufriente."</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<td><a class="anchor" id="Loc ha 3"></a></td>
+						<tr>
+							<td>Oi-ke</td>
+							<td>jey</td>
+							<td>mbói</td>
+							<td>ogueví-vo</td>
+							<td>la</td>
+							<td>o-ĩ-</td>
+							<td style="font-weight:bold; color:#990099"class="parentCell"><a href="Locational Relative Pronoun 'ha'.html#Story 1 Loc ha 3">hagué-pe,<span class="tooltip">Locational Relative Pronoun 'ha'</span></div></a></td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>3Sg-go.in</td>
+							<td>again</td>
+							<td>snake</td>
+							<td>3Sg-backwards-Temp.Conj</td>
+							<td>Def.Det</td>
+							<td>3Sg-be.Loc</td>
+							<td>Rel.Term-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">The snake went in backwards into the place where he had been,</p>
+					<p style="color:#CD5C5C">Entró otra vez la víbora reculando en el lugar donde estuvo,</p>
+				</div>
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>la</td>
+							<td>karia’y</td>
+							<td>aguara-ndive</td>
+							<td>o-ño-pytyvõ</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>Def.Det</td>
+							<td>lad</td>
+							<td>fox-with</td>
+							<td>3Sg-Refl-help</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and the lad with the fox helped each other</p>
+					<p style="color:#CD5C5C">y el muchacho con el zorro se ayudaron</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>ha</td>
+							<td>o-mboguapy</td>
+							<td>jey</td>
+							<td>mbói</td>
+							<td>ári</td>
+							<td>la</td>
+							<td>ita</td>
+							<td>hikuái.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>3-Caus.sit</td>
+							<td>again</td>
+							<td>snake</td>
+							<td>on</td>
+							<td>Def.Det</td>
+							<td>rock</td>
+							<td>3Pl.Pron.Subj</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">and placed the rock on the snake again.</p>
+					<p style="color:#CD5C5C">y sentaron ellos la piedra sobre la víbora otra vez.</p>
+				</div>
+
+				<table>
+					<thead><br>
+						<tr>
+							<td>Ha</td>
+							<td>mbói</td>
+							<td>o-pyta</td>
+							<td>jey</td>
+							<td>henda-gue-té-pe.</td>
+						</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr style="color:#157a32">
+							<td>Conj</td>
+							<td>snake</td>
+							<td>3Sg-stay</td>
+							<td>again</td>
+							<td>3.Poss.place.former-Emph-Loc.Prep</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="gloss">
+					<p style="color:#6495ED">And the snake stayed again in its place.</p>
+					<p style="color:#CD5C5C">Y la víbora se quedó otra vez en su lugar.</p>
+				</div>
+			</body>
+		</div>
+	</div>
+
+
+
+
+	<script>
+		function w3_open() {
+			document.getElementById("main").style.marginRight = "0%";
+			document.getElementById("mainText").style.marginRight = "25%";
+			document.getElementById("mySidebar").style.display = "block";
+			document.getElementById("openNav").style.display = 'none';	
+		}
+
+		function w3_close() {
+			document.getElementById("main").style.marginRight = "0%";
+			document.getElementById("contentLeft").style.marginRight = "0%";
+			document.getElementById("mySidebar").style.display = "none";
+			document.getElementById("openNav").style.display = "inline-block";
+		}
+	</script>
+</body>
+
+<body>
+	<!-- Footer -->
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-grey">  
+		<div class="w3-large">
+		<i class="fa fa-envelope w3-hover-opacity"><p>zubizarr@usc.edu</p></i>
+		</div>
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+\t O-guahẽ-vo i-sánto ára,
+\g 3Sg-arrive-Temp.Conj 3.Poss–saint day
+\l When his saint day arrived,
+
+\t o-sẽ kavara o-mombe’u o-japó -ta- ha hóga-pe karu guasu.
+\g 3Sg-go.out goat 3Sg-say 3Sg-do -Prosp- Sub 3.Poss-house-Loc.Prep meal big
+\l the goat went out to say that there was going to be a big meal at this house.
+
+\t H-ovaja ovechá-pe raẽ-ve-te o-visita-
+\g 3.Poss-brother.in.law sheep-DOM first-more-Superl 3Sg-visit-
+\l He went first to visit his brother-in-law the sheep
+
+\t ha o-jerure i-chupe o-ho haguã o-vy’a-mi hendive.
+\g Sub 3Sg-ask 3Sg.Pron.IO 3Sg-go Sub.Irrealis 3Sg-have.fun-Dim 3Sg.Pron-Obl
+\l and he asked him to go have fun with him.
+
+\t ——Oikó -ta- karu guasu ha ña-hendú -ta- mbaraka-pu ——he’i chupe.
+\g ——Exist -Prosp feast big Conj 1Pl.Incl-listen -Prosp guitar ——3Sg.say 3Sg.Pron.IO
+\l "There will be a big meal and we will listen to guitar-playing," he said.
+
+\t ——A-ha-se-te jepe, pero o-guahẽ -ta- -ma ro’y
+\g ——1Sg-go-Des-Superl Adv.Conj Conj 3Sg-arrive -Prosp -Asp cold
+\l "Although I want to go, winter will arrive
+
+\t ha ore kuri, ro-ñe-ñapĩ-mba
+\g Conj 1Pl.Excl.Pron Retrosp.Asp 1Pl.Excl-Refl-sheer-Compl
+\l and they just completely sheared us.
+
+\t Katu-ete a-ha vae’rã che memby-kuéra ao-rã joguá-vo
+\g Mod-Superl 1Sg-go Mod 1Sg.Poss child-Pl clothe-Irrealis buy-goal
+\l Surely, I need to go to my children’s to buy their clothes,"
+
+\t ——he’i chupe ovecha.
+\g ——3Sg.say 3Sg.Pron.IO sheep
+\l the sheep said to him.
+
+\t Ha upé -ma -rõ o-hasa meme kavara.
+\g Conj Dem -Asp -Cond 3Sg-pass right.after goat
+\l And when right after that the goat passed by,
+
+\t O-ho o-momarandu kavajú-pe.
+\g 3Sg-go 3Sg-inform horse-IO
+\l he went to inform the horse.
+
+\t O-guahẽ-vo -ma óga atukupe guio
+\g 3Sg-arrive-Temp.Conj -Asp house behind towards
+\l When he arrived behind the house,
+
+\t ha’e-te o-hendú-va peteĩ gualambáu pu kangy-mi;
+\g be-Superl 3Sg-hear-Hab one instrument music soft-Dim
+\l he clearly heard a soft musical instrument [playing];
+
+\t nipo ra'e chavurró-nte o-ñe’ẽ hína [ra'e] kavaju ndive.
+\g Part Evid donkey-only 3Sg-speak Cont [Evid] horse with
+\l it turns out that it was only the donkey speaking with the horse.
+
+\t O-momaiteí-vo chupe kuéra kavara, o-sẽ -ma puka-vyreípe kavaju:
+\g 3Sg-greet-Temp.Conj 3Pl.Pron-IO Pl goat 3Sg-go.out -Asp smiling-for.no.reason horse
+\l When the goat greeted them, the horse came out already smiling for no apparent reason:
+
+\t ——E-je-peté-ke yvý-re, e-hasa ko’ã-pe ja-guapy ——he’i kavará-pe.
+\g ——Imp-Refl-throw-Imp floor-Obl Imp-pass Dem-Loc.Prep 1Pl.Incl-sit.down ——3Sg-say goat-IO
+\l "Throw yourself to the ground, come here, let’s sit down," he said to the goat.
+
+\t Ha o-guapy kavara o-mombe’u
+\g Conj 3Sg-sit.down goat 3Sg-tell
+\l And the goat sat down to say
+
+\t o-poro-invita- ha oi-kó-vo karu guasu-rã, i-sánto ára rehe-gua
+\g 3Sg-Indef.Pron.Obj-invite- Sub 3Pl-be-goal meal big-Irrealis 3.Poss-saint day Obl.Prep-Source
+\l that he was inviting for a big meal, for his saint day.
+
+\t Ha katu o-sẽ -ma kavaju o-ñambyvo mbegue ha he’i:
+\g Conj then 3Sg-go.out -Asp horse 3Sg-snore softly Conj 3Sg.say
+\l And then the horse already comes out and snores softly and says:
+
+\t ——A-ha-se va’erã mo’ã jepe añete,
+\g ——1Sg-go-Des Mod almost Adv.Conj truly
+\l "Although I really would like to go,
+
+\t [anga]katu ko’ẽrõ ha’e-té-pe avei o-mendá -ta- che ryke’y
+\g Conj tomorrow be-Emph-Loc.Prep also 3Sg-marry -Prosp 1Sg.Poss brother
+\l (but) tomorrow my brother is also getting married.
+
+\t ha pé-ina ko’ã-pe hovaja [tobaja] chavurro o-u avei che-konvida;
+\g Conj Dem-Cont Dem-Loc.Prep brother.in.law donkey 3Sg-come also 1Sg.Pron.DO-invite
+\l And here comes my brother-in-law the donkey to invite me also;
+
+\t ha’e jepé -ma chupe a-ha -ta- ha.
+\g 3Sg.say even -Asp 3Sg.Pron.IO 1Sg-go -Prosp- Sub
+\l I even already said to him that I will go."
+
+\t Ha o-ho meme jevy kavara.
+\g Conj 3Sg-go continuously again goat
+\l And the goat passed on again without stopping.
+
+\t Upé -ma -rõ o-guahẽ vaka róga-pe
+\g Dem -Asp -Cond 3Sg-arrive cow house-Loc.Prep
+\l And then when [the goat] arrived at the cow’s house
+
+\t ha kóa o-sẽ jeý-nte avei he’i kavará-pe:
+\g Conj Dem 3Sg-go.out again-FOC also 3Sg.say goat-IO
+\l and this one came out again to also say to the goat:
+
+\t ——Che ména niko o-je-juka ko áño pyahu oi-ké-vo kuri,
+\g ——1Sg.Poss husband FOC 3Sg-Refl-kill Dem year new 3Sg-go-Temp.Conj Retrosp.Asp
+\l "My husband was killed when the new year began,
+
+\t ha pé-ina niko ro-ñembo’e gueteri hese roína
+\g Conj Dem-Cont FOC 1Pl.Excl-pray still 3Sg.Pron.Obl 2Pl.Excl.Cont
+\l and here we are still praying for him
+
+\t ha a-hupi gueteri lúto hese;
+\g Conj 1Sg-lift still mourning 3Sg.Pron.Obl
+\l and I am still in mourning for him;
+
+\t a-tĩ ete, che áma, a-sẽ haguã a-heja che ména ñembo’e
+\g 1Sg-feel.shame Superl 1Sg.Poss dear 1Sg-go.out Sub.Irrealis 1Sg-leave 1Sg.Poss husband prayer
+\l I would feel shame, my dear, to go out and leave my husband’s prayer
+
+\t ha a-ha aipo karu guasu- há- pe.
+\g Conj 1Sg-go Dem meal big- Rel- Loc.Prep
+\l and go to that feast."
+
+\t Upéi-gui o-sẽ-vo, o-ñe-mbyasý -ma kavara,
+\g Dem-Prep 3Sg-go.out-Temp.Conj 3Sg-Refl-be.sad -Asp goat
+\l When leaving, the goal already felt sad,
+
+\t ha o-pensa o-hó-vo máva-pe-pa o-invita: kure niko i-tajasu-eterei
+\g Conj 3Sg-think 3Sg-go-Goal who-DOM-Q 3Sg-invite pig FOC 3.Poss-dirty-Superl
+\l and he went thinking who else to invite: the pig is too dirty.
+
+\t Jagua i-ñorairõ-hýi- ha mbarakaja katu rasa na-heko-rã-i
+\g Dog 3.Poss-fight-feel- Conj cat Emph manners Neg-3Sg.have-Mod-Neg
+\l The dog is a fighter and the cat lacks manners,
+
+\t i-chavi eterei, ñane-motĩ-mba.
+\g 3Sg-ordinary Superl 1Pl.Excl-Caus.shame-Compl
+\l he is too ordinary, he makes us ashamed.
+
+\t Amo ipahápe o-ho o-guahẽ i-komádre kavara róga-pe,
+\g Dem finally 3Sg-go 3Sg-arrive 3.Poss-fem.close.friend goat house-Loc.Prep
+\l And there finally he arrived at the house of his close friend the [female] goat,
+
+\t o-invitá-vo avei chupe i-sánto  guarã.
+\g 3Sg-invite-goal also 3.Pron.DO 3.Poss-saint day-Rel.Loc Irrealis
+\l to invite her also for his saint day.
+
+\t Ha i-komádre ae no-momarã-i chupe.
+\g Conj 3.Poss-fem.close.friend Caus Neg-let.down-Neg 3.Pron.DO
+\l And his close friend did not let him down.
+
+\t O-sẽ voi o-huguaitĩ-vo chupe.
+\g 3Sg-go.out Emph 3Sg-meet-goal 3.Pron.DO
+\l She came out to meet him.
+
+\t ——Che-ra’arõ-nte -ma, katu-ete a-há -ta- ——he’i chupe, vy’apópe.
+\g ——1Sg.Pron.DO-wait-only -Asp Emph-Superl 1Sg-go -Prosp ——3Sg.say 3Sg.Pron.IO happily
+\l "Just wait for me, I will go for sure," she told him, happily.
+
+\t Ka’arú -ma o-ho kavara hóga-pe,
+\g Afternoon -Asp 3Sg-go goat 3.Poss.house-Loc.Prep
+\l It was already the afternoon when the goat returned to his house,
+
+\t i-komái añoite n-o-momarãi chupe.
+\g 3.Poss-fem.friend alone Neg-3Sg-let.down 3.Pron.DO
+\l only his friend (she-goat) did not let him down.
+
+\t Ha upe ko’ẽ-me o-guahẽ -ma santo ára guasu,
+\g Conj then morning-Loc 3Sg-arrive -Asp saint day big
+\l And then in the morning the big day——his saint day——arrived,
+
+\t mesa puku ári i-ñasãi tembi’u i-porã-nguete, i-japichy-re -va,
+\g table long on 3Sg-spread food 3.Poss-good-Superl 3.Poss-touch-Obl -Rel
+\l and on a long table were spread the best foods, to be eaten,
+
+\t ha avei ña-moko va’erã, guaripóla-kuéra.
+\g Conj also 1Pl.Poss-drink Mod alcoholic-Pl
+\l and also to drink, alcoholic drinks.
+
+\t Ha kavara o-sẽ jepi o-ma’ẽ mbuku tapé-re
+\g Conj goat 3Sg-go.out frequently 3Sg-look at.length road-Obl
+\l And the goat went out frequently to watch the road
+
+\t ja-hechá-pa i-komái n-aiñapysẽ-i gueteri.
+\g 1Pl.Incl-see-Compl 3.Poss-fem.friend Neg-show.up-Neg still
+\l to see if his friend [the she goat] still didn’t show up.
+
+\t Asaje pyté-vo, o-guahẽ o-hó-vo hapicha kavara la vy’a-hápe.
+\g Noon around-Temp.Conj 3Sg-arrive 3Sg-go-goal his.kind goat Def.Det happy-Rel.Loc
+\l Around noon, his friend the goat came arriving at the party.
+
+\t Óga jára katu nda-hory-pá-i, o-ĩ o-moangekói-va chupe.
+\g House mistress Emph Neg-happy-Compl-Neg 3Sg-exist 3Sg-bother-Hab 3.Pron.DO
+\l The mistress of the house was not entirely happy; something was bothering her.
+
+\t O-sẽ o-maña porã i-komádre rehe ha he’i chupe:
+\g 3Sg-go.out 3Sg-look well 3.Poss-fem.friend Prep.Obl Conj 3Sg.say 3Sg.Pron.IO
+\l He came out to look closely at his friend [the she goat] and said to her:
+
+\t ——Mamó-gui -ma piko péicha re-ju la che santo ára hápe,
+\g ——Where-from -Asp Q this.way 2Sg-come Def.Det 1Sg.Poss saint day Rel.Loc
+\l "From where do you come to my saint day like this,
+
+\t che-motĩ, nde che komádre kuñakarai guasu!
+\g 1Sg.Poss-shame 2Sg.Pron.Subj 1Sg.Poss fem.friend lady big
+\l you make me ashamed, you my friend the grand lady!"
+
+\t ——Ma’ẽ-mí-na, ne-rendyva-pa, ne-ratĩ ha ne-katĩ re-jú-vo,
+\g ——Look-Dim-Rog 2Sg.Poss-beard-Compl 2Sg.Poss-horn Conj 2Sg.Poss-bad.odor 2Sg-come-Temp.Conj
+\l "Look at this, you have a beard, you have horns, and you come with your bad odor,
+
+\t ha hi’ari-ve pe nde revi ningo oka-ité-pe
+\g Conj on.top-more Dem 2Sg.Poss tail FOC out-Superl-Loc.Prep
+\l And on top, your tail is completely out,"
+
+\t ——he’i chupe la i-sánto ára -va,
+\g ——3Sg.say 3Sg.Pron.IO Def.Det 3.Poss-saint day -Rel
+\l she [the goat] said to the one having a birthday.
+
+\t ha ha’e hesarái kavara -ha avei.
+\g Conj 3Sg.Pron.Subj forgot goat -ha also
+\l And she forgot she is also a goat.
