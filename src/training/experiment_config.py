@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
+SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 
 _glotto_to_iso = {
     "arap1274": "arp",
@@ -26,7 +27,6 @@ class ExperimentConfig:
         early_stopping_patience (int): Number of epochs with no improvement after which training is stopped
         exclude_st_seg (bool): If True, excludes the segmented training data for the evaluation languages
         use_translation (bool): If True, include the translation in the prompt
-        use_unimorph (bool): If True, use the UniMorph-normalized version of the dataset
         output_model_path (str): The path to output the model to
         checkpoint_path (str, optional): The path to the checkpoint file when continuing training
         checkpoint_save_dir (str): Directory where checkpoints will be saved
@@ -38,10 +38,14 @@ class ExperimentConfig:
     pretrained_model: str = "google/byt5-base"
 
     # Dataset
+    dataset_key: str = "lecslab/polygloss-corpus"
     ft_glottocode: str | None = None
-    exclude_st_seg: bool = False
+    segmented_transcription: bool = True
+    unsegmented_transcription: bool = True
+    exclude_st_segmented: bool = False
+    create_segmentation_examples: bool = False
+
     use_translation: bool = True
-    use_unimorph: bool = True
 
     # Training
     max_epochs: int = 13
