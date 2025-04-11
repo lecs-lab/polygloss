@@ -7,7 +7,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from data.lang_codes import odin_to_glotto
-from data.model import IGTLine, SplitType, load_igt
+from data.model import IGTLine, load_igt
 
 
 def scrape_odin() -> list[IGTLine]:
@@ -32,6 +32,7 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
         "Tsez": ("dido1241", "stan1293"),
         "Uspanteko": ("uspa1245", "stan1288"),
     }
+    in_domain_glottocodes = ["arap1274", "dido1241", "uspa1245"]
     raw_dir = pathlib.Path(__file__).parent / "raw/sigmorphon_st"
     all_data: list[IGTLine] = []
     for lang_folder in raw_dir.iterdir():
@@ -44,7 +45,13 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
             if "track2-uncovered" in file.name:
                 for s in ["train", "dev", "test"]:
                     if s in file.name:
-                        split = s
+                        if glottocode in in_domain_glottocodes and s == "train":
+                            split = None
+                        else:
+                            setting = (
+                                "ID" if glottocode in in_domain_glottocodes else "OOD"
+                            )
+                            split = f"{s}_{setting}"
                         break
                 else:
                     raise ValueError("File name must contain split: ", file)
@@ -57,7 +64,7 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
                 for row in data:
                     row.glottocode = glottocode
                     row.metalang_glottocode = metalang_code
-                    row.designated_split = typing.cast(SplitType, split)
+                    row.designated_split = split
                 all_data.extend(data)
 
     return all_data
@@ -81,6 +88,7 @@ def scrape_cldf() -> list[IGTLine]:
             transcription = row.Analyzed_Word.replace("\\t", " ")
             segmentation = transcription if "-" in transcription else None
             transcription = transcription.replace("-", "")
+            glottocode = row.Glottocode if isinstance(row.Glottocode, str) else None
             data.append(
                 IGTLine(
                     id=f"{dataset}_{row.ID_x}",
@@ -89,7 +97,7 @@ def scrape_cldf() -> list[IGTLine]:
                     segmentation=segmentation,
                     glosses=row.Gloss.replace("\\t", " "),
                     translation=row.Translated_Text,
-                    glottocode=row.Glottocode,
+                    glottocode=glottocode,
                 )
             )
     return data
@@ -106,6 +114,10 @@ def scrape_imtvault() -> list[IGTLine]:
         transcription = row.Analyzed_Word.replace("\\t", " ")
         segmentation = transcription if "-" in transcription else None
         transcription = transcription.replace("-", "")
+        glottocode = row.Language_ID if isinstance(row.Language_ID, str) else None
+        metalang_glottocode = (
+            row.Meta_Language_ID if isinstance(row.Meta_Language_ID, str) else None
+        )
         data.append(
             IGTLine(
                 id=f"imtvault_{row.ID}",
@@ -114,8 +126,8 @@ def scrape_imtvault() -> list[IGTLine]:
                 segmentation=segmentation,
                 glosses=row.Gloss.replace("\\t", " "),
                 translation=row.Translated_Text,
-                glottocode=row.Language_ID,
-                metalang_glottocode=row.Meta_Language_ID,
+                glottocode=glottocode,
+                metalang_glottocode=metalang_glottocode,
             )
         )
     return data

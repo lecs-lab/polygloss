@@ -3,9 +3,7 @@
 import pathlib
 import re
 from dataclasses import dataclass
-from typing import List, Literal, Optional
-
-SplitType = Literal["train", "dev", "test"]
+from typing import List, Optional
 
 
 @dataclass
@@ -21,8 +19,10 @@ class IGTLine:
     translation: Optional[str] = None
 
     glottocode: Optional[str] = None
+    language: Optional[str] = None
     metalang_glottocode: Optional[str] = None
-    designated_split: Optional[SplitType] = None
+    metalanguage: Optional[str] = None
+    designated_split: Optional[str] = None
 
     def __repr__(self):
         return f"Trnsc:\t{self.transcription}\nSegm:\t{self.segmentation}\nGloss:\t{self.glosses}\nTrnsl:\t{self.translation}\n\n"

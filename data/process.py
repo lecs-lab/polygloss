@@ -1,5 +1,6 @@
 import regex
 from langid.langid import LanguageIdentifier, model
+from pyglottolog import Glottolog
 
 from data.lang_codes import iso1_to_3, iso3_to_glotto
 from data.model import IGTLine
@@ -7,18 +8,40 @@ from data.model import IGTLine
 identifier = LanguageIdentifier.from_modelstring(model, norm_probs=True)
 identifier.set_languages(["zh", "nl", "en", "es", "pt", "de", "fr", "it"])
 
+try:
+    glottolog = Glottolog("../glottolog")
+except ValueError:
+    raise Exception(
+        "You must download Glottolog and put it in the same directory as the polygloss repo. See https://github.com/glottolog/pyglottolog#install"
+    )
 
-def guess_metalang(example: IGTLine, confidence_threshold=0.95) -> IGTLine:
-    """If the example is missing a metalanguage code, try to predict one with langid"""
-    if example.metalang_glottocode is not None or example.translation is None:
-        return example
-    if isinstance(example.translation, float):
-        breakpoint()
-    iso1code, confidence = identifier.classify(example.translation)
-    if confidence >= confidence_threshold:
-        iso3code = iso1_to_3(iso1code)
-        glottocode = iso3_to_glotto.get(iso3code)
-        example.metalang_glottocode = glottocode
+lang_cache: dict[str, str] = {}
+
+
+def get_lang(glottocode: str):
+    """Convert a glottocode into a language name. Cached."""
+    if glottocode in lang_cache:
+        return lang_cache[glottocode]
+    languoid = glottolog.languoid(glottocode)
+    lang_cache[glottocode] = languoid.name if languoid and languoid.name else "Unknown"
+    return lang_cache[glottocode]
+
+
+def add_lang_info(example: IGTLine, confidence_threshold=0.95) -> IGTLine:
+    # If the example is missing a metalanguage code, try to predict one with langid
+    if example.metalang_glottocode is None and example.translation:
+        iso1code, confidence = identifier.classify(example.translation)
+        if confidence >= confidence_threshold:
+            iso3code = iso1_to_3(iso1code)
+            glottocode = iso3_to_glotto.get(iso3code)
+            example.metalang_glottocode = glottocode
+
+    # Look up glottocodes to get languages
+    if example.glottocode:
+        example.language = get_lang(example.glottocode)
+    if example.metalang_glottocode:
+        example.metalanguage = get_lang(example.metalang_glottocode)
+
     return example
 
 
