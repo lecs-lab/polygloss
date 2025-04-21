@@ -63,13 +63,12 @@ def train(
             pbar.update()
 
         # Eval step
-        with torch.inference_mode():
+        with torch.amp.autocast(device, dtype=torch.float16), torch.inference_mode():
             model.eval()
             eval_loss = 0.0
             for batch in dev_dataloader:
-                with torch.amp.autocast(device, dtype=torch.float16):
-                    out = model(**batch)
-                    loss = _get_loss(out, batch["label_ids"])
+                out = model(**batch)
+                loss = _get_loss(out, batch["label_ids"])
                 eval_loss += out.loss.detach().item()
 
         # Log results
