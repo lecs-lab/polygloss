@@ -9,12 +9,16 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 from src.config_to_dataclass import config_to_dataclass
+from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
-from src.training.prepare_s2s_dataset import create_dataloaders
 from src.training.train import train
 
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
-print(device)
+device = (
+    "cuda"
+    if torch.cuda.is_available()
+    else ("mps" if torch.backends.mps.is_available() else "cpu")
+)
+print(f"Running on {device=}")
 
 
 def _make_if_needed(path: str):
@@ -27,12 +31,12 @@ def run(config: ExperimentConfig):
     random.seed(0)
 
     # Initialize WandB experiment
-    if config.mode == "train" or config.mode == "finetune":
+    if config.mode == "pretrain" or config.mode == "finetune":
         run_name = config.exp_name
         if config.mode == "finetune":
             run_name += f"-ft-{config.ft_glottocode}"
         wandb.init(
-            project="glossLM",
+            project="polygloss",
             entity="wav2gloss",
             name=run_name,
             config=asdict(config),
@@ -41,7 +45,13 @@ def run(config: ExperimentConfig):
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model)
-    dataloaders = create_dataloaders(tokenizer=tokenizer, config=config)
+
+    if config.model_type == "seq2seq":
+        dataloaders = prepare_s2s_dataset.create_dataloaders(
+            tokenizer=tokenizer, config=config
+        )
+    else:
+        raise NotImplementedError()
 
     # Training loop
     if config.mode in ["pretrain", "finetune"]:

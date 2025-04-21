@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:3
-#SBATCH --ntasks=3
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=1
 #SBATCH --mem=32G
 #SBATCH --time=7-00:00:00
 #SBATCH --qos=blanca-curc-gpu
