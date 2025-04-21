@@ -15,7 +15,7 @@
 module purge
 module load miniforge
 conda activate polygloss
-cd "$PROJECTS/glosslm/src"
+cd "/projects/$USER/polygloss"
 
 python run.py "$1"
 
