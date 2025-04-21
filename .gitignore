@@ -8,3 +8,4 @@ training-checkpoints/
 .venv
 wandb
 */checkpoint
+logs/

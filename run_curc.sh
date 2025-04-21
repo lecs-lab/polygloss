@@ -7,8 +7,8 @@
 #SBATCH --qos=blanca-curc-gpu
 #SBATCH --partition=blanca-curc-gpu
 #SBATCH --account=blanca-curc-gpu
-#SBATCH --out=polygloss.%j.out
-#SBATCH --error=polygloss.%j.err
+#SBATCH --out=logs/polygloss.%j.out
+#SBATCH --error=logs/polygloss.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
