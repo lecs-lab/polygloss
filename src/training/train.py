@@ -1,8 +1,10 @@
+import pathlib
+
 import torch
 import tqdm
-import wandb
 from torch.utils.data import DataLoader
 
+import wandb
 from src.training.experiment_config import ExperimentConfig
 
 
@@ -11,6 +13,8 @@ def train(
     train_dataloader: DataLoader,
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
+    experiment_folder: pathlib.Path,
+    device: str,
 ):
     pbar = tqdm.tqdm(total=config.max_epochs * len(train_dataloader), desc="Training")
 
@@ -21,11 +25,23 @@ def train(
         weight_decay=0.01,
     )
 
-    for epoch in range(config.max_epochs):
+    # Load from checkpoint, if it exists
+    start_epoch = 0
+    if (experiment_folder / "checkpoint").exists():
+        print(
+            "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
+        )
+        checkpoint = torch.load(experiment_folder / "checkpoint", weights_only=True)
+        model.load_state_dict(checkpoint["model_state_dict"])
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        start_epoch = checkpoint["epoch"]
+
+    for epoch in range(start_epoch, config.max_epochs):
         # Train step
         model.train()
         train_loss = 0.0
         for batch in train_dataloader:
+            batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
             out = model(**batch)
             loss = _get_loss(out, batch["labels"])
@@ -52,6 +68,21 @@ def train(
             {"train/loss": train_loss, "train/epoch": epoch, "eval/loss": eval_loss},
             step=epoch * len(train_dataloader),
         )
+
+        # Save checkpoint
+        torch.save(
+            {
+                "epoch": epoch,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+            },
+            experiment_folder / "checkpoint",
+        )
+
+    # Save final model and remove checkpoint
+    (experiment_folder / "checkpoint").rmdir()
+    torch.save(model.state_dict(), experiment_folder / "model")
+    print(f"Saved model to {experiment_folder / 'model'}")
 
 
 def _get_loss(out, labels):

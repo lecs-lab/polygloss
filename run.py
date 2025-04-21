@@ -1,13 +1,14 @@
 import argparse
 import os
+import pathlib
 import random
 from dataclasses import asdict
 
 import torch
-import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
+import wandb
 from src.config_to_dataclass import config_to_dataclass
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
@@ -27,24 +28,20 @@ def _make_if_needed(path: str):
     return path
 
 
-def run(config: ExperimentConfig):
+def run(config: ExperimentConfig, experiment_folder: pathlib.Path):
     random.seed(0)
 
     # Initialize WandB experiment
     if config.mode == "pretrain" or config.mode == "finetune":
-        run_name = config.exp_name
-        if config.mode == "finetune":
-            run_name += f"-ft-{config.ft_glottocode}"
         wandb.init(
             project="polygloss",
             entity="wav2gloss",
-            name=run_name,
             config=asdict(config),
         )
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model)
+    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(device)
 
     if config.model_type == "seq2seq":
         dataloaders = prepare_s2s_dataset.create_dataloaders(
@@ -60,6 +57,8 @@ def run(config: ExperimentConfig):
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
             config=config,
+            experiment_folder=experiment_folder,
+            device=device,
         )
 
     # args = transformers.Seq2SeqTrainingArguments(
@@ -161,4 +160,5 @@ if __name__ == "__main__":
         overrides=args.overrides or "",
         dataclass_type=ExperimentConfig,
     )
-    run(config)
+    folder = pathlib.Path(args.config).parent
+    run(config, folder)

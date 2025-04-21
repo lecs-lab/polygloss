@@ -21,7 +21,6 @@ class ExperimentConfig:
     """
     Args:
         mode ("pretrain", "finetune", "predict"): The mode to run in
-        exp_name (str): A string used to label the experiment in logging
         pretrained_model (str): The name of the pretrained model to train or predict with
         ft_glottocode (str, optional): The language to use for finetuning/prediction
         max_epochs (int): Maximum number of training epochs
@@ -35,7 +34,6 @@ class ExperimentConfig:
 
     # General
     mode: TRAIN_MODE
-    exp_name: str
     pretrained_model: str = "google/byt5-base"
     model_type: MODEL_TYPE = "seq2seq"
 
@@ -54,11 +52,6 @@ class ExperimentConfig:
     early_stopping_patience: int = 3
     learning_rate: float = 5e-5
     batch_size: int = 64
-
-    # Files
-    output_model_path: str | None = None
-    checkpoint_path: str | None = None
-    checkpoint_dir: str = "training_checkpoints/"
 
     # Computed properties
     @property

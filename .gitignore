@@ -6,3 +6,5 @@ src/wandb
 slurm-out/
 training-checkpoints/
 .venv
+wandb
+*/checkpoint
