@@ -39,6 +39,11 @@ def run(config: ExperimentConfig, experiment_folder: pathlib.Path):
             config=asdict(config),
         )
 
+    if config.ft_glottocode is not None:
+        # Create subfolders for each language if needed
+        experiment_folder /= config.ft_glottocode
+        experiment_folder.mkdir(exist_ok=True)
+
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(device)

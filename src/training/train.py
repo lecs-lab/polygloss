@@ -42,14 +42,13 @@ def train(
         start_epoch = checkpoint["epoch"]
 
     model.gradient_checkpointing_enable()
-    scaler = torch.cuda.amp.GradScaler()
+    scaler = torch.amp.GradScaler(device)
 
     for epoch in range(start_epoch, config.max_epochs):
         # Train step
         model.train()
         train_loss = 0.0
         for batch in train_dataloader:
-            breakpoint()
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
             with torch.amp.autocast(device, dtype=torch.float16):
