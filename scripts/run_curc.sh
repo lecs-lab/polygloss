@@ -13,9 +13,10 @@
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
 module purge
-module load anaconda
-conda activate AutoIGT
-cd "/projects/migi8081/glosslm/src"
+module load miniforge
+conda activate polygloss
+cd "$PROJECTS/glosslm/src"
 
+python run.py "$1"
 
-torchrun --nproc_per_node=4 run.py --config ../configs/pretrain_base.cfg
+# torchrun --nproc_per_node=4 run.py --config ../configs/pretrain_base.cfg
