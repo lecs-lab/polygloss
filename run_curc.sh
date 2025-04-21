@@ -9,8 +9,6 @@
 #SBATCH --account=blanca-curc-gpu
 #SBATCH --out=logs/polygloss.%j.out
 #SBATCH --error=logs/polygloss.%j.err
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=michael.ginn@colorado.edu
 
 module purge
 module load miniforge

@@ -42,7 +42,7 @@ def train(
         start_epoch = checkpoint["epoch"]
 
     model.gradient_checkpointing_enable()
-    scaler = torch.amp.GradScaler(device)
+    scaler = torch.amp.grad_scaler.GradScaler(device)
 
     for epoch in range(start_epoch, config.max_epochs):
         # Train step
@@ -51,7 +51,7 @@ def train(
         for batch in train_dataloader:
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
-            with torch.amp.autocast(device, dtype=torch.float16):
+            with torch.amp.autocast_mode.autocast(device, dtype=torch.float16):
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
             scaler.scale(loss).backward()
@@ -62,7 +62,10 @@ def train(
             pbar.update()
 
         # Eval step
-        with torch.amp.autocast(device, dtype=torch.float16), torch.inference_mode():
+        with (
+            torch.amp.autocast_mode.autocast(device, dtype=torch.float16),
+            torch.inference_mode(),
+        ):
             model.eval()
             eval_loss = 0.0
             for batch in dev_dataloader:
