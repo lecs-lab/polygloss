@@ -91,6 +91,9 @@ print(outputs[0]) # o sea COM-buscar E3S-esposa
 
 ## Running Experiments
 
+> [!NOTE]
+> To reproduce the original GlossLM v1 experiments, please check out the `glosslm-v1` branch.
+
 Interested in replicating or modifying our experiments? Pretraining, finetuning, and inference are handled with `run.py`, as follows:
 
 ```bash
