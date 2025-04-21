@@ -16,6 +16,11 @@ def train(
     experiment_folder: pathlib.Path,
     device: str,
 ):
+    # TODO:
+    # [ ] early stopping
+    # [ ] mixed precision training
+    # [ ] load best at end
+
     pbar = tqdm.tqdm(total=config.max_epochs * len(train_dataloader), desc="Training")
 
     # TODO: Do we want to use adafactor over Adam?
@@ -36,28 +41,35 @@ def train(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
+    model.gradient_checkpointing_enable()
+    scaler = torch.cuda.amp.GradScaler()
+
     for epoch in range(start_epoch, config.max_epochs):
         # Train step
         model.train()
         train_loss = 0.0
         for batch in train_dataloader:
+            breakpoint()
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
-            out = model(**batch)
-            loss = _get_loss(out, batch["labels"])
-            loss.backward()
+            with torch.amp.autocast(device, dtype=torch.float16):
+                out = model(**batch)
+                loss = _get_loss(out, batch["labels"])
+            scaler.scale(loss).backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-            optimizer.step()
+            scaler.step(optimizer)
+            scaler.update()
             train_loss += loss.detach().item()
             pbar.update()
 
         # Eval step
-        with torch.no_grad():
+        with torch.inference_mode():
             model.eval()
             eval_loss = 0.0
             for batch in dev_dataloader:
-                out = model(**batch)
-                loss = _get_loss(out, batch["label_ids"])
+                with torch.amp.autocast(device, dtype=torch.float16):
+                    out = model(**batch)
+                    loss = _get_loss(out, batch["label_ids"])
                 eval_loss += out.loss.detach().item()
 
         # Log results

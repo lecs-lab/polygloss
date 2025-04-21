@@ -6,7 +6,7 @@ A Massively Multilingual Corpus and Pretrained Model for Interlinear Glossed Tex
 
 ## Overview
 
-GlossLM consists of a multilingual corpus of IGT and pretrained models for interlinear glossing.
+PolyGloss consists of a multilingual corpus of IGT and pretrained models for interlinear glossing.
 
 ## Background
 
@@ -96,31 +96,26 @@ Interested in replicating or modifying our experiments? Pretraining, finetuning,
 ```bash
 # Python >=3.11
 # Recommended to use venv for set up
-python run.py -c some_config_file.cfg -o key1=val1 key2=val2
+python run.py some_config_file.cfg -o key1=val1 key2=val2
 ```
 
-The run is defined by an INI-style _config file_. We have some examples for [pretraining](configs/pretrain_base.cfg), [finetuning](configs/finetune_base.cfg), and [inference](configs/predict_base.cfg). A config file looks something like:
+The run is defined by an INI-style _config file_. Each experiment should consist of a folder in `experiments` along with configuration files for pretraining, finetuning, or inference. See [an example experiment folder](experiments/base_igt). A config file looks something like:
 
 ```ini
 [config]
 
 mode = pretrain
-exp_name = pretrain_base
 pretrained_model = google/byt5-base
 
 # Dataset
+dataset_key = lecslab/polygloss-corpus
 exclude_st_seg = false
 use_translation = true
-use_unimorph = false
 
 # Training
-max_epochs = 13
-early_stopping_patience = 3
+max_epochs = 50
 learning_rate = 5e-5
-batch_size = 2
-
-# Files
-output_model_path = /projects/migi8081/glosslm/models/glosslm-pretrained-base
+batch_size = 16
 ```
 
 The full list of possible options is in [experiment_config.py](src/training/experiment_config.py). In addition to the config file, you can specify any parameter overrides with `-o key1=val1 key2=val2`.
