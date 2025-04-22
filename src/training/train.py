@@ -62,7 +62,6 @@ def train(
             scaler.update()
             train_loss += loss.detach().item()
             pbar.update()
-            break  # TESTING - REMOVE ME
 
         # Eval step
         with (
