@@ -14,6 +14,8 @@ def scrape_odin() -> list[IGTLine]:
     raw_dir = pathlib.Path(__file__).parent / "raw/ODIN"
     all_data: list[IGTLine] = []
     for file in tqdm((raw_dir / "odin_data_sigmorphon").iterdir()):
+        if file.stem == "TOTAL":
+            continue
         glottocode = odin_to_glotto.get(file.stem.split("-")[0])
         data = load_igt(file, id_prefix=f"odin_{file.stem}", source="odin")
         for row in data:
