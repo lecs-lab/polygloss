@@ -50,11 +50,17 @@ def standardize(example: IGTLine) -> IGTLine:
         example.translation = None
 
     # Fix punctuation and such
-    example.transcription = regex.sub(r"(\w)\?", r"\1 ?", example.transcription)
-    example.transcription = regex.sub(r"(\w)\.", r"\1 .", example.transcription)
-    example.transcription = regex.sub(r"(\w)\!", r"\1 !", example.transcription)
-    example.transcription = regex.sub(r"(\w)\,", r"\1 ,", example.transcription)
-    example.transcription = regex.sub(r"\-(\s|$)", " ", example.transcription)
+    def _fix_punc(s: str):
+        s = regex.sub(r"(\w)\?", r"\1 ?", s)
+        s = regex.sub(r"(\w)\.", r"\1 .", s)
+        s = regex.sub(r"(\w)\!", r"\1 !", s)
+        s = regex.sub(r"(\w)\,", r"\1 ,", s)
+        return s
+
+    example.transcription = _fix_punc(example.transcription)
+    example.segmentation = (
+        _fix_punc(example.segmentation) if example.segmentation else None
+    )
 
     # I've omitted a regex that removes null morphemes (e.g. dangling hyphens)
     # If you want to add that back, the regex is:
@@ -62,8 +68,6 @@ def standardize(example: IGTLine) -> IGTLine:
 
     if example.glosses:
         example.glosses = regex.sub("\t", " ", example.glosses)
-        example.glosses = regex.sub(r"(\w)\.(\s|$)", r"\1 . ", example.glosses)
-        example.glosses = regex.sub(r"(\w)\!(\s|$)", r"\1 ! ", example.glosses)
-        example.glosses = regex.sub(r"(\w)\?(\s|$)", r"\1 ? ", example.glosses)
+        example.glosses = _fix_punc(example.glosses)
 
     return example

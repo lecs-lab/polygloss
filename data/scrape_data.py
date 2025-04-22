@@ -3,10 +3,11 @@
 import pathlib
 import typing
 
+import datasets
 import pandas as pd
 from tqdm import tqdm
 
-from data.lang_codes import odin_to_glotto
+from data.lang_codes import iso1_to_3, iso3_to_glotto, odin_to_glotto
 from data.model import IGTLine, load_igt
 
 
@@ -148,4 +149,49 @@ def scrape_gurani() -> list[IGTLine]:
             source="guarani",
         )
         all_data.extend(data)
+    return all_data
+
+
+def scrape_fieldwork() -> list[IGTLine]:
+    dataset = datasets.load_dataset(
+        "wav2gloss/fieldwork",
+        streaming=True,
+        columns=[
+            "id",
+            "translation_language",
+            "transcription",
+            "surface",
+            "gloss",
+            "translation",
+            "language",
+        ],
+    )
+    dataset = datasets.concatenate_datasets([dataset[split] for split in dataset])  # type:ignore
+
+    def _remove_spaces(s: str):
+        return (
+            s.replace("- ", "-")
+            .replace(" -", "-")
+            .replace("= ", "=")
+            .replace(" =", "=")
+        )
+
+    all_data: list[IGTLine] = []
+    for row in tqdm(dataset):
+        iso1 = row["translation_language"]
+        replacements = {"sh": "hr", "eml": "egl"}
+        iso1 = typing.cast(str, replacements.get(iso1, iso1))
+        metalang_glottocode = iso3_to_glotto.get(iso1_to_3(iso1))
+        all_data.append(
+            IGTLine(
+                id=row["id"],
+                source="wav2gloss",
+                transcription=row["transcription"],
+                segmentation=_remove_spaces(row["surface"]),
+                glosses=_remove_spaces(row["gloss"]),
+                translation=row["translation"],
+                glottocode=row["language"],
+                metalang_glottocode=metalang_glottocode,
+            )
+        )
     return all_data
