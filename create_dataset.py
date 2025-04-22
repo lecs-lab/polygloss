@@ -11,6 +11,7 @@ from data.audit import audit
 from data.process import add_lang_info, standardize
 from data.scrape_data import (
     scrape_cldf,
+    scrape_fieldwork,
     scrape_gurani,
     scrape_imtvault,
     scrape_odin,
@@ -24,6 +25,7 @@ all_data = [
     *scrape_cldf(),
     *scrape_imtvault(),
     *scrape_gurani(),
+    *scrape_fieldwork(),
 ]
 print(f"Collated raw data with {len(all_data)} total examples.")
 
