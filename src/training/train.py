@@ -69,6 +69,7 @@ def train(
             model.eval()
             eval_loss = 0.0
             for batch in dev_dataloader:
+                batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
                 loss = _get_loss(out, batch["label_ids"])
                 eval_loss += out.loss.detach().item()
