@@ -18,7 +18,7 @@ def train(
 ):
     # TODO:
     # [ ] early stopping
-    # [ ] mixed precision training
+    # [x] mixed precision training
     # [ ] load best at end
 
     pbar = tqdm.tqdm(total=config.max_epochs * len(train_dataloader), desc="Training")
@@ -44,6 +44,8 @@ def train(
     model.gradient_checkpointing_enable()
     scaler = torch.amp.grad_scaler.GradScaler(device)
 
+    print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
+
     for epoch in range(start_epoch, config.max_epochs):
         # Train step
         model.train()
@@ -60,6 +62,7 @@ def train(
             scaler.update()
             train_loss += loss.detach().item()
             pbar.update()
+            break  # TESTING - REMOVE ME
 
         # Eval step
         with (
@@ -71,8 +74,8 @@ def train(
             for batch in dev_dataloader:
                 batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
-                loss = _get_loss(out, batch["label_ids"])
-                eval_loss += out.loss.detach().item()
+                loss = _get_loss(out, batch["labels"])
+                eval_loss += loss.detach().item()
 
         # Log results
         train_loss /= len(train_dataloader)
