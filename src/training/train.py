@@ -71,7 +71,7 @@ def train(
         ):
             model.eval()
             eval_loss = 0.0
-            for batch in dev_dataloader:
+            for batch in tqdm.tqdm(dev_dataloader, desc="Evaluating"):
                 batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
