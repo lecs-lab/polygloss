@@ -60,7 +60,7 @@ def train(
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             scaler.step(optimizer)
             scaler.update()
-            train_loss += loss.detach().item()
+            train_loss += loss.detach().item() / len(train_dataloader)
             pbar.update()
 
         # Eval step
@@ -74,11 +74,9 @@ def train(
                 batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
-                eval_loss += loss.detach().item()
+                eval_loss += loss.detach().item() / len(dev_dataloader)
 
         # Log results
-        train_loss /= len(train_dataloader)
-        eval_loss /= len(dev_dataloader)
         print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
         wandb.log(
             {"train/loss": train_loss, "train/epoch": epoch, "eval/loss": eval_loss},
