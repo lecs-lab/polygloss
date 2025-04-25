@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
-#SBATCH --ntasks=1
-#SBATCH --mem=32G
+#SBATCH --gres=gpu:h100_3g.40gb
+#SBATCH --ntasks=10
+#SBATCH --mem-per-cpu=4000m
 #SBATCH --time=7-00:00:00
-#SBATCH --qos=blanca-curc-gpu
-#SBATCH --partition=blanca-curc-gpu
-#SBATCH --account=blanca-curc-gpu
+#SBATCH --qos=blanca-blast-lecs
+#SBATCH --partition=blanca-blast-lecs
+#SBATCH --account=blanca-blast-lecs
 #SBATCH --out=logs/polygloss.%j.out
 #SBATCH --error=logs/polygloss.%j.err
 
