@@ -42,7 +42,7 @@ def train(
         start_epoch = checkpoint["epoch"]
 
     model.gradient_checkpointing_enable()
-    # scaler = torch.amp.grad_scaler.GradScaler(device)
+    scaler = torch.amp.grad_scaler.GradScaler(device)
 
     print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
 
@@ -53,18 +53,15 @@ def train(
         for batch in train_dataloader:
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
-            # with torch.amp.autocast_mode.autocast(device, dtype=torch.float16):
-            #     out = model(**batch)
-            #     loss = _get_loss(out, batch["labels"])
-            out = model(**batch)
-            loss = _get_loss(out, batch["labels"])
-            loss.backward()
-            optimizer.step()
-            # scaler.scale(loss).backward()
+            with torch.amp.autocast_mode.autocast("cuda", dtype=torch.float16):
+                out = model(**batch)
+                loss = _get_loss(out, batch["labels"])
+                print("Loss (1):", loss)
+            scaler.scale(loss).backward()
             # scaler.unscale_(optimizer)
             # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-            # scaler.step(optimizer)
-            # scaler.update()
+            scaler.step(optimizer)
+            scaler.update()
             print("Loss", loss.detach().item())
             train_loss += loss.detach().item() / len(train_dataloader)
             pbar.update()
