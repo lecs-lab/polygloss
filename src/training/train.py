@@ -57,6 +57,7 @@ def train(
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
             scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             scaler.step(optimizer)
             scaler.update()
