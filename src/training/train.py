@@ -53,7 +53,7 @@ def train(
         for batch in train_dataloader:
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
-            with torch.amp.autocast_mode.autocast("cuda", dtype=torch.float16):
+            with torch.amp.autocast_mode.autocast("cuda", dtype=torch.bfloat16):
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
                 print("Loss (1):", loss)
@@ -68,7 +68,7 @@ def train(
 
         # Eval step
         with (
-            torch.amp.autocast_mode.autocast(device, dtype=torch.float16),
+            torch.amp.autocast_mode.autocast(device, dtype=torch.bfloat16),
             torch.inference_mode(),
         ):
             model.eval()
