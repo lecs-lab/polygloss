@@ -17,6 +17,7 @@ def train(
     device: str,
 ):
     # TODO:
+    # [ ] multi gpu
     # [ ] early stopping
     # [x] mixed precision training
     # [ ] load best at end
