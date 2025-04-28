@@ -9,3 +9,4 @@ sacrebleu==2.3.3
 wandb==0.16.0
 huggingface-hub==0.19.4
 glossing==0.0.7
+jiwer==3.1.0
