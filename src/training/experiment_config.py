@@ -53,6 +53,11 @@ class ExperimentConfig:
     learning_rate: float = 5e-5
     batch_size: int = 64
 
+    # Class Imbalance Solutions
+    temperature_sampling: bool = False
+    temperature: float = 2
+    
+
     # Computed properties
     @property
     def ft_isocode(self):

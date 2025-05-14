@@ -6,9 +6,11 @@
 
 import typing
 from typing import cast
-
+import numpy as np
 import datasets
+import random
 from torch.utils.data import DataLoader
+from collections import defaultdict
 from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
@@ -23,9 +25,10 @@ def create_dataloaders(tokenizer: PreTrainedTokenizerBase, config: ExperimentCon
         config (ExperimentConfig): The experiment configuration
     """
     dataset = datasets.load_dataset(config.dataset_key)
+    
     dataset = cast(datasets.DatasetDict, dataset)
     dataset = _filter(dataset, config.ft_glottocode)
-
+    
     for split in dataset:
         examples = []
         for row in dataset[split]:
@@ -65,12 +68,15 @@ def create_dataloaders(tokenizer: PreTrainedTokenizerBase, config: ExperimentCon
                     )
                 )
         dataset[split] = datasets.Dataset.from_list(examples)
-
+        if split == "pretrain" and config.temperature_sampling:
+            dataset[split] = _temperature_sampling(dataset[split], config.temperature)
+        
+        
     # Create prompts and tokenize
     dataset = dataset.map(
         _make_tokenizer(tokenizer, max_length=1024),
         batched=True,
-        remove_columns=["input", "label"],
+        remove_columns=["input", "label", "language"],
     )
 
     collator = DataCollatorForSeq2Seq(
@@ -96,6 +102,43 @@ def create_dataloaders(tokenizer: PreTrainedTokenizerBase, config: ExperimentCon
     }
 
     return dataset
+
+def _temperature_sampling(dataset: datasets.DatasetDict, temperature: float | None):
+
+    lang2examples = defaultdict(list)
+    for example in dataset:
+        lang2examples[example['language']].append(example)
+
+    lang_counts = {lang: len(exs) for lang, exs in lang2examples.items()}
+    total_count = sum(lang_counts.values())
+    p = np.array([lang_counts[i] / total_count for i in sorted(lang_counts.keys())])
+
+    def compute_temperature_probs(p, T):
+        p_temp = p ** (1.0 / T)
+        return p_temp / p_temp.sum()
+
+    q = compute_temperature_probs(p, temperature)
+
+    langs = sorted(lang_counts.keys())
+    target_size = max(lang_counts.values()) / max(q)  # I want to preserve all the examples from the biggest group, but upsample the examples from smaller ones.
+    samples_per_class = {lang: int(q[i] * target_size) for i, lang in enumerate(langs)}
+
+    # Resample with coverage guarantee
+    resampled_examples = []
+    for label in langs:
+        original_examples = lang2examples[label]
+        n_original = len(original_examples)
+        n_target = samples_per_class[label]
+        resampled = original_examples.copy()
+
+        if n_target > n_original:
+            extra = random.choices(original_examples, k=n_target - n_original)
+            resampled.extend(extra)
+
+        resampled_examples.extend(resampled)
+
+    balanced_dataset = datasets.Dataset.from_list(resampled_examples).shuffle(seed=42)
+    return balanced_dataset
 
 
 def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
@@ -179,4 +222,4 @@ def _create_example(
         prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
 
     prompt += f"\n\n{output_key.capitalize()}: "
-    return {"input": prompt, "label": output_seq}
+    return {"input": prompt, "label": output_seq, "language": lang}
