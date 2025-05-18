@@ -8,8 +8,8 @@ import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
-from distributed import DistributedParameters, setup_ddp
 from src.config_to_dataclass import config_to_dataclass
+from src.distributed import DistributedParameters, setup_ddp
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
 from src.training.train import train
