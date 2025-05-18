@@ -10,6 +10,7 @@ class DistributedParameters(TypedDict):
     rank: int
     local_rank: int
     device: torch.device
+    device_type: str
     distributed: bool
 
 
@@ -35,6 +36,7 @@ def setup_ddp() -> DistributedParameters:
             "rank": rank,
             "local_rank": local_rank,
             "device": device,
+            "device_type": "cuda",
             "distributed": True,
         }
     else:
@@ -49,5 +51,6 @@ def setup_ddp() -> DistributedParameters:
             "rank": 0,
             "local_rank": 0,
             "device": device,
+            "device_type": device,
             "distributed": False,
         }
