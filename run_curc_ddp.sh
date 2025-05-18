@@ -8,8 +8,8 @@
 #SBATCH --qos=blanca-curc-gpu
 #SBATCH --partition=blanca-curc-gpu
 #SBATCH --account=blanca-curc-gpu
-#SBATCH --out=logs/polygloss.%j.out
-#SBATCH --error=logs/polygloss.%j.err
+#SBATCH --out=logs/%j.out
+#SBATCH --error=logs/%j.err
 
 export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 
