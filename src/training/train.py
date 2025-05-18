@@ -18,7 +18,7 @@ def train(
     distributed_parameters: DistributedParameters,
 ):
     # TODO:
-    # [ ] multi gpu
+    # [x] multi gpu
     # [ ] early stopping
     # [x] mixed precision training
     # [ ] load best at end
@@ -75,21 +75,21 @@ def train(
             if pbar:
                 pbar.update()
 
-        # Eval step
-        print("Evaluating...")
-        with (
-            torch.amp.autocast_mode.autocast("cuda", dtype=torch.bfloat16),
-            torch.inference_mode(),
-        ):
-            model.eval()
-            eval_loss = 0.0
-            for batch in dev_dataloader:
-                batch = {k: v.to(device) for k, v in batch.items()}
-                out = model(**batch)
-                loss = _get_loss(out, batch["labels"])
-                eval_loss += loss.detach().item() / len(dev_dataloader)
-
         if distributed_parameters["rank"] == 0:
+            # Eval step
+            print("Evaluating...")
+            with (
+                torch.amp.autocast_mode.autocast("cuda", dtype=torch.bfloat16),
+                torch.inference_mode(),
+            ):
+                model.eval()
+                eval_loss = 0.0
+                for batch in dev_dataloader:
+                    batch = {k: v.to(device) for k, v in batch.items()}
+                    out = model(**batch)
+                    loss = _get_loss(out, batch["labels"])
+                    eval_loss += loss.detach().item() / len(dev_dataloader)
+
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
@@ -111,9 +111,12 @@ def train(
             )
 
     # Save final model and remove checkpoint
-    (experiment_folder / "checkpoint.pt").unlink()
-    torch.save(model.state_dict(), experiment_folder / "model.pt")
-    print(f"Saved model to {experiment_folder / 'model.pt'}")
+    if pbar:
+        pbar.close()
+    if distributed_parameters["rank"] == 0:
+        (experiment_folder / "checkpoint.pt").unlink()
+        torch.save(model.state_dict(), experiment_folder / "model.pt")
+        print(f"Saved model to {experiment_folder / 'model.pt'}")
 
 
 def _get_loss(out, labels):

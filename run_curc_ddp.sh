@@ -13,8 +13,8 @@
 
 export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 export WORLD_SIZE=$(($SLURM_NNODES * $SLURM_NTASKS_PER_NODE))
-
 export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
+export PYTHONUNBUFFERED=1
 
 module purge
 module load miniforge
