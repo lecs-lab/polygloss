@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader
 
 import wandb
 from src.training.experiment_config import ExperimentConfig
+from distributed import DistributedParameters
 
 
 def train(
@@ -14,14 +15,14 @@ def train(
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
-    device: str,
+    distributed_parameters: DistributedParameters,
 ):
     # TODO:
     # [ ] multi gpu
     # [ ] early stopping
     # [x] mixed precision training
     # [ ] load best at end
-
+    device = distributed_parameters["device"]
     pbar = tqdm.tqdm(total=config.max_epochs * len(train_dataloader), desc="Training")
 
     # TODO: Do we want to use adafactor over Adam?
@@ -43,11 +44,14 @@ def train(
         start_epoch = checkpoint["epoch"]
 
     model.gradient_checkpointing_enable()
-    scaler = torch.amp.grad_scaler.GradScaler(device)
+    scaler = torch.amp.grad_scaler.GradScaler()
 
     print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
 
     for epoch in range(start_epoch, config.max_epochs):
+        if isinstance(train_dataloader.sampler, torch.utils.data.DistributedSampler):
+            train_dataloader.sampler.set_epoch(epoch)  # type:ignore
+
         # Train step
         model.train()
         train_loss = 0.0
@@ -67,7 +71,7 @@ def train(
 
         # Eval step
         with (
-            torch.amp.autocast_mode.autocast(device, dtype=torch.bfloat16),
+            torch.amp.autocast_mode.autocast("cuda", dtype=torch.bfloat16),
             torch.inference_mode(),
         ):
             model.eval()
