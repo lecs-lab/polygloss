@@ -14,25 +14,22 @@ class DistributedParameters(TypedDict):
 
 
 def setup_ddp() -> DistributedParameters:
-    if "WORLD_SIZE" in os.environ and "SLURM_PROCID" in os.environ:
-        # Distributed
-        rank = int(os.environ["SLURM_PROCID"])
+    if "RANK" in os.environ and "WORLD_SIZE" in os.environ:
+        # Distributed (torchrun)
+        rank = int(os.environ["RANK"])
         world_size = int(os.environ["WORLD_SIZE"])
-        gpus_per_node = int(os.environ["SLURM_GPUS_ON_NODE"])
-        assert gpus_per_node == torch.cuda.device_count()
-        print(
-            f"Hello from rank {rank} of {world_size} on {gethostname()} where there are"
-            f" {gpus_per_node} allocated GPUs per node.",
-            flush=True,
-        )
-        torch.distributed.init_process_group("nccl", rank=rank, world_size=world_size)
-        if rank == 0:
-            print(
-                f"Group initialized? {torch.distributed.is_initialized()}", flush=True
-            )
-        local_rank = rank - gpus_per_node * (rank // gpus_per_node)
+        local_rank = int(os.environ["LOCAL_RANK"])
         device = torch.device(f"cuda:{local_rank}")
         torch.cuda.set_device(device)
+
+        print(
+            f"Hello from rank {rank} of {world_size} on {gethostname()} "
+            f"(local_rank {local_rank}, device {device})",
+            flush=True,
+        )
+
+        torch.distributed.init_process_group("nccl", rank=rank, world_size=world_size)
+
         return {
             "world_size": world_size,
             "rank": rank,
