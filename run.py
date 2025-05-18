@@ -23,7 +23,9 @@ def run(
     random.seed(0)
 
     # Initialize WandB experiment
-    if config.mode == "pretrain" or config.mode == "finetune":
+    if distributed_parameters["rank"] == 0 and (
+        config.mode == "pretrain" or config.mode == "finetune"
+    ):
         wandb.init(
             project="polygloss",
             entity="wav2gloss",
@@ -40,9 +42,10 @@ def run(
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
         distributed_parameters["device"]
     )
-    ddp_model = torch.nn.parallel.DistributedDataParallel(
-        model, device_ids=[distributed_parameters["local_rank"]]
-    )
+    if distributed_parameters["distributed"]:
+        model = torch.nn.parallel.DistributedDataParallel(
+            model, device_ids=[distributed_parameters["local_rank"]]
+        )
     if config.model_type == "seq2seq":
         dataloaders = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
@@ -54,8 +57,8 @@ def run(
 
     # Training loop
     if config.mode in ["pretrain", "finetune"]:
-        ddp_model = train(
-            ddp_model,
+        model = train(
+            model,
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
             config=config,
@@ -109,5 +112,11 @@ if __name__ == "__main__":
         dataclass_type=ExperimentConfig,
     )
     folder = pathlib.Path(args.config).parent
-    run(config=config, experiment_folder=folder, distributed_parameters=setup_ddp())
-    torch.distributed.destroy_process_group()
+    distributed_parameters = setup_ddp()
+    run(
+        config=config,
+        experiment_folder=folder,
+        distributed_parameters=distributed_parameters,
+    )
+    if distributed_parameters["distributed"]:
+        torch.distributed.destroy_process_group()

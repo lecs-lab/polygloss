@@ -42,7 +42,11 @@ def setup_ddp() -> DistributedParameters:
         }
     else:
         # Single GPU setup
-        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        device = torch.device(
+            "cuda"
+            if torch.cuda.is_available()
+            else ("mps" if torch.backends.mps.is_available() else "cpu")
+        )
         return {
             "world_size": 1,
             "rank": 0,

@@ -9,7 +9,7 @@ import typing
 from typing import cast
 
 import datasets
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
@@ -84,20 +84,32 @@ def create_dataloaders(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
     )
     dataloaders = {}
+    if "SLURM_CPUS_PER_TASK" in os.environ:
+        num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
+    else:
+        # Default to a reasonable number when not in SLURM environment
+        num_workers = 4
     for split in ["train", "dev", "test"]:
-        sampler = DistributedSampler(
-            dataset[split],  # type:ignore
-            shuffle=True,
-            num_replicas=distributed_parameters["world_size"],
-            rank=distributed_parameters["rank"],
-        )
+        if distributed_parameters["distributed"]:
+            sampler = DistributedSampler(
+                dataset[split],  # type:ignore
+                shuffle=True,
+                num_replicas=distributed_parameters["world_size"],
+                rank=distributed_parameters["rank"],
+            )
+        else:
+            sampler = (
+                RandomSampler(dataset[split])
+                if split == "train"
+                else SequentialSampler(dataset[split])
+            )
         dataloaders[split] = (
             DataLoader(
                 dataset[split],  # type:ignore
                 batch_size=config.batch_size,
                 collate_fn=collator,
                 sampler=sampler,
-                num_workers=int(os.environ["SLURM_CPUS_PER_TASK"]),
+                num_workers=num_workers,
                 pin_memory=True,
             ),
         )
