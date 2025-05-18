@@ -48,11 +48,8 @@ def train(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
-    model.gradient_checkpointing_enable()
     scaler = torch.amp.grad_scaler.GradScaler()
-
     print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
-
     for epoch in range(start_epoch, config.max_epochs):
         if isinstance(train_dataloader.sampler, torch.utils.data.DistributedSampler):
             train_dataloader.sampler.set_epoch(epoch)  # type:ignore

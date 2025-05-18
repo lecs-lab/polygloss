@@ -42,6 +42,7 @@ def run(
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
         distributed_parameters["device"]
     )
+    model.gradient_checkpointing_enable()
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
