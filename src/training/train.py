@@ -23,7 +23,12 @@ def train(
     # [x] mixed precision training
     # [ ] load best at end
     device = distributed_parameters["device"]
-    pbar = tqdm.tqdm(total=config.max_epochs * len(train_dataloader), desc="Training")
+    if distributed_parameters["rank"] == 0:
+        pbar = tqdm.tqdm(
+            total=config.max_epochs * len(train_dataloader), desc="Training"
+        )
+    else:
+        pbar = None
 
     # TODO: Do we want to use adafactor over Adam?
     optimizer = torch.optim.Adafactor(
@@ -67,37 +72,43 @@ def train(
             scaler.step(optimizer)
             scaler.update()
             train_loss += loss.detach().item() / len(train_dataloader)
-            pbar.update()
+            if pbar:
+                pbar.update()
 
         # Eval step
+        print("Evaluating...")
         with (
             torch.amp.autocast_mode.autocast("cuda", dtype=torch.bfloat16),
             torch.inference_mode(),
         ):
             model.eval()
             eval_loss = 0.0
-            for batch in tqdm.tqdm(dev_dataloader, desc="Evaluating"):
+            for batch in dev_dataloader:
                 batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
                 eval_loss += loss.detach().item() / len(dev_dataloader)
 
-        # Log results
-        print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
-        wandb.log(
-            {"train/loss": train_loss, "train/epoch": epoch, "eval/loss": eval_loss},
-            step=epoch * len(train_dataloader),
-        )
-
-        # Save checkpoint
-        torch.save(
-            {
-                "epoch": epoch,
-                "model_state_dict": model.state_dict(),
-                "optimizer_state_dict": optimizer.state_dict(),
-            },
-            experiment_folder / "checkpoint.pt",
-        )
+        if distributed_parameters["rank"] == 0:
+            # Log results
+            print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
+            wandb.log(
+                {
+                    "train/loss": train_loss,
+                    "train/epoch": epoch,
+                    "eval/loss": eval_loss,
+                },
+                step=epoch * len(train_dataloader),
+            )
+            # Save checkpoint
+            torch.save(
+                {
+                    "epoch": epoch,
+                    "model_state_dict": model.state_dict(),
+                    "optimizer_state_dict": optimizer.state_dict(),
+                },
+                experiment_folder / "checkpoint.pt",
+            )
 
     # Save final model and remove checkpoint
     (experiment_folder / "checkpoint.pt").unlink()

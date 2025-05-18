@@ -103,15 +103,13 @@ def create_dataloaders(
                 if split == "train"
                 else SequentialSampler(dataset[split])
             )
-        dataloaders[split] = (
-            DataLoader(
-                dataset[split],  # type:ignore
-                batch_size=config.batch_size,
-                collate_fn=collator,
-                sampler=sampler,
-                num_workers=num_workers,
-                pin_memory=True,
-            ),
+        dataloaders[split] = DataLoader(
+            dataset[split],  # type:ignore
+            batch_size=config.batch_size,
+            collate_fn=collator,
+            sampler=sampler,
+            num_workers=num_workers,
+            pin_memory=True,
         )
     return dataloaders
 
