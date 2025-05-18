@@ -11,7 +11,7 @@
 #SBATCH --out=logs/polygloss.%j.out
 #SBATCH --error=logs/polygloss.%j.err
 
-export MASTER_PORT=$(expr 10000 + $(echo -n $SLURM_JOBID | tail -c 4) + $SLURM_ARRAY_TASK_ID)
+export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 
 export WORLD_SIZE=$(($SLURM_NNODES * $SLURM_NTASKS_PER_NODE))
 echo "WORLD_SIZE="$WORLD_SIZE
