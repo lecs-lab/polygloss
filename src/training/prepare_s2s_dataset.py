@@ -14,7 +14,7 @@ from torch.utils.data.distributed import DistributedSampler
 from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
-from distributed import DistributedParameters
+from src.distributed import DistributedParameters
 from src.training.experiment_config import ExperimentConfig
 
 

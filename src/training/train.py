@@ -2,11 +2,11 @@ import pathlib
 
 import torch
 import tqdm
+import wandb
 from torch.utils.data import DataLoader
 
-import wandb
-from src.training.experiment_config import ExperimentConfig
 from distributed import DistributedParameters
+from src.training.experiment_config import ExperimentConfig
 
 
 def train(
