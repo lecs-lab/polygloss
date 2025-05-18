@@ -17,5 +17,3 @@ mamba activate polygloss
 cd "/projects/$USER/polygloss"
 
 python run.py "$1"
-
-# torchrun --nproc_per_node=4 run.py --config ../configs/pretrain_base.cfg
