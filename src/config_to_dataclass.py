@@ -20,6 +20,9 @@ def config_to_dataclass(config_path: str, overrides: str, dataclass_type: Type[T
     if not is_dataclass(dataclass_type):
         raise TypeError(f"{dataclass_type.__name__} must be a dataclass type")
 
+    if not config_path:
+        raise ValueError("Must provide a config file!")
+
     config = configparser.ConfigParser()
     config.read(config_path)
 
@@ -44,7 +47,7 @@ def config_to_dataclass(config_path: str, overrides: str, dataclass_type: Type[T
                 value = float(overrides_dict[field.name])
             elif is_literal:
                 value = overrides_dict[field.name]
-                if value not in literal_values:
+                if value not in literal_values:  # type:ignore
                     raise ValueError(
                         f"Value '{value}' not in allowed literals {literal_values}"
                     )

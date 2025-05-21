@@ -18,42 +18,64 @@ _glotto_to_iso = {
 
 @dataclass
 class ExperimentConfig:
-    """
-    Args:
-        mode ("pretrain", "finetune", "predict"): The mode to run in
-        pretrained_model (str): The name of the pretrained model to train or predict with
-        ft_glottocode (str, optional): The language to use for finetuning/prediction
-        max_epochs (int): Maximum number of training epochs
-        early_stopping_patience (int): Number of epochs with no improvement after which training is stopped
-        exclude_st_seg (bool): If True, excludes the segmented training data for the evaluation languages
-        use_translation (bool): If True, include the translation in the prompt
-        output_model_path (str): The path to output the model to
-        checkpoint_path (str, optional): The path to the checkpoint file when continuing training
-        checkpoint_save_dir (str): Directory where checkpoints will be saved
-    """
-
+    # ============================
     # General
+    # ============================
+
     mode: TRAIN_MODE
+    """Training mode: 'pretrain' for pretraining on all data, 'finetune' for language-specific finetuning,
+    or 'predict' for generating predictions on test data"""
+
     pretrained_model: str = "google/byt5-base"
+    """Hugging Face model identifier for the pretrained model to use"""
+
     model_type: MODEL_TYPE = "seq2seq"
+    """Architecture type: 'seq2seq' for encoder-decoder models or 'decoder' for decoder-only models"""
 
     # Dataset
     dataset_key: str = "lecslab/polygloss-corpus"
+    """Hugging Face dataset identifier for the corpus to use"""
+
     ft_glottocode: str | None = None
+    """Glottocode of the language to finetune on (None for pretraining on all languages)"""
+
     segmented_transcription: bool = True
+    """Whether to include examples with segmented transcriptions as input"""
+
     unsegmented_transcription: bool = True
+    """Whether to include examples with unsegmented transcriptions as input"""
+
     exclude_st_segmented: bool = False
+    """Whether to exclude segmented examples from the SIGMORPHON shared task"""
+
     create_segmentation_examples: bool = False
+    """Whether to create examples for the segmentation task (transcription → segmentation)"""
+
     use_translation: bool = True
+    """Whether to include translations in the input prompts when available"""
 
+    # ============================
     # Training
-    max_epochs: int = 50
-    use_early_stopping: bool = True
-    early_stopping_patience: int = 3
-    learning_rate: float = 5e-5
-    batch_size: int = 64
+    # ============================
 
+    max_epochs: int = 50
+    """Maximum number of training epochs"""
+
+    use_early_stopping: bool = True
+    """Whether to use early stopping based on validation performance"""
+
+    early_stopping_patience: int = 3
+    """Number of epochs with no improvement after which training will be stopped"""
+
+    learning_rate: float = 5e-5
+    """Learning rate for the optimizer"""
+
+    batch_size: int = 64  # per gpu
+    """Batch size per GPU for training and evaluation"""
+
+    # ============================
     # Computed properties
+    # ============================
     @property
     def ft_isocode(self):
         if self.ft_glottocode is not None:

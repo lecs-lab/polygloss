@@ -1,38 +1,31 @@
 import argparse
-import os
 import pathlib
 import random
 from dataclasses import asdict
 
 import torch
+import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
-import wandb
 from src.config_to_dataclass import config_to_dataclass
+from src.distributed import DistributedParameters, setup_ddp
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
 from src.training.train import train
 
-device = (
-    "cuda"
-    if torch.cuda.is_available()
-    else ("mps" if torch.backends.mps.is_available() else "cpu")
-)
-print(f"Running on {device=}")
 
-
-def _make_if_needed(path: str):
-    if not os.path.exists(path):
-        os.makedirs(path)
-    return path
-
-
-def run(config: ExperimentConfig, experiment_folder: pathlib.Path):
+def run(
+    config: ExperimentConfig,
+    experiment_folder: pathlib.Path,
+    distributed_parameters: DistributedParameters,
+):
     random.seed(0)
 
     # Initialize WandB experiment
-    if config.mode == "pretrain" or config.mode == "finetune":
+    if distributed_parameters["rank"] == 0 and (
+        config.mode == "pretrain" or config.mode == "finetune"
+    ):
         wandb.init(
             project="polygloss",
             entity="wav2gloss",
@@ -46,11 +39,19 @@ def run(config: ExperimentConfig, experiment_folder: pathlib.Path):
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(device)
-
+    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
+        distributed_parameters["device"]
+    )
+    model.gradient_checkpointing_enable()
+    if distributed_parameters["distributed"]:
+        model = torch.nn.parallel.DistributedDataParallel(
+            model, device_ids=[distributed_parameters["local_rank"]]
+        )
     if config.model_type == "seq2seq":
         dataloaders = prepare_s2s_dataset.create_dataloaders(
-            tokenizer=tokenizer, config=config
+            tokenizer=tokenizer,
+            config=config,
+            distributed_parameters=distributed_parameters,
         )
     else:
         raise NotImplementedError()
@@ -63,62 +64,8 @@ def run(config: ExperimentConfig, experiment_folder: pathlib.Path):
             dev_dataloader=dataloaders["dev"],
             config=config,
             experiment_folder=experiment_folder,
-            device=device,
+            distributed_parameters=distributed_parameters,
         )
-
-    # args = transformers.Seq2SeqTrainingArguments(
-    #     output_dir=output_dir,
-    #     evaluation_strategy="epoch",
-    #     learning_rate=config.learning_rate,
-    #     per_device_train_batch_size=config.batch_size,
-    #     per_device_eval_batch_size=1,
-    #     eval_accumulation_steps=10,
-    #     gradient_accumulation_steps=64,
-    #     weight_decay=0.01,
-    #     save_strategy="epoch",
-    #     save_total_limit=10 if config.use_early_stopping else 3,
-    #     num_train_epochs=config.max_epochs,
-    #     predict_with_generate=True,
-    #     load_best_model_at_end=config.use_early_stopping,
-    #     logging_steps=100,
-    #     generation_max_length=1024,
-    #     generation_num_beams=3,
-    #     report_to="wandb",
-    #     metric_for_best_model="chrf++",
-    #     fp16=True,
-    #     dataloader_num_workers=4,
-    # )
-    # trainer = transformers.Seq2SeqTrainer(
-    #     model,
-    #     args,
-    #     optimizers=(optimizer, lr_scheduler),
-    #     data_collator=transformers.DataCollatorForSeq2Seq(
-    #         tokenizer, model=model, label_pad_token_id=tokenizer.pad_token_id
-    #     ),
-    #     train_dataset=dataset["train"],  # type:ignore
-    #     eval_dataset=dataset["eval"],  # type:ignore
-    #     compute_metrics=compute_metrics(tokenizer),
-    #     tokenizer=tokenizer,
-    #     callbacks=[
-    #         DelayedEarlyStoppingCallback(
-    #             early_stopping_patience=config.early_stopping_patience
-    #         )
-    #     ]
-    #     if config.use_early_stopping
-    #     else [],
-    # )
-
-    # if config.mode == "pretrain" or config.mode == "finetune":
-    #     print("Training...")
-    #     if config.checkpoint_path is not None:
-    #         print(f"Continuing training from {config.checkpoint_path}")
-    #     trainer.train(config.checkpoint_path)
-
-    #     if config.output_model_path is None:
-    #         raise ValueError("Must have an output path when training")
-    #     print(f"Saving model to {config.output_model_path}")
-    #     trainer.save_model(_make_if_needed(config.output_model_path))
-    #     print("Model saved!")
 
     # elif config.mode == "predict":
     #     print("Creating predictions...")
@@ -166,4 +113,11 @@ if __name__ == "__main__":
         dataclass_type=ExperimentConfig,
     )
     folder = pathlib.Path(args.config).parent
-    run(config, folder)
+    distributed_parameters = setup_ddp()
+    run(
+        config=config,
+        experiment_folder=folder,
+        distributed_parameters=distributed_parameters,
+    )
+    if distributed_parameters["distributed"]:
+        torch.distributed.destroy_process_group()
