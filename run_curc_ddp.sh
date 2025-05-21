@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --nodes=3
+#SBATCH --nodes=1
 #SBATCH --ntasks-per-node=3
 #SBATCH --gres=gpu:3
 #SBATCH --mem-per-cpu=4GB
