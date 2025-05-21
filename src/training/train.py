@@ -59,7 +59,8 @@ def train(
             dev_dataloader.sampler.set_epoch(epoch)
 
         model.train()
-        train_loss = 0.0
+        train_loss_sum = 0.0
+        train_n = 0
         for batch in train_dataloader:
             batch = {k: v.to(device) for k, v in batch.items()}
             optimizer.zero_grad()
@@ -73,7 +74,12 @@ def train(
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             scaler.step(optimizer)
             scaler.update()
-            train_loss += loss.item()
+
+            # Calculate loss. We want to sum up the losses PER example, even if batches are differently sized
+            bs = batch["labels"].size(0)
+            train_loss_sum += loss.item() * bs
+            train_n += bs
+
             if pbar:
                 pbar.update()
 
@@ -85,41 +91,45 @@ def train(
             ),
             torch.inference_mode(),
         ):
-            eval_loss = 0.0
+            eval_loss_sum = 0.0
+            eval_n = 0
             for batch in dev_dataloader:
                 batch = {k: v.to(device) for k, v in batch.items()}
                 out = model(**batch)
-                eval_loss += _get_loss(out, batch["labels"]).item()
+                bs = batch["labels"].size(0)
+                eval_loss_sum += _get_loss(out, batch["labels"]).item() * bs
+                eval_n += bs
 
         # Sum losses over devices, if distributed
         if distributed_parameters["distributed"]:
-            losses_tensor = torch.tensor([train_loss, eval_loss], device=device)
+            losses_tensor = torch.tensor(
+                [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
+            )
             torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
             losses_tensor /= distributed_parameters["world_size"]
-            [train_loss, eval_loss] = losses_tensor.tolist()
-            train_loss /= len(train_dataloader.dataset)  # type:ignore
-            eval_loss /= len(dev_dataloader.dataset)  # type:ignore
 
-        if distributed_parameters["rank"] == 0:
-            # Log results
-            print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
-            wandb.log(
-                {
-                    "train/loss": train_loss,
-                    "train/epoch": epoch,
-                    "eval/loss": eval_loss,
-                },
-                step=epoch * len(train_dataloader),
-            )
-            # Save checkpoint
-            torch.save(
-                {
-                    "epoch": epoch,
-                    "model_state_dict": model.state_dict(),
-                    "optimizer_state_dict": optimizer.state_dict(),
-                },
-                experiment_folder / "checkpoint.pt",
-            )
+            if distributed_parameters["rank"] == 0:
+                # Log results
+                train_loss = losses_tensor[0] / losses_tensor[1]
+                eval_loss = losses_tensor[2] / losses_tensor[3]
+                print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
+                wandb.log(
+                    {
+                        "train/loss": train_loss,
+                        "train/epoch": epoch,
+                        "eval/loss": eval_loss,
+                    },
+                    step=epoch * len(train_dataloader),
+                )
+                # Save checkpoint
+                torch.save(
+                    {
+                        "epoch": epoch,
+                        "model_state_dict": model.state_dict(),
+                        "optimizer_state_dict": optimizer.state_dict(),
+                    },
+                    experiment_folder / "checkpoint.pt",
+                )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
