@@ -51,6 +51,6 @@ def setup_ddp() -> DistributedParameters:
             "rank": 0,
             "local_rank": 0,
             "device": device,
-            "device_type": device,
+            "device_type": str(device),
             "distributed": False,
         }
