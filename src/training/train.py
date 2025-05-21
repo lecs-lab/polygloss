@@ -3,6 +3,7 @@ import pathlib
 import torch
 import tqdm
 from torch.utils.data import DataLoader
+from torch.utils.data import DistributedSampler
 
 import wandb
 from src.distributed import DistributedParameters
@@ -51,10 +52,12 @@ def train(
     scaler = torch.amp.grad_scaler.GradScaler()
     print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
     for epoch in range(start_epoch, config.max_epochs):
-        if isinstance(train_dataloader.sampler, torch.utils.data.DistributedSampler):
-            train_dataloader.sampler.set_epoch(epoch)  # type:ignore
+        if distributed_parameters["distributed"]:
+            assert isinstance(train_dataloader.sampler, DistributedSampler)
+            assert isinstance(dev_dataloader.sampler, DistributedSampler)
+            train_dataloader.sampler.set_epoch(epoch)
+            dev_dataloader.sampler.set_epoch(epoch)
 
-        # Train step
         model.train()
         train_loss = 0.0
         for batch in train_dataloader:
@@ -70,45 +73,34 @@ def train(
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             scaler.step(optimizer)
             scaler.update()
-            train_loss += loss.detach().item() / len(train_dataloader)
+            train_loss += loss.item()
             if pbar:
                 pbar.update()
 
-        if distributed_parameters["rank"] == 0:
-            # Eval step
-            print("Evaluating...")
-            with (
-                torch.amp.autocast_mode.autocast(
-                    distributed_parameters["device_type"], dtype=torch.bfloat16
-                ),
-                torch.inference_mode(),
-            ):
-                model.eval()
-                eval_loss = 0.0
-                for batch in dev_dataloader:
-                    batch = {k: v.to(device) for k, v in batch.items()}
-                    out = model(**batch)
-                    loss = _get_loss(out, batch["labels"])
-                    eval_loss += loss.detach().item() / len(dev_dataloader)
+        model.eval()
+        print("Evaluating...")
+        with (
+            torch.amp.autocast_mode.autocast(
+                distributed_parameters["device_type"], dtype=torch.bfloat16
+            ),
+            torch.inference_mode(),
+        ):
+            eval_loss = 0.0
+            for batch in dev_dataloader:
+                batch = {k: v.to(device) for k, v in batch.items()}
+                out = model(**batch)
+                eval_loss += _get_loss(out, batch["labels"]).item()
 
-            # Sum losses over devices, if distributed
-            if distributed_parameters["distributed"]:
-                train_loss_tensor = torch.tensor(train_loss, device=device)
-                torch.distributed.all_reduce(
-                    train_loss_tensor, torch.distributed.ReduceOp.SUM
-                )
-                train_loss = (
-                    train_loss_tensor.detach().item()
-                    / distributed_parameters["world_size"]
-                )
-                eval_loss_tensor = torch.tensor(eval_loss, device=device)
-                torch.distributed.all_reduce(
-                    eval_loss_tensor, torch.distributed.ReduceOp.SUM
-                )
-                eval_loss = (
-                    eval_loss_tensor.detach().item()
-                    / distributed_parameters["world_size"]
-                )
+        # Sum losses over devices, if distributed
+        if distributed_parameters["distributed"]:
+            losses_tensor = torch.tensor([train_loss, eval_loss], device=device)
+            torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
+            losses_tensor /= distributed_parameters["world_size"]
+            [train_loss, eval_loss] = losses_tensor.tolist()
+            train_loss /= len(train_dataloader.dataset)  # type:ignore
+            eval_loss /= len(dev_dataloader.dataset)  # type:ignore
+
+        if distributed_parameters["rank"] == 0:
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
@@ -130,8 +122,6 @@ def train(
             )
 
     # Save final model and remove checkpoint
-    if pbar:
-        pbar.close()
     if distributed_parameters["rank"] == 0:
         (experiment_folder / "checkpoint.pt").unlink()
         torch.save(model.state_dict(), experiment_folder / "model.pt")
