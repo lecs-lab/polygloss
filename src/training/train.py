@@ -2,9 +2,9 @@ import pathlib
 
 import torch
 import tqdm
-import wandb
 from torch.utils.data import DataLoader
 
+import wandb
 from src.distributed import DistributedParameters
 from src.training.experiment_config import ExperimentConfig
 
@@ -91,6 +91,22 @@ def train(
                     loss = _get_loss(out, batch["labels"])
                     eval_loss += loss.detach().item() / len(dev_dataloader)
 
+            # Sum losses over devices, if distributed
+            if distributed_parameters["distributed"]:
+                train_loss_tensor = torch.tensor(train_loss)
+                torch.distributed.all_reduce(
+                    train_loss_tensor, torch.distributed.ReduceOp.SUM
+                )
+                train_loss = (
+                    train_loss_tensor.item() / distributed_parameters["world_size"]
+                )
+                eval_loss_tensor = torch.tensor(eval_loss)
+                torch.distributed.all_reduce(
+                    eval_loss_tensor, torch.distributed.ReduceOp.SUM
+                )
+                eval_loss = (
+                    eval_loss_tensor.item() / distributed_parameters["world_size"]
+                )
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
