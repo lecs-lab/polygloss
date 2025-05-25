@@ -4,6 +4,7 @@
 - Which kind of examples are created is determined by the options in `experiment_config.py`
 """
 
+import os
 import typing
 from typing import cast
 import numpy as np
@@ -11,13 +12,20 @@ import datasets
 import random
 from torch.utils.data import DataLoader
 from collections import defaultdict
+from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
+from torch.utils.data.distributed import DistributedSampler
 from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
+from src.distributed import DistributedParameters
 from src.training.experiment_config import ExperimentConfig
 
 
-def create_dataloaders(tokenizer: PreTrainedTokenizerBase, config: ExperimentConfig):
+def create_dataloaders(
+    tokenizer: PreTrainedTokenizerBase,
+    config: ExperimentConfig,
+    distributed_parameters: DistributedParameters,
+) -> dict[str, DataLoader]:
     """Creates dataloaders for training/finetuning
 
     Args:
@@ -78,30 +86,38 @@ def create_dataloaders(tokenizer: PreTrainedTokenizerBase, config: ExperimentCon
         batched=True,
         remove_columns=["input", "label", "language"],
     )
-
     collator = DataCollatorForSeq2Seq(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
     )
-    return {
-        "train": DataLoader(
-            dataset["train"],  # type:ignore
+    dataloaders = {}
+    if "SLURM_CPUS_PER_TASK" in os.environ:
+        num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
+    else:
+        # Default to a reasonable number when not in SLURM environment
+        num_workers = 4
+    for split in ["train", "dev", "test"]:
+        if distributed_parameters["distributed"]:
+            sampler = DistributedSampler(
+                dataset[split],  # type:ignore
+                shuffle=True,
+                num_replicas=distributed_parameters["world_size"],
+                rank=distributed_parameters["rank"],
+            )
+        else:
+            sampler = (
+                RandomSampler(dataset[split])
+                if split == "train"
+                else SequentialSampler(dataset[split])
+            )
+        dataloaders[split] = DataLoader(
+            dataset[split],  # type:ignore
             batch_size=config.batch_size,
-            shuffle=True,
             collate_fn=collator,
-        ),
-        "dev": DataLoader(
-            dataset["dev"],  # type:ignore
-            batch_size=config.batch_size,
-            collate_fn=collator,
-        ),
-        "test": DataLoader(
-            dataset["test"],  # type:ignore
-            batch_size=config.batch_size,
-            collate_fn=collator,
-        ),
-    }
-
-    return dataset
+            sampler=sampler,
+            num_workers=num_workers,
+            pin_memory=True,
+        )
+    return dataloaders
 
 def _temperature_sampling(dataset: datasets.DatasetDict, temperature: float | None):
 
