@@ -1,4 +1,5 @@
 import argparse
+import json
 import pathlib
 import random
 from dataclasses import asdict
@@ -76,7 +77,6 @@ def run(
         experiment_folder=experiment_folder,
         distributed_parameters=distributed_parameters,
     )
-
     if references is not None:
         wandb.log(
             {
@@ -88,6 +88,9 @@ def run(
         )
         metrics = glossing.evaluate_glosses(generations, references)
         wandb.log(data={"test": metrics})
+        with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
+            json.dump(metrics, file, ensure_ascii=False, indent=4)
+
         print("Test predictions and metrics logged to wandb.")
 
 
