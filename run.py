@@ -1,18 +1,21 @@
 import argparse
+import json
 import pathlib
 import random
 from dataclasses import asdict
 
+import glossing
 import torch
-import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
+import wandb
 from src.config_to_dataclass import config_to_dataclass
 from src.distributed import DistributedParameters, setup_ddp
+from src.generate import generate
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
-from src.training.train import train
+from training.train import train
 
 
 def run(
@@ -66,34 +69,29 @@ def run(
             experiment_folder=experiment_folder,
             distributed_parameters=distributed_parameters,
         )
+    generations, references = generate(
+        model,
+        tokenizer=tokenizer,
+        dataloader=dataloaders["test"],
+        config=config,
+        experiment_folder=experiment_folder,
+        distributed_parameters=distributed_parameters,
+    )
+    if references is not None:
+        wandb.log(
+            {
+                "predictions": wandb.Table(
+                    columns=["predicted", "reference"],
+                    data=list(zip(generations, references)),
+                )
+            }
+        )
+        metrics = glossing.evaluate_glosses(generations, references)
+        wandb.log(data={"test": metrics})
+        with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
+            json.dump(metrics, file, ensure_ascii=False, indent=4)
 
-    # elif config.mode == "predict":
-    #     print("Creating predictions...")
-    #     preds_dir = _make_if_needed(
-    #         "../preds/{config.exp_name}/{force_unwrap(config.ft_isocode)}/"
-    #     )
-    #     preds_path = os.path.join(preds_dir, "test-preds.csv")
-    #     preds = trainer.predict(dataset["test"])  # type:ignore
-    #     labels = np.where(
-    #         preds.predictions != -100, preds.predictions, tokenizer.pad_token_id
-    #     )
-    #     preds = tokenizer.batch_decode(labels, skip_special_tokens=True)
-    #     preds = [strip_gloss_punctuation(pred) for pred in preds]
-    #     gold = [strip_gloss_punctuation(g) for g in dataset["test"]["glosses"]]
-    #     preds_df = pd.DataFrame(
-    #         {
-    #             "id": dataset["test"]["id"],
-    #             "glottocode": dataset["test"]["glottocode"],
-    #             "is_segmented": dataset["test"]["is_segmented"],
-    #             "pred": preds,
-    #             "gold": gold,
-    #         }
-    #     )
-    #     preds_df.to_csv(preds_path, index=False)
-    #     preds_df["pred"] = postprocess(preds_df["pred"])
-    #     preds_df["gold"] = postprocess(preds_df["gold"])
-    #     preds_df.to_csv(preds_path[:-4] + ".postprocessed.csv", index=False)
-    #     print(f"Predictions for {config.ft_glottocode} data saved to {preds_dir}")
+        print("Test predictions and metrics logged to wandb.")
 
 
 if __name__ == "__main__":

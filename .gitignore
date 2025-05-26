@@ -10,3 +10,4 @@ wandb
 */checkpoint
 logs/
 *.pt
+pyrightconfig.json

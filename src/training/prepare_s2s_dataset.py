@@ -75,7 +75,7 @@ def create_dataloaders(
 
     # Create prompts and tokenize
     dataset = dataset.map(
-        _make_tokenizer(tokenizer, max_length=1024),
+        _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
         remove_columns=["input", "label"],
     )
@@ -92,7 +92,7 @@ def create_dataloaders(
         if distributed_parameters["distributed"]:
             sampler = DistributedSampler(
                 dataset[split],  # type:ignore
-                shuffle=True,
+                shuffle=split == "train",
                 num_replicas=distributed_parameters["world_size"],
                 rank=distributed_parameters["rank"],
             )
@@ -114,6 +114,7 @@ def create_dataloaders(
 
 
 def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
+    """Filter down to the relevant examples (depending on pretraining vs finetuning)"""
     dataset = dataset.filter(
         lambda x: x["transcription"] is not None and x["glosses"] is not None
     )
