@@ -28,9 +28,8 @@ def generate(
         batch_generations = model.generate(
             **batch,
             use_model_defaults=True,
-            do_sample=True,
-            top_k=0,
-            min_p=0.15,
+            do_sample=False,
+            num_beams=5,
             max_length=1024,
         )
         all_generations.extend(
