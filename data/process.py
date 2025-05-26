@@ -52,7 +52,7 @@ def standardize(example: IGTLine) -> IGTLine:
     # Fix punctuation and such
     def _fix_punc(s: str):
         s = regex.sub(r"(\w)\?", r"\1 ?", s)
-        s = regex.sub(r"(\w)\.", r"\1 .", s)
+        s = regex.sub(r"(\w)\.(\s|$)", r"\1 .\2", s)
         s = regex.sub(r"(\w)\!", r"\1 !", s)
         s = regex.sub(r"(\w)\,", r"\1 ,", s)
         return s
