@@ -8,3 +8,4 @@ transformers==4.51.1
 sacrebleu==2.3.3
 wandb>=0.16.0
 huggingface-hub>=0.19.4
+glossing
