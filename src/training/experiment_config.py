@@ -54,6 +54,9 @@ class ExperimentConfig:
     use_translation: bool = True
     """Whether to include translations in the input prompts when available"""
 
+    max_tokens: int = 1024
+    """Truncate prompts to this many tokens"""
+
     # ============================
     # Training
     # ============================
