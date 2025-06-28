@@ -15,7 +15,7 @@ from src.distributed import DistributedParameters, setup_ddp
 from src.generate import generate
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
-from training.train import train
+from src.training.train import train
 
 
 def run(

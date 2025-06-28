@@ -2,8 +2,7 @@ import pathlib
 
 import torch
 import tqdm
-from torch.utils.data import DataLoader
-from torch.utils.data import DistributedSampler
+from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
 from src.distributed import DistributedParameters
@@ -18,11 +17,7 @@ def train(
     experiment_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):
-    # TODO:
-    # [x] multi gpu
-    # [ ] early stopping
-    # [x] mixed precision training
-    # [ ] load best at end
+    """Training loop"""
     device = distributed_parameters["device"]
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -107,29 +102,32 @@ def train(
             )
             torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
             losses_tensor /= distributed_parameters["world_size"]
+            train_loss = losses_tensor[0] / losses_tensor[1]
+            eval_loss = losses_tensor[2] / losses_tensor[3]
+        else:
+            train_loss = train_loss_sum
+            eval_loss = eval_loss_sum
 
-            if distributed_parameters["rank"] == 0:
-                # Log results
-                train_loss = losses_tensor[0] / losses_tensor[1]
-                eval_loss = losses_tensor[2] / losses_tensor[3]
-                print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
-                wandb.log(
-                    {
-                        "train/loss": train_loss,
-                        "train/epoch": epoch,
-                        "eval/loss": eval_loss,
-                    },
-                    step=epoch * len(train_dataloader),
-                )
-                # Save checkpoint
-                torch.save(
-                    {
-                        "epoch": epoch,
-                        "model_state_dict": model.state_dict(),
-                        "optimizer_state_dict": optimizer.state_dict(),
-                    },
-                    experiment_folder / "checkpoint.pt",
-                )
+        if distributed_parameters["rank"] == 0:
+            # Log results
+            print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
+            wandb.log(
+                {
+                    "train/loss": train_loss,
+                    "train/epoch": epoch,
+                    "eval/loss": eval_loss,
+                },
+                step=epoch * len(train_dataloader),
+            )
+            # Save checkpoint
+            torch.save(
+                {
+                    "epoch": epoch,
+                    "model_state_dict": model.state_dict(),
+                    "optimizer_state_dict": optimizer.state_dict(),
+                },
+                experiment_folder / "checkpoint.pt",
+            )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:

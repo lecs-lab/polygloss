@@ -1,10 +1,14 @@
+import logging
 import pathlib
 
+import torch
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
 from src.distributed import DistributedParameters
 from src.training.experiment_config import ExperimentConfig
+
+logger = logging.getLogger(__name__)
 
 
 def generate(
@@ -14,13 +18,17 @@ def generate(
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
-):
-    """Runs inference, generating predictions for each item in the dataloader."""
+) -> tuple[list[str], list[str] | None]:
+    """Runs inference, generating predictions for each item in the dataloader.
+
+    Returns:
+        (tuple[list[str], list[str] | None]): The generated outputs and decoded labels (or None if not provided)
+    """
     model.eval()
     device = distributed_parameters["device"]
-    all_generations: list[str] = []
-    all_labels: list[str] = []
-    print("Generating...")
+    generations: list[str] = []
+    labels: list[str | None] = []
+    logger.info("Generating...")
     for batch in (
         tqdm(dataloader) if distributed_parameters["rank"] == 0 else dataloader
     ):
@@ -32,12 +40,27 @@ def generate(
             num_beams=5,
             max_length=1024,
         )
-        all_generations.extend(
+        generations.extend(
             tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
         )
         if "labels" in batch:
-            all_labels.extend(
+            labels.extend(
                 tokenizer.batch_decode(batch["labels"], skip_special_tokens=True)
             )
-        break
-    return all_generations, all_labels if len(all_labels) > 0 else None
+        else:
+            labels.extend([None] * len(batch_generations))
+
+    # Gather all examples
+    if distributed_parameters["distributed"]:
+        all_generations = [None for _ in range(dataloader.dataset.num_rows)]  # type:ignore
+        all_labels = [None for _ in range(dataloader.dataset.num_rows)]  # type:ignore
+        torch.distributed.all_gather_object(all_generations, generations)
+        torch.distributed.all_gather_object(all_labels, labels)
+    else:
+        all_generations = generations
+        all_labels = labels
+
+    assert all(gen is not None for gen in all_generations)
+    if any(label is None for label in all_labels):
+        all_labels = None
+    return all_generations, all_labels  # type:ignore
