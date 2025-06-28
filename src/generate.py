@@ -1,3 +1,4 @@
+import itertools
 import logging
 import pathlib
 
@@ -52,10 +53,12 @@ def generate(
 
     # Gather all examples
     if distributed_parameters["distributed"]:
-        all_generations = [None for _ in range(dataloader.dataset.num_rows)]  # type:ignore
-        all_labels = [None for _ in range(dataloader.dataset.num_rows)]  # type:ignore
+        all_generations = [None for _ in range(distributed_parameters["world_size"])]
+        all_labels = [None for _ in range(distributed_parameters["world_size"])]
         torch.distributed.all_gather_object(all_generations, generations)
         torch.distributed.all_gather_object(all_labels, labels)
+        all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
+        all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
     else:
         all_generations = generations
         all_labels = labels
