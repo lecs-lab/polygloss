@@ -61,7 +61,7 @@ def run(
 
     # Training loop
     if config.mode in ["pretrain", "finetune"]:
-        model = train(
+        train(
             model,
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
