@@ -131,7 +131,7 @@ def train(
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        (experiment_folder / "checkpoint.pt").unlink()
+        (experiment_folder / "checkpoint.pt").unlink(missing_ok=True)
         torch.save(model.state_dict(), experiment_folder / "model.pt")
         print(f"Saved model to {experiment_folder / 'model.pt'}")
 

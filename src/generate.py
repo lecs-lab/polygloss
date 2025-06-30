@@ -29,11 +29,14 @@ def generate(
     device = distributed_parameters["device"]
     generations: list[str] = []
     labels: list[str | None] = []
-    logger.info("Generating...")
     for batch in (
-        tqdm(dataloader) if distributed_parameters["rank"] == 0 else dataloader
+        tqdm(dataloader, desc="Generating")
+        if distributed_parameters["rank"] == 0
+        else dataloader
     ):
         batch = {k: v.to(device) for k, v in batch.items()}
+        if distributed_parameters["distributed"]:
+            model = model.module
         batch_generations = model.generate(
             **batch,
             use_model_defaults=True,
