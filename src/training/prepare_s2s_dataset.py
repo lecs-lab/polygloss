@@ -11,6 +11,7 @@ from typing import cast
 import datasets
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
+from tqdm import tqdm
 from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
@@ -35,7 +36,7 @@ def create_dataloaders(
 
     for split in dataset:
         examples = []
-        for row in dataset[split]:
+        for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
             if config.unsegmented_transcription:
                 examples.append(
@@ -78,6 +79,7 @@ def create_dataloaders(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
         remove_columns=["input", "label"],
+        desc="Tokenizing",
     )
     collator = DataCollatorForSeq2Seq(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
@@ -118,19 +120,20 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
     dataset = dataset.filter(
         lambda x: x["transcription"] is not None and x["glosses"] is not None
     )
+    new_dataset = datasets.DatasetDict()
 
     # Select the appropriate splits (ID or OOD)
     if glottocode is not None:
         print(f"Filtering to {glottocode=}")
         dataset = dataset.filter(lambda row: row["glottocode"] == glottocode)
         if dataset["dev_ID"].num_rows != 0:
-            dataset["train"] = dataset["pretrain"]
-            dataset["dev"] = dataset["dev_ID"]
-            dataset["test"] = dataset["test_ID"]
+            new_dataset["train"] = dataset["pretrain"]
+            new_dataset["dev"] = dataset["dev_ID"]
+            new_dataset["test"] = dataset["test_ID"]
         elif dataset["dev_OOD"].num_rows != 0:
-            dataset["train"] = dataset["train_OOD"]
-            dataset["dev"] = dataset["dev_OOD"]
-            dataset["test"] = dataset["test_OOD"]
+            new_dataset["train"] = dataset["train_OOD"]
+            new_dataset["dev"] = dataset["dev_OOD"]
+            new_dataset["test"] = dataset["test_OOD"]
         else:
             raise ValueError("Neither ID nor OOD splits had your glottocode!")
     else:
@@ -141,10 +144,10 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
             [dataset["pretrain"], dataset["dev_ID"]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
-        dataset["train"] = pretraining_data["train"]
-        dataset["dev"] = pretraining_data["test"]
-        dataset["test"] = dataset["test_ID"]
-    return dataset
+        new_dataset["train"] = pretraining_data["train"]
+        new_dataset["dev"] = pretraining_data["test"]
+        new_dataset["test"] = dataset["test_ID"]
+    return new_dataset
 
 
 def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):

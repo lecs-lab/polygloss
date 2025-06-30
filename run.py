@@ -15,7 +15,7 @@ from src.distributed import DistributedParameters, setup_ddp
 from src.generate import generate
 from src.training import prepare_s2s_dataset
 from src.training.experiment_config import ExperimentConfig
-from training.train import train
+from src.training.train import train
 
 
 def run(
@@ -61,7 +61,7 @@ def run(
 
     # Training loop
     if config.mode in ["pretrain", "finetune"]:
-        model = train(
+        train(
             model,
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],

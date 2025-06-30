@@ -7,7 +7,7 @@ import torch
 
 class DistributedParameters(TypedDict):
     world_size: int
-    rank: int
+    rank: int  # Will be 0 if not distributed
     local_rank: int
     device: torch.device
     device_type: str
