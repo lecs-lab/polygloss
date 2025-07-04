@@ -18,6 +18,10 @@ from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 from src.distributed import DistributedParameters
 from src.training.experiment_config import ExperimentConfig
 
+InputKey = typing.Literal["transcription", "segmentation"]
+OutputKey = typing.Literal["segmentation", "glosses"]
+output_key_strings: list[OutputKey] = ["glosses", "segmentation"]
+
 
 def create_dataloaders(
     tokenizer: PreTrainedTokenizerBase,
@@ -168,8 +172,8 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
 
 def _create_example(
     row: typing.Mapping,
-    input_key: typing.Literal["transcription", "segmentation"] = "transcription",
-    output_key: typing.Literal["segmentation", "glosses"] = "glosses",
+    input_key: InputKey = "transcription",
+    output_key: OutputKey = "glosses",
     use_translation: bool = True,
 ):
     """Creates an input prompt from the fields in the row.
@@ -198,4 +202,4 @@ def _create_example(
         prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
 
     prompt += f"\n\n{output_key.capitalize()}: "
-    return {"input": prompt, "label": output_seq}
+    return {"input": prompt, "label": output_seq, "output_key": output_key_strings.index(output_key)}

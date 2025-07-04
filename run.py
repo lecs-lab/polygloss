@@ -69,7 +69,7 @@ def run(
             experiment_folder=experiment_folder,
             distributed_parameters=distributed_parameters,
         )
-    generations, references = generate(
+    generations, references, output_keys = generate(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],

@@ -1,3 +1,4 @@
+import inspect
 import pathlib
 
 import torch
@@ -44,6 +45,8 @@ def train(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
+    forward_params = inspect.signature(model.forward).parameters
+
     scaler = torch.amp.grad_scaler.GradScaler()
     print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
     for epoch in range(start_epoch, config.max_epochs):
@@ -57,7 +60,7 @@ def train(
         train_loss_sum = 0.0
         train_n = 0
         for batch in train_dataloader:
-            batch = {k: v.to(device) for k, v in batch.items()}
+            batch = {k: v.to(device) for k, v in batch.items() if k in forward_params}
             optimizer.zero_grad()
             with torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -89,7 +92,7 @@ def train(
             eval_loss_sum = 0.0
             eval_n = 0
             for batch in dev_dataloader:
-                batch = {k: v.to(device) for k, v in batch.items()}
+                batch = {k: v.to(device) for k, v in batch.items() if k in forward_params}
                 out = model(**batch)
                 bs = batch["labels"].size(0)
                 eval_loss_sum += _get_loss(out, batch["labels"]).item() * bs
