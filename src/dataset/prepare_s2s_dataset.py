@@ -16,7 +16,7 @@ from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.distributed import DistributedParameters
-from src.training.experiment_config import ExperimentConfig
+from src.train import ExperimentConfig
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -202,4 +202,8 @@ def _create_example(
         prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
 
     prompt += f"\n\n{output_key.capitalize()}: "
-    return {"input": prompt, "label": output_seq, "output_key": output_key_strings.index(output_key)}
+    return {
+        "input": prompt,
+        "label": output_seq,
+        "output_key": output_key_strings.index(output_key),
+    }

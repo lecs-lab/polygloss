@@ -1,17 +1,24 @@
 import inspect
 import itertools
 import logging
-import pathlib
+from dataclasses import dataclass
 
 import torch
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
+from src.config.experiment_config import ExperimentConfig
+from src.dataset.prepare_s2s_dataset import OutputKey, output_key_strings
 from src.distributed import DistributedParameters
-from src.training.experiment_config import ExperimentConfig
-from src.training.prepare_s2s_dataset import OutputKey, output_key_strings
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class PredictedExample:
+    generation: str
+    label: str | None
+    output_key: OutputKey
 
 
 def generate(
@@ -19,30 +26,33 @@ def generate(
     tokenizer,
     dataloader: DataLoader,
     config: ExperimentConfig,
-    experiment_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
-) -> tuple[list[str], list[str] | None, list[OutputKey] | None]:
+) -> list[PredictedExample]:
     """Runs inference, generating predictions for each item in the dataloader.
 
     Returns:
-        (tuple[list[str], list[str] | None]): The generated outputs and decoded labels (or None if not provided)
+        (list[PredictedExample]): The generated outputs and decoded labels (or None if not provided)
     """
     model.eval()
     device = distributed_parameters["device"]
 
     generations: list[str] = []
     labels: list[str | None] = []
-    output_keys: list[str] = []
+    output_keys: list[OutputKey] = []
 
     if distributed_parameters["distributed"]:
         model = model.module
-        
+
     for batch in (
         tqdm(dataloader, desc="Generating")
         if distributed_parameters["rank"] == 0
         else dataloader
     ):
-        inputs = {k: v.to(device) for k, v in batch.items() if k in inspect.signature(model.forward).parameters}
+        inputs = {
+            k: v.to(device)
+            for k, v in batch.items()
+            if k in inspect.signature(model.forward).parameters
+        }
         batch_generations = model.generate(
             **inputs,
             use_model_defaults=True,
@@ -60,9 +70,9 @@ def generate(
         else:
             labels.extend([None] * len(batch_generations))
         if "output_key" in batch:
-            output_keys.extend([output_key_strings[index] for index in batch['output_key'].tolist()])
-        
-        breakpoint()
+            output_keys.extend(
+                [output_key_strings[index] for index in batch["output_key"].tolist()]
+            )
 
     # Gather all examples
     if distributed_parameters["distributed"]:
@@ -84,9 +94,8 @@ def generate(
         all_output_keys = output_keys
 
     assert all(gen is not None for gen in all_generations)
-    if any(label is None for label in all_labels):
-        all_labels = None
-    if any(output_key is None for output_key in all_output_keys):
-        all_output_keys = None
-    
-    return all_generations, all_labels, all_output_keys  # type:ignore
+
+    return [
+        PredictedExample(gen, label, output_key)
+        for gen, label, output_key in zip(all_generations, all_labels, all_output_keys)
+    ]

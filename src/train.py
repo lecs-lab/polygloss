@@ -3,11 +3,11 @@ import pathlib
 
 import torch
 import tqdm
+import wandb
 from torch.utils.data import DataLoader, DistributedSampler
 
-import wandb
+from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from src.training.experiment_config import ExperimentConfig
 
 
 def train(
@@ -18,7 +18,7 @@ def train(
     experiment_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):
-    """Training loop"""
+    """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -92,7 +92,9 @@ def train(
             eval_loss_sum = 0.0
             eval_n = 0
             for batch in dev_dataloader:
-                batch = {k: v.to(device) for k, v in batch.items() if k in forward_params}
+                batch = {
+                    k: v.to(device) for k, v in batch.items() if k in forward_params
+                }
                 out = model(**batch)
                 bs = batch["labels"].size(0)
                 eval_loss_sum += _get_loss(out, batch["labels"]).item() * bs

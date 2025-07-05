@@ -1,7 +1,10 @@
 datasets==3.5.0
+editdistance==0.8.1
 glossing>=1.0.0
 huggingface-hub>=0.19.4
+iso639
 numpy<2
+pytest
 torch==2.6.0
 tqdm==4.67.1
 transformers==4.51.1

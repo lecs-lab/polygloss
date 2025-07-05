@@ -125,3 +125,19 @@ The full list of possible options is in [experiment_config.py](src/training/expe
 
 > [!NOTE]
 > If you'd like to run finetuning on a new language, you'll probably need to write your own training script. You can use `run.py` as a reference for how we implemented finetuning.
+
+## Development
+
+### Set up environment
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements
+```
+
+### Testing
+Tests should be written as functions in modules prefixed with `test_`, as in `test_evaluate_segmentation_example` in `evaluate.py`. Run tests with:
+
+```bash
+PYTHONPATH=. pytest
+```

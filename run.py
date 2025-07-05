@@ -1,21 +1,23 @@
 import argparse
 import json
+import logging
 import pathlib
 import random
 from dataclasses import asdict
 
-import glossing
 import torch
+import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
-import wandb
-from src.config_to_dataclass import config_to_dataclass
+from src.config.config_to_dataclass import config_to_dataclass
+from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
+from src.evaluate import evaluate
 from src.generate import generate
-from src.training import prepare_s2s_dataset
-from src.training.experiment_config import ExperimentConfig
-from src.training.train import train
+from src.train import ExperimentConfig, train
+
+logger = logging.getLogger(__name__)
 
 
 def run(
@@ -69,29 +71,36 @@ def run(
             experiment_folder=experiment_folder,
             distributed_parameters=distributed_parameters,
         )
-    generations, references, output_keys = generate(
+    predictions = generate(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
         config=config,
-        experiment_folder=experiment_folder,
         distributed_parameters=distributed_parameters,
     )
-    if references is not None:
+
+    if distributed_parameters["rank"] == 0:
         wandb.log(
             {
                 "predictions": wandb.Table(
-                    columns=["predicted", "reference"],
-                    data=list(zip(generations, references)),
+                    columns=["predicted", "reference", "output_key"],
+                    data=[[p.generation, p.label, p.output_key] for p in predictions],
                 )
             }
         )
-        metrics = glossing.evaluate_glosses(generations, references)
-        wandb.log(data={"test": metrics})
-        with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
-            json.dump(metrics, file, ensure_ascii=False, indent=4)
 
-        print("Test predictions and metrics logged to wandb.")
+        if all(p.label is not None for p in predictions):
+            metrics = evaluate(predictions)
+            wandb.log(data={"test": metrics})
+            with open(
+                experiment_folder / "metrics.json", "w", encoding="utf-8"
+            ) as file:
+                json.dump(metrics, file, ensure_ascii=False, indent=4)
+            logger.info(
+                "Metrics logged to WandB and saved to ",
+                experiment_folder / "metrics.json",
+            )
+            return metrics
 
 
 if __name__ == "__main__":
