@@ -61,7 +61,6 @@ def run(
     else:
         raise NotImplementedError()
 
-    # Training loop
     if config.mode in ["pretrain", "finetune"]:
         train(
             model,
@@ -78,7 +77,6 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-
     if distributed_parameters["rank"] == 0:
         wandb.log(
             {
@@ -89,6 +87,7 @@ def run(
             }
         )
 
+        # Evaluation (if we have labels, ie not in inference mode)
         if all(p.label is not None for p in predictions):
             metrics = evaluate(predictions)
             wandb.log(data={"test": metrics})
