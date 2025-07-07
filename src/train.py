@@ -3,9 +3,9 @@ import pathlib
 
 import torch
 import tqdm
-import wandb
 from torch.utils.data import DataLoader, DistributedSampler
 
+import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
 
@@ -110,8 +110,8 @@ def train(
             train_loss = losses_tensor[0] / losses_tensor[1]
             eval_loss = losses_tensor[2] / losses_tensor[3]
         else:
-            train_loss = train_loss_sum
-            eval_loss = eval_loss_sum
+            train_loss = train_loss_sum / train_n
+            eval_loss = eval_loss_sum / eval_n
 
         if distributed_parameters["rank"] == 0:
             # Log results
