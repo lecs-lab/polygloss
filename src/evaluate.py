@@ -66,9 +66,14 @@ def _evaluate_segmentation_example(example: PredictedExample):
         _intersect_size(pred, label)
         for pred, label in zip(predicted_morphemes, label_morphemes)
     )
-    precision = total_overlapping / total_predicted_morphs
+    precision = (
+        total_overlapping / total_predicted_morphs if total_predicted_morphs > 0 else 0
+    )
     recall = total_overlapping / total_label_morphs
-    f1 = (2 * precision * recall) / (precision + recall)
+    if (precision + recall) > 0:
+        f1 = (2 * precision * recall) / (precision + recall)
+    else:
+        f1 = 0
 
     edit_dist = editdistance.eval(" ".join(predicted_words), " ".join(label_words))
 
