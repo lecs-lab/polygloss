@@ -1,4 +1,5 @@
 import inspect
+import logging
 import pathlib
 
 import torch
@@ -8,6 +9,8 @@ from torch.utils.data import DataLoader, DistributedSampler
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+
+logger = logging.getLogger(__name__)
 
 
 def train(
@@ -37,7 +40,7 @@ def train(
     # Load from checkpoint, if it exists
     start_epoch = 0
     if (experiment_folder / "checkpoint.pt").exists():
-        print(
+        logger.info(
             "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
         )
         checkpoint = torch.load(experiment_folder / "checkpoint.pt", weights_only=True)
@@ -48,7 +51,9 @@ def train(
     forward_params = inspect.signature(model.forward).parameters
 
     scaler = torch.amp.grad_scaler.GradScaler()
-    print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
+    logger.info(
+        f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
+    )
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
@@ -82,7 +87,7 @@ def train(
                 pbar.update()
 
         model.eval()
-        print("Evaluating...")
+        logger.info("Evaluating...")
         with (
             torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -97,7 +102,8 @@ def train(
                 }
                 out = model(**batch)
                 bs = batch["labels"].size(0)
-                eval_loss_sum += _get_loss(out, batch["labels"]).item() * bs
+                loss = _get_loss(out, batch["labels"]).item()
+                eval_loss_sum += loss * bs
                 eval_n += bs
 
         # Sum losses over devices, if distributed
@@ -106,7 +112,6 @@ def train(
                 [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
             )
             torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
-            losses_tensor /= distributed_parameters["world_size"]
             train_loss = losses_tensor[0] / losses_tensor[1]
             eval_loss = losses_tensor[2] / losses_tensor[3]
         else:
@@ -138,7 +143,7 @@ def train(
     if distributed_parameters["rank"] == 0:
         (experiment_folder / "checkpoint.pt").unlink(missing_ok=True)
         torch.save(model.state_dict(), experiment_folder / "model.pt")
-        print(f"Saved model to {experiment_folder / 'model.pt'}")
+        logger.info(f"Saved model to {experiment_folder / 'model.pt'}")
 
 
 def _get_loss(out, labels):

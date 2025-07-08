@@ -1,8 +1,11 @@
+import logging
 import os
 from socket import gethostname
 from typing import TypedDict
 
 import torch
+
+logger = logging.getLogger(__name__)
 
 
 class DistributedParameters(TypedDict):
@@ -23,15 +26,14 @@ def setup_ddp() -> DistributedParameters:
         device = torch.device(f"cuda:{local_rank}")
         torch.cuda.set_device(device)
 
-        print(
+        logger.info(
             f"Hello from rank {rank} of {world_size} on {gethostname()} "
             f"(local_rank {local_rank}, device {device})",
-            flush=True,
         )
 
         torch.distributed.init_process_group("nccl", rank=rank, world_size=world_size)
 
-        return {
+        params: DistributedParameters = {
             "world_size": world_size,
             "rank": rank,
             "local_rank": local_rank,
@@ -46,7 +48,7 @@ def setup_ddp() -> DistributedParameters:
             if torch.cuda.is_available()
             else ("mps" if torch.backends.mps.is_available() else "cpu")
         )
-        return {
+        params: DistributedParameters = {
             "world_size": 1,
             "rank": 0,
             "local_rank": 0,
@@ -54,3 +56,5 @@ def setup_ddp() -> DistributedParameters:
             "device_type": str(device),
             "distributed": False,
         }
+    logger.info("Distributed training parameters: %s", params)
+    return params

@@ -6,10 +6,10 @@ import random
 from dataclasses import asdict
 
 import torch
-import wandb
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
+import wandb
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
@@ -17,6 +17,9 @@ from src.evaluate import evaluate
 from src.generate import generate
 from src.train import ExperimentConfig, train
 
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 
@@ -96,7 +99,7 @@ def run(
             ) as file:
                 json.dump(metrics, file, ensure_ascii=False, indent=4)
             logger.info(
-                "Metrics logged to WandB and saved to ",
+                "Metrics logged to WandB and saved to %s",
                 experiment_folder / "metrics.json",
             )
             return metrics
