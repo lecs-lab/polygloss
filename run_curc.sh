@@ -8,8 +8,8 @@
 #SBATCH --qos=blanca-curc-gpu
 #SBATCH --partition=blanca-curc-gpu
 #SBATCH --account=blanca-curc-gpu
-#SBATCH --out=logs/polygloss.%j.out
-#SBATCH --error=logs/polygloss.%j.err
+#SBATCH --out=logs/%j.log
+#SBATCH --error=logs/%j.log
 
 module purge
 module load miniforge

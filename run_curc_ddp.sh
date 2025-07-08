@@ -8,8 +8,8 @@
 #SBATCH --qos=blanca-curc-gpu
 #SBATCH --partition=blanca-curc-gpu
 #SBATCH --account=blanca-curc-gpu
-#SBATCH --out=logs/%j.out
-#SBATCH --error=logs/%j.err
+#SBATCH --out=logs/%j.log
+#SBATCH --error=logs/%j.log
 
 export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
