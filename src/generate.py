@@ -57,7 +57,7 @@ def generate(
             **inputs,
             use_model_defaults=True,
             do_sample=False,
-            num_beams=1,
+            num_beams=config.num_beams,
             max_length=1024,
         )
         generations.extend(

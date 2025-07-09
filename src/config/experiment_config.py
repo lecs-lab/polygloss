@@ -77,6 +77,13 @@ class ExperimentConfig:
     """Batch size per GPU for training and evaluation"""
 
     # ============================
+    # Generation
+    # ============================
+
+    num_beams: int = 2
+    """Num beams for beam search"""
+
+    # ============================
     # Computed properties
     # ============================
     @property
