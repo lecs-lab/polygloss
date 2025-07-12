@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import pathlib
+import pprint
 import random
 from dataclasses import asdict
 
@@ -40,9 +41,9 @@ def run(
             config=asdict(config),
         )
 
-    if config.ft_glottocode is not None:
+    if config.glottocode is not None:
         # Create subfolders for each language if needed
-        experiment_folder /= config.ft_glottocode
+        experiment_folder /= config.glottocode
         experiment_folder.mkdir(exist_ok=True)
 
     # Prepare model, dataset, tokenizer
@@ -121,6 +122,7 @@ if __name__ == "__main__":
         overrides=args.overrides or "",
         dataclass_type=ExperimentConfig,
     )
+    logger.info(f"Experiment config:\n{pprint.pformat(config)}")
     folder = pathlib.Path(args.config).parent
     distributed_parameters = setup_ddp()
     run(

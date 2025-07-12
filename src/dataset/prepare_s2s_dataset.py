@@ -36,7 +36,7 @@ def create_dataloaders(
     """
     dataset = datasets.load_dataset(config.dataset_key)
     dataset = cast(datasets.DatasetDict, dataset)
-    dataset = _filter(dataset, config.ft_glottocode)
+    dataset = _filter(dataset, config.glottocode)
 
     for split in dataset:
         examples = []

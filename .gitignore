@@ -11,3 +11,4 @@ wandb
 logs/
 *.pt
 pyrightconfig.json
+local

@@ -21,10 +21,26 @@ module load miniforge
 mamba activate polygloss
 cd "/projects/$USER/polygloss"
 
-torchrun \
-  --nproc_per_node=$SLURM_NTASKS_PER_NODE \
-  --nnodes=$SLURM_NNODES \
-  --node_rank=$SLURM_NODEID \
-  --master_addr=$MASTER_ADDR \
-  --master_port=$MASTER_PORT \
-  run.py "$1"
+if [[ "$2" == "--monoling" ]]; then
+    echo "Running multiple monolingual experiments"
+
+    for glottocode in arap1274 gitx1241 lezg1247 natu1246 nyan1302 dido1241 uspa1245
+    do
+        echo "Running with $glottocode"
+        torchrun \
+            --nproc_per_node=$SLURM_NTASKS_PER_NODE \
+            --nnodes=$SLURM_NNODES \
+            --node_rank=$SLURM_NODEID \
+            --master_addr=$MASTER_ADDR \
+            --master_port=$MASTER_PORT \
+            run.py "$1 --overrides glottocode=$glottocode"
+    done
+else
+    torchrun \
+    --nproc_per_node=$SLURM_NTASKS_PER_NODE \
+    --nnodes=$SLURM_NNODES \
+    --node_rank=$SLURM_NODEID \
+    --master_addr=$MASTER_ADDR \
+    --master_port=$MASTER_PORT \
+    run.py "$1"
+fi

@@ -16,4 +16,14 @@ module load miniforge
 mamba activate polygloss
 cd "/projects/$USER/polygloss"
 
-python run.py "$1"
+if [[ "$2" == "--monoling" ]]; then
+    echo "Running multiple monolingual experiments"
+
+    for glottocode in arap1274 gitx1241 lezg1247 natu1246 nyan1302 dido1241 uspa1245
+    do
+        echo "Running with $glottocode"
+        python run.py "$1 --overrides glottocode=$glottocode"
+    done
+else
+    python run.py "$1"
+fi

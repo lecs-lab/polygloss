@@ -1,5 +1,6 @@
 import logging
 import os
+import pprint
 from socket import gethostname
 from typing import TypedDict
 
@@ -56,5 +57,5 @@ def setup_ddp() -> DistributedParameters:
             "device_type": str(device),
             "distributed": False,
         }
-    logger.info("Distributed training parameters: %s", params)
+    logger.info("Distributed training parameters: \n%s", pprint.pformat(params))
     return params

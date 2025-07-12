@@ -36,7 +36,7 @@ class ExperimentConfig:
     dataset_key: str = "lecslab/polygloss-corpus"
     """Hugging Face dataset identifier for the corpus to use"""
 
-    ft_glottocode: str | None = None
+    glottocode: str | None = None
     """Glottocode of the language to finetune on (None for pretraining on all languages)"""
 
     segmented_transcription: bool = True
@@ -88,14 +88,14 @@ class ExperimentConfig:
     # ============================
     @property
     def ft_isocode(self):
-        if self.ft_glottocode is not None:
-            return _glotto_to_iso[self.ft_glottocode]
+        if self.glottocode is not None:
+            return _glotto_to_iso[self.glottocode]
         else:
             return None
 
     def __post_init__(self):
         """Validates sanity checks on the parameters"""
-        if self.ft_glottocode is not None:
+        if self.glottocode is not None:
             if self.mode == "pretrain":
                 raise ValueError("Pretraining should not have a specified glottocode!")
         else:
