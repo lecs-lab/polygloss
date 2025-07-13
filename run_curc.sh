@@ -11,12 +11,12 @@
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
-set -x
-
 module purge
 module load miniforge
 mamba activate polygloss
 cd "/projects/$USER/polygloss"
+
+set -x
 
 if [[ "$2" == "--monoling" ]]; then
     echo "Running multiple monolingual experiments"

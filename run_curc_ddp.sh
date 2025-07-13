@@ -21,6 +21,8 @@ module load miniforge
 mamba activate polygloss
 cd "/projects/$USER/polygloss"
 
+set -x
+
 if [[ "$2" == "--monoling" ]]; then
     echo "Running multiple monolingual experiments"
 
