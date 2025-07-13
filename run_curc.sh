@@ -11,6 +11,8 @@
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
+set -x
+
 module purge
 module load miniforge
 mamba activate polygloss
@@ -22,7 +24,7 @@ if [[ "$2" == "--monoling" ]]; then
     for glottocode in arap1274 gitx1241 lezg1247 natu1246 nyan1302 dido1241 uspa1245
     do
         echo "Running with $glottocode"
-        python run.py "$1 --overrides glottocode=$glottocode"
+        python run.py "$1" --overrides "glottocode=$glottocode"
     done
 else
     python run.py "$1"

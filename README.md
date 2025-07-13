@@ -124,7 +124,7 @@ batch_size = 16
 The full list of possible options is in [experiment_config.py](src/training/experiment_config.py). In addition to the config file, you can specify any parameter overrides with `-o key1=val1 key2=val2`.
 
 > [!NOTE]
-> If you'd like to run finetuning on a new language, you'll probably need to write your own training script. You can use `run.py` as a reference for how we implemented finetuning.
+> When running experiments over our evaluation languages, we use the paradigm shown in `run_curc.sh` where the config does not include a `glottocode` field and an override is used (e.g. `-o glottocode=uspa1245`).
 
 ## Development
 
