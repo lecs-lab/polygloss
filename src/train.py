@@ -65,7 +65,8 @@ def train(
         train_loss_sum = 0.0
         train_n = 0
         for batch in train_dataloader:
-            batch = {k: v.to(device) for k, v in batch.items() if k in forward_params}
+            (batch.pop(key) for key in batch.keys() if key not in forward_params)
+            batch.to(device)
             optimizer.zero_grad()
             with torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -97,9 +98,8 @@ def train(
             eval_loss_sum = 0.0
             eval_n = 0
             for batch in dev_dataloader:
-                batch = {
-                    k: v.to(device) for k, v in batch.items() if k in forward_params
-                }
+                (batch.pop(key) for key in batch.keys() if key not in forward_params)
+                batch.to(device)
                 out = model(**batch)
                 bs = batch["labels"].size(0)
                 loss = _get_loss(out, batch["labels"]).item()
