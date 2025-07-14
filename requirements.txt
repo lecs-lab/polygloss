@@ -1,8 +1,12 @@
 datasets==3.5.0
-glossing>=1.0.0
-huggingface-hub>=0.19.4
-numpy<2
+glossing==1.0.0
+iso639_lang==2.6.1
+langid==1.1.6
+pandas==2.3.1
+pyglottolog==3.16.0
+regex==2024.11.6
+torch==2.4.1
 torch==2.6.0
+tqdm==4.66.4
 tqdm==4.67.1
 transformers==4.51.1
-wandb>=0.16.0

@@ -1,5 +1,6 @@
 """Creates the entire PolyGloss dataset from scratch by aggregating sources, filtering, and processing. May take a while."""
 
+import argparse
 import typing
 from collections import defaultdict
 
@@ -10,6 +11,7 @@ from tqdm import tqdm
 from data.audit import audit
 from data.process import add_lang_info, standardize
 from data.scrape_data import (
+    out_of_domain_glottocodes,
     scrape_cldf,
     scrape_fieldwork,
     scrape_gurani,
@@ -17,6 +19,10 @@ from data.scrape_data import (
     scrape_odin,
     scrape_sigmorphon_st,
 )
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--message", "-m", required=True, help="Commit message")
+args = parser.parse_args()
 
 # 1. Collate data from various sources
 all_data = [
@@ -51,6 +57,10 @@ for row in dataset:
     row = typing.cast(typing.Mapping, row)
     if row.get("designated_split") is not None:
         dataset_dict[row["designated_split"]].append(row)
+    elif row["glottocode"] in out_of_domain_glottocodes:
+        # Any examples from our OOD languages WITHOUT a designated split
+        #  should be moved to the OOD training data
+        dataset_dict["train_OOD"].append(row)
     else:
         dataset_dict["pretrain"].append(row)
 dataset_dict = {
@@ -60,4 +70,4 @@ dataset_dict = {
 dataset_dict = datasets.DatasetDict(dataset_dict)
 
 # 6. Push updated dataset
-dataset_dict.push_to_hub("lecslab/polygloss-corpus")
+dataset_dict.push_to_hub("lecslab/polygloss-corpus", commit_message=args.message)
