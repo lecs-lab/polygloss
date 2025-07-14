@@ -1,15 +1,12 @@
-[submodule "imtvault"]
-	path = imtvault
-	url = https://github.com/cldf-datasets/imtvault.git
 [submodule "data/apics"]
 	path = data/raw/apics
-	url = https://github.com/cldf-datasets/apics.git
+	url = git@github.com:cldf-datasets/apics.git
 [submodule "data/raw/imtvault"]
 	path = data/raw/imtvault
-	url = https://github.com/cldf-datasets/imtvault.git
+	url = git@github.com:cldf-datasets/imtvault.git
 [submodule "data/raw/uratyp"]
 	path = data/raw/uratyp
-	url = https://github.com/cldf-datasets/uratyp.git
+	url = git@github.com:cldf-datasets/uratyp.git
 [submodule "data/raw/apics"]
 	path = data/raw/apics
-	url = https://github.com/cldf-datasets/apics.git
+	url = git@github.com:cldf-datasets/apics.git
