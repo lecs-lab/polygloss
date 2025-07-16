@@ -190,7 +190,7 @@ def scrape_fieldwork() -> list[IGTLine]:
             if glottocode in in_domain_glottocodes and split != "train":
                 designated_split = f"{split if split != 'validation' else 'dev'}_ID"
             elif glottocode in out_of_domain_glottocodes:
-                designated_split = f"{split}_OOD"
+                designated_split = f"{split if split != 'validation' else 'dev'}_OOD"
             else:
                 designated_split = None
 
