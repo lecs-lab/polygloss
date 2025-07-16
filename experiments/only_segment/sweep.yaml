@@ -1,0 +1,21 @@
+program: run.py
+name: sweep_mono_segment
+method: bayes
+metric:
+  goal: minimize
+  name: eval/loss
+parameters:
+  learning_rate:
+    min: 0.00005
+    max: 0.1
+  epochs:
+    values: [10, 25, 50, 100]
+  optimizer:
+    values: ["adamw", "adafactor"]
+command:
+  - python
+  - ${program}
+  - ${envvar:CONFIG}
+  - "-o"
+  - ${args_no_hyphens}
+  - glottocode=${envvar:GLOTTOCODE}

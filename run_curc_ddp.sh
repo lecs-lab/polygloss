@@ -35,7 +35,7 @@ if [[ "$2" == "--monoling" ]]; then
             --node_rank=$SLURM_NODEID \
             --master_addr=$MASTER_ADDR \
             --master_port=$MASTER_PORT \
-            run.py "$1" --overrides "glottocode=$glottocode"
+            run.py "$1" --overrides glottocode=$glottocode
     done
 else
     torchrun \

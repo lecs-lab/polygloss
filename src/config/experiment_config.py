@@ -64,11 +64,8 @@ class ExperimentConfig:
     max_epochs: int = 50
     """Maximum number of training epochs"""
 
-    use_early_stopping: bool = True
-    """Whether to use early stopping based on validation performance"""
-
-    early_stopping_patience: int = 3
-    """Number of epochs with no improvement after which training will be stopped"""
+    optimizer: str = "adafactor"
+    """adamw | adafactor"""
 
     learning_rate: float = 5e-5
     """Learning rate for the optimizer"""

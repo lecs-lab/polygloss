@@ -112,14 +112,15 @@ if __name__ == "__main__":
         "config", help="A config file (cfg, ini) with configuration parameters"
     )
     parser.add_argument(
-        "-o",
         "--overrides",
+        "-o",
         help="Override config arguments, in the format `key1=value1 key2=value2`",
+        nargs="+",
     )
     args = parser.parse_args()
     config = config_to_dataclass(
         config_path=args.config,
-        overrides=args.overrides or "",
+        overrides=args.overrides or [],
         dataclass_type=ExperimentConfig,
     )
     logger.info(f"Experiment config:\n{pprint.pformat(config)}")

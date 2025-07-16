@@ -31,11 +31,19 @@ def train(
         pbar = None
 
     # TODO: Do we want to use adafactor over Adam?
-    optimizer = torch.optim.Adafactor(
-        model.parameters(),
-        lr=config.learning_rate,
-        weight_decay=0.01,
-    )
+    if config.optimizer == "adafactor":
+        optimizer = torch.optim.Adafactor(
+            model.parameters(),
+            lr=config.learning_rate,
+            weight_decay=0.01,
+        )
+    elif config.optimizer == "adamw":
+        optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=config.learning_rate,
+        )
+    else:
+        raise ValueError(f"Unrecognized optimizer: {config.optimizer}")
 
     # Load from checkpoint, if it exists
     start_epoch = 0
