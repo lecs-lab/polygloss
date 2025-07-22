@@ -19,6 +19,7 @@ def train(
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
+    models_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
@@ -35,7 +36,7 @@ def train(
         optimizer = torch.optim.Adafactor(
             model.parameters(),
             lr=config.learning_rate,
-            weight_decay=0.01,
+            weight_decay=config.weight_decay,
         )
     elif config.optimizer == "adamw":
         optimizer = torch.optim.AdamW(
@@ -47,11 +48,11 @@ def train(
 
     # Load from checkpoint, if it exists
     start_epoch = 0
-    if (experiment_folder / "checkpoint.pt").exists():
+    if (models_folder / "checkpoint.pt").exists():
         logger.info(
             "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
         )
-        checkpoint = torch.load(experiment_folder / "checkpoint.pt", weights_only=True)
+        checkpoint = torch.load(models_folder / "checkpoint.pt", weights_only=True)
         model.load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
@@ -148,14 +149,14 @@ def train(
                     "model_state_dict": model.state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
                 },
-                experiment_folder / "checkpoint.pt",
+                models_folder / "checkpoint.pt",
             )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        (experiment_folder / "checkpoint.pt").unlink(missing_ok=True)
-        torch.save(model.state_dict(), experiment_folder / "model.pt")
-        logger.info(f"Saved model to {experiment_folder / 'model.pt'}")
+        (models_folder / "checkpoint.pt").unlink(missing_ok=True)
+        torch.save(model.state_dict(), models_folder / "model.pt")
+        logger.info(f"Saved model to {models_folder / 'model.pt'}")
 
 
 def _get_loss(out, labels):

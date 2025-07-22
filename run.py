@@ -41,10 +41,17 @@ def run(
             config=asdict(config),
         )
 
+    if config.model_dir:
+        models_folder = pathlib.Path(config.model_dir) / experiment_folder.stem
+    else:
+        models_folder = experiment_folder
+
     if config.glottocode is not None:
         # Create subfolders for each language if needed
         experiment_folder /= config.glottocode
         experiment_folder.mkdir(exist_ok=True)
+        models_folder /= config.glottocode
+        models_folder.mkdir(exist_ok=True, parents=True)
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
@@ -72,6 +79,7 @@ def run(
             dev_dataloader=dataloaders["dev"],
             config=config,
             experiment_folder=experiment_folder,
+            models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
     predictions = generate(

@@ -1,5 +1,4 @@
 program: run.py
-name: sweep_mono_segment
 method: bayes
 metric:
   goal: minimize
@@ -7,11 +6,14 @@ metric:
 parameters:
   learning_rate:
     min: 0.00005
-    max: 0.1
-  epochs:
+    max: 0.01
+  max_epochs:
     values: [10, 25, 50, 100]
   optimizer:
     values: ["adamw", "adafactor"]
+  weight_decay:
+    min: 0.0
+    max: 0.5
 command:
   - python
   - ${program}
@@ -19,3 +21,4 @@ command:
   - "-o"
   - ${args_no_hyphens}
   - glottocode=${envvar:GLOTTOCODE}
+run_cap: 25

@@ -70,8 +70,14 @@ class ExperimentConfig:
     learning_rate: float = 5e-5
     """Learning rate for the optimizer"""
 
+    weight_decay: float = 0.01
+    """Weight decay for the optimizer"""
+
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
+
+    model_dir: str | None = None
+    """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
 
     # ============================
     # Generation
