@@ -41,8 +41,8 @@ def run(
             config=asdict(config),
         )
 
-    if config.model_dir:
-        models_folder = pathlib.Path(config.model_dir) / experiment_folder.stem
+    if config.models_dir:
+        models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
     else:
         models_folder = experiment_folder
 

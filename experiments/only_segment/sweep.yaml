@@ -21,4 +21,5 @@ command:
   - "-o"
   - ${args_no_hyphens}
   - glottocode=${envvar:GLOTTOCODE}
+  - models_dir=${envvar:MODELS_DIR}
 run_cap: 25
