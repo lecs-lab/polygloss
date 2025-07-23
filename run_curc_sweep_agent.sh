@@ -18,4 +18,7 @@ cd "/projects/$USER/polygloss"
 
 set -x
 
+export MODELS_DIR=/scratch/alpine/migi8081/polygloss/
+export GLOTTOCODE=$2
+
 wandb agent $1
