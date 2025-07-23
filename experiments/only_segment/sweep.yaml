@@ -17,7 +17,7 @@ parameters:
 command:
   - python
   - ${program}
-  - ${envvar:CONFIG}
+  - experiments/only_segment/ft.cfg
   - "-o"
   - ${args_no_hyphens}
   - glottocode=${envvar:GLOTTOCODE}
