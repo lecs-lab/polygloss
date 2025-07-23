@@ -77,7 +77,7 @@ def train(
             keys_to_pop = [k for k in batch.keys() if k not in forward_params]
             for key in keys_to_pop:
                 batch.pop(key)
-            batch.to(device)
+            batch = batch.to(device)
             optimizer.zero_grad()
             with torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
