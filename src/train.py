@@ -57,7 +57,9 @@ def train(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
-    forward_params = inspect.signature(model.forward).parameters
+    forward_params = inspect.signature(
+        (model.module if distributed_parameters["distributed"] else model).forward
+    ).parameters
 
     scaler = torch.amp.grad_scaler.GradScaler()
     logger.info(
