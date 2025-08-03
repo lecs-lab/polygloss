@@ -102,5 +102,5 @@ class ExperimentConfig:
             if self.mode == "pretrain":
                 raise ValueError("Pretraining should not have a specified glottocode!")
         else:
-            if self.mode != "pretrain":
-                raise ValueError("Finetuning/prediction must have a glottocode!")
+            if self.mode == "finetune":
+                raise ValueError("Finetuning must have a glottocode!")

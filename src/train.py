@@ -157,8 +157,8 @@ def train(
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
         (models_folder / "checkpoint.pt").unlink(missing_ok=True)
-        torch.save(model.state_dict(), models_folder / "model.pt")
-        logger.info(f"Saved model to {models_folder / 'model.pt'}")
+        model.save_pretrained(models_folder / "model")
+        logger.info(f"Saved model to {models_folder / 'model'}")
 
 
 def _get_loss(out, labels):
