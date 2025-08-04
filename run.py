@@ -32,9 +32,7 @@ def run(
     random.seed(0)
 
     # Initialize WandB experiment
-    if distributed_parameters["rank"] == 0 and (
-        config.mode == "pretrain" or config.mode == "finetune"
-    ):
+    if distributed_parameters["rank"] == 0:
         wandb.init(
             project="polygloss",
             entity="wav2gloss",
@@ -75,6 +73,7 @@ def run(
     if config.mode in ["pretrain", "finetune"]:
         train(
             model,
+            tokenizer=tokenizer,
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
             config=config,

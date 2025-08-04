@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 def train(
     model,
+    tokenizer,
     train_dataloader: DataLoader,
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
@@ -31,7 +32,6 @@ def train(
     else:
         pbar = None
 
-    # TODO: Do we want to use adafactor over Adam?
     if config.optimizer == "adafactor":
         optimizer = torch.optim.Adafactor(
             model.parameters(),
@@ -53,7 +53,9 @@ def train(
             "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
         )
         checkpoint = torch.load(models_folder / "checkpoint.pt", weights_only=True)
-        model.load_state_dict(checkpoint["model_state_dict"])
+        (
+            model.module if distributed_parameters["distributed"] else model
+        ).load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
@@ -148,7 +150,9 @@ def train(
             torch.save(
                 {
                     "epoch": epoch,
-                    "model_state_dict": model.state_dict(),
+                    "model_state_dict": (
+                        model.module if distributed_parameters["distributed"] else model
+                    ).state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
                 },
                 models_folder / "checkpoint.pt",
@@ -157,7 +161,10 @@ def train(
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
         (models_folder / "checkpoint.pt").unlink(missing_ok=True)
-        model.save_pretrained(models_folder / "model")
+        (
+            model.module if distributed_parameters["distributed"] else model
+        ).save_pretrained(models_folder / "model")
+        tokenizer.save_pretrained(models_folder / "model")
         logger.info(f"Saved model to {models_folder / 'model'}")
 
 

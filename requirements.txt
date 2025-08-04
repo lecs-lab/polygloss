@@ -1,6 +1,6 @@
 datasets==3.5.0
 editdistance==0.8.1
-glossing>=1.0.0
+glossing>=1.0.1
 huggingface-hub>=0.19.4
 iso639
 numpy<2
