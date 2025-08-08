@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 from typing import Literal
 
@@ -95,6 +96,8 @@ class ExperimentConfig:
             return _glotto_to_iso[self.glottocode]
         else:
             return None
+
+    slurm_job_id = os.environ["$SLURM_JOB_ID"]
 
     def __post_init__(self):
         """Validates sanity checks on the parameters"""
