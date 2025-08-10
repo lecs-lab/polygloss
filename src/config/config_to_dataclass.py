@@ -33,6 +33,8 @@ def config_to_dataclass(
     init_values = {}
 
     for field in fields(dataclass_type):
+        if not field.init:
+            continue
         field_type = field.type
         value: Optional[Any] = None
 

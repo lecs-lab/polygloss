@@ -92,8 +92,7 @@ def create_dataloaders(
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
-        # Default to a reasonable number when not in SLURM environment
-        num_workers = 4
+        num_workers = 0
     for split in ["train", "dev", "test"]:
         if distributed_parameters["distributed"]:
             sampler = DistributedSampler(

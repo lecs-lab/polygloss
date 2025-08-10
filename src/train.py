@@ -116,7 +116,7 @@ def train(
                 keys_to_pop = [k for k in batch.keys() if k not in forward_params]
                 for key in keys_to_pop:
                     batch.pop(key)
-                batch.to(device)
+                batch = batch.to(device)
                 out = model(**batch)
                 bs = batch["labels"].size(0)
                 loss = _get_loss(out, batch["labels"]).item()

@@ -61,6 +61,7 @@ def run(
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
+    model = torch.compile(model)
     if config.model_type == "seq2seq":
         dataloaders = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
