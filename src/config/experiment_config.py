@@ -97,7 +97,7 @@ class ExperimentConfig:
         else:
             return None
 
-    slurm_job_id = os.environ["$SLURM_JOB_ID"]
+    slurm_job_id = os.environ.get("SLURM_JOB_ID")
 
     def __post_init__(self):
         """Validates sanity checks on the parameters"""
