@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
@@ -97,7 +97,9 @@ class ExperimentConfig:
         else:
             return None
 
-    slurm_job_id = os.environ.get("SLURM_JOB_ID")
+    slurm_job_id: str | None = field(
+        default_factory=lambda: os.environ.get("SLURM_JOB_ID"), init=False
+    )
 
     def __post_init__(self):
         """Validates sanity checks on the parameters"""
