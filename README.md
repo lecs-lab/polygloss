@@ -141,3 +141,6 @@ Tests should be written as functions in modules prefixed with `test_`, as in `te
 ```bash
 PYTHONPATH=. pytest
 ```
+
+### Dataset
+The full dataset creation is handled by `python create_dataset.py`. Any changes to the dataset should be incorporated in this script or its child scripts, so we have a definitive source of truth.
