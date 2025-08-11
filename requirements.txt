@@ -2,10 +2,13 @@ datasets==3.5.0
 editdistance==0.8.1
 glossing>=1.0.1
 huggingface-hub>=0.19.4
-iso639
 numpy<2
 pytest
+iso639_lang==2.6.1
+langid==1.1.6
+pandas==2.3.1
+pyglottolog==3.16.0
 torch==2.6.0
+tqdm==4.66.4
 tqdm==4.67.1
 transformers==4.51.1
-wandb>=0.16.0
