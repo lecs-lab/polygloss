@@ -16,7 +16,11 @@ from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.distributed import DistributedParameters
-from src.training.experiment_config import ExperimentConfig
+from src.train import ExperimentConfig
+
+InputKey = typing.Literal["transcription", "segmentation"]
+OutputKey = typing.Literal["segmentation", "glosses"]
+output_key_strings: list[OutputKey] = ["glosses", "segmentation"]
 
 
 def create_dataloaders(
@@ -32,7 +36,7 @@ def create_dataloaders(
     """
     dataset = datasets.load_dataset(config.dataset_key)
     dataset = cast(datasets.DatasetDict, dataset)
-    dataset = _filter(dataset, config.ft_glottocode)
+    dataset = _filter(dataset, config.glottocode)
 
     for split in dataset:
         examples = []
@@ -88,8 +92,7 @@ def create_dataloaders(
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
-        # Default to a reasonable number when not in SLURM environment
-        num_workers = 4
+        num_workers = 0
     for split in ["train", "dev", "test"]:
         if distributed_parameters["distributed"]:
             sampler = DistributedSampler(
@@ -168,8 +171,8 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
 
 def _create_example(
     row: typing.Mapping,
-    input_key: typing.Literal["transcription", "segmentation"] = "transcription",
-    output_key: typing.Literal["segmentation", "glosses"] = "glosses",
+    input_key: InputKey = "transcription",
+    output_key: OutputKey = "glosses",
     use_translation: bool = True,
 ):
     """Creates an input prompt from the fields in the row.
@@ -198,4 +201,8 @@ def _create_example(
         prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
 
     prompt += f"\n\n{output_key.capitalize()}: "
-    return {"input": prompt, "label": output_seq}
+    return {
+        "input": prompt,
+        "label": output_seq,
+        "output_key": output_key_strings.index(output_key),
+    }

@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+import os
+from dataclasses import dataclass, field
 from typing import Literal
 
 TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
@@ -36,7 +37,7 @@ class ExperimentConfig:
     dataset_key: str = "lecslab/polygloss-corpus"
     """Hugging Face dataset identifier for the corpus to use"""
 
-    ft_glottocode: str | None = None
+    glottocode: str | None = None
     """Glottocode of the language to finetune on (None for pretraining on all languages)"""
 
     segmented_transcription: bool = True
@@ -64,33 +65,47 @@ class ExperimentConfig:
     max_epochs: int = 50
     """Maximum number of training epochs"""
 
-    use_early_stopping: bool = True
-    """Whether to use early stopping based on validation performance"""
-
-    early_stopping_patience: int = 3
-    """Number of epochs with no improvement after which training will be stopped"""
+    optimizer: str = "adafactor"
+    """adamw | adafactor"""
 
     learning_rate: float = 5e-5
     """Learning rate for the optimizer"""
 
+    weight_decay: float = 0.01
+    """Weight decay for the optimizer"""
+
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
+
+    models_dir: str | None = None
+    """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
+
+    # ============================
+    # Generation
+    # ============================
+
+    num_beams: int = 2
+    """Num beams for beam search"""
 
     # ============================
     # Computed properties
     # ============================
     @property
     def ft_isocode(self):
-        if self.ft_glottocode is not None:
-            return _glotto_to_iso[self.ft_glottocode]
+        if self.glottocode is not None:
+            return _glotto_to_iso[self.glottocode]
         else:
             return None
 
+    slurm_job_id: str | None = field(
+        default_factory=lambda: os.environ.get("SLURM_JOB_ID"), init=False
+    )
+
     def __post_init__(self):
         """Validates sanity checks on the parameters"""
-        if self.ft_glottocode is not None:
+        if self.glottocode is not None:
             if self.mode == "pretrain":
                 raise ValueError("Pretraining should not have a specified glottocode!")
         else:
-            if self.mode != "pretrain":
-                raise ValueError("Finetuning/prediction must have a glottocode!")
+            if self.mode == "finetune":
+                raise ValueError("Finetuning must have a glottocode!")

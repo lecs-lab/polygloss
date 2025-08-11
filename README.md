@@ -124,4 +124,23 @@ batch_size = 16
 The full list of possible options is in [experiment_config.py](src/training/experiment_config.py). In addition to the config file, you can specify any parameter overrides with `-o key1=val1 key2=val2`.
 
 > [!NOTE]
-> If you'd like to run finetuning on a new language, you'll probably need to write your own training script. You can use `run.py` as a reference for how we implemented finetuning.
+> When running experiments over our evaluation languages, we use the paradigm shown in `run_curc.sh` where the config does not include a `glottocode` field and an override is used (e.g. `-o glottocode=uspa1245`).
+
+## Development
+
+### Set up environment
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements
+```
+
+### Testing
+Tests should be written as functions in modules prefixed with `test_`, as in `test_evaluate_segmentation_example` in `evaluate.py`. Run tests with:
+
+```bash
+PYTHONPATH=. pytest
+```
+
+### Dataset
+The full dataset creation is handled by `python create_dataset.py`. Any changes to the dataset should be incorporated in this script or its child scripts, so we have a definitive source of truth.

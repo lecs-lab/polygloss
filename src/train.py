@@ -1,3 +1,5 @@
+import inspect
+import logging
 import pathlib
 
 import torch
@@ -5,19 +7,23 @@ import tqdm
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
+from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from src.training.experiment_config import ExperimentConfig
+
+logger = logging.getLogger(__name__)
 
 
 def train(
     model,
+    tokenizer,
     train_dataloader: DataLoader,
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
+    models_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):
-    """Training loop"""
+    """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -26,26 +32,41 @@ def train(
     else:
         pbar = None
 
-    # TODO: Do we want to use adafactor over Adam?
-    optimizer = torch.optim.Adafactor(
-        model.parameters(),
-        lr=config.learning_rate,
-        weight_decay=0.01,
-    )
+    if config.optimizer == "adafactor":
+        optimizer = torch.optim.Adafactor(
+            model.parameters(),
+            lr=config.learning_rate,
+            weight_decay=config.weight_decay,
+        )
+    elif config.optimizer == "adamw":
+        optimizer = torch.optim.AdamW(
+            model.parameters(),
+            lr=config.learning_rate,
+        )
+    else:
+        raise ValueError(f"Unrecognized optimizer: {config.optimizer}")
 
     # Load from checkpoint, if it exists
     start_epoch = 0
-    if (experiment_folder / "checkpoint.pt").exists():
-        print(
+    if (models_folder / "checkpoint.pt").exists():
+        logger.info(
             "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
         )
-        checkpoint = torch.load(experiment_folder / "checkpoint.pt", weights_only=True)
-        model.load_state_dict(checkpoint["model_state_dict"])
+        checkpoint = torch.load(models_folder / "checkpoint.pt", weights_only=True)
+        (
+            model.module if distributed_parameters["distributed"] else model
+        ).load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
+    forward_params = inspect.signature(
+        (model.module if distributed_parameters["distributed"] else model).forward
+    ).parameters
+
     scaler = torch.amp.grad_scaler.GradScaler()
-    print(f"Training with {len(train_dataloader)} batches of size {config.batch_size}.")
+    logger.info(
+        f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
+    )
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
@@ -57,7 +78,10 @@ def train(
         train_loss_sum = 0.0
         train_n = 0
         for batch in train_dataloader:
-            batch = {k: v.to(device) for k, v in batch.items()}
+            keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+            for key in keys_to_pop:
+                batch.pop(key)
+            batch = batch.to(device)
             optimizer.zero_grad()
             with torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -79,7 +103,7 @@ def train(
                 pbar.update()
 
         model.eval()
-        print("Evaluating...")
+        logger.info("Evaluating...")
         with (
             torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -89,10 +113,14 @@ def train(
             eval_loss_sum = 0.0
             eval_n = 0
             for batch in dev_dataloader:
-                batch = {k: v.to(device) for k, v in batch.items()}
+                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+                for key in keys_to_pop:
+                    batch.pop(key)
+                batch = batch.to(device)
                 out = model(**batch)
                 bs = batch["labels"].size(0)
-                eval_loss_sum += _get_loss(out, batch["labels"]).item() * bs
+                loss = _get_loss(out, batch["labels"]).item()
+                eval_loss_sum += loss * bs
                 eval_n += bs
 
         # Sum losses over devices, if distributed
@@ -101,12 +129,11 @@ def train(
                 [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
             )
             torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
-            losses_tensor /= distributed_parameters["world_size"]
             train_loss = losses_tensor[0] / losses_tensor[1]
             eval_loss = losses_tensor[2] / losses_tensor[3]
         else:
-            train_loss = train_loss_sum
-            eval_loss = eval_loss_sum
+            train_loss = train_loss_sum / train_n
+            eval_loss = eval_loss_sum / eval_n
 
         if distributed_parameters["rank"] == 0:
             # Log results
@@ -123,17 +150,22 @@ def train(
             torch.save(
                 {
                     "epoch": epoch,
-                    "model_state_dict": model.state_dict(),
+                    "model_state_dict": (
+                        model.module if distributed_parameters["distributed"] else model
+                    ).state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
                 },
-                experiment_folder / "checkpoint.pt",
+                models_folder / "checkpoint.pt",
             )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        (experiment_folder / "checkpoint.pt").unlink(missing_ok=True)
-        torch.save(model.state_dict(), experiment_folder / "model.pt")
-        print(f"Saved model to {experiment_folder / 'model.pt'}")
+        (models_folder / "checkpoint.pt").unlink(missing_ok=True)
+        (
+            model.module if distributed_parameters["distributed"] else model
+        ).save_pretrained(models_folder / "model")
+        tokenizer.save_pretrained(models_folder / "model")
+        logger.info(f"Saved model to {models_folder / 'model'}")
 
 
 def _get_loss(out, labels):

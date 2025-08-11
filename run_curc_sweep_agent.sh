@@ -18,14 +18,7 @@ cd "/projects/$USER/polygloss"
 
 set -x
 
-if [[ "$2" == "--monoling" ]]; then
-    echo "Running multiple monolingual experiments"
+export MODELS_DIR=/scratch/alpine/migi8081/polygloss/
+export GLOTTOCODE=$2
 
-    for glottocode in ainu1240 ruul1235 lezg1247 natu1246 nyan1302 dido1241 uspa1245 arap1274
-    do
-        echo "Running with $glottocode"
-        python run.py "$1" --overrides glottocode=$glottocode
-    done
-else
-    python run.py "$1"
-fi
+wandb agent $1

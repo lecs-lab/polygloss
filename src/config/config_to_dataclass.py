@@ -5,17 +5,19 @@ from typing import Any, Literal, Optional, Type, TypeVar, get_args, get_origin
 T = TypeVar("T")
 
 
-def parse_overrides(overrides: str):
+def parse_overrides(overrides: list[str]):
     override_dict = {}
-    for kv in overrides.split():
-        kv = kv.split("=")
-        if len(kv) != 2:
+    for kv in overrides:
+        if "=" not in kv:
             raise ValueError(f"Invalid KV override: {kv}")
-        override_dict[kv[0]] = kv[1]
+        key, val = kv.split("=", 1)
+        override_dict[key] = val
     return override_dict
 
 
-def config_to_dataclass(config_path: str, overrides: str, dataclass_type: Type[T]) -> T:
+def config_to_dataclass(
+    config_path: str, overrides: list[str], dataclass_type: Type[T]
+) -> T:
     """Converts a config file (ini, cfg) to an instance of a dataclass"""
     if not is_dataclass(dataclass_type):
         raise TypeError(f"{dataclass_type.__name__} must be a dataclass type")
@@ -31,6 +33,8 @@ def config_to_dataclass(config_path: str, overrides: str, dataclass_type: Type[T
     init_values = {}
 
     for field in fields(dataclass_type):
+        if not field.init:
+            continue
         field_type = field.type
         value: Optional[Any] = None
 
