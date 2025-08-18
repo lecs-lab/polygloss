@@ -80,6 +80,9 @@ class ExperimentConfig:
     models_dir: str | None = None
     """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
 
+    resume_from_checkpoint_id: str | None = None
+    """WandB ID (and checkpoint ID) for checkpoint to resume training from."""
+
     # ============================
     # Generation
     # ============================
