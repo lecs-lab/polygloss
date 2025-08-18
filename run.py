@@ -33,11 +33,20 @@ def run(
 
     # Initialize WandB experiment
     if distributed_parameters["rank"] == 0:
-        wandb.init(
-            project="polygloss",
-            entity="wav2gloss",
-            config=asdict(config),
-        )
+        if config.resume_from_checkpoint_id:
+            wandb.init(
+                project="polygloss",
+                entity="wav2gloss",
+                config=asdict(config),
+                id=config.resume_from_checkpoint_id,
+                resume="must",
+            )
+        else:
+            wandb.init(
+                project="polygloss",
+                entity="wav2gloss",
+                config=asdict(config),
+            )
 
     if config.models_dir:
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem

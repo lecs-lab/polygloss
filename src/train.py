@@ -25,6 +25,9 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
+    if not (run := wandb.run):
+        raise Exception("WandB must be initialized!")
+
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
             total=config.max_epochs * len(train_dataloader), desc="Training"
@@ -48,11 +51,12 @@ def train(
 
     # Load from checkpoint, if it exists
     start_epoch = 0
-    if (models_folder / "checkpoint.pt").exists():
-        logger.info(
-            "Loading from checkpoint. If you wanted to restart training from scratch, please delete the `checkpoint` directory."
+    if config.resume_from_checkpoint_id:
+        logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
+        checkpoint = torch.load(
+            models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
+            weights_only=True,
         )
-        checkpoint = torch.load(models_folder / "checkpoint.pt", weights_only=True)
         (
             model.module if distributed_parameters["distributed"] else model
         ).load_state_dict(checkpoint["model_state_dict"])
@@ -155,17 +159,18 @@ def train(
                     ).state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
                 },
-                models_folder / "checkpoint.pt",
+                models_folder / f"{run.id}.checkpoint.pt",
             )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        (models_folder / "checkpoint.pt").unlink(missing_ok=True)
+        (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
+        final_checkpoint_dir = models_folder / f"{run.id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
-        ).save_pretrained(models_folder / "model")
-        tokenizer.save_pretrained(models_folder / "model")
-        logger.info(f"Saved model to {models_folder / 'model'}")
+        ).save_pretrained(final_checkpoint_dir)
+        tokenizer.save_pretrained(final_checkpoint_dir)
+        logger.info(f"Saved model to {final_checkpoint_dir}")
 
 
 def _get_loss(out, labels):
