@@ -1,12 +1,13 @@
 import collections
 import logging
 import re
+from typing import Any, Iterable
 
 import editdistance
 import glossing
 import pytest
 
-from src.generate import PredictedExample
+from src.generate import PredictedExample, PredictionWithInfo
 from src.util.type_utils import all_not_none
 
 logger = logging.getLogger(__name__)
@@ -15,33 +16,35 @@ logger = logging.getLogger(__name__)
 DEFAULT_MORPHEME_BOUNDARIES = ["-", "="]
 
 
-def evaluate(predictions: list[PredictedExample]):
-    """Evaluate predictions using appropriate metrics depending on the `output_key`.
+def evaluate(predictions: list[PredictionWithInfo]) -> dict[str, Any]:
+    """Evaluate predictions using appropriate metrics for glossing/segmentation.
 
     - For gloss predictions, compute metrics such as BLEU and morpheme accuracy.
     - For segmentation predictions, compute metrics such as F1 score.
 
     If multiple languages are present, we report both overall metrics and metrics per language
     """
-
-    predictions_by_language = {
-        glottocode: [] for glottocode in set([p.glottocode for p in predictions])
+    predictions_by_language: dict[str, list[PredictionWithInfo]] = {
+        glottocode: []
+        for glottocode in set([info["glottocode"] for _, info in predictions])
     }
-    for prediction in predictions:
-        predictions_by_language[prediction.glottocode].append(prediction)
+    for prediction, info in predictions:
+        predictions_by_language[info["glottocode"]].append((prediction, info))
     metrics = {
-        glottocode: _evaluate(preds)
-        for glottocode, preds in predictions_by_language.items()
+        glottocode: _evaluate(pred_with_info)
+        for glottocode, pred_with_info in predictions_by_language.items()
     }
     # Also compute overall metrics
     metrics["all"] = _evaluate(predictions)
     return metrics
 
 
-def _evaluate(predictions: list[PredictedExample]):
-    gloss_predictions = [p for p in predictions if p.output_key == "glosses"]
+def _evaluate(predictions: Iterable[PredictionWithInfo]):
+    gloss_predictions = [
+        p for p, info in predictions if info["output_key"] == "glosses"
+    ]
     segmentation_predictions = [
-        p for p in predictions if p.output_key == "segmentation"
+        p for p, info in predictions if info["output_key"] == "segmentation"
     ]
 
     metrics: dict[str, dict] = {}
@@ -67,7 +70,6 @@ def _evaluate(predictions: list[PredictedExample]):
 
 def _evaluate_segmentation_example(example: PredictedExample):
     assert example.label is not None
-    assert example.output_key == "segmentation"
 
     predicted_words = example.generation.split()
     label_words = example.label.split()
@@ -116,8 +118,6 @@ def test_evaluate_segmentation_example():
     example = PredictedExample(
         generation="t-he cat-s are run-ing",
         label="the cat-s are runn-ing",
-        output_key="segmentation",
-        glottocode="stan1293",
     )
     metrics = _evaluate_segmentation_example(example)
     assert metrics["accuracy"] == 0
