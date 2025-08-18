@@ -11,6 +11,8 @@
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
+# Usage: sbatch run_curc_ddp.sh <path_to_config.cfg> (--monoling)
+
 export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export OMP_NUM_THREADS=4

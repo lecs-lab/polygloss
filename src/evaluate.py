@@ -20,7 +20,25 @@ def evaluate(predictions: list[PredictedExample]):
 
     - For gloss predictions, compute metrics such as BLEU and morpheme accuracy.
     - For segmentation predictions, compute metrics such as F1 score.
+
+    If multiple languages are present, we report both overall metrics and metrics per language
     """
+
+    predictions_by_language = {
+        glottocode: [] for glottocode in set([p.glottocode for p in predictions])
+    }
+    for prediction in predictions:
+        predictions_by_language[prediction.glottocode].append(prediction)
+    metrics = {
+        glottocode: _evaluate(preds)
+        for glottocode, preds in predictions_by_language.items()
+    }
+    # Also compute overall metrics
+    metrics["all"] = _evaluate(predictions)
+    return metrics
+
+
+def _evaluate(predictions: list[PredictedExample]):
     gloss_predictions = [p for p in predictions if p.output_key == "glosses"]
     segmentation_predictions = [
         p for p in predictions if p.output_key == "segmentation"
@@ -44,7 +62,6 @@ def evaluate(predictions: list[PredictedExample]):
                 metrics["segmentation"][k] += v
         for k in metrics["segmentation"]:
             metrics["segmentation"][k] /= len(segmentation_predictions)
-
     return metrics
 
 
@@ -100,6 +117,7 @@ def test_evaluate_segmentation_example():
         generation="t-he cat-s are run-ing",
         label="the cat-s are runn-ing",
         output_key="segmentation",
+        glottocode="stan1293",
     )
     metrics = _evaluate_segmentation_example(example)
     assert metrics["accuracy"] == 0

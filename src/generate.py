@@ -19,6 +19,7 @@ class PredictedExample:
     generation: str
     label: str | None
     output_key: OutputKey
+    glottocode: str
 
 
 def generate(
@@ -39,6 +40,7 @@ def generate(
     generations: list[str] = []
     labels: list[str | None] = []
     output_keys: list[OutputKey] = []
+    glottocodes: list[str] = []
 
     if distributed_parameters["distributed"]:
         model = model.module
@@ -73,29 +75,38 @@ def generate(
             output_keys.extend(
                 [output_key_strings[index] for index in batch["output_key"].tolist()]
             )
+            glottocodes.extend(batch["glottocode"])
 
     # Gather all examples
     if distributed_parameters["distributed"]:
         all_generations = [None for _ in range(distributed_parameters["world_size"])]
         all_labels = [None for _ in range(distributed_parameters["world_size"])]
         all_output_keys = [None for _ in range(distributed_parameters["world_size"])]
+        all_glottocodes = [None for _ in range(distributed_parameters["world_size"])]
+
         logger.info(
             f"[RANK {distributed_parameters['rank']}] Finished generation, entering gather"
         )
         torch.distributed.all_gather_object(all_generations, generations)
         torch.distributed.all_gather_object(all_labels, labels)
         torch.distributed.all_gather_object(all_output_keys, output_keys)
+        torch.distributed.all_gather_object(all_glottocodes, glottocodes)
+        # all_gather creates a list of lists, so we need to flatten
         all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
         all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
         all_output_keys = list(itertools.chain.from_iterable(all_output_keys))  # type:ignore
+        all_glottocodes = list(itertools.chain.from_iterable(all_glottocodes))  # type:ignore
     else:
         all_generations = generations
         all_labels = labels
         all_output_keys = output_keys
+        all_glottocodes = glottocodes
 
     assert all(gen is not None for gen in all_generations)
 
     return [
-        PredictedExample(gen, label, output_key)
-        for gen, label, output_key in zip(all_generations, all_labels, all_output_keys)
+        PredictedExample(gen, label, output_key, glottocode)
+        for gen, label, output_key, glottocode in zip(
+            all_generations, all_labels, all_output_keys, all_glottocodes
+        )
     ]

@@ -205,4 +205,5 @@ def _create_example(
         "input": prompt,
         "label": output_seq,
         "output_key": output_key_strings.index(output_key),
+        "glottocode": row["glottocode"],
     }
