@@ -74,6 +74,9 @@ class ExperimentConfig:
     weight_decay: float = 0.01
     """Weight decay for the optimizer"""
 
+    grad_norm: float = 20.0
+    """Max gradient norm"""
+
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
 
