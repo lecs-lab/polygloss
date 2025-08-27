@@ -2,13 +2,14 @@ import inspect
 import itertools
 import logging
 from dataclasses import dataclass
+from typing import Mapping, cast
 
 import torch
+from datasets import Dataset
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
-from src.dataset.prepare_s2s_dataset import OutputKey, output_key_strings
 from src.distributed import DistributedParameters
 
 logger = logging.getLogger(__name__)
@@ -18,27 +19,36 @@ logger = logging.getLogger(__name__)
 class PredictedExample:
     generation: str
     label: str | None
-    output_key: OutputKey
+
+
+PredictionWithInfo = tuple[PredictedExample, Mapping]
+"""A PredictedExample paired with the original row from the dataset"""
 
 
 def generate(
     model,
     tokenizer,
     dataloader: DataLoader,
+    original_dataset: Dataset,
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
-) -> list[PredictedExample]:
+) -> list[PredictionWithInfo]:
     """Runs inference, generating predictions for each item in the dataloader.
+
+    Critically, the `original_dataset` should be the dataset *prior to tokenization*,
+    which is used to get metadata about each predicted example.
+    It must be the same length and order as the dataloader.
 
     Returns:
         (list[PredictedExample]): The generated outputs and decoded labels (or None if not provided)
     """
+    assert len(dataloader.dataset) == len(original_dataset)  # type:ignore
+
     model.eval()
     device = distributed_parameters["device"]
 
     generations: list[str] = []
     labels: list[str | None] = []
-    output_keys: list[OutputKey] = []
 
     if distributed_parameters["distributed"]:
         model = model.module
@@ -69,33 +79,25 @@ def generate(
             )
         else:
             labels.extend([None] * len(batch_generations))
-        if "output_key" in batch:
-            output_keys.extend(
-                [output_key_strings[index] for index in batch["output_key"].tolist()]
-            )
 
     # Gather all examples
     if distributed_parameters["distributed"]:
         all_generations = [None for _ in range(distributed_parameters["world_size"])]
         all_labels = [None for _ in range(distributed_parameters["world_size"])]
-        all_output_keys = [None for _ in range(distributed_parameters["world_size"])]
+
         logger.info(
             f"[RANK {distributed_parameters['rank']}] Finished generation, entering gather"
         )
         torch.distributed.all_gather_object(all_generations, generations)
         torch.distributed.all_gather_object(all_labels, labels)
-        torch.distributed.all_gather_object(all_output_keys, output_keys)
+        # all_gather creates a list of lists, so we need to flatten
         all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
         all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
-        all_output_keys = list(itertools.chain.from_iterable(all_output_keys))  # type:ignore
     else:
         all_generations = generations
         all_labels = labels
-        all_output_keys = output_keys
-
     assert all(gen is not None for gen in all_generations)
-
     return [
-        PredictedExample(gen, label, output_key)
-        for gen, label, output_key in zip(all_generations, all_labels, all_output_keys)
+        (PredictedExample(gen, label), cast(Mapping, info))
+        for gen, label, info in zip(all_generations, all_labels, original_dataset)
     ]

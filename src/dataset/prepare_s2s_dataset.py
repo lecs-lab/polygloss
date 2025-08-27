@@ -20,14 +20,13 @@ from src.train import ExperimentConfig
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
-output_key_strings: list[OutputKey] = ["glosses", "segmentation"]
 
 
 def create_dataloaders(
     tokenizer: PreTrainedTokenizerBase,
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
-) -> dict[str, DataLoader]:
+) -> tuple[dict[str, DataLoader], datasets.DatasetDict]:
     """Creates dataloaders for training/finetuning
 
     Args:
@@ -79,10 +78,10 @@ def create_dataloaders(
         dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
-    dataset = dataset.map(
+    inputs_dataset = dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
-        remove_columns=["input", "label"],
+        remove_columns=["input", "label", "output_key", "glottocode"],
         desc="Tokenizing",
     )
     collator = DataCollatorForSeq2Seq(
@@ -96,26 +95,26 @@ def create_dataloaders(
     for split in ["train", "dev", "test"]:
         if distributed_parameters["distributed"]:
             sampler = DistributedSampler(
-                dataset[split],  # type:ignore
+                inputs_dataset[split],  # type:ignore
                 shuffle=split == "train",
                 num_replicas=distributed_parameters["world_size"],
                 rank=distributed_parameters["rank"],
             )
         else:
             sampler = (
-                RandomSampler(dataset[split])
+                RandomSampler(inputs_dataset[split])
                 if split == "train"
-                else SequentialSampler(dataset[split])
+                else SequentialSampler(inputs_dataset[split])
             )
         dataloaders[split] = DataLoader(
-            dataset[split],  # type:ignore
+            inputs_dataset[split],  # type:ignore
             batch_size=config.batch_size,
             collate_fn=collator,
             sampler=sampler,
             num_workers=num_workers,
             pin_memory=True,
         )
-    return dataloaders
+    return dataloaders, dataset
 
 
 def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
@@ -204,5 +203,6 @@ def _create_example(
     return {
         "input": prompt,
         "label": output_seq,
-        "output_key": output_key_strings.index(output_key),
+        "output_key": output_key,
+        "glottocode": row["glottocode"],
     }

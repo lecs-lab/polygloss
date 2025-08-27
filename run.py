@@ -71,7 +71,7 @@ def run(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
     if config.model_type == "seq2seq":
-        dataloaders = prepare_s2s_dataset.create_dataloaders(
+        dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
             config=config,
             distributed_parameters=distributed_parameters,
@@ -94,6 +94,7 @@ def run(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
+        original_dataset=dataset["test"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
@@ -101,14 +102,17 @@ def run(
         wandb.log(
             {
                 "predictions": wandb.Table(
-                    columns=["predicted", "reference", "output_key"],
-                    data=[[p.generation, p.label, p.output_key] for p in predictions],
+                    columns=["predicted", "reference", "output_key", "glottocode"],
+                    data=[
+                        [p.generation, p.label, info["output_key"], info["glottocode"]]
+                        for p, info in predictions
+                    ],
                 )
             }
         )
 
         # Evaluation (if we have labels, ie not in inference mode)
-        if all(p.label is not None for p in predictions):
+        if all(p.label is not None for p, _ in predictions):
             metrics = evaluate(predictions)
             wandb.log(data={"test": metrics})
             with open(
