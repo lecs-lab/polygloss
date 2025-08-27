@@ -182,11 +182,12 @@ def _create_example(
     )
 
     # Build the prompt
-    prompt = f"Predict the {output_key} for the following {input_key} in {lang}."
+    prompt = f"Provide the glosses for the following transcription in {lang}."
+    # prompt = f"Predict the {output_key} for the following {input_key} in {lang}."
     prompt += f"\n\nTranscription in {lang}: {input_seq}"
 
     if output_key == "glosses":
-        prompt += f"\nIs transcription segmented: {input_key == 'segmentation'}"
+        prompt += f"\nTranscription segmented: {input_key == 'segmentation'}"
 
     if use_translation and row["translation"] and len(row["translation"].strip()) > 0:
         translation = " ".join((row["translation"]).split())
