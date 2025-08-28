@@ -1,5 +1,6 @@
 """Contains individual functions for scraping each of the original datasets"""
 
+import logging
 import pathlib
 import typing
 
@@ -10,11 +11,23 @@ from tqdm import tqdm
 from data.lang_codes import iso1_to_3, iso3_to_glotto, odin_to_glotto
 from data.model import IGTLine, load_igt
 
-in_domain_glottocodes = ["arap1274", "dido1241", "uspa1245", "ainu1240"]
-out_of_domain_glottocodes = ["lezg1247", "natu1246", "nyan1302", "ruul1235"]
+logger = logging.getLogger(__file__)
+
+evaluation_languages = [
+    "arap1274",
+    "dido1241",
+    "gitx1241",
+    "uspa1245",
+    "ainu1240",
+    "lezg1247",
+    "natu1246",
+    "nyan1302",
+    "ruul1235",
+]
 
 
 def scrape_odin() -> list[IGTLine]:
+    logger.info("Processing ODIN")
     raw_dir = pathlib.Path(__file__).parent / "raw/ODIN"
     all_data: list[IGTLine] = []
     for file in tqdm((raw_dir / "odin_data_sigmorphon").iterdir()):
@@ -29,6 +42,7 @@ def scrape_odin() -> list[IGTLine]:
 
 
 def scrape_sigmorphon_st() -> list[IGTLine]:
+    logger.info("Processing SIGMORPHON ST")
     lang_mapping = {
         "Arapaho": ("arap1274", "stan1293"),
         "Gitksan": ("gitx1241", "stan1293"),
@@ -42,6 +56,7 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
     raw_dir = pathlib.Path(__file__).parent / "raw/sigmorphon_st"
     all_data: list[IGTLine] = []
     for lang_folder in raw_dir.iterdir():
+        logger.info(f"Processing SIGMORPHON - {lang_folder}")
         if not lang_folder.is_dir():
             print(f"Skipping {lang_folder}, not a directory!")
             continue
@@ -51,10 +66,8 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
                 for s in ["train", "dev", "test"]:
                     if s in file.name:
                         # Maintain the splits as the original dataset
-                        if glottocode in in_domain_glottocodes and s != "train":
-                            split = f"{s}_ID"
-                        elif glottocode in out_of_domain_glottocodes:
-                            split = f"{s}_OOD"
+                        if glottocode in evaluation_languages and s != "train":
+                            split = s
                         else:
                             split = None
                         break
@@ -76,9 +89,11 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
 
 
 def scrape_cldf() -> list[IGTLine]:
+    logger.info("Processing CLDF")
     data: list[IGTLine] = []
 
     for dataset in ["apics", "uratyp"]:
+        logger.info(f"Processing CLDF - {dataset}")
         raw_dir = pathlib.Path(__file__).parent / f"raw/{dataset}/cldf/"
         df = pd.read_csv(raw_dir / "examples.csv")
         langs_df = pd.read_csv(raw_dir / "languages.csv")
@@ -109,6 +124,7 @@ def scrape_cldf() -> list[IGTLine]:
 
 
 def scrape_imtvault() -> list[IGTLine]:
+    logger.info("Processing IMTVault")
     raw_dir = pathlib.Path(__file__).parent / "raw/imtvault/cldf"
     df = pd.read_csv(raw_dir / "examples.csv")
     data: list[IGTLine] = []
@@ -138,7 +154,8 @@ def scrape_imtvault() -> list[IGTLine]:
     return data
 
 
-def scrape_gurani() -> list[IGTLine]:
+def scrape_guarani() -> list[IGTLine]:
+    logger.info("Processing Guarani")
     raw_dir = pathlib.Path(__file__).parent / "raw/guarani/data-fixed"
     all_data: list[IGTLine] = []
     for file in raw_dir.iterdir():
@@ -155,9 +172,10 @@ def scrape_gurani() -> list[IGTLine]:
 
 
 def scrape_fieldwork() -> list[IGTLine]:
+    logger.info("Processing Fieldwork")
     dataset = datasets.load_dataset(
         "wav2gloss/fieldwork",
-        streaming=True,
+        streaming=False,
         columns=[
             "id",
             "translation_language",
@@ -180,17 +198,15 @@ def scrape_fieldwork() -> list[IGTLine]:
 
     all_data: list[IGTLine] = []
     for split in dataset.keys():
-        for row in tqdm(dataset[split]):
+        for row in tqdm(dataset[split], desc=f"Processing {split}"):
             row = typing.cast(typing.Mapping, row)
             glottocode = row["language"]
             iso1 = row["translation_language"]
             iso1 = typing.cast(str, {"sh": "hr", "eml": "egl"}.get(iso1, iso1))
             metalang_glottocode = iso3_to_glotto.get(iso1_to_3(iso1))
 
-            if glottocode in in_domain_glottocodes and split != "train":
-                designated_split = f"{split if split != 'validation' else 'dev'}_ID"
-            elif glottocode in out_of_domain_glottocodes:
-                designated_split = f"{split if split != 'validation' else 'dev'}_OOD"
+            if glottocode in evaluation_languages and split != "train":
+                designated_split = split if split != "validation" else "dev"
             else:
                 designated_split = None
 

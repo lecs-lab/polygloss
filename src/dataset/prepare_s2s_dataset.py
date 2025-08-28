@@ -128,27 +128,20 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
     if glottocode is not None:
         print(f"Filtering to {glottocode=}")
         dataset = dataset.filter(lambda row: row["glottocode"] == glottocode)
-        if dataset["dev_ID"].num_rows != 0:
-            new_dataset["train"] = dataset["pretrain"]
-            new_dataset["dev"] = dataset["dev_ID"]
-            new_dataset["test"] = dataset["test_ID"]
-        elif dataset["dev_OOD"].num_rows != 0:
-            new_dataset["train"] = dataset["train_OOD"]
-            new_dataset["dev"] = dataset["dev_OOD"]
-            new_dataset["test"] = dataset["test_OOD"]
-        else:
-            raise ValueError("Neither ID nor OOD splits had your glottocode!")
+        if dataset["test"].num_rows == 0:
+            raise ValueError(f"Dataset does not contain glottocode {glottocode}!")
+        new_dataset = dataset
     else:
         print("Re-splitting dataset for pretraining")
         # We must be pretraining
         # Instead of language-specific eval sets, let's use all of the pretraining and ID eval data and make iid splits
         pretraining_data = datasets.concatenate_datasets(
-            [dataset["pretrain"], dataset["dev_ID"]]
+            [dataset["pretrain"], dataset["dev"]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
         new_dataset["train"] = pretraining_data["train"]
         new_dataset["dev"] = pretraining_data["test"]
-        new_dataset["test"] = dataset["test_ID"]
+        new_dataset["test"] = dataset["test"]
     return new_dataset
 
 
