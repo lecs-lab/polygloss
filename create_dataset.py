@@ -14,7 +14,7 @@ from data.process import add_lang_info, standardize
 from data.scrape_data import (
     scrape_cldf,
     scrape_fieldwork,
-    scrape_gurani,
+    scrape_guarani,
     scrape_imtvault,
     scrape_odin,
     scrape_sigmorphon_st,
@@ -37,7 +37,7 @@ all_data = [
     *scrape_sigmorphon_st(),
     *scrape_cldf(),
     *scrape_imtvault(),
-    *scrape_gurani(),
+    *scrape_guarani(),
     *scrape_fieldwork(),
 ]
 logger.info(f"Collected raw data with {len(all_data)} total examples.")

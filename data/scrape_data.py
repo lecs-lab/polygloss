@@ -154,7 +154,7 @@ def scrape_imtvault() -> list[IGTLine]:
     return data
 
 
-def scrape_gurani() -> list[IGTLine]:
+def scrape_guarani() -> list[IGTLine]:
     logger.info("Processing Guarani")
     raw_dir = pathlib.Path(__file__).parent / "raw/guarani/data-fixed"
     all_data: list[IGTLine] = []
