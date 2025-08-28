@@ -19,7 +19,8 @@ from src.generate import generate
 from src.train import ExperimentConfig, train
 
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    level=logging.INFO,
+    format="\033[90m%(asctime)s \033[36m[%(levelname)s] \033[1;33m%(module)s\033[0m: %(message)s",
 )
 logger = logging.getLogger(__name__)
 

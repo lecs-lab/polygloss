@@ -1,6 +1,7 @@
 """Creates the entire PolyGloss dataset from scratch by aggregating sources, filtering, and processing. May take a while."""
 
 import argparse
+import logging
 import typing
 from collections import defaultdict
 
@@ -11,7 +12,6 @@ from tqdm import tqdm
 from data.audit import audit
 from data.process import add_lang_info, standardize
 from data.scrape_data import (
-    out_of_domain_glottocodes,
     scrape_cldf,
     scrape_fieldwork,
     scrape_gurani,
@@ -20,11 +20,18 @@ from data.scrape_data import (
     scrape_sigmorphon_st,
 )
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="\033[90m%(asctime)s \033[36m[%(levelname)s] \033[1;33m%(module)s\033[0m: %(message)s",
+)
+logger = logging.getLogger(__file__)
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--message", "-m", required=True, help="Commit message")
 args = parser.parse_args()
 
 # 1. Collate data from various sources
+logger.info("Collecting data")
 all_data = [
     *scrape_odin(),
     *scrape_sigmorphon_st(),
@@ -33,7 +40,7 @@ all_data = [
     *scrape_gurani(),
     *scrape_fieldwork(),
 ]
-print(f"Collated raw data with {len(all_data)} total examples.")
+logger.info(f"Collected raw data with {len(all_data)} total examples.")
 
 # 2. Process and standardize data
 all_data = [standardize(ex) for ex in tqdm(all_data, desc="Standardizing")]
@@ -45,7 +52,7 @@ all_data = [
 df = pd.DataFrame([vars(ex) for ex in all_data])
 old_len = len(df)
 df = df.drop_duplicates(subset=["transcription", "glosses", "glottocode"])
-print(f"Removed {old_len - len(df)} duplicates for {len(df)} unique rows.")
+logger.info(f"Removed {old_len - len(df)} duplicates for {len(df)} unique rows.")
 
 # 4. Audit
 dataset = datasets.Dataset.from_pandas(df, preserve_index=False)
@@ -57,10 +64,6 @@ for row in dataset:
     row = typing.cast(typing.Mapping, row)
     if row.get("designated_split") is not None:
         dataset_dict[row["designated_split"]].append(row)
-    elif row["glottocode"] in out_of_domain_glottocodes:
-        # Any examples from our OOD languages WITHOUT a designated split
-        #  should be moved to the OOD training data
-        dataset_dict["train_OOD"].append(row)
     else:
         dataset_dict["pretrain"].append(row)
 dataset_dict = {
