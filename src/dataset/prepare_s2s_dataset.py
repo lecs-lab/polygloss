@@ -4,8 +4,11 @@
 - Which kind of examples are created is determined by the options in `experiment_config.py`
 """
 
+import logging
 import os
 import typing
+from pathlib import Path
+from string import Template
 from typing import cast
 
 import datasets
@@ -17,6 +20,8 @@ from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
+
+logger = logging.getLogger(__file__)
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -45,6 +50,7 @@ def create_dataloaders(
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="transcription",
                         output_key="glosses",
                         use_translation=config.use_translation,
@@ -61,6 +67,7 @@ def create_dataloaders(
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="segmentation",
                         output_key="glosses",
                         use_translation=config.use_translation,
@@ -70,6 +77,7 @@ def create_dataloaders(
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="transcription",
                         output_key="segmentation",
                         use_translation=False,
@@ -163,6 +171,7 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
 
 def _create_example(
     row: typing.Mapping,
+    config: ExperimentConfig,
     input_key: InputKey = "transcription",
     output_key: OutputKey = "glosses",
     use_translation: bool = True,
@@ -180,20 +189,39 @@ def _create_example(
         if row["language"] == "" or not row["language"]
         else row["language"]
     )
-
-    # Build the prompt
-    prompt = f"Provide the glosses for the following transcription in {lang}."
-    # prompt = f"Predict the {output_key} for the following {input_key} in {lang}."
-    prompt += f"\n\nTranscription in {lang}: {input_seq}"
-
-    if output_key == "glosses":
-        prompt += f"\nTranscription segmented: {input_key == 'segmentation'}"
-
     if use_translation and row["translation"] and len(row["translation"].strip()) > 0:
         translation = " ".join((row["translation"]).split())
-        prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
+        translation_text = (
+            f"Translation in {row['metalanguage'] or 'unknown'}: {translation}"
+        )
+    else:
+        translation_text = ""
 
-    prompt += f"\n\n{output_key.capitalize()}: "
+    if "glosslm" in config.pretrained_model:
+        logger.warning("Detected GlossLM base model, using GlossLM prompt.")
+        prompt_path = Path(__file__).parent / "glosslm.s2s.prompt"
+        is_segmented_prefix = "Transcription segmented"
+    else:
+        prompt_path = Path(__file__).parent / "polygloss.s2s.prompt"
+        is_segmented_prefix = "Is text segmented"
+
+    with open(prompt_path, "r") as prompt_file:
+        prompt_text = prompt_file.read()
+        prompt_template = Template(prompt_text)
+
+    prompt = prompt_template.substitute(
+        {
+            "output_key": output_key,
+            "lang": lang,
+            "text": input_seq,
+            "is_segmented": (
+                f"\n{is_segmented_prefix}: {input_key == 'segmentation'}"
+                if output_key == "glosses"
+                else ""
+            ),
+            "translation": "\n" + translation_text,
+        }
+    )
     return {
         "input": prompt,
         "label": output_seq,
