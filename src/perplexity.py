@@ -148,9 +148,9 @@ def calculate_ppl(
     for glottocode in glottocodes:
         loss = eval_loss_per_language[glottocode]
         ppl_per_language[glottocode] = {
-            "ppl_per_token": torch.exp(torch.tensor(loss)).item() / tokens_per_language[glottocode],
-            "ppl_per_morpheme": torch.exp(torch.tensor(loss)).item() / morphemes_per_language[glottocode],
-            "ppl_per_word": torch.exp(torch.tensor(loss)).item() / words_per_language[glottocode],
+            "ppl_per_token": torch.exp(torch.tensor(loss)).item(),
+            "ppl_per_morpheme": torch.exp(torch.tensor(loss)).item() * tokens_per_language[glottocode] / morphemes_per_language[glottocode],
+            "ppl_per_word": torch.exp(torch.tensor(loss)).item() * tokens_per_language[glottocode] / words_per_language[glottocode],
         }
     
     return ppl_per_language
