@@ -132,6 +132,7 @@ def calculate_ppl(
                 total_morphemes = local_total_morphemes
                 total_words = local_total_words
             
+            eval_loss_per_language[glottocode] = eval_loss_sum
             tokens_per_language[glottocode] = total_tokens
             morphemes_per_language[glottocode] = total_morphemes
             words_per_language[glottocode] = total_words
