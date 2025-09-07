@@ -81,7 +81,7 @@ def create_dataloaders(
     inputs_dataset = dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
-        remove_columns=["input", "label", "output_key", "glottocode"],
+        remove_columns=["input", "label", "output_key", "glottocode", "id"],
         desc="Tokenizing",
     )
     collator = DataCollatorForSeq2Seq(
