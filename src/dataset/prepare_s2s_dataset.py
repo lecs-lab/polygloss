@@ -198,4 +198,5 @@ def _create_example(
         "label": output_seq,
         "output_key": output_key,
         "glottocode": row["glottocode"],
+        "id": row["id"],
     }
