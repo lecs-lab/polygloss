@@ -11,6 +11,7 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
+from src.alignment_score import alignment_score
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
@@ -115,7 +116,27 @@ def run(
         # Evaluation (if we have labels, ie not in inference mode)
         if all(p.label is not None for p, _ in predictions):
             metrics = evaluate(predictions)
-            wandb.log(data={"test": metrics})
+
+            # TODO: If we have both gloss and segment predictions, compute alignment score
+            id_to_gloss = dict()
+            id_to_segment = dict()
+            for p, info in predictions:
+                if info["output_key"] == "glosses":
+                    id_to_gloss[info["id"]] = p.generation
+                elif info["output_key"] == "segmentation":
+                    id_to_segment[info["id"]] = p.generation
+            aligned_glosses_and_segments = []
+            for key in set(id_to_gloss.keys()).intersection(id_to_segment.keys()):
+                aligned_glosses_and_segments.append(
+                    (id_to_segment[key], id_to_gloss[key])
+                )
+            alignment = (
+                alignment_score(aligned_glosses_and_segments)
+                if len(aligned_glosses_and_segments) > 0
+                else None
+            )
+
+            wandb.log(data={"test": metrics, "alignment_score": alignment})
             with open(
                 experiment_folder / "metrics.json", "w", encoding="utf-8"
             ) as file:
