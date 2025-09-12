@@ -99,7 +99,7 @@ def run(
         distributed_parameters=distributed_parameters,
     )
     # Join with original dataset to add language info
-    predictions_with_langs = predictions.join(
+    predictions_with_langs = predictions.merge(
         dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
         on="id",
         how="left",
@@ -109,8 +109,8 @@ def run(
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         # Evaluation (if we have labels, ie not in inference mode)
-        if predictions_with_langs["label"].notnull().all():  # type:ignore
-            metrics = evaluate(predictions)
+        if predictions_with_langs["reference"].notnull().all():  # type:ignore
+            metrics = evaluate(predictions_with_langs)
             wandb.log(data={"test": metrics})
             with open(
                 experiment_folder / "metrics.json", "w", encoding="utf-8"
