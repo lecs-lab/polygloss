@@ -1,13 +1,14 @@
 import collections
 import logging
 import re
-from typing import Any, Iterable
+from typing import Any
 
 import editdistance
 import glossing
+import pandas as pd
 import pytest
 
-from src.generate import PredictedExample, PredictionWithInfo
+from alignment_score import alignment_score
 from src.util.type_utils import all_not_none
 
 logger = logging.getLogger(__name__)
@@ -16,7 +17,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_MORPHEME_BOUNDARIES = ["-", "="]
 
 
-def evaluate(predictions: list[PredictionWithInfo]) -> dict[str, Any]:
+def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
     """Evaluate predictions using appropriate metrics for glossing/segmentation.
 
     - For gloss predictions, compute metrics such as BLEU and morpheme accuracy.
@@ -24,55 +25,73 @@ def evaluate(predictions: list[PredictionWithInfo]) -> dict[str, Any]:
 
     If multiple languages are present, we report both overall metrics and metrics per language
     """
-    predictions_by_language: dict[str, list[PredictionWithInfo]] = {
-        glottocode: []
-        for glottocode in set([info["glottocode"] for _, info in predictions])
-    }
-    for prediction, info in predictions:
-        predictions_by_language[info["glottocode"]].append((prediction, info))
-    metrics = {
-        glottocode: _evaluate(pred_with_info)
-        for glottocode, pred_with_info in predictions_by_language.items()
-    }
-    # Also compute overall metrics
+    assert {"glottocode", "predicted", "reference", "input_key", "output_key"}.issubset(
+        predictions.columns
+    )
+    metrics = {}
+    for glottocode, df in predictions.groupby("glottocode"):
+        metrics[glottocode] = _evaluate(df)
     metrics["all"] = _evaluate(predictions)
     return metrics
 
 
-def _evaluate(predictions: Iterable[PredictionWithInfo]):
-    gloss_predictions = [
-        p for p, info in predictions if info["output_key"] == "glosses"
-    ]
-    segmentation_predictions = [
-        p for p, info in predictions if info["output_key"] == "segmentation"
-    ]
+def _evaluate(predictions: pd.DataFrame):
+    gloss_predictions = predictions[predictions["output_key"] == "glosses"]
+    segmentation_predictions = predictions[predictions["output_key"] == "segmentation"]
 
-    metrics: dict[str, dict] = {}
+    metrics: dict[str, dict | float] = {}
 
     if len(gloss_predictions) > 0:
-        generations = [p.generation for p in gloss_predictions]
-        references = [p.label for p in gloss_predictions]
+        generations = gloss_predictions["predicted"].tolist()
+        references = gloss_predictions["reference"].tolist()
         assert all_not_none(references)
         metrics["glossing"] = glossing.evaluate_glosses(generations, references)
 
     if len(segmentation_predictions) > 0:
         # Average metrics over examples
-        metrics["segmentation"] = collections.defaultdict(float)
-        for example_metrics in map(
-            _evaluate_segmentation_example, segmentation_predictions
-        ):
-            for k, v in example_metrics.items():
-                metrics["segmentation"][k] += v
-        for k in metrics["segmentation"]:
-            metrics["segmentation"][k] /= len(segmentation_predictions)
+
+        segmentation_metrics = collections.defaultdict(float)
+        for _, row in segmentation_predictions.iterrows():
+            for k, v in _evaluate_segmentation_example(
+                row["predicted"],  # type:ignore
+                row["reference"],  # type:ignore
+            ).items():
+                segmentation_metrics[k] += v
+        segmentation_metrics = {
+            k: v / len(segmentation_predictions)
+            for k, v in segmentation_metrics.items()
+        }
+        metrics["segmentation"] = segmentation_metrics
+
+    if len(gloss_predictions) > 0 and len(segmentation_predictions) > 0:
+        # We have both, let's calculate alignment
+        assert len(gloss_predictions) == len(segmentation_predictions), (
+            "Must have same number of glossing and segmentation predictions."
+        )
+        joint_predictions = gloss_predictions.join(
+            segmentation_predictions,
+            on="id",
+            lsuffix="glossing_",
+            rsuffix="segmentation_",
+        )
+        metrics["alignment"] = alignment_score(
+            [
+                (g, s)
+                for g, s in zip(
+                    joint_predictions["glossing_predicted"].tolist(),
+                    joint_predictions["segmentation_predicted"].tolist(),
+                )
+            ]
+        )
+
     return metrics
 
 
-def _evaluate_segmentation_example(example: PredictedExample):
-    assert example.label is not None
+def _evaluate_segmentation_example(generation: str, label: str):
+    assert label is not None
 
-    predicted_words = example.generation.split()
-    label_words = example.label.split()
+    predicted_words = generation.split()
+    label_words = label.split()
 
     boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
     predicted_morphemes = [re.split(boundary_pattern, word) for word in predicted_words]
@@ -115,11 +134,10 @@ def _intersect_size(l1: list[str], l2: list[str]):
 
 
 def test_evaluate_segmentation_example():
-    example = PredictedExample(
+    metrics = _evaluate_segmentation_example(
         generation="t-he cat-s are run-ing",
         label="the cat-s are runn-ing",
     )
-    metrics = _evaluate_segmentation_example(example)
     assert metrics["accuracy"] == 0
     assert metrics["precision"] == 4 / 7
     assert metrics["recall"] == 4 / 6

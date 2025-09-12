@@ -12,11 +12,11 @@ import datasets
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
-from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
+from src.util.collator import FlexibleSeq2SeqCollator
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -52,12 +52,11 @@ def create_dataloaders(
                         use_translation=config.use_translation,
                     )
                 )
-            if (
-                row["segmentation"]
-                and config.create_transcription_to_gloss == "train-test"
+            if row["segmentation"] and (
+                config.create_segmentation_to_gloss == "train-test"
                 or (
                     split != "test"
-                    and config.create_transcription_to_gloss == "train-only"
+                    and config.create_segmentation_to_gloss == "train-only"
                 )
             ):
                 examples.append(
@@ -68,9 +67,8 @@ def create_dataloaders(
                         use_translation=config.use_translation,
                     )
                 )
-            if (
-                row["segmentation"]
-                and config.create_transcription_to_segmentation == "train-test"
+            if row["segmentation"] and (
+                config.create_transcription_to_segmentation == "train-test"
                 or (
                     split != "test"
                     and config.create_transcription_to_segmentation == "train-only"
@@ -90,10 +88,11 @@ def create_dataloaders(
     inputs_dataset = dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
-        remove_columns=["input", "label", "output_key", "glottocode", "id"],
+        remove_columns=["input", "label"],
         desc="Tokenizing",
     )
-    collator = DataCollatorForSeq2Seq(
+
+    collator = FlexibleSeq2SeqCollator(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
     )
     dataloaders = {}
@@ -205,7 +204,6 @@ def _create_example(
     return {
         "input": prompt,
         "label": output_seq,
-        "output_key": output_key,
-        "glottocode": row["glottocode"],
+        "input-output": f"{input_key}-{output_key}",
         "id": row["id"],
     }

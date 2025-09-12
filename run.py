@@ -11,11 +11,10 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
-from src.alignment_score import alignment_score
+from evaluate import evaluate
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
-from src.evaluate import evaluate
 from src.generate import generate
 from src.train import ExperimentConfig, train
 
@@ -96,47 +95,23 @@ def run(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
-        original_dataset=dataset["test"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
+    # Join with original dataset to add language info
+    predictions_with_langs = predictions.join(
+        dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
+        on="id",
+        how="left",
+    )
+
     if distributed_parameters["rank"] == 0:
-        wandb.log(
-            {
-                "predictions": wandb.Table(
-                    columns=["predicted", "reference", "output_key", "glottocode"],
-                    data=[
-                        [p.generation, p.label, info["output_key"], info["glottocode"]]
-                        for p, info in predictions
-                    ],
-                )
-            }
-        )
+        wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         # Evaluation (if we have labels, ie not in inference mode)
-        if all(p.label is not None for p, _ in predictions):
+        if predictions_with_langs["label"].notnull().all():  # type:ignore
             metrics = evaluate(predictions)
-
-            # TODO: If we have both gloss and segment predictions, compute alignment score
-            id_to_gloss = dict()
-            id_to_segment = dict()
-            for p, info in predictions:
-                if info["output_key"] == "glosses":
-                    id_to_gloss[info["id"]] = p.generation
-                elif info["output_key"] == "segmentation":
-                    id_to_segment[info["id"]] = p.generation
-            aligned_glosses_and_segments = []
-            for key in set(id_to_gloss.keys()).intersection(id_to_segment.keys()):
-                aligned_glosses_and_segments.append(
-                    (id_to_segment[key], id_to_gloss[key])
-                )
-            alignment = (
-                alignment_score(aligned_glosses_and_segments)
-                if len(aligned_glosses_and_segments) > 0
-                else None
-            )
-
-            wandb.log(data={"test": metrics, "alignment_score": alignment})
+            wandb.log(data={"test": metrics})
             with open(
                 experiment_folder / "metrics.json", "w", encoding="utf-8"
             ) as file:
