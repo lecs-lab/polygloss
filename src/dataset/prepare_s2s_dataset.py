@@ -41,9 +41,8 @@ def create_dataloaders(
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
-            if config.create_transcription_to_gloss == "train-eval" or (
-                split == "pretrain"
-                and config.create_transcription_to_gloss == "train-only"
+            if config.create_transcription_to_gloss == "train-test" or (
+                split != "test" and config.create_transcription_to_gloss == "train-only"
             ):
                 examples.append(
                     _create_example(
@@ -55,9 +54,9 @@ def create_dataloaders(
                 )
             if (
                 row["segmentation"]
-                and config.create_transcription_to_gloss == "train-eval"
+                and config.create_transcription_to_gloss == "train-test"
                 or (
-                    split == "pretrain"
+                    split != "test"
                     and config.create_transcription_to_gloss == "train-only"
                 )
             ):
@@ -71,9 +70,9 @@ def create_dataloaders(
                 )
             if (
                 row["segmentation"]
-                and config.create_transcription_to_segmentation == "train-eval"
+                and config.create_transcription_to_segmentation == "train-test"
                 or (
-                    split == "pretrain"
+                    split != "test"
                     and config.create_transcription_to_segmentation == "train-only"
                 )
             ):
@@ -86,8 +85,6 @@ def create_dataloaders(
                     )
                 )
         dataset[split] = datasets.Dataset.from_list(examples)
-
-    breakpoint()
 
     # Create prompts and tokenize
     inputs_dataset = dataset.map(

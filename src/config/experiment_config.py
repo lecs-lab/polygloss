@@ -5,7 +5,7 @@ from typing import Literal
 TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
 SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
-CREATE_EXAMPLE_TYPE = Literal["none", "train-only", "train-eval"]
+CREATE_EXAMPLE_TYPE = Literal["none", "train-only", "train-test"]
 
 _glotto_to_iso = {
     "arap1274": "arp",
@@ -44,7 +44,7 @@ class ExperimentConfig:
     create_segmentation_to_gloss: CREATE_EXAMPLE_TYPE = "train-only"
     """Whether to create glossing examples with segmented transcriptions as input"""
 
-    create_transcription_to_gloss: CREATE_EXAMPLE_TYPE = "train-eval"
+    create_transcription_to_gloss: CREATE_EXAMPLE_TYPE = "train-test"
     """Whether to create glossing examples with unsegmented transcriptions as input"""
 
     create_transcription_to_segmentation: CREATE_EXAMPLE_TYPE = "none"
