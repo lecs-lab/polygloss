@@ -206,4 +206,5 @@ def _create_example(
         "label": output_seq,
         "input-output": f"{input_key}-{output_key}",
         "id": row["id"],
+        "glottocode": row["glottocode"],
     }
