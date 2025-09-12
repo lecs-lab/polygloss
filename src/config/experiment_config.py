@@ -5,6 +5,7 @@ from typing import Literal
 TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
 SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
+CREATE_EXAMPLE_TYPE = Literal["none", "train-only", "train-eval"]
 
 _glotto_to_iso = {
     "arap1274": "arp",
@@ -40,16 +41,13 @@ class ExperimentConfig:
     glottocode: str | None = None
     """Glottocode of the language to finetune on (None for pretraining on all languages)"""
 
-    segmented_transcription: bool = True
-    """Whether to include examples with segmented transcriptions as input"""
+    create_segmentation_to_gloss: CREATE_EXAMPLE_TYPE = "train-only"
+    """Whether to create glossing examples with segmented transcriptions as input"""
 
-    unsegmented_transcription: bool = True
-    """Whether to include examples with unsegmented transcriptions as input"""
+    create_transcription_to_gloss: CREATE_EXAMPLE_TYPE = "train-eval"
+    """Whether to create glossing examples with unsegmented transcriptions as input"""
 
-    exclude_st_segmented: bool = False
-    """Whether to exclude segmented examples from the SIGMORPHON shared task"""
-
-    create_segmentation_examples: bool = False
+    create_transcription_to_segmentation: CREATE_EXAMPLE_TYPE = "none"
     """Whether to create examples for the segmentation task (transcription → segmentation)"""
 
     use_translation: bool = True

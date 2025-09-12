@@ -41,7 +41,10 @@ def create_dataloaders(
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
-            if config.unsegmented_transcription:
+            if config.create_transcription_to_gloss == "train-eval" or (
+                split == "pretrain"
+                and config.create_transcription_to_gloss == "train-only"
+            ):
                 examples.append(
                     _create_example(
                         row,
@@ -51,11 +54,11 @@ def create_dataloaders(
                     )
                 )
             if (
-                config.segmented_transcription
-                and row["segmentation"]
-                and (
-                    (not config.exclude_st_segmented)
-                    or (not row["source"] == "sigmorphon_st")
+                row["segmentation"]
+                and config.create_transcription_to_gloss == "train-eval"
+                or (
+                    split == "pretrain"
+                    and config.create_transcription_to_gloss == "train-only"
                 )
             ):
                 examples.append(
@@ -66,7 +69,14 @@ def create_dataloaders(
                         use_translation=config.use_translation,
                     )
                 )
-            if config.create_segmentation_examples and row["segmentation"]:
+            if (
+                row["segmentation"]
+                and config.create_transcription_to_segmentation == "train-eval"
+                or (
+                    split == "pretrain"
+                    and config.create_transcription_to_segmentation == "train-only"
+                )
+            ):
                 examples.append(
                     _create_example(
                         row,
@@ -76,6 +86,8 @@ def create_dataloaders(
                     )
                 )
         dataset[split] = datasets.Dataset.from_list(examples)
+
+    breakpoint()
 
     # Create prompts and tokenize
     inputs_dataset = dataset.map(

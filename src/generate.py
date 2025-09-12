@@ -43,7 +43,6 @@ def generate(
         (list[PredictedExample]): The generated outputs and decoded labels (or None if not provided)
     """
     assert len(dataloader.dataset) == len(original_dataset)  # type:ignore
-
     model.eval()
     device = distributed_parameters["device"]
 
