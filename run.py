@@ -11,10 +11,10 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
-from evaluate import evaluate
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
+from src.evaluate import evaluate
 from src.generate import generate
 from src.train import ExperimentConfig, train
 

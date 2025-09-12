@@ -177,7 +177,7 @@ def train(
             model.module if distributed_parameters["distributed"] else model
         ).save_pretrained(final_checkpoint_dir)
         tokenizer.save_pretrained(final_checkpoint_dir)
-        logger.info(f"Saved model to {final_checkpoint_dir}")
+        logger.info(f"Saved model to {final_checkpoint_dir.resolve()}")
 
 
 def _get_loss(out, labels):
