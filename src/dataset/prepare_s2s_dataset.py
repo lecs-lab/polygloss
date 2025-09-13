@@ -144,7 +144,7 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
         # We must be pretraining
         # Instead of language-specific eval sets, let's use all of the pretraining and ID eval data and make iid splits
         pretraining_data = datasets.concatenate_datasets(
-            [dataset["pretrain"], dataset["dev"]]
+            [dataset["train"], dataset["dev"]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
         new_dataset["train"] = pretraining_data["train"]
