@@ -43,6 +43,10 @@ def create_dataloaders(
     dataset = _filter(dataset, config.glottocode)
     inputs_dataset = datasets.DatasetDict()
 
+    if "glosslm" in config.pretrained_model:
+        logger.warning("Detected GlossLM base model, using GlossLM prompt.")
+
+    # Make examples with different input/output combos
     for split in dataset:
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
@@ -207,7 +211,6 @@ def _create_example(
         translation_text = ""
 
     if "glosslm" in config.pretrained_model:
-        logger.warning("Detected GlossLM base model, using GlossLM prompt.")
         prompt_path = Path(__file__).parent / "glosslm.s2s.prompt"
         is_segmented_prefix = "Transcription segmented"
     else:
