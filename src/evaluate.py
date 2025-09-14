@@ -30,6 +30,7 @@ def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
     )
     metrics = {}
     for glottocode, df in predictions.groupby("glottocode"):
+        print(f"Evaluating: {glottocode} with {len(df)} rows")
         metrics[glottocode] = _evaluate(df)
     metrics["all"] = _evaluate(predictions)
     return metrics
@@ -65,8 +66,9 @@ def _evaluate(predictions: pd.DataFrame):
 
     if len(gloss_predictions) > 0 and len(segmentation_predictions) > 0:
         # We have both, let's calculate alignment
+        
         assert len(gloss_predictions) == len(segmentation_predictions), (
-            "Must have same number of glossing and segmentation predictions."
+            f"Must have same number of glossing and segmentation predictions. Got {len(gloss_predictions)} glosses and {len(segmentation_predictions)} segmentations."
         )
         joint_predictions = gloss_predictions.merge(
             segmentation_predictions, on="id", suffixes=("_glosses", "_segmentations")
