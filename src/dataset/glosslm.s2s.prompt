@@ -1,0 +1,5 @@
+Provide the glosses for the following transcription in $lang.
+
+Transcription in $lang: $text$is_segmented$translation
+
+$output_key:
