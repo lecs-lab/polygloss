@@ -95,26 +95,22 @@ def run(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
-        original_dataset=dataset["test"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
+    # Join with original dataset to add language info
+    predictions_with_langs = predictions.merge(
+        dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
+        on="id",
+        how="left",
+    )
+
     if distributed_parameters["rank"] == 0:
-        wandb.log(
-            {
-                "predictions": wandb.Table(
-                    columns=["predicted", "reference", "output_key", "glottocode"],
-                    data=[
-                        [p.generation, p.label, info["output_key"], info["glottocode"]]
-                        for p, info in predictions
-                    ],
-                )
-            }
-        )
+        wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         # Evaluation (if we have labels, ie not in inference mode)
-        if all(p.label is not None for p, _ in predictions):
-            metrics = evaluate(predictions)
+        if predictions_with_langs["reference"].notnull().all():  # type:ignore
+            metrics = evaluate(predictions_with_langs)
             wandb.log(data={"test": metrics})
             with open(
                 experiment_folder / "metrics.json", "w", encoding="utf-8"
