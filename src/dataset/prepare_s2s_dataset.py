@@ -36,6 +36,7 @@ def create_dataloaders(
     dataset = datasets.load_dataset(config.dataset_key)
     dataset = cast(datasets.DatasetDict, dataset)
     dataset = _filter(dataset, config.glottocode)
+    inputs_dataset = datasets.DatasetDict()
 
     for split in dataset:
         examples = []
@@ -82,10 +83,10 @@ def create_dataloaders(
                         use_translation=False,
                     )
                 )
-        dataset[split] = datasets.Dataset.from_list(examples)
+        inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
-    inputs_dataset = dataset.map(
+    inputs_dataset = inputs_dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
         remove_columns=["input", "label"],
