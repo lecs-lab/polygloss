@@ -99,7 +99,7 @@ def generate(
         all_input_output_keys = input_output_keys
         all_ids = ids
     assert all(gen is not None for gen in all_generations)
-    return pd.DataFrame(
+    df = pd.DataFrame(
         [
             {
                 "predicted": gen,
@@ -113,3 +113,8 @@ def generate(
             )
         ]
     )
+    # De-dupe, since with DDP we might have dupe generations
+    df = df.drop_duplicates(
+        subset=["id", "input_key", "output_key"], keep="first"
+    ).reset_index(drop=True)
+    return df
