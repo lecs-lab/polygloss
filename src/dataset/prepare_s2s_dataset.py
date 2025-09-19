@@ -38,8 +38,13 @@ def create_dataloaders(
     dataset = _filter(dataset, config.glottocode)
 
     for split in dataset:
+        data_split = dataset[split]
+
+    # If training split and a limit is set, randomly sample
+        if split == "train" and not config.limit is None:
+            data_split = data_split.shuffle(seed=43).select(range(config.limit))
         examples = []
-        for row in tqdm(dataset[split], f"Creating examples for {split}"):
+        for row in tqdm(data_split, desc=f"Creating examples for {split} with limit set to {config.limit}"):
             row = typing.cast(typing.Mapping, row)
             if config.unsegmented_transcription:
                 examples.append(

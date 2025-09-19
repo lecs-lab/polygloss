@@ -61,6 +61,9 @@ class ExperimentConfig:
     # ============================
     # Training
     # ============================
+    
+    limit: int | None = None
+    """Maximum number of training samples"""
 
     max_epochs: int = 50
     """Maximum number of training epochs"""
@@ -107,11 +110,11 @@ class ExperimentConfig:
         default_factory=lambda: os.environ.get("SLURM_JOB_ID"), init=False
     )
 
-    def __post_init__(self):
-        """Validates sanity checks on the parameters"""
-        if self.glottocode is not None:
-            if self.mode == "pretrain":
-                raise ValueError("Pretraining should not have a specified glottocode!")
-        else:
-            if self.mode == "finetune":
-                raise ValueError("Finetuning must have a glottocode!")
+    # def __post_init__(self):
+    #     """Validates sanity checks on the parameters"""
+    #     if self.glottocode is not None:
+    #         if self.mode == "pretrain":
+    #             raise ValueError("Pretraining should not have a specified glottocode!")
+    #     else:
+    #         if self.mode == "finetune":
+    #             raise ValueError("Finetuning must have a glottocode!")

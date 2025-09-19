@@ -45,7 +45,6 @@ def run(
         else:
             wandb.init(
                 project="polygloss",
-                entity="wav2gloss",
                 config=asdict(config),
             )
 
