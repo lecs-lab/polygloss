@@ -42,7 +42,7 @@ def create_dataloaders(
 
     # If training split and a limit is set, randomly sample
         if split == "train" and not config.limit is None:
-            data_split = data_split.shuffle(seed=43).select(range(config.limit))
+            data_split = data_split.shuffle(seed=43).select(range(int(config.limit)))
         examples = []
         for row in tqdm(data_split, desc=f"Creating examples for {split} with limit set to {config.limit}"):
             row = typing.cast(typing.Mapping, row)

@@ -60,6 +60,12 @@ def run(
         models_folder /= config.glottocode
         models_folder.mkdir(exist_ok=True, parents=True)
 
+    if config.limit is not None:
+        experiment_folder /= str(config.limit)
+        experiment_folder.mkdir(exist_ok=True)
+        models_folder /= str(config.limit)
+        models_folder.mkdir(exist_ok=True, parents=True)
+
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
