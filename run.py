@@ -5,7 +5,7 @@ import pathlib
 import pprint
 import random
 from dataclasses import asdict
-
+import pandas as pd
 import torch
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
@@ -116,7 +116,16 @@ def run(
                 )
             }
         )
-
+        
+        df = pd.DataFrame(
+            [
+                [p.generation, p.label, info["output_key"], info["glottocode"]]
+                for p, info in predictions
+            ],
+            columns=["predicted", "reference", "output_key", "glottocode"],
+        )
+        
+        df.to_csv(experiment_folder / "predictions.csv", index=False)
         # Evaluation (if we have labels, ie not in inference mode)
         if all(p.label is not None for p, _ in predictions):
             metrics = evaluate(predictions)
