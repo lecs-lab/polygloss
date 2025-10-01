@@ -37,7 +37,7 @@ def run(
         if config.resume_from_checkpoint_id:
             wandb.init(
                 project="polygloss",
-                entity="wav2gloss",
+                entity="lecs-general",
                 config=asdict(config),
                 id=config.resume_from_checkpoint_id,
                 resume="must",
@@ -45,7 +45,7 @@ def run(
         else:
             wandb.init(
                 project="polygloss",
-                entity="wav2gloss",
+                entity="lecs-general",
                 config=asdict(config),
             )
 
