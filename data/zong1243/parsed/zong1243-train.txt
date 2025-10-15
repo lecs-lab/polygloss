@@ -1,0 +1,995 @@
+\t Xli:ka:na, pus ayi li:qalhchiwi:na'wi iyma: n taxa:'k
+\m xli:ka:na pus ayi li:-qalh-chiwi:-na-'w-i iyma: n taxa:'k
+\g true INTJ NREL INS-mouth-V.talk-ANTIP-1SBJ.PL-JNCT [PFV] DEM EPEN Toxicodendron.radicans
+\l Cierto, pues ya hablamos del taxa:'k
+
+\t lap staka xa iyma: n pú:lhuku'.
+\m lap stak-a xa iyma: n pú:lhuku'
+\g erect V.grow-IPFV  [3SBJ.SG PRES] PRN.3SBJ.SG DEM EPEN Critonia.morifolia
+\l 
+
+\t pus niá:watiya lhu:wa iyma: n qalhí: xatachiwi:ni iyma: n talhtsísiqna
+\m pus ni-á:watiya lhu:wa iyma: n qalhí: xa-ta-chiwi:-n-i iyma: n talhtsísiqna
+\g INTJ NEG-extremely many DEM EPEN V.have [3SBJ.SG PRES IPFV] DEF-INC-V.say-DVB-JNCT DEM EPEN Musa.ornata
+\l 
+
+\t Li:qama:na:nqo:'yi iyma: laqsqatá:n
+\m li:-qama:nan-qo:'-y-i iyma: laq-sqatá-:n
+\g INS-V.play-3PL-IPFV-JNCT [PRES] DEM PL-baby-PL
+\l 
+
+\t Ka ma:x stla:ni iyma:
+\m ka ma:x stla:n-i iyma:
+\g only DUB beautiful-JNCT DEM
+\l 
+
+\t cha: n chu: xatawá:'n
+\m cha: n chu: xa-tawa:'n
+\g PTCL EPEN PTCL DEF-plant
+\l 
+
+\t lu:xalu:ku xa iyma: iyma: n taxa:'k,
+\m lu:-xa-lu:ku xa iyma: iyma: n taxa:'k
+\g INTNS-DEF-angry PRN.3SBJ.SG DEM DEM EPEN Toxicodendron.radicans
+\l es muy peligroso,
+
+\t Na: nitaxta'ta..., ani:na:ni..., n pala....
+\m na: ni-taxta'ta[FS] ani:na:ni n pala
+\g aslo NEG-[FS] ERROR EPEN CONJ
+\l 
+
+\t n chu: li:maklakaskinkani n pala kinchu:wkani na...,
+\m n chu: li-mak-lakaskin-kan-i n pala kin-chu:w-kan-i na-
+\g EPEN PTCL INS-body-V.use-INDEF-JNCT EPEN CONJ 1POSS-tortilla-PL.POSS-JNCT FUT-
+\l 
+
+\t na: stla:ni iyma: akxní wa: n qo:lani n chu: stla:ni n taxtiya:chi
+\m na: stla:n-i iyma: akxní wa: n qo:lan-i n chu: stla:n-i n ta-xti-ya:'-ch-i
+\g aslo beautiful-JNCT DEM when FOC EPEN age-JNCT EPEN PTCL beautiful-JNCT EPEN INC-out-IPFV-PROX-JNCT [3SBJ.SG PRES]
+\l 
+
+\t laqapasa:'wi kini iyma: n tawa:'ni n pi likwa xa ma:tsi'tsi:nán, likwa n tama:yi ktiji',
+\m laqapas-a:'-w-i kin-i iyma: n tawa:'n-i n pi likwa xa ma:-tsi'tsi:-nan likwa n ta-ma:-y-i k-tiji
+\g V.recognize-IPFV-1SBJ.PL-JNCT [PRES] PRN.1SBJ.PL-JNCT DEM EPEN plant-JNCT EPEN COMP many PRN.3SBJ.SG CAUS-V.pimple-ANTIP [3SBJ.SG PRES] many EPEN INC-V.lie.down-IPFV-JNCT [3SBJ.SG PRES] LOC-path
+\l conocemos perfectamente a esta hierba que es muy dañina, se puede hallar fácilmente sobre los caminos,
+
+\t Anani iyma: jkinka:chiki:nkani iyma: n pú:lhuku
+\m anan-i iyma: j-kin-ka:-chiki-:n-kan-i iyma: n pú:lhuku
+\g V.exist-JNCT [3SBJ.SG PRES IPFV] DEM LOC-1POSS-PLC-house-PL-PL.POSS-JNCT DEM EPEN Critonia.morifolia
+\l 
+
+\t Xli:ka:na na: n ti: kilhwampa:'t, n pala chu:
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t n pala chu:
+\g true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG EPEN CONJ PTCL
+\l 
+
+\t pus na: kapala n pun
+\m pus na: kapala n pun
+\g INTJ aslo quick EPEN V.germinate [3SBJ.SG PRES IPFV]
+\l 
+
+\t twahkutá n tu: li:maklakaskiná:'w.
+\m twahkutá n tu: li:-mak-lakaskin-á:'-w
+\g whatever EPEN NREL INS-body-V.use-IPFV-1SBJ.PL
+\l 
+
+\t Xli:ka:na nayi la:wanimá:'w,
+\m xli:ka:na nayi la:-wa-ni-má:'-w
+\g true as RECP-V.say-DAT-PROG-1SBJ.PL
+\l 
+
+\t Wa: n chu: ma: nali:qalhchiwi:nana:'wi x...,
+\m wa: n chu: ma: na-li:-qalh-chiwi:-nan-a:'-w-i x-
+\g FOC EPEN PTCL TAG FUT-INS-mouth-V.talk-INDEF-ANTIP-IPFV-1SBJ.PL-JNCT 3POSS-
+\l 
+
+\t Xli:ka:na xa na: n ti:
+\m xli:ka:na xa na: n ti:
+\g true PRN.3SBJ.SG aslo EPEN HREL
+\l Es verdad
+
+\t pus lu:wá xlakaskinqo:'yi n kilakta:tahnakani
+\m pus lu:-wá x-lakaskin-qo:'-y-i n ki-lak-ta:tah-na-kan-i
+\g INTJ INTNS-DEF PST-V.use-3PL-IPFV-JNCT EPEN 1POSS-PL-grandfather-PL-PL.POSS-JNCT
+\l 
+
+\t Ni..., ninapuni ma: anta:ni nacha'na'....
+\m ni-[FS] ni-na-pun-i ma: anta:ni na-cha'n-a-'
+\g NEG-[FS] NEG-FUT-V.germinate-JNCT [3SBJ.SG IPFV] TAG where FUT-V.plant-IPFV-2SBJ.SG
+\l 
+
+\t Xli:ka:na, ma:ná iyma: n tu: li:chiwi:nani:'tá'w nilhu:wa tachiwí:n.
+\m xli:ka:na ma:ná iyma: n tu: li:-chiwi:-nan-i:'ta-'w ni-lhu:wa ta-chiwí:-n
+\g true only DEM EPEN NREL INS-V.talk-ANTIP-PRF-1SBJ.PL NEG-many INC-V.say-DVB
+\l 
+
+\t Xli:ka:na lantla la:li:xaqatli:'wi iyma: talhtsísiqna pus
+\m xli:ka:na lantla la:-li:-xaqatli:-'w-i iyma: talhtsísiqna pus
+\g true like RECP-INS-V.speak-1SBJ.PL-JNCT [PFV] DEM Musa.ornata INTJ
+\l 
+
+\t pa:katsán, n pala u:ni:nán,
+\m pa:-katsán n pala u:n-i:-nán
+\g abdomen-pain [3SBJ.SG PRES IPFV] EPEN CONJ wind-DAT-REFL
+\l 
+
+\t nikatiqalhti:ni xa pus
+\m ni-ka-ti-qalhti:-n-i xa pus
+\g NEG-IRR-POT-V.respond-2OBJ-JNCT PRN.3SBJ.SG INTJ
+\l el no te responderá,
+
+\t luwa laqati:qó:' li:qama:nqó:'y.
+\m luwa laqati:-qó:' li:-qama:n-qó:'-y
+\g very V.like-3PL [PRES IPFV] INS-V.play-3PL-IPFV [PRES]
+\l 
+
+\t Xli:ka:na n ti: kilhwampa:'t, na: klaqapasa xa *porque**
+\m xli:ka:na n ti: kilh-wám-pa:'-t na: k-laqapas-a xa porque
+\g true EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG aslo 1SBJ.SG-V.recognize-IPFV PRN.3SBJ.SG INJT
+\l 
+
+\t pus niqama kiti jqalh..., ktiqalhwa:'nalh *porque** ka
+\m pus ni-qama kit-i j-qalh-[FS] k-ti-qalh-wa:'-na-lh porque ka
+\g INTJ NEG-tasty PRN.1SBJ.SG-JNCT 1SBJ.SG-mouth-[FS] 1SBJ-POT-mouth-V.eat-ANTIP-PFV INJT only
+\l 
+
+\t likwa xa ma:tsi'tsi:nán,
+\m likwa xa ma:-tsi'tsi:-nan
+\g many PRN.3SBJ.SG CAUS-V.pimple-ANTIP [3SBJ.SG PRES]
+\l que provoca muchos granos,
+
+\t li:wa:pan, na: katu:wa n tu: li:maklakaskinkán.
+\m li:wa:pan na: katu:wa n tu: li:-mak-lakaskin-kán
+\g Heliconia.schiedeana aslo many EPEN NREL INS-body-V.use-INDEF
+\l 
+
+\t iyma: kaka:..., kinka:ni n kiwaní n chu: jká:nilhi n chu:
+\m iyma: kaka: kin-ka:-ni n ki-wa-ní n chu: j-ká:-ni-lh-i n chu:
+\g DEM ERROR 1OBJ-V.cut-DAT [2SBJ.SG PRES IPFV] EPEN 1OBJ-V.say-DAT [3SBJ.SG PRES IPFV] EPEN PTCL 1SBJ.SG-V.cut-DAT-PFV-JNCT [3OBJ] EPEN PTCL
+\l 
+
+\t wa: napa:ma:wakaya iyma: nali:lakatlawaniya *manteca**
+\m wa: na-pa:-ma:-waka-ya iyma: na-li:-laka-tlawa-ni-ya manteca
+\g FOC FUT-abdomen-CAUS-V.be.up-IPFV [2SBJ.SG] DEM FUT-INS-face-V.do-DAT-IPFV [2SBJ.SG] lard
+\l 
+
+\t laqati:qo:'yi iyma: laqsqata:ni li:qama:nanqo:'yi anta:ni wa:
+\m laqati:-qo:'-y-i iyma: laq-sqata-:n-i li:-qama:nan-qo:'-y-i anta:ni wa:
+\g V.like-3PL-IPFV-JNCT [PRES] DEM PL-baby-PL-JNCT INS-V.play-3PL-IPFV-JNCT [PRES] where FOC
+\l 
+
+\t n chu: n n ta:'pinqo:'ya jka:tawá:'n ukxilhqó:' xaxanat
+\m n chu: n n ta:'-pin-qo:'-ya j-ka:-tawá:'n ukxilh-qó:' xa-xanat
+\g EPEN PTCL EPEN EPEN COM-V.go2SBJ-3PL-IPFV [PRES] LOC-PLC-plant V.see-3PL [PRES IPFV] DEF-flower
+\l 
+
+\t N chu: iyi kilhwámpa:'ti n chu: xatawá:'n pa: na: qama n chu: taxtú xachu:w.
+\m n chu: iyi kilh-wám-pa:'-t-i n chu: xa-tawa:'n pa: na: qama n chu: ta-xtú xa-chu:w
+\g EPEN PTCL NREL mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT EPEN PTCL DEF-plant Q aslo tasty EPEN PTCL INC-out [3SBJ.SG PRES IPFV] DEF-tortilla
+\l 
+
+\t Xli:ka:na nayi kilhwamá:'w, wa: la:maqa:sá minchá n kilhtamukú
+\m xli:ka:na nayi kilh-wa-má:'-w wa: la:-maqa:sá min-chá n kilhtamukú
+\g true as mouth-V.say-PROG-1SBJ.PL FOC SIM-a.long.time.ago V.come-DIST [3SBJ.SG IPFV] EPEN day
+\l 
+
+\t Xli:ka:na lantla la:wanini:tá'w, pus nixa lhu:wa xatachiwí:n. Wa: kiti n kintakawaní', Areli Ponce García.
+\m xli:ka:na lantla pus ni-xa-[FS] lhu:wa xa-ta-chiwi:-n wa: kit-i n kin-takawaní' Areli Ponce García
+\g true like INTJ NEG-DEF-[FS] many DEF-INC-V.say-DVB FOC PRN.1SBJ.SG-JNCT EPEN 1POSS-name Areli Ponce García
+\l 
+
+\t Xli:ka:na xa nayi la:wanimá:'w, kani:wa
+\m xli:ka:na xa nayi la:-wa-ni-má:'-w kani:wa
+\g true PRN.3SBJ.SG as RECP-V.say-DAT-PROG-1SBJ.PL choise
+\l 
+
+\t Lu:xli:ka:na na: n ti: kilhwámpa:'ti
+\m lu:-xli:ka:na na: n ti: kilh-wám-pa:'-t-i
+\g INTNS-true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT
+\l 
+
+\t wi: n chu: wa: n ti: nipala tu: tlawaniyi
+\m wi: n chu: wa: n ti: ni-pala tu: tlawa-ni-y-i
+\g there.is EPEN PTCL FOC EPEN HREL NEG-CONJ NREL V.do-DAT-IPFV-JNCT [3SBJ.SG PRES 3OBJ]
+\l hay otros que no les provoca ningún daño
+
+\t jki:ta:'lani:'ti n kintá:nati jka:tawá:'n,
+\m j-ki:-ta:'-la-ni:'t-i n kin-tá:nat-i j-ka:-tawá:'n
+\g 1SBJ.SG-RT-COM-V.go-PRF-JNCT [3OBJ] EPEN 1POSS-grandchild-JNCT LOC-PLC-plant
+\l 
+
+\t nikapa:tsanqa:'wi kin. Wa: iyma: n kiwanikán, Epifania Sahinos Pérez.
+\m ni-ka-pa:tsanq-a:'-w-i kin wa: iyma: n ki-wa-ni-kán Epifania Sáhinos Pérez
+\g NEG-IRR-V.forget-1SBJ.PL-IPFV.JNCT [PRES] PRN.1SBJ.PL FOC DEM EPEN 1OBJ-V.say-DAT-REFL Epifania Sáhinos Pérez
+\l 
+
+\t maski kinta:'wa
+\m maski kin-ta:'-wa
+\g although 1OBJ-COM-V.eat [2SBJ.SG DAT PRES IPFV]
+\l aunque
+
+\t Xli:ka:na n ti: kilhwampa:'t,
+\m xli:ka:na n ti: kilh-wám-pa:'-t
+\g true EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG
+\l 
+
+\t Wa: kiti n kiwanikán, Epifania Sáhinos Pérez.
+\m wa: kit-i n ki-wa-ni-kán Epifania Sáhinos Pérez
+\g FOC PRN.1SBJ.SG-JNCT EPEN 1OBJ-V.say-DAT-REFL Epifania Sáhinos Pérez
+\l 
+
+\t watiyá wa: n tasiyíy, wa: n pii talaqpali:yi lantla xa..., xaki'wi'.
+\m watiyá wa: n ta-siyí-y wa: n pi talaqpali:-y-i lantla xa-[FS] xa-ki'wi'
+\g similar FOC EPEN INC-V.see-IPFV [3SBJ.SG PRES] FOC EPEN COMP V.change-IPFV-JNCT [3SBJ.SG PRES] like DEF-[FS] DEF-tree
+\l 
+
+\t wi: n ti: n kawa n tsinú naukxílh
+\m wi: n ti: n kawa n tsinú na-ukxílh
+\g there.is EPEN HREL EPEN only EPEN little FUT-V.see [3SBJ.SG PRES IPFV]
+\l algunos con sólo verlo
+
+\t Tla:ni maklakaskinkán.
+\m tla:n-i mak-lakaskin-kán
+\g good-JNCT body-V.use-INDEF
+\l 
+
+\t li:pakananqo:'kán, usa ka li:ma:chuqoqo:'kani iyma: n tíyiti anta:ni n tapanknán
+\m li:-pakanan-qo:'-kán usa ka li:-ma:-chuqo-qo:'-kan-i iyma: n tíyit-i anta:ni n tapanknán
+\g INS-V.fence-3PL-INDEF INTJ only INS-CAUS-V.detain-3PL-INDEF-JNCT DEM EPEN soil-JNCT where EPEN V.landslide [3SBJ.SG PRES IPFV]
+\l 
+
+\t xtachiwí:n wa: lantla kini laqapasá:'w, pus li:chiwi:nani:'tá'w.
+\m x-ta-chiwi:-n wa: lantla kin-i laqapas-a:'-w pus li:-chiwi:-nan-i:'ta-'w
+\g 3POSS-INC-V.say-DVB FOC like PRN.1SBJ.PL-JNCT V.recognize-IPFV-1SBJ.PL [PRES] INTJ INS-V.talk-ANTIP-PRF-1SBJ.PL
+\l lo que hay que decir, sólo como lo conocemos pues eso hemos hablado.
+
+\t n pala paks talhtsi xa n chu: n tanu:ma nitla:ni xa iyma: kiwanipalá n chu: pus
+\m n pala paks talhtsi xa n chu: n ta-nu:-ma ni-tla:n-i xa iyma: ki-wa-ni-palá n chu: pus
+\g EPEN CONJ all seed PRN.3SBJ.SG EPEN PTCL EPEN INC-in-PROG [3SBJ.SG] NEG-good-JNCT PRN.3SBJ.SG DEM 1OBJ-V.say-DAT-RPT [3SBJ.SG PRES IPFV] EPEN PTCL INTJ
+\l 
+
+\t ka:tu:wa n tu:n li:maklakaskiná:'w cha:na: n chu: lantla....
+\m ka:tu:wa n tu: n li:-mak-lakaskin-á:'-w cha:na: n chu: lantla
+\g many EPEN NREL EPEN INS-body-V.use-IPFV-1SBJ.PL PTCL EPEN PTCL like
+\l 
+
+\t Xli:ka:na xa nayi la:wanimá:'w, tla:ni maklakaskina:'wi n pala
+\m xa nayi la:-wa-ni-má:'-w tla:n-i mak-lakaskin-á:'-w-i n pala iyma:
+\g PRN.3SBJ.SG as RECP-V.say-DAT-PROG-1SBJ.PL good-JNCT body-V.use-IPFV-1SBJ.PL-JNCT EPEN CONJ DEM
+\l 
+
+\t pus kawaniqo:'wi n kilaknata:lani:nkani wa: n ti: n pi
+\m pus ka-wa-ni-qo:'-w-i n ki-lak-na-ta:la-n-i:n-kan-i wa: n ti: n pi
+\g INTJ IRR-V.say-DAT-3PL-1SBJ.PL-JNCT [PRES] EPEN 1POSS-PL-PL-sibling-PL-PL-PL.POSS-JNCT FOC EPEN HREL EPEN COMP
+\l 
+
+\t Xli:ka:na nayi la:wanimá:'w, chu: iyma: n talhtsísiqna' waniyá:'w
+\m xli:ka:na nayi la:-wa-ni-má:'-w chu: iyma: n talhtsísiqna' wa-ni-yá:'-w
+\g true as RECP-V.say-DAT-PROG-1SBJ.PL PTCL DEM EPEN Musa.ornata V.say-DAT-IPFV-1SBJ.PL
+\l 
+
+\t pus ni:tú katsi:ya:'wi n pala
+\m pus ni:tú katsi:-yá:'-w-i n pala
+\g INTJ nothing V.know-IPFV-1SBJ.PL-JNCT EPEN CONJ
+\l no sabemos
+
+\t n lu:lakaskinqo:'kani n pala ka li:pakananqo:'kani anta:ni n pala
+\m n lu:-lakaskin-qo:'-kan-i n pala ka li:-pakanan-qo:'-kan-i anta:ni n pala
+\g EPEN INTNS-V.use-3PL-REFL-JNCT [PRES] EPEN CONJ only INS-V.fence-3PL-INDEF-JNCT where EPEN CONJ
+\l 
+
+\t watiyá n tasiyiyi nayi chu:
+\m watiyá n ta-siyi-y-i nayi chu:
+\g similar EPEN INC-V.see-IPFV-JNCT [3SBJ.SG PRES] as PTCL
+\l 
+
+\t n kinatsi:tnikán,
+\m n ki-na-tsi-:tni-kán
+\g EPEN 1POSS-PL-mother-PL-PL.POSS
+\l 
+
+\t li:pu:tlawaya:'wi iyma: n xchu:wkani iyma: wanikani iyma: wa:'t.
+\m li:-pu:-tlawa-ya:'-w-i iyma: n x-chu:w-kan-i iyma: wa-ni-kan-i iyma: wa:'t
+\g INS-CTNR-V.do-IPFV-1SBJ.PL-JNCT [PRES] DEM EPEN 3POSS-tortilla-PL.POSS-JNCT DEM V.say-DAT-REFL-JNCT [3SBJ.SG PRES IPFV] DEM tamale
+\l 
+
+\t n tu: a:ti:pa:'tu maklakaskinkán,
+\m n tu: a:-ti:pa:'-tu mak-lakaskin-kán
+\g EPEN NREL ADD-CLF-one body-V.use-INDEF
+\l si tiene algún uso,
+
+\t ka kacha'wi iyma: n tawá:'n, nikamaqatsanqa:'wi iyma: n tawá:'n *porque**
+\m ka ka-cha'-w-i iyma: n tawá:'n ni-ka-maqatsanq-a:'-w-i iyma: n tawá:'n porque
+\g only IRR-V.plant-1SBJ.PL-JNCT DEM EPEN plant NEG-IRR-V.lose-1SBJ.PL-IPFV-JNCT [PRES] DEM EPEN plant INJT
+\l 
+
+\t Nixkatsi wixi n pala na: laqapasa'.
+\m ni-x-kats-i wix-i n pala na: laqapas-a-'
+\g NEG-???-V.know-JNCT PRN.2SBJ.SG-JNCT EPEN CONJ aslo V.recognize-IPFV-2SBJ.SG [PRES]
+\l 
+
+\t Xli:ka:na nayi kilhwampa:'t, n chu: nili:paksa maski
+\m xli:ka:na nayi kilh-wám-pa:'-t n chu: ni-li:-paks-a maski
+\g true as mouth-V.say-PROG.2SBJ-2SBJ.SG EPEN PTCL NEG-INS-V.heal-IPFV [2SBJ.SG PRES] although
+\l Es verdad lo que estás diciendo, esto no se cura aunque
+
+\t laktlanka ukxilhá:'w, n pi tla:ni n tamaklakaskín.
+\m lak-tlanka ukxilh-á:'-w n pi tla:n-i n ta-mak-lakaskín
+\g PL-big V.see-IPFV-1SBJ.PL EPEN COMP good-JNCT EPEN DTRANS-body-V.use [3SBJ.SG PRES IPFV]
+\l 
+
+\t kawa xa n chu: ka chaná wa: xwanqo:'yi laqqo:lán xwanqo:'ní:'t.
+\m kawa xa n chu: ka chaná wa: x-wan-qo:'-y-i laq-qo:l-án x-wan-qo:'-ni:'t
+\g only PRN.3SBJ.SG EPEN PTCL only thus FOC PST-V.say-3PL-IPFV-JNCT PL-male-PL PST-V.say-3PL-PRF
+\l era una creencia de los ancianos de la antigüedad.
+
+\t nitakatsí: wixi n pala na: laqapasa
+\m ni-ta-katsí: wix-i n pala na: laqapas-a
+\g NEG-INC-V.know PRN.2SBJ.SG-JNCT EPEN CONJ aslo V.recognize-IPFV [2SBJ.SG PRES]
+\l 
+
+\t n pala chu: wi: n ti: nikatsí: n pala wi: xaj....
+\m n pala chu: wi: n ti: ni-katsí: n pala wi:
+\g EPEN CONJ PTCL there.is EPEN HREL NEG-V.know [3SBJ.SG IPFV PRES] EPEN CONJ there.is
+\l por si alguien no sabe....
+
+\t Pa: na: laqapasa wixi iyma: lhtaká'tsiqna'.
+\m pa: na: laqapas-a wix-i iyma: lhtaká'tsiqna'
+\g Q aslo V.recognize-IPFV [2SBJ.SG PRES] PRN.2SBJ.SG-JNCT DEM Heliconia.schiedeana
+\l 
+
+\t taxa:'k wanikán,
+\m taxa:'k wa-ni-kán
+\g Toxicodendron.radicans V.say-DAT-REFL [3SBJ.SG PRES IPFV]
+\l que llaman taxa:'k (Toxicodendron radicans),
+
+\t xa..., xaki'wi n chu: xa..., xatawá:'n.
+\m xa-[FS] xa-ki'wi n chu: xa-[FS] xa-tawa:'n
+\g DEF-[FS] DEF-tree EPEN PTCL DEF-[FS] DEF-plant
+\l 
+
+\t pus iyma: ma:nwá ma:xi n tu: li:qalhchiwi:nani:'ta'wi n tu: kini n katsi:yá:'w.
+\m pus iyma: ma:nwá ma:x-i n tu: li:-qalh-chiwi:-na-ni:'ta-'w-i n tu: kin-i n katsi:-yá:'-w
+\g INTJ DEM only DUB-JNCT EPEN NREL INS-mouth-V.talk-ANTIP-PRF-1SBJ.PL-JNCT EPEN NREL PRN.1SBJ.PL-JNCT EPEN V.know-IPFV-1SBJ.PL
+\l 
+
+\t N li:qalhchiwi:nana:'wi n chu: iyma: n kintawá:'nkani kini wa: n tu: lu:laqapasa:'wi
+\m n li:-qalh-chiwi:-nan-a:'-w-i n chu: iyma: n kin-tawa:'n-kan-JNCT kin-i wa: n tu: lu:-laqapas-a:'-w-i
+\g EPEN INS-mouth-V.talk-INDEF-ANTIP-IPFV-1SBJ.PL-JNCT EPEN PTCL DEM EPEN 1POSS-plant-PL.POSS-JNCT PRN.1SBJ.PL-JNCT FOC EPEN NREL INTNS-V.recognize-IPFV-1SBJ.PL-JNCT [PRES]
+\l 
+
+\t N pi na: lu:stla:ni xa', lu:lakaslipinki xa wa: iyma: lu:wá kini
+\m n pi na: lu:-stla:n-i xa' lu:-laka-slipinki xa wa: iyma: lu:-wá kin-i
+\g EPEN COMP aslo INTNS-beautiful-JNCT PRN.3SBJ.SG INTNS-face-smooth PRN.3SBJ.SG FOC DEM INTNS-DEF PRN.1SBJ.PL-JNCT
+\l 
+
+\t lu:káh tanu: xa iyma: n tawalá lu:xtaknikú xa minchu:wi ma:
+\m lu:-káh ta-nu: xa iyma: n ta-walá lu:-xtakni-kú xa min-chu:w-i ma:
+\g INTNS-only INC-in [3SBJ.SG PRES IPFV] PRN.3SBJ.SG DEM EPEN INC-V.sit [3SBJ.SG PRES IPFV] INTNS-green-STILL PRN.3SBJ.SG 2POSS-tortilla-JNCT TAG
+\l 
+
+\t Wa: kiti n kintakawaní', Areli Ponce García.
+\m wa: kit-i n kin-takawaní' Areli Ponce García
+\g FOC PRN.1SBJ.SG-JNCT EPEN 1POSS-name Areli Ponce García
+\l 
+
+\t Wi: n ti: n pala xamaqo:'yi laqsqatá:n pus lu:ma:tsi'tsi:nani xa iyma: n taxa:'k.
+\m wi: n ti: n pala xama-qo:'-y-i laq-sqatá-:n pus lu:-ma:-tsi'tsi:-nan-i xa iyma: n taxa:'k
+\g there.is EPEN HREL EPEN CONJ V.touch-3PL-IPFV-JNCT [PRES] PL-baby-PL INTJ INTNS-CAUS-V.pimple-ANTIP-JNCT [3SBJ.SG PRES] PRN.3SBJ.SG DEM EPEN Toxicodendron.radicans
+\l Hay niños que llegan a tocar al taxa:'k pero esta hierba es muy dañina.
+
+\t lhu:wa tawa:'ni n tu: ananqo:'yi wa: n tu: n pi
+\m lhu:wa tawa:'n-i n tu: anan-qo:'-y-i wa: n tu: n pi
+\g many plant-JNCT EPEN NREL V.exist-3PL-IPFV-JNCT [PRES] FOC EPEN NREL EPEN COMP
+\l 
+
+\t xachu:w.
+\m xa-chu:w
+\g DEF-tortilla
+\l 
+
+\t iyma: n pú:lhuku'.
+\m iyma: n pú:lhuku'
+\g DEM EPEN Critonia.morifolia
+\l 
+
+\t ki'wi iyma: wanikani li:wa:pan.
+\m ki'wi iyma: wa-ni-kan-i li:wa:pan
+\g tree DEM V.say-DAT-REFL-JNCT [3SBJ.SG PRES IPFV] Heliconia.schiedeana
+\l 
+
+\t Xli:ka:na na: n ti: kilhwampa:'t, ti:pa:'tú xa iyma: n taxa:'k wi: xa ni:má:
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t ti:pa:'-tú xa iyma: n taxa:'k wi: xa ni:má:
+\g true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG CLF-two PRN.3SBJ.SG DEM EPEN Toxicodendron.radicans there.is PRN.3SBJ.SG DEM
+\l Es verdad lo que dices, hay dos tipos de taxa:'k, hay uno que
+
+\t nilu:katsí:y, wa: kiti na: ktipu:tlawalh
+\m ni-lu:-katsí:-y wa: kit-i na: k-ti-pu:-tlawa-lh
+\g NEG-INTNS-V.know-IPFV [3SBJ.SG PRES] FOC PRN.1SBJ.SG-JNCT aslo 1SBJ.SG-POT-CTNR-V.do-PFV
+\l 
+
+\t maski nalakputchmi:yi xa nalakkiklhmí:y,
+\m maski na-lak-putch-mi:-y-i xa na-lak-kiklh-mí:-y
+\g although FUT-PL-V.break-V.lie.down-IPFV-JNCT [3SBJ.SG PRES] PRN.3SBJ.SG FUT-PL-V.pinch-V.lie.down-IPFV [3SBJ.SG PRES]
+\l aunque lo toquen o lo corten,
+
+\t pus niá:watiya likwa xatachiwi:ni iyma: n pú:lhuku',
+\m pus ni-á:watiya likwa xa-ta-chiwi:-n-i iyma: n pú:lhuku'
+\g INTJ NEG-extremely many DEF-INC-V.say-DVB-JNCT DEM EPEN Critonia.morifolia
+\l 
+
+\t na: nacha:yi nicha:ni:'ti minchu:wi naukxilha pero cha:ni xa',
+\m na: na-cha:-y-i ni-cha:-ni:'t-i min-chu:w-i na-ukxilh-a pero cha:-n-i xa'
+\g aslo FUT-V.ripen-IPFV-JNCT [3SBJ.SG] NEG-V.ripen-PRF-JNCT [3SBJ.SG] 2POSS-tortilla-JNCT FUT-V.see-IPFV [2SBJ.SG] INTJ V.ripen-DVB-JNCT PRN.3SBJ.SG
+\l 
+
+\t li:kúchani iyma: n pú:lhuku', nitakatsí: wixi n pala na: laqapasa iyma: na: katsi:ya n pi chaná n tlawakán.
+\m li:-kúcha-n-i iyma: n pú:lhuku' ni-ta-katsí: wix-i n pala na: laqapas-a iyma: na: katsi:-y-a n pi chaná n tlawa-kán
+\g INS-V.care-DVB-JNCT DEM EPEN Critonia.morifolia NEG-INC-V.know PRN.2SBJ.SG-JNCT EPEN CONJ aslo V.recognize-IPFV [2SBJ.SG PRES] DEM aslo V.know-IPFV-2SBJ.SG [PRES] EPEN COMP thus EPEN V.do-INDEF
+\l 
+
+\t Wa: lantla natama:niya:'chini xatsi'tsi
+\m wa: lantla na-ta-ma:-ni-ya:'-chi-n-i xa-tsi'tsi
+\g FOC like FUT-INC-V.lie.down-DAT-IPFV-PROX-2OBJ-JNCT DEF-pimple
+\l Así como provoca granos en la
+
+\t Kali:chiwi:na'wi kini n chu: iyma:
+\m ka-li:-chiwi:-na'-w-i kin-i n chu: iyma:
+\g IRR-INS-V.talk-ANTIP-1SBJ.SG-JNCT PRN.1SBJ.PL-JNCT EPEN PTCL DEM
+\l Hablemos de este
+
+\t Wa: iyma: n tlanka:liya nali:qalhchiwi:nana:'wi kini iyma:
+\m wa: iyma: n tlanka:liya na-li:-qalh-chiwi:-nan-a:'-w-i kin-i iyma:
+\g FOC DEM EPEN moment FUT-INS-mouth-V.talk-INDEF-ANTIP-IPFV-1SBJ.PL-JNCT PRN.1SBJ.PL-JNCT DEM
+\l 
+
+\t Xli:ka:na nayi kilhwampa:'t, na: talhma:ni staka wa: anta:ni lu:ma:tla:ní:y.
+\m xli:ka:na nayi kilh-wám-pa:'-t na: talhma:n-i stak-a wa: anta:ni lu:-ma:-tla:-ní:-y
+\g true as mouth-V.say-PROG.2SBJ-2SBJ.SG aslo high-JNCT V.grow-IPFV  [3SBJ.SG PRES] FOC where INTNS-CAUS-V.do-DAT-IPFV [3SBJ.SG PRES]
+\l 
+
+\t ma: n kintawa:'nkán, wa: n tu: li:laqapasa:'wi kini n talhtsísiqna',
+\m ma: n kin-tawa:'n-kán wa: n tu: li:-laqapas-a:'-w-i kin-i n talhtsísiqna'
+\g TAG EPEN 1POSS-plant-PL.POSS FOC EPEN NREL INS-V.recognize-IPFV-1SBJ.PL-JNCT [PRES] PRN.1SBJ.PL-JNCT EPEN Musa.ornata
+\l 
+
+\t Ka wa: xa n chu: n pi likwa xin....
+\m ka wa: xa n chu: n pi likwa
+\g only FOC PRN.3SBJ.SG EPEN PTCL EPEN COMP many
+\l Pero estos provocan mucha comezón.
+
+\t iynú jkinka:chiki:nkán wa: iyma: mani:kán lhtaká'tsiqna'.
+\m iynú j-kin-ka:-chiki-:n-kán wa: iyma: mani:-kán lhtaká'tsiqna'
+\g there LOC-1POSS-PLC-house-PL-PL.POSS FOC DEM V.paint-INDEF Heliconia.schiedeana
+\l 
+
+\t wa: xlakani lu:laqati:qó:' li:kaxtlawananqó:'y
+\m wa: xlakan-i lu-laqati:-qo:'
+\g FOC PRN.3SBJ.PL-JNCT INTNS-V.like-3PL [PRES IPFV]
+\l 
+
+\t pus katu:wa li:maklakaskina:'wi iyma: n tawa:'ni iyma: n pú:lhuku',
+\m pus katu:wa li:-mak-lakaskin-á:'-w-i iyma: n tawa:'n-i iyma: n pú:lhuku'
+\g INTJ many INS-body-V.use-IPFV-1SBJ.PL-JNCT DEM EPEN plant-JNCT DEM EPEN Critonia.morifolia
+\l 
+
+\t kmi..., kmilakxní:n, na: chaná xa xatawa:'ni pulúq qalhí:y n chu: laqtsatsu'qo:'wán,
+\m k-mi- k-mi-lakxní[FT]-:n na: chaná xa xa-tawa:'n-i pulúq qalhí:-y n chu: laq-tsatsu'-qo:'-wá-n
+\g LOC-2POSS- LOC-2POSS-body[FT]-PL aslo thus PRN.3SBJ.SG DEF-plant-JNCT grainy V.have-IPFV [3SBJ.SG PRES] EPEN PTCL PL-red-3PL-SEM-PL
+\l piel, así también tiene granos sobre sus hojas de color rojo,
+
+\t iyma: xaxanat.
+\m iyma: xa-xanat
+\g DEM DEF-flower
+\l 
+
+\t nika qanqajú: tawakayi xa xasiqna,
+\m ni-ka qanqa-jú: ta-waka-y-i xa xa-siqna
+\g NEG-only nose-down INC-V.be.up-IPFV-JNCT [3SBJ.SG PRES] PRN.3SBJ.SG DEF-banana
+\l 
+
+\t wa: n chu: n tu n tawakayi xasiqna', antá n chu: kxaqspú:n ta:yiya:chá xaxanat,
+\m wa: n chu: n tu: n ta-waka-y-i xa-siqna' antá n chu: k-x-aq-s-pú:n ta:-yi-ya:-chá xa-xanat
+\g FOC EPEN PTCL EPEN NREL EPEN INC-V.be.up-IPFV-JNCT [3SBJ.SG PRES] DEF-banana there EPEN PTCL LOC-3POSS-head-DIM-middle INC-V.get.up-IPFV-DIST [3SBJ.SG PRES] DEF-flower
+\l 
+
+\t Xli:ka:na nayi kilhwampa:'t, wa: iyma: xa..., xatawaka't usa xaxánati iyma:
+\m xli:ka:na nayi kilh-wám-pa:'-t wa: iyma: xa-[FS] xa-tawaka't usa xa-xánat-i iyma:
+\g true as mouth-V.say-PROG.2SBJ-2SBJ.SG FOC DEM DEF-[FS] DEF-fruit INTJ DEF-flower-JNCT DEM
+\l 
+
+\t wa: lantla maklakaskiná:'w.
+\m wa: lantla mak-lakaskin-á:'-w
+\g FOC like body-V.use-IPFV-1SBJ.PL
+\l 
+
+\t xaxánati iyma: na: ka laksananka:wani n taxtiya:chi xaxanat
+\m xa-xánat-i iyma: na: ka lak-sananka:-wa-n-i n ta-xti-ya:'-ch-i xa-xanat
+\g DEF-flower-JNCT DEM aslo only PL-yellow-SEM-PL-JNCT EPEN INC-out-IPFV-PROX-JNCT [3SBJ.SG PRES] DEF-flower
+\l 
+
+\t n chu: niiyma: ni..., nixaskalahwa xa anta:ni nacha'na puni xla',
+\m n chu: ni[FT]-iyma: ni-[FS] ni-xa-skalahwa xa anta:ni na-cha'n-a pun-i xla'
+\g EPEN PTCL NEG[FT]-DEM NEG-[FS] NEG-DEF-delicate PRN.3SBJ.SG where FUT-V.plant-IPFV [2SBJ.SG] V.germinate-JNCT [3SBJ.SG PRES IPFV] PRN.3SBJ.SG
+\l 
+
+\t tla:ni n pu:tlawaya:'wi
+\m tla:n-i n pu:-tlawa-ya:'-w-i
+\g good-JNCT EPEN CTNR-V.do-IPFV-1SBJ.PL-JNCT
+\l 
+
+\t n pala chu: wi: n ti: nilaqapás pus....
+\m n pala chu: wi: n ti: ni-laqapás pus
+\g EPEN CONJ PTCL there.is EPEN HREL NEG-V.recognize [3SBJ.SG PRES IPFV] INTJ
+\l aquellos que no lo conocen pues....
+
+\t *porque** na: nikapala n taxti:'ta n pala xnaqni:'tá',
+\m porque na: ni-kapala n ta-xti:'t-a n pala xnaq-ni:'tá-'
+\g INJT aslo NEG-fast EPEN INC-V.break-IPFV [3SBJ.SG PRES] EPEN CONJ V.dry.up-PRF-2SBJ.SG
+\l 
+
+\t Xli:ka:na nayi kilhwampa:'t, pus lhu:wa ma:xi n tawá:'n usa
+\m xli:ka:na nayi kilh-wám-pa:'-t pus lhu:wa ma:x-i n tawá:'n usa
+\g true as mouth-V.say-PROG.2SBJ-2SBJ.SG INTJ many DUB-JNCT EPEN plant INTJ
+\l 
+
+\t iyma: n kintawa:'nkán, n pi na:...,
+\m iyma: n kin-tawa:'n-kán n pi na:
+\g DEM EPEN 1POSS-plant-PL.POSS EPEN COMP also
+\l 
+
+\t Wa: iyma: kiti n kiwanikán Epifania Sáhinos Pérez.
+\m wa: iyma: kit-i n ki-wa-ni-kán Epifania Sáhinos Pérez
+\g FOC DEM PRN.1SBJ.SG-JNCT EPEN 1OBJ-V.say-DAT-REFL Epifania Sáhinos Pérez
+\l Yo me llamo Epifania Sáhinos Pérez.
+
+\t likwa lhu:wán cha: n chu:
+\m likwa lhu:wá-n cha: n chu:
+\g many many-PL PTCL EPEN PTCL
+\l 
+
+\t Wa: kiti n kintakawaní', Areli Ponce García.
+\m wa: kit-i n kin-takawaní' Areli Ponce García
+\g FOC PRN.1SBJ.SG-JNCT EPEN 1POSS-name Areli Ponce García
+\l 
+
+\t lu:punú:ki'wi xa wa: iyma:
+\m lu:-pun-ú:-ki'wi xa wa: iyma:
+\g INTNS-V.germinate-AGT-tree PRN.3SBJ.SG FOC DEM
+\l 
+
+\t Xli:ka:na nayi la:wanini:'tá'w, pus nima:x lu:á:watiya lhu:wa xatachiwi:ni n tu: la:wanini:'tá'w.
+\m xli:ka:na nayi la:-wa-ni-ni:tá-'w pus ni-ma:x lu:-á:watiya lhu:wa xa-ta-chiwi:-n-i n tu: la:-wa-ni-ni:tá-'w
+\g true as RECP-V.say-DAT-PRF-1SBJ.PL INTJ NEG-DUB INTNS-extremely many DEF-INC-V.say-DVB-JNCT EPEN NREL RECP-V.say-DAT-PRF-1SBJ.PL
+\l 
+
+\t Xli:ka:na, na: klaqapasa n ti chawanipa:'t
+\m xli:ka:na na: k-laqapas-a n ti: chawani-pa:'-t
+\g true aslo 1SBJ.SG-V.recognize-IPFV EPEN HREL V.refer-PROG-2SBJ.SG
+\l 
+
+\t li:kaxtlawananqó:'y, li:kaxtlawananqó:' xa n pala kxchijkán, kxma:lakchakán,
+\m xa n pala k-x-chij-kán k-x-ma:lakcha-kán
+\g PRN.3SBJ.SG EPEN CONJ LOC-3POSS-house-PL.POSS LOC-3POSS-door-PL.POSS
+\l 
+
+\t tacha'na:ni nilaqapasqo:'yá:'w.
+\m ta-cha'n-a:n-i ni-laqapas-qo:'-yá:'-w
+\g DTRANS-V.plant-PL-JNCT NEG-V.recognize-3PL-IPFV [PRES]
+\l 
+
+\t lu:káh laqati:qo:'yi ma: laqsqata:ni ma:....
+\m lu:-káh laqati:-qo:'-y-i ma: laq-sqata-:n-i ma:
+\g INTNS-only V.like-3PL-IPFV-JNCT [PRES] TAG PL-baby-PL-JNCT TAG
+\l 
+
+\t *porque** maqkatsi:ya:'wi kini nayi chu: skuja:'wi jka:tawa:'ni n pi
+\m porque maqkatsi:-ya:'-w-i kin-i nayi chu: skuj-a:'-w-i j-ka:-tawá:'n-i n pi
+\g INJT V.feel-IPFV-1SBJ.PL-JNCT [PRES] PRN.1SBJ.PL-JNCT as PTCL V.work-IPFV-1SBJ.PL-JNCT LOC-PLC-plant-JNCT EPEN COMP
+\l porque nosotras que trabajamos en el campo sabemos que
+
+\t Nakli:ni n kisiqna wani ma:
+\m na-k-li:n-i n ki-siqna wa-ni ma:
+\g FUT-1SBJ.SG-V.bring-JNCT [IPFV] EPEN 1POSS-banana V.say-DAT [3SBJ.SG PRES IPFV] TAG
+\l 
+
+\t Xli:ka:na na: n ti: kilhwampa:'t, lu:wá kini á:watiya laqati:ya:'wi iyma:
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t lu:-wá kin-i á:watiya laqati:-ya:'-w-i iyma:
+\g true aslo EPEN NREL mouth-V.say-PROG.2SBJ-2SBJ.SG INTNS-DEF PRN.1SBJ.PL-JNCT extremely V.like-IPFV-1SBJ.PL-JNCT [PRES] DEM
+\l 
+
+\t xa*semilla**, xatalhtsi cha: xa n tanu:ma ni:lá xa n chu: wa'kán
+\m xa-semilla xa-talhtsi cha: xa n ta-nu:-ma ni:lá xa n chu: wa'-kán
+\g DEF-seed DEF-seed PTCL PRN.3SBJ.SG EPEN INC-in-PROG [3SBJ.SG] NEG PRN.3SBJ.SG EPEN PTCL V.eat-INDEF [3SBJ.SG PRES IPFV]
+\l 
+
+\t lu:xli:xlitá n chu: lantla n chu: xtakawaní'.
+\m lu:-xli:xli-tá n chu: lantla n chu: x-takawaní'
+\g INTNS-many-ALRD EPEN PTCL like EPEN PTCL 3POSS-name
+\l 
+
+\t staka n pala nacha'na'.
+\m stak-a n pala na-cha'n-a-'
+\g V.grow-IPFV  [3SBJ.SG PRES] EPEN CONJ FUT-V.plant-IPFV-2SBJ.SG
+\l 
+
+\t stla:ni iyma: n tawá:'n wa: iyma: lu:li:laqati:qo:'kán chu: na: lu:laktlanka'....
+\m stla:n-i iyma: n tawá:'n wa: iyma: lu:-li:-laqati:-qo:'-kán chu: na: lu:-lak-tlanka'
+\g beautiful-JNCT DEM EPEN plant FOC DEM INTNS-INS-V.like-IPFV-INDEF PTCL aslo INTNS-PL-big
+\l 
+
+\t Xli:ka:na, chaná xa na: n ti: ma: xlakaskinqo:'yi n kilakna:nahnakán,
+\m xli:ka:na chaná xa na: n ti: ma: x-lakaskin-qo:'-y-i n ki-lak-na:nah-na-kán
+\g true thus PRN.3SBJ.SG aslo EPEN HREL TAG PST-V.use-3PL-IPFV-JNCT EPEN 1POSS-PL-grandmother-PL-PL.POSS
+\l 
+
+\t Lu:laqkuxtaqo:'kán *porque** lantla la:wanimá:'w tla:ni li:ka:xtlawa:nankani xaxanat.
+\m lu:-laq-kuxta-qo:'-kán porque lantla la:-wa-ni-má:'-w tla:n-i li:-ka:xtlawa:nan-kan-i xa-xanat
+\g INTNS-PL-V.weed-3PL-INDEF INJT like RECP-V.say-DAT-PROG-1SBJ.PL good-JNCT INS-V.decorate-INDEF-JNCT DEF-flower
+\l 
+
+\t xatachiwi:ni iyi la:li:xaqatli:ni:'ta'wi n kini na:
+\m xa-ta-chiwi:-n-i iyi la:-li:-xaqatli:-ni:'ta-'w-i n kin-i na:
+\g DEF-INC-V.say-DVB-JNCT NREL RECP-INS-V.speak-PRF-1SBJ.PL-JNCT EPEN PRN.1SBJ.PL-JNCT aslo
+\l 
+
+\t Ka tanu: iyma: xcha:'xpa:ni, ma: n chixi:t cha:'wanqo:'yi iyma: xa
+\m ka ta-nu: iyma: x-cha:'xpa:n-i ma: n chixi:t cha:'-wa-n-qo:'-y-i iyma: xa
+\g only INC-in [3SBJ.SG PRES IPFV] DEM 3POSS-sura-JNCT TAG EPEN hair leg-SEM-???-3PL-IPFV-JNCT [PRES] DEM PRN.3SBJ.SG
+\l 
+
+\t máqalhi iyma: *porque** paks talhtsi luwa kakxa...,
+\m máqa-lh-i iyma: porque paks talhtsi luwa kakxa
+\g V.throw-PFV-JNCT [3SBJ.SG] DEM INJT all seed very ERROR
+\l 
+
+\t lakstakakán, maski ka pa:tsú: naukxilha n pi lhu:wa xa n tachi:ní:'t.
+\m lak-staka-kán maski ka pa:-tsú: na-ukxilh-a n pi lhu:wa xa n ta-chi:-ní:'t
+\g PL-thin-PL.POSS although only abdomen-small FUT-V.see-IPFV [2SBJ.SG] EPEN COMP many PRN.3SBJ.SG EPEN INC-V.tie-PRF [3SBJ.SG PRES]
+\l 
+
+\t Xli:ka:na n ti: kilhwampa:'t, pus
+\m xli:ka:na n ti: kilh-wám-pa:'-t pus
+\g true EPEN NREL mouth-V.say-PROG.2SBJ-2SBJ.SG INTJ
+\l 
+
+\t napa:ma:wakaya', naqchi:wakaniya n chu: na: luwa
+\m na-pa:-ma:-waka-ya-' na-q-chi:-waka-ni-ya n chu: na: luwa
+\g FUT-abdomen-CAUS-V.be.up-IPFV-2SBJ.SG FUT-head-V.tie-V.be.up-DAT-IPFV [2SBJ.SG] EPEN PTCL aslo very
+\l 
+
+\t Pus wa: kiti n kintakawaní', Areli Ponce García.
+\m pus wa: kit-i n kin-takawaní' Areli Ponce García
+\g INTJ FOC PRN.1SBJ.SG-JNCT EPEN 1POSS-name Areli Ponce García
+\l 
+
+\t pus nima:x á:watiya lhu:wa xatachiwi:ni iyma: n tawa:'ni li:wa:pan waniyá:'w,
+\m pus ni-ma:x á:watiya lhu:wa xa-ta-chiwi:-n-i iyma: n tawa:'n-i li:wa:pan wa-ni-yá:'-w
+\g INTJ NEG-DUB extremely many DEF-INC-V.say-DVB-JNCT DEM EPEN plant-JNCT Heliconia.schiedeana V.say-DAT-IPFV-1SBJ.PL
+\l 
+
+\t Xli:ka:na na: n ti: kilhwampa:'t.
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t
+\g true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG
+\l Es verdad lo que estás diciendo.
+
+\t Xli:ka:na nayi la:wanimá:'w,
+\m xli:ka:na nayi la:-wa-ni-má:'-w
+\g true as RECP-V.say-DAT-PROG-1SBJ.PL
+\l 
+
+\t Na: klaqapasa kit lu:anani xa iynú
+\m na: k-laqapas-a kit lu:-anan-i xa iynú
+\g aslo 1SBJ.SG-V.recognize-IPFV PRN.1SBJ.SG INTNS-V.exist-JNCT [3SBJ.SG PRES IPFV] PRN.3SBJ.SG there
+\l 
+
+\t xli:ka:na n pi ni:tú xananqo:'yi n pala *bolsa**,
+\m xli:ka:na n pi ni:tú x-anan-qo:'-y-i n pala bolsa
+\g true EPEN COMP nothing PST-V.exist-3PL-IPFV-JNCT EPEN CONJ bag
+\l 
+
+\t pus lu:laqapasa:'wi kini iyma: n tawá:'n.
+\m pus lu:-laqapas-a:'-w-i kin-i iyma: n tawá:'n
+\g INTJ INTNS-V.recognize-IPFV-1SBJ.PL-JNCT [PRES] PRN.1SBJ.PL-JNCT DEM EPEN plant
+\l 
+
+\t Epifania Sáhinos Pérez.
+\m Epifania Sáhinos Pérez
+\g Epifania Sáhinos Pérez
+\l 
+
+\t li:ma:chuqoqo:'kani n pala ani n tapankná'.
+\m li:-ma:-chuqo-qo:'-kan-i n pala an-i n tapankná'
+\g INS-CAUS-V.detain-3PL-INDEF-JNCT EPEN CONJ V.go-JNCT [3SBJ.SG PRES IPFV] EPEN landslide
+\l 
+
+\t ka:tu:wa n tu: wanqo:'yi n pi tla:ni n li:tlawaya
+\m ka:tu:wa n tu: wan-qo:'-y-i n pi tla:n-i n li:-tlawa-ya
+\g many EPEN NREL V.say-3PL-IPFV-JNCT EPEN COMP good-JNCT EPEN INS-V.do-IPFV [2SBJ.SG PRES]
+\l algunos comentan que se puede tratar con
+
+\t Xli:ka:na xa nayi kilhwámpa:'ti n pi talaqpali:yi
+\m xli:ka:na xa nayi kilh-wám-pa:'-t-i n pi talaqpali:-y-i
+\g true PRN.3SBJ.SG as mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT EPEN COMP V.change-IPFV-JNCT [3SBJ.SG PRES]
+\l 
+
+\t jkimpu:kuxtukán, kani:wa anta:ni anán.
+\m j-kim-pu:-kúxtu-kán kani:wa anta:ni anán
+\g LOC-1POSS-CTNR-V.weed-PL.POSS choise where V.exist [3SBJ.SG PRES IPFV]
+\l 
+
+\t *porque** maka:ni xtanqaxi:'q nikapala n chu: ani n tiyit wa: n chu: laqapa:xtuqa n tapankná'.
+\m porque maka:n-i x-tanqaxi:'q ni-kapala n chu: an-i n tiyit wa: n chu: laqa-pa:xtuq-a n tapankná'
+\g INJT V.send-JNCT 3POSS-root NEG-fast EPEN PTCL V.go-JNCT [3SBJ.SG PRES IPFV] EPEN soil FOC EPEN PTCL face-V.meet-IPFV [2SBJ.SG PRES] EPEN landslide
+\l 
+
+\t Pus xli:ka:na na: n ti: kilhwampa:'t, paks
+\m pus xli:ka:na na: n ti: kilh-wám-pa:'-t paks
+\g INTJ true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG all
+\l 
+
+\t Chu: iyma: n tawa:'ni n chu:
+\m chu: iyma: n tawa:'n-i n chu:
+\g PTCL DEM EPEN plant-JNCT EPEN PTCL
+\l 
+
+\t ni:tú tlawaniyi xa wa: iyma: n taxa:'k.
+\m ni:tú tlawa-ni-y-i xa wa: iyma: n taxa:'k
+\g nothing V.do-DAT-IPFV-JNCT [3SBJ.SG PRES 3OBJ] PRN.3SBJ.SG FOC DEM EPEN Toxicodendron.radicans
+\l no les causa nada.
+
+\t li:kuchaná:'w, li:pakananá:'w.
+\m li:-kuchan-á:'-w li:-pakanan-á:'-w
+\g INS-V.care-IPFV-1SBJ.PL [PRES] INS-V.fence-IPFV-1SBJ.PL [PRES]
+\l 
+
+\t ka stampre xa xaxanat.
+\m ka stampre xa xa-xanat
+\g only INTJ PRN.3SBJ.SG DEF-flower
+\l 
+
+\t wa: n tu: la:wanit..., na:ma: kini wa'wi wa: n tu: n pi katsi:ya:'wi wa: n tu: n pi li:maklakaskina:'wi iyma:
+\m wa: n tu: la:-wan-it[FS] na:ma: kin-i wa'-w-i wa: n tu: n pi katsi:-yá:'-w-i wa: n tu: n pi li:-mak-lakaskin-á:'-w-i iyma:
+\g FOC EPEN NREL RECP-V.say-it[FS] TAG PRN.1SBJ.PL-JNCT V.eat-1SBJ.PL-JNCT [PFV] FOC EPEN NREL EPEN COMP V.know-IPFV-1SBJ.PL-JNCT FOC EPEN NREL EPEN COMP INS-body-V.use-IPFV-1SBJ.PL-JNCT DEM
+\l 
+
+\t pus wa: iyma: ma:xi n tla:ni xli:lakaskinqó:' napa:ma:wakakana *porque**
+\m pus wa: iyma: ma:x-i n tla:n-i x-li:-lakaskin-qó:' na-pa:-ma:-waka-kan-a porque
+\g INTJ FOC DEM DUB-JNCT EPEN good-JNCT PST-INS-V.use-3PL [IPFV] FUT-abdomen-CAUS-V.be.up-REFL-2SBJ.SG INJT
+\l 
+
+\t aqsamá:'w pus xli:ka:na akani wa: stak, nasták, na: nikas..., na: nixaskalahwa',
+\m aqsa-má:'-w pus xli:ka:na akan-i wa: stak na-stak na: nikas na: ni-xa-skalahwa'
+\g V.mention-PROG-1SBJ.PL [PRES] INTJ true head-JNCT FOC V.grow [3SBJ.SG PRES IPFV] FUT-V.grow [3SBJ.SG PRES IPFV] aslo ERROR aslo NEG-DEF-delicate
+\l 
+
+\t Xli:ka:na n ti: kilhwampa:'t, lu:wa kani:wá anta:ni n tu: n tu: maklakaskina:'wi iyma: n ta..., n tawá:'n,
+\m xli:ka:na n ti: kilh-wám-pa:'-t lu:wa kani:wá anta:ni n tu: n tu: mak-lakaskin-á:'-w-i iyma: n ta[FS] n tawá:'n
+\g true EPEN NREL mouth-V.say-PROG.2SBJ-2SBJ.SG snake choise where EPEN NREL EPEN NREL body-V.use-IPFV-1SBJ.PL-JNCT DEM EPEN ta[FS] EPEN plant
+\l 
+
+\t napu:tlawaya ma: minchú:w.
+\m na-pu:-tlawa-y-a ma: min-chú:w
+\g FUT-CTNR-V.do-IPFV-2SBJ.SG TAG 2POSS-tortilla
+\l 
+
+\t iyma: pus ka..., kacha'wi kini n chu: iyma: n kintalhtsisiqnakán,
+\m iyma: pus ka-[FS] ka-cha'-w-i kin-i n chu: iyma: n kin-talhtsisiqna-kán
+\g DEM INTJ IRR-[FS] IRR-V.plant-1SBJ.PL-JNCT PRN.1SBJ.PL-JNCT EPEN PTCL DEM EPEN 1POSS-Musa.ornata-PL.POSS
+\l 
+
+\t xlaqapasqo:'yá:'w n pi....
+\m x-laqapas-qo:'-yá:'-w n pi
+\g PST-V.recognize-3PL-IPFV-1SBJ.PL [PRES] EPEN COMP
+\l 
+
+\t Wa kiti n kintakawaní', Areli Ponce García.
+\m wa[FT] kit-i n kin-takawaní' Areli Ponce García
+\g FOC[FT] PRN.1SBJ.SG-JNCT EPEN 1POSS-name Areli Ponce García
+\l Mi nombre es Areli Ponce García.
+
+\t pus lu:lakaskinqo:'yi iyma: n *católicos**i
+\m pus lu:-lakaskin-qo:'-y-i iyma: n católicos-i
+\g INTJ INTNS-V.use-3PL-IPFV-JNCT [PRES] DEM EPEN catholics-JNCT
+\l 
+
+\t n pi nixli:ka:na xa', nipaksa xa',
+\m n pi ni-xli:ka:na xa' ni-paks-a xa'
+\g EPEN COMP ni-true PRN.3SBJ.SG NEG-V.heal-IPFV [2SBJ.SG PRES] PRN.3SBJ.SG
+\l pero esto no es cierto, no se cura con esto,
+
+\t Wa: iyma: n pú:lhuku pus na: laktlanka xatawá:'n
+\m wa: iyma: n pú:lhuku pus na: lak-tlanka xa-tawa:'n
+\g FOC DEM EPEN Critonia.morifolia INTJ aslo PL-big DEF-plant
+\l 
+
+\t nipalha n tiyit wa: wali:qo:'kán li:...,
+\m ni-palha n tiyit wa: wali:-qo:'-kán li:-[FS]
+\g NEG-hard EPEN soil FOC V:put-3PL-INDEF INS-[FS]
+\l 
+
+\t Xli:ka:na, iyi: la:li:xaqatli:ni:'ta'wi iyma: n pú:lhuku pus
+\m xli:ka:na iyi: la:-li:-xaqatli:-ni:'ta-'w-i iyma: n pú:lhuku pus
+\g true already RECP-INS-V.speak-PRF-1SBJ.PL-JNCT DEM EPEN Critonia.morifolia INTJ
+\l 
+
+\t pero katsi:ya'wkú kini n chu: na: kinka:ma:siyinikani:'tán
+\m pero katsi:-ya'-w-kú kin-i n chu: na: kin-ka:-ma:-siyi-ni-ka-ni:'tá-n
+\g INTJ V.know-IPFV-1SBJ.PL-STILL [PRES] PRN.1SBJ.PL-JNCT EPEN PTCL aslo 1POSS-PL.OBJ-CAUS-V.teach-DAT-INDEF-PRF-2OBJ
+\l 
+
+\t Xli:ka:na, pus niá:watiya lhu:wa iyma: n qalhi:ya:'wi
+\m xli:ka:na pus ni-á:watiya lhu:wa iyma: n qalhi:-ya:'-w-i
+\g true INTJ NEG-extremely many DEM EPEN V.have-IPFV-1SBJ.SG-JNCT
+\l Es muy cierto, no es mucho
+
+\t nali:ma:kuchi:qó:' xlaqsqata:nkán ka tunkún kpu:ma:kuchi:ni xlakani li:nqó:'y,
+\m na-li:-ma:-kuchi:-qó:' x-laq-sqata-:n-kán ka tunkún k-pu:-ma:-kuchi:-n-i xlakan-i li:n-qó:'-y
+\g FUT-INS-CAUS-V.care-3PL [IPFV] 3POSS-PL-baby-PL-PL.POSS only immediately LOC-CTNR-CAUS-V.care-DVB-JNCT PRN.3SBJ.PL-JNCT V.bring-3PL-IPFV [PRES]
+\l 
+
+\t nali:maklakaskinkani n pala chu: mispalánchu:wi natlawaya' na:...,
+\m na-li-mak-lakaskin-kan-i n pala chu: mi-spalánchu:w-i na-tlawa-ya-' na:
+\g FUT-INS-body-V.use-INDEF-JNCT EPEN CONJ PTCL 2POSS-bean.tamale-JNCT FUT-V.do.-IPFV-2SBJ.SG also
+\l 
+
+\t N chu: pus nima:ná n chu: wa:'ti n pu:tlawayá:'w, tla:ni n pu:tlawaya:'wi n pala kispalanchu:wkán, kimpu:laklhakán.
+\m n chu: pus ni-ma:ná n chu: wa:'t-i n pu:-tlawa-yá:'-w tla:n-i n pu:-tlawa-ya:'-w-i n pala ki-spalanchu:w-kán kim-pu:laklha-kán
+\g EPEN PTCL INTJ NEG-only EPEN PTCL tamale-JNCT EPEN CTNR-V.do-IPFV-1SBJ.PL good-JNCT EPEN CTNR-V.do-IPFV-1SBJ.PL-JNCT EPEN CONJ 1POSS-bean.tamale-PL.POSS 1POSS-bean.tamale-PL.POSS
+\l 
+
+\t nakatsi:ya n pi na: tla:ni lakaskinkani iyma: n talhtsísiqna'.
+\m na-katsi:-ya n pi na: tla:n-i lakaskin-kan-i iyma: n talhtsísiqna'
+\g FUT-V.know-IPFV [2SBJ.SG] EPEN COMP aslo good-JNCT V.use-INDEF-JNCT DEM EPEN Musa.ornata
+\l 
+
+\t na..., natlawaya'.
+\m na- na-tlawa-ya-'
+\g FUT- FUT-V.do.-IPFV-2SBJ.SG
+\l 
+
+\t mat ka nita:'wa minchú:w nawaniqo:'ya:'ni ma: n kilakna:nahnakán,
+\m mat ka ni-ta:'-wa min-chú:w na-wa-ni-qo:'-ya:'-n-i ma: n ki-lak-na:nah-na-kán
+\g QUOT only NEG-COM-V.eat [2SBJ.SG PFV] 2POSS-tortilla FUT-V.say-DAT-3PL-IPFV-2OBJ-JNCT TAG EPEN 1POSS-PL-grandmother-PL-PL.POSS
+\l nuestras abuelas nos decían, seguramente no le convidaste de tus tacos,
+
+\t iyma: n pu:tlawaya:'wi n kinchu:wkán nayi la:wanimá:'w n pala spalanchu:w, wa:'t,
+\m n pu:-tlawa-ya:'-w-i n kin-chu:w-kán nayi la:-wa-ni-má:'-w n pala spalanchu:w wa:'t
+\g EPEN CTNR-V.do-IPFV-1SBJ.PL-JNCT EPEN 1POSS-tortilla-PL.POSS as RECP-V.say-DAT-PROG-1SBJ.PL EPEN CONJ bean.tamale tamale
+\l 
+
+\t Xli:ka:na n ti: kilhwampa:'t, luwa
+\m xli:ka:na n ti: kilh-wám-pa:'-t luwa
+\g true EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG very
+\l 
+
+\t kani:wa anta:ni n pala tapanknán pus wa: na...,
+\m kani:wa anta:ni n pala tapanknán pus wa: na-
+\g choise where EPEN CONJ V.landslide [3SBJ.SG PRES IPFV] INTJ FOC FUT-
+\l 
+
+\t N pala ka nali:kuchana *porque**
+\m n pala ka na-li:-kuchan-a porque
+\g EPEN CONJ only FUT-INS-V.care-IPFV [2SBJ.SG] INJT
+\l 
+
+\t ka tanu: n taqalhwa:'nani xa
+\m ka ta-nu: n ta-qalh-wa:'-nan-i xa
+\g only INC-in [3SBJ.SG PRES IPFV] EPEN INC-mouth-V.eat-INDEF-JNCT [3SBJ.SG PRES IPFV] PRN.3SBJ.SG
+\l 
+
+\t Xli:ka:na xa nayi kilhwamá:'w,
+\m xli:ka:na xa nayi kilh-wa-má:'-w
+\g true PRN.3SBJ.SG as mouth-V.say-PROG-1SBJ.PL
+\l 
+
+\t staqna', mat naxaqatli:ya', n pi kta:'wa'ya:'ni mintachala mat nawaniya', nali:paksa nawaniqo:'yá:'n,
+\m staqna mat na-xaqatli:-ya-' n pi k-ta:'-wa'-ya:'-n-i min-tachala mat na-wa-ni-ya-' na-li:-paks-a na-wa-ni-qo:'-yá:'-n
+\g chili QUOT FUT-V.speak-IPFV-2SBJ.SG EPEN COMP 1SBJ.SG-COM-V.eat-IPFV-2OBJ-JNCT 2POSS-bean.tortilla QUOT FUT-V.say-DAT-IPFV-2SBJ.SG FUT-INS-V.heal-IPFV [2SBJ.SG PRES] FUT-V.say-DAT-3PL-IPFV-2OBJ
+\l chiles, según también hay que hablarle, hay que decirle, te compartiré de mis tacos,
+
+\t Wa: n chu: kali:chiwi:na'wi iyma: tlanka:liya
+\m wa: n chu: ka-li:-chiwi:-na'-w-i iyma: tlanka:liya
+\g FOC EPEN PTCL IRR-INS-V.talk-ANTIP-1SBJ.SG-JNCT DEM moment
+\l 
+
+\t iyma: n tawá:'n usa
+\m iyma: n tawá:'n usa
+\g DEM EPEN plant INTJ
+\l 
+
+\t kawaniqo:'wi la:u:kú chu: iyi: pa:tsanqa:ma:qo:'lhi n tu: n li:...,
+\m ka-wa-ni-qo:'-w-i la:-u:kú chu: iyi: pa:tsanqa:-ma:-qo:'-lh-i n tu: n li:-[FS]
+\g IRR-V.say-DAT-3PL-1SBJ.PL-JNCT [PRES] SIM-now PTCL already V.forget-PROG-3PL-PFV-JNCT EPEN NREL EPEN INS-[FS]
+\l 
+
+\t xka:..., kxpaskwahkán.
+\m xka: k-x-paskwah-kán
+\g ERROR LOC-3POSS-party-PL.POSS
+\l 
+
+\t iyma: stla:ni xa iyma: n tu: aqsama:'wi ma: li:wa:pan,
+\m iyma: stla:n-i xa iyma: n tu: aqsa-ma:'-w-i ma: li:wa:pan
+\g DEM beautiful-JNCT PRN.3SBJ.SG DEM EPEN NREL V.mention-PROG-1SBJ.PL-JNCT [PRES] TAG Heliconia.schiedeana
+\l 
+
+\t na: ti:stám naya:waya na:
+\m na: ti:-s-tám na-ya:wa-ya na:
+\g aslo CLF-DIM-one FUT-V.stand.up-IPFV [2SBJ.SG] aslo
+\l 
+
+\t Xli:ka:na na: n ti: kilhwampa:'t, pus nilhu:wa tachiwi:ni kini
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t pus ni-lhu:wa ta-chiwi:-n-i kin-i
+\g true aslo EPEN NREL mouth-V.say-PROG.2SBJ-2SBJ.SG INTJ NEG-many INC-V.say-DVB-JNCT PRN.1SBJ.PL-JNCT
+\l 
+
+\t kapala akxní wa: naki:ta:'tanuqlha' pus naki:lakxamaya nama:tsi'tsi:yá:'n.
+\m kapala akxní wa: na-ki:-ta:'-ta-nuqlh-a-' pus na-ki:-lak-xama-ya na-ma:-tsi'tsi:-yá:'-n
+\g quick when FOC FUT-RT-COM-INC-V.find-IPFV-2SBJ.SG [3OBJ] INTJ FUT-RT-PL-V.touch-IPFV [2SBJ.SN PRES] FUT-CAUS-V.pimple-IPFV-2OBJ [3SBJ.SG]
+\l en cualquier momento lo podemos encontrar y nos provocará granos en la piel.
+
+\t nikatsi:qó:'y, kama:siyiniqó:'w. Wa: kiti n kiwanikán,
+\m ni-katsi:-qó:'-y ka-ma:-siyi-ni-qó:'-w wa: kit-i n ki-wa-ni-kán
+\g NEG-V.know-3PL-IPFV [PRES] IRR-CAUS-V.teach-DAT-3PL-1SBJ.PL FOC PRN.1SBJ.SG-JNCT EPEN 1OBJ-V.say-DAT-REFL
+\l 
+
+\t Xli:ka:na xa', pus niá:watiya likwa xa n chu: qalhí: iyma: xatachiwi:ni iyma: n tawá:'n,
+\m xli:ka:na xa' pus ni-á:watiya likwa xa n chu: qalhí: iyma: xa-ta-chiwi:-n-i iyma: n tawá:'n
+\g true PRN.3SBJ.SG INTJ NEG-extremely many PRN.3SBJ.SG EPEN PTCL V.have [3SBJ.SG PRES IPFV] DEM DEF-INC-V.say-DVB-JNCT DEM EPEN plant
+\l Es verdad, de esta hierba no se tienen muchos conocimientos,
+
+\t Wa: kini n chu: wa: iyma: lu:wá kini n pu:tlawaya:'wi n kinchu:wkán.
+\m wa: kin-i n chu: wa: iyma: lu:-wá kin-i n pu:-tlawa-ya:'-w-i n kin-chu:w-kán
+\g FOC PRN.1SBJ.PL-JNCT EPEN PTCL FOC DEM INTNS-DEF PRN.1SBJ.PL-JNCT EPEN CTNR-V.do-IPFV-1SBJ.PL-JNCT EPEN 1POSS-tortilla-PL.POSS
+\l 
+
+\t Pus kani:wá anta:ni maklakaskina:'wi iyma: n kintawa:'nkán.
+\m pus kani:wá anta:ni mak-lakaskin-á:'-w-i iyma: n kin-tawa:'n-kán
+\g INTJ choise where body-V.use-IPFV-1SBJ.PL-JNCT DEM EPEN 1POSS-plant-PL.POSS
+\l 
+
+\t lu:xatalalúqtati lantla kilhwámpa:'ti lantla
+\m lu:-xa-talalúqtat-i lantla kilh-wám-pa:'-t-i lantla
+\g INTNS-DEF-true-JNCT like mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT like
+\l 
+
+\t tunkún nama:tsi'tsí:h,
+\m tunkún na-ma:-tsi'tsí:-h
+\g immediately FUT-CAUS-V.pimple-IPFV [3SBJ.SG]
+\l les provoca granos en la piel de manera instantanea,
+
+\t lu:wá xa xkinka:li:ma:kuchi:qo:'yá:'n.
+\m lu:-wá xa x-kin-ka:-li:-ma:-kuchi:-qo:'-yá:'-n
+\g INTNS-DEF PRN.3SBJ.SG PST-1POSS-PL.OBJ-INS-V.care-3PL-IPFV-2OBJ
+\l 
+
+\t iyma: pero wa: kini n chu: li:laqapasa:'wi n talhtsísiqna'.
+\m iyma: pero wa: kin-i n chu: li:-laqapas-a:'-w-i n talhtsísiqna' xli:ka:na
+\g DEM INTJ FOC PRN.1SBJ.PL-JNCT EPEN PTCL INS-V.recognize-IPFV-1SBJ.PL-JNCT [PRES] EPEN Musa.ornata true
+\l 
+
+\t iyma: n ki'wi usa wa: iyma: n tawa:'ni n tu: li:ma:pakuwi:ya:'wi n pú:lhuku'.
+\m iyma: n ki'wi usa wa: iyma: n tawa:'n-i n tu: li:-ma:-pakuwi:-ya:'-w-i n pú:lhuku'
+\g DEM EPEN tree INTJ FOC DEM EPEN plant-JNCT EPEN NREL INS-CAUS-V.name-IPFV-1SBJ.PL-JNCT [PRES] EPEN Critonia.morifolia
+\l 
+
+\t kama:siyiniqo:'wi iyma: laktsamaján,
+\m ka-ma:-siyi-ni-qo:'-w-i iyma: lak-tsamaj-án
+\g IRR-CAUS-V.teach-DAT-3PL-1SBJ.PL-JNCT DEM PL-miss-PL
+\l 
+
+\t saqa:li:yá:'n, lantla kilhwámpa:'ti wixi n pi
+\m saqa:li:-yá:'-n lantla kilh-wám-pa:'-t-i wix-i n pi
+\g V.hinder-IPFV-2OBJ [3SBJ.SG PRES] like mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT PRN.2SBJ.SG-JNCT EPEN COMP
+\l alergias muy fuertes, como dices que
+
+\t Epifania Sáhinos Pérez.
+\m Epifania Sáhinos Pérez
+\g Epifania Sáhinos Pérez
+\l 
+
+\t chu: nipalha xa n chu: maski cha:
+\m chu: ni-palha xa n chu: maski cha:
+\g PTCL NEG-hard PRN.3SBJ.SG EPEN PTCL although PTCL
+\l 
+

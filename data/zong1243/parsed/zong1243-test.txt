@@ -1,0 +1,130 @@
+\t tawá:'n. Wa: kiti n kiwanikán,
+\m tawá:'n wa: kit-i n ki-wa-ni-kán
+\g plant FOC PRN.1SBJ.SG-JNCT EPEN 1OBJ-V.say-DAT-REFL
+\l 
+
+\t Pus nilhu:wa ta:...,
+\m pus ni-lhu:wa ta:-
+\g INTJ NEG-many IRR-
+\l 
+
+\t n tawa:'ni aqsamá:'w
+\m n tawa:'n-i aqsa-má:'-w
+\g EPEN plant-JNCT V.mention-PROG-1SBJ.PL [PRES]
+\l 
+
+\t xpu:ma:sta:qó:' n pala xli:wa:'ykán usa xlakswa'yimkán
+\m x-pu:-ma:-sta:-qó:' n pala x-li:wa:'y-kán usa x-lakswa'yim-kán
+\g PST-CTNR-CAUS-V.sell-3PL [IPFV] EPEN CONJ 3POSS-meat-PL.POSS INTJ 3POSS-pork.cracklings-PL.POSS
+\l 
+
+\t wa: laqsqata:ni akxní n pala ka
+\m wa: laq-sqata-:n-i akxní n pala ka
+\g FOC PL-baby-PL-JNCT when EPEN CONJ only
+\l 
+
+\t Xli:ka:na n ti: kilhwampa:'t, luwa
+\m xli:ka:na n ti: kilh-wám-pa:'-t luwa
+\g true EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG very
+\l 
+
+\t lu:xama:tsi'tsi:ná xa', á:watiya nama:laqatsiya:'ni xa wa: lapí luwa
+\m lu:-xa-ma:-tsi'tsi:-ná xa' á:watiya na-ma:-laqatsi-ya:'-n-i xa wa: lapí luwa
+\g INTNS-DEF-CAUS-V.pimple-DVB PRN.3SBJ.SG extremely FUT-CAUS-V.blind-IPFV-2OBJ-JNCT [3SBJ.SG] PRN.3SBJ.SG FOC if very
+\l es muy dañino, incluso te puede provocar hasta ceguera para quienes les provoca
+
+\t lapí ninapulhiya', likwa n kaxku lhu:wani iyma: n tawa:'ni nixkatsi n pala na: laqapasa wix.
+\m lapí ni-na-pulhi-ya-' likwa n kaxku lhu:wa-ni iyma: n tawa:'n-i ni-x-kats-i n pala na: laqapas-a wix
+\g if NEG-FUT-V.pluck-IPFV-2SBJ.SG many EPEN more many-PL DEM EPEN plant-JNCT NEG-???-V.know-JNCT EPEN CONJ aslo V.recognize-IPFV [2SBJ.SG PRES] PRN.2SBJ.SG
+\l si no se corta, esta hierba se llega a multiplicar demasiado, no sé si lo conoces.
+
+\t Xli:ka:na na: n ti: kilhwámpa:'ti, iyma: n taxa:'k luwa
+\m xli:ka:na na: n ti: kilh-wám-pa:'-t-i iyma: n taxa:'k luwa
+\g true aslo EPEN HREL mouth-V.say-PROG.2SBJ-2SBJ.SG-JNCT DEM EPEN Toxicodendron.radicans very
+\l Es verdad lo que dices, este taxa:'k
+
+\t wa: lu:li:laqati:yá:'w *porque** nilaktu:tlankán,
+\m wa: lu:-li:-laqati:-yá:'-w porque ni-lak-tu:-tlanká-n
+\g FOC INTNS-INS-V.like-IPFV-1SBJ.PL INJT NEG-PL-foot-big-PL
+\l 
+
+\t ananqó:' xa n chu: lakatsaní:n ma:
+\m anan-qó:' xa n chu: laka-tsa-n-í:n ma:
+\g V.exist-3PL [PRES IPFV] PRN.3SBJ.SG EPEN PTCL face-small-NMLZ-PL TAG
+\l 
+
+\t li:chiwinama:'wi iyma: n taxa:'k luwa
+\m li:-chiwi:-na-ma:'-w-i iyma: n taxa:'k luwa
+\g INS-V.talk-ANTIP-PROG-1SBJ.PL-JNCT DEM EPEN Toxicodendron.radicans very
+\l lo que estamos hablando, este taxa:'k
+
+\t Wa: iyma: n tu: wanikani li:qalhchiwi:nama:'wi lhtaká'tsiqna
+\m wa: iyma: n tu: wa-ni-kan-i li:-qalh-chiwi:-na-ma:'-w-i lhtaká'tsiqna
+\g FOC DEM EPEN NREL V.say-DAT-REFL-JNCT [3SBJ.SG PRES IPFV] INS-mouth-V.talk-ANTIP-PROG-1SBJ.PL-JNCT Heliconia.schiedeana
+\l 
+
+\t pu:láklh, tla:ni iyma: lakaskina:'wi iyma: siqna
+\m pu:láklh tla:n-i iyma: lakaskin-a:'-w-i iyma: siqna
+\g bean.tamale good-JNCT DEM V.Use-IPFV-1SBJ.PL-JNCT DEM banana
+\l 
+
+\t iyma: n kin n kin n kinchu:wkán.
+\m iyma: n kin n kin n kin-chu:w-kán
+\g DEM EPEN PRN.1SBJ.PL EPEN PRN.1SBJ.PL EPEN 1POSS-tortilla-PL.POSS
+\l 
+
+\t Pus nipaks katsi:ya:'wi n pala qama n taxtú n pala xachu:w nayi la:wanimá:'w.
+\m pus ni-paks katsi:-yá:'-w-i n pala qama n ta-xtú n pala xa-chu:w nayi la:-wa-ni-má:'-w
+\g INTJ NEG-all V.know-IPFV-1SBJ.PL-JNCT EPEN CONJ tasty EPEN INC-out [3SBJ.SG PRES IPFV] EPEN CONJ DEF-tortilla as RECP-V.say-DAT-PROG-1SBJ.PL
+\l 
+
+\t kilakta:tahnakán, nixli:ka:na xla',
+\m ki-lak-ta:tah-na-kán ni-xli:ka:na xla'
+\g 1POSS-PL-grandfather-PL-PL.POSS ni-true PRN.3SBJ.SG
+\l pero no es cierto,
+
+\t n pu:tlawapalaqo:'kán n pala chí'ki'chi' n pi luwa
+\m n pu:-tlawa-pala-qo:'-kán n pala chí'ki'chi' n pi luwa
+\g EPEN CNTR-V.do-RPT-3PL-INDEF EPEN CONJ Canna.tuerckheimii EPEN COMP very
+\l 
+
+\t chaná xa n tama:ya:'chi n chu: n pala kmimakán, kminta'wani xatsi'tsi'.
+\m chaná xa n ta-ma:-ya:'-ch-i n chu: n pala k-mi-makán k-min-ta'wan-i xa-tsi'tsi
+\g thus PRN.3SBJ.SG EPEN INC-V.lie.down-IPFV-PROX-JNCT [3SBJ.SG PRES] EPEN PTCL EPEN CONJ LOC-2POSS-hand LOC-2POSS-foot-JNCT DEF-pimple
+\l de la misma manera provoca los granos en las manos o los pies.
+
+\t pú:lhuku', n li:pakanana'.
+\m pú:lhuku' n li:-pakanan-a-'
+\g Critonia.morifolia EPEN INS-V.fence-IPFV-2SBJ.SG [PRES]
+\l 
+
+\t chu: n chu: ma: n *carbonato** nali:laka.... Stapu stapu n li:lakatlawaniya',
+\m chu: n chu: ma: n caronato na-li:-laka-.... stapu stapu n li:-laka-tlawa-ni-ya-'
+\g PTCL EPEN PTCL TAG EPEN bicarbonate FUT-INS-face- bean bean EPEN INS-face-V.do-DAT-IPFV-2SBJ.SG [PRES]
+\l 
+
+\t aqchapayi xa n kimpu'qokán *porque** tlanka iyma:
+\m aq-chapa-y-i xa n kim-pu'qo-kán porque tlanka iyma:
+\g head-V.catch-IPFV-JNCT [3SBJ.SG PRES] PRN.3SBJ.SG EPEN 1POSS-stomach-PL.POSS INJT big DEM
+\l 
+
+\t talaqpali:yi lantla kilhwampa:'t
+\m talaqpali:-y-i lantla kilh-wám-pa:'-t
+\g V.change-IPFV-JNCT [3SBJ.SG PRES] like mouth-V.say-PROG.2SBJ-2SBJ.SG
+\l 
+
+\t ka wa: xa n pi
+\m ka wa: xa n pi
+\g only FOC PRN.3SBJ.SG EPEN COMP
+\l sólo que
+
+\t kta:'wa'ya:'ni n ki..., n..., mi..., n..., n kinchú:w pa: nawaniya n chu: pus
+\m k-ta:'-wa'-ya:'-n-i n ki-[FS] mi- n kin-chú:w pa: na-wa-ni-ya n chu: pus
+\g 1SBJ.SG-COM-V.eat-IPFV-2OBJ-JNCT EPEN 1SBJ.SG-[FS] 2POSS- EPEN 1POSS-tortilla Q FUT-V.say-DAT-IPFV [2SBJ.SG] EPEN PTCL INTJ
+\l se le diga te convido de mis tacos pues
+
+\t na: tla:ni iyma:
+\m na: tla:n-i iyma:
+\g aslo good-JNCT DEM
+\l 
+

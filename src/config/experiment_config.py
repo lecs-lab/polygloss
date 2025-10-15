@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
+TRAIN_MODE = Literal["pretrain", "predict", "finetune", "peft"]
 SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
 
@@ -58,12 +58,18 @@ class ExperimentConfig:
     max_tokens: int = 1024
     """Truncate prompts to this many tokens"""
 
+    toolbox_dir: str | None = None  
+    """folder containing {glottocode}-{split}.txt files"""
+    
     # ============================
     # Training
     # ============================
     
     limit: int | None = None
-    """Maximum number of training samples"""
+    """Maximum number of training samples (consecutive if start_i else random)"""
+    
+    start_i: int | None = None
+    """Starting index to grab consecutive training samples (i:i+limit if limit else i:)"""
 
     max_epochs: int = 50
     """Maximum number of training epochs"""
@@ -82,6 +88,18 @@ class ExperimentConfig:
 
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
+    
+    lora_rank: int = 8
+    """Lora rank if doing peft finetuning"""
+    
+    lora_alpha: int = 32
+    """Lora alpha if doing peft finetuning"""
+
+    lora_dropout: float = 0.1
+    """Lora dropout if doing peft finetuning"""
+
+    adapter_dir: str | None = None
+    """Directory to find adapter in. If not provided and mode == peft, train new adapter"""
 
     models_dir: str | None = None
     """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""

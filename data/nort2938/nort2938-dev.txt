@@ -1,0 +1,50 @@
+\t 'Láasd án díi gudashlgán.
+\m 'láa-sd án díi gudlasdla-gan
+\g 3-from REFL 1SG.P feel.slighted-PST
+\l I felt slighted by her.
+
+\t Dáng dáa aadáang.
+\m dáng dáa aada-gang
+\g 2SG.INAL brother.of.woman to.seine-PRS
+\l Your brother is seining.
+
+\t Áajii khwa'áay khináang.
+\m áa-jii khwaa-gaay khina-gang
+\g DEM1-this rock-DEF heavy-PRS
+\l This rock is heavy.
+
+\t Áanaag Hl ts'aagáasaang.
+\m áanaa-g Hl ts'aaga-saang
+\g next.door-to 1SG.A relocate-FUT
+\l I'll move into the other room
+
+\t Áatl'anaan t'aláng tl'uwáangsaang.
+\m áa-tl'anaan t'aláng tl'a'áaw-saang
+\g DEM1-right.here 1PL.A sit.PL-FUT
+\l We'll just sit right here.
+
+\t Áayaad tajuwáay tadáang.
+\m áayaad tajáaw-gaay tada-gang
+\g today wind-DEF cold-PRS
+\l The wind is cold today.
+
+\t Díi git'aláng táw guláagang.
+\m díi gid-'lang táw guláa-gang
+\g 1SG.INAL child-PL grease to.like-PRS
+\l My kids like (ooligan) grease.
+
+\t Dáalaay aa áangaa hal kh'íigadalgan.
+\m dáalaa-gaay ghaa áangaa hal kh'íigdalaa-gan
+\g money-DEF towards REFL.POSS 3 be.possessive.of-PST
+\l She didn't want to part with her money.
+
+\t Íitl' kháalang isgyáan íitl' dáalang aadáang.
+\m íitl' kháa-'lang isgyáan íitl' dáa-'lang aada-gang
+\g 1PL.INAL maternal.uncle-PL and 1PL.INAL brother.of.woman-PL to.seine-PRS
+\l Our uncles and our brothers are seining.
+
+\t Daláng gw gahldanúu'ujaa?
+\m daláng gw ga-hldanúu-'ujaa
+\g 2PL Q.FOC NTR-dine-Q.PL
+\l Did you folks eat?
+

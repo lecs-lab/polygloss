@@ -1,0 +1,66 @@
+{
+    "zong1243": {
+        "glossing": {
+            "word_level": {
+                "average_accuracy": 0.0,
+                "accuracy": 0.0
+            },
+            "morpheme_accuracy": {
+                "average_accuracy": 0.002564102564102564,
+                "accuracy": 0.0030120481927710845
+            },
+            "classes": {
+                "stem": {
+                    "prec": 0.0,
+                    "rec": 0.0,
+                    "f1": 0
+                },
+                "gram": {
+                    "prec": 0.3154121863799283,
+                    "rec": 0.21568627450980393,
+                    "f1": 0.2561863173216885
+                }
+            },
+            "bleu": 0.3853139309078215
+        },
+        "segmentation": {
+            "accuracy": 0.038461538461538464,
+            "precision": 0.44438316208678186,
+            "recall": 0.3938043823667213,
+            "f1": 0.4101845233444037,
+            "edit_distance": 7.961538461538462
+        }
+    },
+    "all": {
+        "glossing": {
+            "word_level": {
+                "average_accuracy": 0.0,
+                "accuracy": 0.0
+            },
+            "morpheme_accuracy": {
+                "average_accuracy": 0.002564102564102564,
+                "accuracy": 0.0030120481927710845
+            },
+            "classes": {
+                "stem": {
+                    "prec": 0.0,
+                    "rec": 0.0,
+                    "f1": 0
+                },
+                "gram": {
+                    "prec": 0.3154121863799283,
+                    "rec": 0.21568627450980393,
+                    "f1": 0.2561863173216885
+                }
+            },
+            "bleu": 0.3853139309078215
+        },
+        "segmentation": {
+            "accuracy": 0.038461538461538464,
+            "precision": 0.44438316208678186,
+            "recall": 0.3938043823667213,
+            "f1": 0.4101845233444037,
+            "edit_distance": 7.961538461538462
+        }
+    }
+}

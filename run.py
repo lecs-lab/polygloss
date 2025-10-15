@@ -8,7 +8,10 @@ from dataclasses import asdict
 import pandas as pd
 import torch
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
-from transformers.models.auto.tokenization_auto import AutoTokenizer
+from transformers import AutoTokenizer
+from peft import LoraConfig, TaskType
+from peft import get_peft_model
+from peft import PeftModel
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
@@ -25,6 +28,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+
 def run(
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
@@ -32,50 +36,49 @@ def run(
 ):
     random.seed(0)
 
-    # Initialize WandB experiment
+    # Initialize WandB experiment (only rank 0)
     if distributed_parameters["rank"] == 0:
-        if config.resume_from_checkpoint_id:
-            wandb.init(
-                project="polygloss",
-                entity="wav2gloss",
-                config=asdict(config),
-                id=config.resume_from_checkpoint_id,
-                resume="must",
-            )
-        else:
-            wandb.init(
-                project="polygloss",
-                config=asdict(config),
-            )
+        wandb.init(
+            project="polygloss",
+            config=asdict(config),
+            id=config.resume_from_checkpoint_id or None,
+        )
+        wandb_run_id = wandb.run.id
+        logger.info(f"W&B Run ID: {wandb_run_id}")
 
-    if config.models_dir:
-        models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
-    else:
-        models_folder = experiment_folder
+    # Setup folders
+    models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem if config.models_dir else experiment_folder
+    experiment_folder.mkdir(exist_ok=True, parents=True)
+    models_folder.mkdir(exist_ok=True, parents=True)
 
-    if config.glottocode is not None:
-        # Create subfolders for each language if needed
-        experiment_folder /= config.glottocode
-        experiment_folder.mkdir(exist_ok=True)
-        models_folder /= config.glottocode
-        models_folder.mkdir(exist_ok=True, parents=True)
-
-    if config.limit is not None:
-        experiment_folder /= str(config.limit)
-        experiment_folder.mkdir(exist_ok=True)
-        models_folder /= str(config.limit)
-        models_folder.mkdir(exist_ok=True, parents=True)
-
-    # Prepare model, dataset, tokenizer
+    # Prepare tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
-        distributed_parameters["device"]
-    )
+
+    # Load base model
+    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(distributed_parameters["device"])
     model.gradient_checkpointing_enable()
+
+    # Handle PEFT / LoRA
+    if config.mode == "peft" or (config.mode == "predict" and not config.adapter_dir is None):
+        peft_config = LoraConfig(
+            task_type=TaskType.SEQ_2_SEQ_LM,
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout
+        )
+        if config.resume_from_checkpoint_id:
+            raise ValueError("cannot resume PEFT from checkpoint :(")
+        if config.adapter_dir:
+            model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
+        else:
+            model = get_peft_model(model, peft_config)
+    # DDP wrapping
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
+
+    # Prepare dataset
     if config.model_type == "seq2seq":
         dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
@@ -85,7 +88,8 @@ def run(
     else:
         raise NotImplementedError()
 
-    if config.mode in ["pretrain", "finetune"]:
+    # Train
+    if config.mode in ["pretrain", "finetune", "peft"]:
         train(
             model,
             tokenizer=tokenizer,
@@ -96,6 +100,8 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
+
+    # Generate predictions
     predictions = generate(
         model,
         tokenizer=tokenizer,
@@ -104,41 +110,35 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
+
+    # Only rank 0 handles saving and logging
     if distributed_parameters["rank"] == 0:
+        # Log predictions to WandB and CSV
         wandb.log(
             {
                 "predictions": wandb.Table(
                     columns=["predicted", "reference", "output_key", "glottocode"],
-                    data=[
-                        [p.generation, p.label, info["output_key"], info["glottocode"]]
-                        for p, info in predictions
-                    ],
+                    data=[[p.generation, p.label, info["output_key"], info["glottocode"]] for p, info in predictions],
                 )
             }
         )
-        
         df = pd.DataFrame(
-            [
-                [p.generation, p.label, info["output_key"], info["glottocode"]]
-                for p, info in predictions
-            ],
+            [[p.generation, p.label, info["output_key"], info["glottocode"]] for p, info in predictions],
             columns=["predicted", "reference", "output_key", "glottocode"],
         )
-        
-        df.to_csv(experiment_folder / "predictions.csv", index=False)
-        # Evaluation (if we have labels, ie not in inference mode)
+        df.to_csv(experiment_folder / f"{config.glottocode}" / "predictions.csv", index=False)
+        # Evaluate if labels exist 
         if all(p.label is not None for p, _ in predictions):
             metrics = evaluate(predictions)
             wandb.log(data={"test": metrics})
-            with open(
-                experiment_folder / "metrics.json", "w", encoding="utf-8"
-            ) as file:
+            with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
                 json.dump(metrics, file, ensure_ascii=False, indent=4)
-            logger.info(
-                "Metrics logged to WandB and saved to %s",
-                experiment_folder / "metrics.json",
-            )
-            return metrics
+            logger.info("Metrics saved to %s", experiment_folder / "metrics.json")
+
+        wandb_run_id = wandb.run.id
+        wandb.finish()  # close current run
+
+        return {"metrics": metrics if all(p.label is not None for p, _ in predictions) else None, "final_model": f"{run_id}.model"}
 
 
 if __name__ == "__main__":

@@ -1,0 +1,450 @@
+\t Kyáa hal gyáa'anggang.
+\m kyáa hal gyáa'ang-gang
+\g outside 3 be.standing-PRS
+\l She's standing outside.
+
+\t Akyáa dáng st'aalángsaang.
+\m akyáa dáng st'aaláng-saang
+\g outside 2SG have.cold.feet-FUT
+\l Your feet will be cold outside.
+
+\t Áayaad t'aláng ta skh'at'áasaang.
+\m áayaad t'aláng ta skh'at'a-saang
+\g today 1PL.A NTR study-FUT
+\l Today we will practice.
+
+\t Dáalaay aa tl' kháahliyaagang.
+\m dáalaa-gaay ghaa tl' kháahliyaa-gang
+\g money-DEF towards IMPRS be.careful-PRS
+\l Be sure to be careful with the money.
+
+\t Wáa daalíigw hal k'ut'álgan. 'Wáadluu hal gudangáay st'i ghujúu'ugan.
+\m 'wáa daalíigw hal k'ut'ahl-gan 'wáa-dluu hal gudáang-gaay st'i ghujúu-'u-gan
+\g DEM3 next.day 3 die-PST DEM3-then 3.INAL mind-DEF sick CVB.all-PL.PST
+\l He died the next day. Then they were all saddened.
+
+\t Náasii kháwsd'eelgang.
+\m náa-sii kháwsda-'eehl-gang
+\g inside-area.of hot-CVB.become-PRS
+\l The house is warming up inside.
+
+\t Gháanaay khwáan-gang; satáw hánsan aa.
+\m gháan-gaay khwáan-gang satáw hánsan aa
+\g berry-DEF many-PRS ooligan.grease also FRAG
+\l The berries are plentiful. Grease too.
+
+\t Táawaay dadgáang.
+\m táaw-gaay dadga-gang
+\g food-DEF bitter-PRS
+\l The food tastes bitter.
+
+\t Tláan díi dáa aadáang.
+\m tláan díi dáa aada-gang
+\g stop 1SG.INAL brother.of.woman to.seine-PRS
+\l My brother doesn't seine anymore.
+
+\t Ghahl hal dángyaanggang.
+\m 0=gahl hal dángyaang-gang
+\g 0=about 3 embarassed-PRS
+\l She's embarassed by it.
+
+\t Xhíid Tlagáay daghangáang.
+\m xhíid tlag-gaay daghanga-gang
+\g below land-DEF bad-PRS
+\l Hell is a bad place.
+
+\t Git'áang aa gyáakh'id tl' st'agíidang.
+\m gid-ang ghaa gyáakhid tl' st'agad-gang
+\g child-REFL towards sometimes IMPRS warn-PRS
+\l Reprimand your child once in a while.
+
+\t Chaansd 'láa tl' khagándaayaan.
+\m chaan-sd 'láa tl' khagán-da-gaan
+\g in.water-from 3 IMPRS be.saved-CAUS-INF
+\l They saved him from the water.
+
+\t Cháanaay san xílgalgang.
+\m cháan-gaay san xila-gahl-gang
+\g soil-DEF also be.dry-CVB.become-PRS
+\l The soil has dried up too.
+
+\t K'yáal kháw 'láangaa daguyáagang.
+\m k'yáal kháw 'láangaa daguyáa-gang
+\g calf egg 3.POSS strong-PRS
+\l His calf muscle is strong.
+
+\t Tl'áa suud hal ak'aayáagang.
+\m tl'áa suud hal ak'aayáa-gang
+\g IMPRS among 3 strange-PRS
+\l She is a stranger amongst them.
+
+\t Tajuwáaysd anáa hal kh'áwaang.
+\m tajáaw-gaay-sd anáa hal kh'áwa-gang
+\g wind-DEF-from inside 3 be.sitting-PRS
+\l He's sitting inside out of the wind.
+
+\t Sgúusadaay t'aláng tatlíidang.
+\m sgúusiid-gaay t'aláng ta-tliid-gang
+\g potato-DEF 1PL.A NTR-harvest-PRS
+\l We are harvesting potatoes.
+
+\t Sgúusiidgyaa hl dah.
+\m sgúusiid-gyaa hl dah
+\g potato-PTV IMP.FOC buy
+\l Buy some potatoes.
+
+\t Adaahl hal náan k'ajúu gayéedsaang.
+\m adaahl hal náan k'ajúu gayéed-saang
+\g yesterday.or.tomorrow 3.INAL grandmother sing CVB.might-FUT
+\l His grandmother might sing tomorrow.
+
+\t T'aláng 'wáadluwaan áatl'an dáng an ghíidang.
+\m t'aláng 'wáadluwaan áa-tl'an dáng ghan ghid-gang
+\g 1PL.A all DEM1-here 2SG for be.thus-PRS
+\l We're all here for you.
+
+\t Áajii salíid, dámaan án hl khíng.
+\m áa-jii salíid dámaan án hl khíng-0
+\g DEM1-this after properly REFL IMP.FOC see-IMP
+\l From now on, take care of yourself.
+
+\t Áatl'daas gúusd uu díi kh'wáalaagang.
+\m áa-tl'daas gúusd uu díi kh'wáal-gaa-gang
+\g DEM1-these.people on.the.side.of FOC 1SG.P moiety-STAT-PRS
+\l I belong to these people's moiety.
+
+\t Hal yáalang díi tawdáang.
+\m hal yáa'ii-'lang díi tawda-gang
+\g 3.INAL parent-PL 1SG.P have.as.friend.or.clan.relative-PRS
+\l Her parents are my relatives.
+
+\t Git'áang hal dlagánggang.
+\m gid-ang hal dla-gang-gang
+\g child-REFL 3 CLF.human.or.small.mammal-carry-PRS
+\l She's packing her baby.
+
+\t Anáasii k'íinaang.
+\m anáa-sii k'íina-gang
+\g inside-area.of hot-PRS
+\l It's warm inside (the house).
+
+\t 'Láa gwíi hal gudaslánggang.
+\m 'láa gwíi hal gudasdláng-gang
+\g 3 into 3 worried-PRS
+\l She is worried about her.
+
+\t Díi xháad áalaangwaay tlaawhlgán.
+\m díi xháad áalaangw-gaay tlaawhla-gan
+\g 1SG.INAL father oar-DEF make-PST
+\l My father made the oar.
+
+\t Hal gudúu sgaajáagang.
+\m hal gudúu sgaajáa-gang
+\g 3 somewhat bald-PRS
+\l His hair is thining. He's kinda bald.
+
+\t Áatl'daas uu anáa isáang.
+\m áa-tl'daas uu anáa is-saang
+\g DEM1-these.people FOC inside be-FUT
+\l These people will stay at home.
+
+\t Gháa Hl tlagánggan.
+\m 0=ghaa Hl tlagáng-gan
+\g 0=towards 1SG.A vomit-PST
+\l I vomited there.
+
+\t Anáa uu xháay íijang.
+\m anáa uu xha-gaay is-gang
+\g inside FOC dog-DEF be-PRS
+\l The dog is inside.
+
+\t Chaansíi sghuluwáa áwyaagang.
+\m chaan-sii sghuluwáa áwyaa-gang
+\g in.water-area.of foamy CVB.very-PRS
+\l The sea is very foamy, bubbly.
+
+\t Gíisdluu dáalaay díinaa dáng da'áang?
+\m gíisdluu dáalaa-gaay díinaa dáng da'a-gang
+\g how.much money-DEF 1SG.POSS 2SG have-PRS
+\l How much of my money do you have?
+
+\t Sangáay san daghangáang.
+\m sáng-gaay san daghanga-gang
+\g weather-DEF also bad-PRS
+\l The weather is bad too.
+
+\t Akyáag hal kháagalgan.
+\m akyáa-g hal kháa-gahl-gan
+\g outside-to 3 go-CVB.become-PST
+\l She went outside.
+
+\t T'aláng ta xháy ts'an.
+\m t'aláng ta xháy ts'an
+\g 1PL.A NTR knit HORT
+\l Let's knit.
+
+\t Ánas khaj hlghálgang.
+\m ánas khaj hlghahl-gang
+\g DEM1.this.one black-PRS
+\l This person's hair is black.
+
+\t Díisd án hal gudlashlgán.
+\m díi-sd án hal gudlasdla-gan
+\g 1SG REFL 3 feel.slighted-PST
+\l She felt slighted by me.
+
+\t Aadáay iig ts'ahlíidan.
+\m aad-gaay ghii-g ts'ahlad-gan
+\g net-DEF into-to fall.apart-PST
+\l The net fell apart.
+
+\t Adaahl hal kháajuu'waasaang.
+\m adaahl hal kháajuu-'u-saang
+\g yesterday.or.tomorrow 3 hunt-PL-FUT
+\l Tomorrow they will hunt.
+
+\t Gínt'ajaay sghwáansang kh'áysk'w dluu áalaagang.
+\m gínt'as-gaay sghwáansang kh'áy-sk'w dluu áalaa-gang
+\g blanket-DEF one CLF.solid.heavy.object-one.whole equal.to to.have.traits-PRS
+\l The blanket costs about $1.
+
+\t Adaahl daalíigw dalángg Hl dúusaang.
+\m adaahl daalíigw daláng-g Hl dúu-saang
+\g yesterday.or.tomorrow next.day 2PL-to 1SG.A invite-FUT
+\l I'll invite you folks the day after tomorrow.
+
+\t Sghahláang adíid khwáan-gang.
+\m sghahláang adíid khwáan-gang
+\g yellow.cedar in.the.woods many-PRS
+\l There is a lot of yellow cedar in the woods.
+
+\t Gám Hl yahd'ánggang. Áajii táawaay Hl táa ghujúugan.
+\m gám Hl yahda-'áng-gang áa-jii táaw-gaay Hl táa ghujúu-gan
+\g NEG 1SG.A believe-NEG-PRS DEM1-this food-DEF 1SG.A eat.TR CVB.all-PST
+\l I don't believe it. I ate all this food.
+
+\t Daláng gw gu dáangsaa'us?
+\m daláng gw gu dáang-saa-'us
+\g 2PL Q.FOC RECP throw.out-FUT-Q
+\l Are you guys getting a divorce?
+
+\t Sáng 'wáadluwaan chíin sdáng hal táagang.
+\m sáng 'wáadluwaan chíin sdáng hal táa-gang
+\g day all fish two eat.TR-PRS
+\l He eats two fish everyday.
+
+\t Cháanuud sk'ag khwáan-gang.
+\m cháanuud sk'ag khwáan-gang
+\g autumn dog.salmon many-PRS
+\l There are lots of dog salmon in the Fall.
+
+\t Hal kháagaalaagang.
+\m hal kháa-gahl-aa-gang
+\g 3 go-CVB.become-CVB.go.to.do-PRS
+\l He's going to the bathroom.
+
+\t Áatl'daas k'úug skúnaang.
+\m áa-tl'daas k'úug skúna-gang
+\g DEM1-these.people heart be.clean-PRS
+\l These people hearts are clean.
+
+\t Áatl'an hl tíidaa.
+\m áa-tl'an hl tíida-0
+\g DEM1-here IMP.FOC lie.down-IMP
+\l Lie down here.
+
+\t Tl'ánuwaay daláng an íijang.
+\m tl'ánuu-gaay daláng ghan is-gang
+\g milk-DEF 2PL for be-PRS
+\l The milk is for you folks.
+
+\t Tlíi dáng khehjgad 'láas aa!
+\m tlíi dáng kheh-jgad 'láa-s aa
+\g so.much 2SG INS.by.seeing-perceive good-PTCP FRAG
+\l How beautiful you look!
+
+\t Hánas kh'ayáa jahlíigang.
+\m hánas kh'ayáa jahlíi-gang
+\g DEM1.this.one old.(animate) CVB.too.much-PRS
+\l This one is too old.
+
+\t Díi 'láa áahlganggang.
+\m díi 'láa áahlgang-gang
+\g 1SG.P good CVB.fairly-PRS
+\l I'm doing fairly well.
+
+\t Adaahl daalíigw díi chan st'igán.
+\m adaahl dalíigw díi chan st'i-gan
+\g yesterday.or.tomorrow next.day 1SG.INAL grandfather sick-PST
+\l My grandfather was sick the day before yesterday.
+
+\t Chaansíi sghúnggaagang.
+\m chaan-sii sghúnggaa-gang
+\g in.water-area.of milky.with.herring.spawn-PRS
+\l The sea is milky (as when herring are spawning).
+
+\t Dáas díi gwíi íijang.
+\m dáas díi gwíi is-gang
+\g ember 1SG.P into be-PRS
+\l Sparks are coming towards me.
+
+\t Gíisdluu áalaagang?
+\m gíisdluu áalaa-gang
+\g how.much to.have.traits-PRS
+\l How much does it cost?
+
+\t Dáalaa khwáan hal daa'wáang.
+\m dáalaa khwáan hal da'a-'u-gang
+\g money many 3 have-PL-PRS
+\l They have a lot of money.
+
+\t Áalaangw uu íijang.
+\m áalaangw uu is-gang
+\g oar FOC be-PRS
+\l This is a oar.
+
+\t Adaahl hl kháajaawaa.
+\m adaahl hl kháajuu-aa-0
+\g yesterday.or.tomorrow IMP.FOC hunt-CVB.go.to.do-IMP
+\l Go hunting tomorrow.
+
+\t 'Láag hal tla'áaydaagaan.
+\m 'láa-g hal tla'áayd-aa-gaan
+\g 3-to 3 help-CVB.go.to.do-INF
+\l She went to help him.
+
+\t Tluwáay hal dáanggan.
+\m tlúu-gaay hal dáang-gan
+\g boat-DEF 3 throw.away-PST
+\l He threw away the boat.
+
+\t Gám díi khaj hlghahl'ánggang.
+\m gám díi khaj hlghahl-'áng-gang
+\g NEG 1SG.INAL hair black-NEG-PRS
+\l My hair isn't black.
+
+\t Áajii salíid uu Xhaadas kíl t'aláng skh'at'gán.
+\m áa-jii salíid uu Xhaadas kíl t'aláng skh'at'a-gan
+\g DEM1-this after FOC Haida language 1PL.A learn-PST
+\l Afterwards we learned the Haida language.
+
+\t Khálgaay únggw díi dladahldgán.
+\m khálg-gaay díi dla-dahlda-gan
+\g ice-DEF 1SG.P CLF.human.or.small.mammal-fall.over-PST
+\l I fell on the ice.
+
+\t Akyáag hl khíng'waa.
+\m akyáa-g hl khíng-'u-0
+\g outside-to IMP.FOC see-PL-IMP
+\l Look outside.
+
+\t Daláng ta skh'at'áas dluu, daláng an Hl stla kingáangsaang.
+\m daláng ta skh'at'a-s dluu daláng an Hl stla kingáang-saang
+\g 2PL NTR study-PTCP when 2PL REFL 1SG.A INS.by.hand make.high.pitched.sound-FUT
+\l When you folks practice, I'll play the piano for you.
+
+\t Áajii salíid, st'áang tl' skúndaang.
+\m áa-jii salíid st'a-ang tl' skúna-da-gang
+\g DEM1-this after foot-REFL IMPRS be.clean-CAUS-PRS
+\l After this, be sure to keep your feet clean.
+
+\t Áa gw is?
+\m áa gw is
+\g this Q.FOC be
+\l Is this it?
+
+\t Xháay ta wahdáang.
+\m xha-gaay ta wahda-gang
+\g dog-DEF NTR to.bark-PRS
+\l The dog is barking.
+
+\t Cháanaay hal skhu tíidaalgang.
+\m cháan-gaay hal skhu tíi-daal-gang
+\g soil-DEF 3 INS.by.pushing CLF.building-move.along.slowly-PRS
+\l He's pushing the mud.
+
+\t Dáng tawíi kh'ánggwdangaang.
+\m dáng tawíi kh'ánggwdanga-gang
+\g 2SG.INAL friend.or.clan.relative be.kind-PRS
+\l Your relative is kind.
+
+\t Chaan daláng náangsaang.
+\m chaan daláng náang-saang
+\g in.water 2PL play-FUT
+\l You guys will play in the water.
+
+\t Díi náan ta líidadaang.
+\m díi náan ta líidada-gang
+\g 1SG.INAL grandmother NTR read-PRS
+\l My grandmother is reading.
+
+\t Áalaangw í'waan uu íijang.
+\m áalaangw í'waan uu is-gang
+\g oar big FOC be-PRS
+\l It's a big oar.
+
+\t Adaahl hal daguyáagan.
+\m adaahl hal daguyáa-gan
+\g yesterday.or.tomorrow 3 strong-PST
+\l Yesterday he was strong.
+
+\t Dáng gwíi díi gudasdlángsaang.
+\m dáng gwíi díi gudasdláng-saang
+\g 2SG into 1SG.P worried-FUT
+\l I'll be worried about you.
+
+\t Gin dah hlangáayg uu t'aláng diyínggang.
+\m gín dah hlanga-gaay-g uu t'aláng diyíng-gang
+\g thing buy CVB.able.to-NMLZ-to FOC 1PL.A search.for-PRS
+\l We're looking for something to buy. We're shopping.
+
+\t 'Wáa daalíigw Hl kháa'unggan.
+\m 'wáa daalíigw Hl kháa-'ung-gan
+\g DEM3 next.day 1SG.A go-DIR.around-PST
+\l I was walking around the next day.
+
+\t Áang, áayaad t'a'áaw gwa'áawgang.
+\m áang áayaad t'a'áaw gwa'áaw-gang
+\g yes today snow to.rain-PRS
+\l Yes, it is snowing today.
+
+\t Hl áalanggang.
+\m Hl áalang-gang
+\g 1SG.A to.paddle-PRS
+\l I'm paddling.
+
+\t Gúl háns Hl dahsáang.
+\m gúl háns Hl dah-sáang
+\g tobacco also 1SG.A buy-FUT
+\l I'll buy some tobacco too.
+
+\t Áa uu díi taw 'láas íijang.
+\m áa uu díi taw 'láa-s is-gang
+\g DEM1 FOC 1SG.INAL friend.or.clan.relative good-PTCP be-PRS
+\l This is my good friend.
+
+\t Dáa k'udáan hl áa isdáa.
+\m dáa k'udáan hl áa is-da-0
+\g 2SG by.oneself IMP.FOC REFL.POSS be-CAUS-IMP
+\l Do yours yourself.
+
+\t Chaansd hal khagán-gan.
+\m chaan-sd hal khagán-gan
+\g in.water-from 3 be.saved-PST
+\l He was saved from the water.
+
+\t Hal kháa náay áangaa k'udlán daghangáang.
+\m hal kháa na-gaay áangaa k'udlán daghanga-gang
+\g 3.INAL maternal.uncle house-DEF REFL.POSS to.paint bad-PRS
+\l His uncles is painting his house poorly.
+
+\t Aadgyáa uu íijang.
+\m aad-gyaa uu is-gang
+\g net-PTV FOC be-PRS
+\l This is a net.
+
+\t Dáas uu ts'áanuwaaysd íijang.
+\m dáas uu ts'áanuu-gaay-sd is-gang
+\g ember FOC fire-DEF-from be-PRS
+\l Sparks are coming from the fire.
+
