@@ -2,9 +2,10 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-TRAIN_MODE = Literal["pretrain", "predict", "finetune", "peft"]
+TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
 SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
+CREATE_EXAMPLE_TYPE = Literal["none", "train-only", "train-test"]
 
 _glotto_to_iso = {
     "arap1274": "arp",
@@ -40,16 +41,13 @@ class ExperimentConfig:
     glottocode: str | None = None
     """Glottocode of the language to finetune on (None for pretraining on all languages)"""
 
-    segmented_transcription: bool = True
-    """Whether to include examples with segmented transcriptions as input"""
+    create_segmentation_to_gloss: CREATE_EXAMPLE_TYPE = "train-only"
+    """Whether to create glossing examples with segmented transcriptions as input"""
 
-    unsegmented_transcription: bool = True
-    """Whether to include examples with unsegmented transcriptions as input"""
+    create_transcription_to_gloss: CREATE_EXAMPLE_TYPE = "train-test"
+    """Whether to create glossing examples with unsegmented transcriptions as input"""
 
-    exclude_st_segmented: bool = False
-    """Whether to exclude segmented examples from the SIGMORPHON shared task"""
-
-    create_segmentation_examples: bool = False
+    create_transcription_to_segmentation: CREATE_EXAMPLE_TYPE = "none"
     """Whether to create examples for the segmentation task (transcription → segmentation)"""
 
     use_translation: bool = True
@@ -58,18 +56,9 @@ class ExperimentConfig:
     max_tokens: int = 1024
     """Truncate prompts to this many tokens"""
 
-    toolbox_dir: str | None = None  
-    """folder containing {glottocode}-{split}.txt files"""
-    
     # ============================
     # Training
     # ============================
-    
-    limit: int | None = None
-    """Maximum number of training samples (consecutive if start_i else random)"""
-    
-    start_i: int | None = None
-    """Starting index to grab consecutive training samples (i:i+limit if limit else i:)"""
 
     max_epochs: int = 50
     """Maximum number of training epochs"""
@@ -88,7 +77,10 @@ class ExperimentConfig:
 
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
-    
+
+    models_dir: str | None = None
+    """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
+       
     lora_rank: int = 8
     """Lora rank if doing peft finetuning"""
     
@@ -97,12 +89,6 @@ class ExperimentConfig:
 
     lora_dropout: float = 0.1
     """Lora dropout if doing peft finetuning"""
-
-    adapter_dir: str | None = None
-    """Directory to find adapter in. If not provided and mode == peft, train new adapter"""
-
-    models_dir: str | None = None
-    """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
 
     resume_from_checkpoint_id: str | None = None
     """WandB ID (and checkpoint ID) for checkpoint to resume training from."""
@@ -128,11 +114,11 @@ class ExperimentConfig:
         default_factory=lambda: os.environ.get("SLURM_JOB_ID"), init=False
     )
 
-    # def __post_init__(self):
-    #     """Validates sanity checks on the parameters"""
-    #     if self.glottocode is not None:
-    #         if self.mode == "pretrain":
-    #             raise ValueError("Pretraining should not have a specified glottocode!")
-    #     else:
-    #         if self.mode == "finetune":
-    #             raise ValueError("Finetuning must have a glottocode!")
+    def __post_init__(self):
+        """Validates sanity checks on the parameters"""
+        if self.glottocode is not None:
+            if self.mode == "pretrain":
+                raise ValueError("Pretraining should not have a specified glottocode!")
+        else:
+            if self.mode == "finetune":
+                raise ValueError("Finetuning must have a glottocode!")

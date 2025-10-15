@@ -11,4 +11,4 @@ pyglottolog==3.16.0
 torch==2.6.0
 tqdm==4.67.1
 transformers==4.51.1
-peft
+peft==0.17.1

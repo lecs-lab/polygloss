@@ -1,6 +1,7 @@
 import inspect
 import logging
 import pathlib
+from peft import PeftModel
 
 import torch
 import tqdm
@@ -58,15 +59,19 @@ def train(
     start_epoch = 0
     if config.resume_from_checkpoint_id:
         logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
-        checkpoint = torch.load(
-            models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
-            weights_only=True,
-        )
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).load_state_dict(checkpoint["model_state_dict"])
-        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-        start_epoch = checkpoint["epoch"]
+        if config.mode == "lora":
+            adapter_dir  =  models_folder / f"{config.resume_from_checkpoint_id}.model"
+            model = PeftModel.from_pretrained(model, adapter_dir, is_trainable=True)
+        else:
+            checkpoint = torch.load(
+                models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
+                weights_only=True,
+            )
+            (
+                model.module if distributed_parameters["distributed"] else model
+            ).load_state_dict(checkpoint["model_state_dict"])
+            optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+            start_epoch = checkpoint["epoch"]
 
     forward_params = inspect.signature(
         (model.module if distributed_parameters["distributed"] else model).forward
@@ -170,11 +175,9 @@ def train(
             )
      
 
-    # Save final model and remove checkpoint 
-    # Does work for peft
+    #save pretraine
     if distributed_parameters["rank"] == 0:
         (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
-        final_checkpoint_dir = models_folder / f"{run_id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
         ).save_pretrained(final_checkpoint_dir)

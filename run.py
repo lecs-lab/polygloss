@@ -58,20 +58,15 @@ def run(
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(distributed_parameters["device"])
     model.gradient_checkpointing_enable()
 
-    # Handle PEFT / LoRA
-    if config.mode == "peft" or (config.mode == "predict" and not config.adapter_dir is None):
+    # LoRA
+    if config.mode == "lora" and not config.resume_from_checkpoint_id:
         peft_config = LoraConfig(
             task_type=TaskType.SEQ_2_SEQ_LM,
             r=config.lora_rank,
             lora_alpha=config.lora_alpha,
             lora_dropout=config.lora_dropout
         )
-        if config.resume_from_checkpoint_id:
-            raise ValueError("cannot resume PEFT from checkpoint :(")
-        if config.adapter_dir:
-            model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
-        else:
-            model = get_peft_model(model, peft_config)
+        model = get_peft_model(model, peft_config)
     # DDP wrapping
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -89,7 +84,7 @@ def run(
         raise NotImplementedError()
 
     # Train
-    if config.mode in ["pretrain", "finetune", "peft"]:
+    if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
             tokenizer=tokenizer,
