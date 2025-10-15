@@ -1,7 +1,6 @@
 import inspect
 import logging
 import pathlib
-from peft import PeftModel
 
 import torch
 import tqdm
@@ -10,6 +9,7 @@ from torch.utils.data import DataLoader, DistributedSampler
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+from peft import PeftModel
 
 logger = logging.getLogger(__name__)
 
@@ -26,8 +26,13 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
-    if not (run := wandb.run):
-        raise Exception("WandB must be initialized!")
+
+    if distributed_parameters["rank"] == 0:
+        if not (run := wandb.run):
+            raise Exception("WandB must be initialized!")
+        run_id = run.id
+    else:
+        run_id = None
 
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -157,7 +162,7 @@ def train(
                 },
                 step=epoch * len(train_dataloader),
             )
-            # Save checkpoint (doesn't work for peft-- should fix or disable)
+            # Save checkpoint
             torch.save(
                 {
                     "epoch": epoch,
