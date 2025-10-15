@@ -65,7 +65,7 @@ for row in dataset:
     if row.get("designated_split") is not None:
         dataset_dict[row["designated_split"]].append(row)
     else:
-        dataset_dict["pretrain"].append(row)
+        dataset_dict["train"].append(row)
 dataset_dict = {
     key: datasets.Dataset.from_list(lst).remove_columns("designated_split")
     for key, lst in dataset_dict.items()

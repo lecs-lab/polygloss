@@ -26,13 +26,8 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
-
-    if distributed_parameters["rank"] == 0:
-        if not (run := wandb.run):
-            raise Exception("WandB must be initialized!")
-        run_id = run.id
-    else:
-        run_id = None
+    if not (run := wandb.run):
+        raise Exception("WandB must be initialized!")
 
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -177,7 +172,8 @@ def train(
 
     #save pretraine
     if distributed_parameters["rank"] == 0:
-        (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
+        (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
+        final_checkpoint_dir = models_folder / f"{run.id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
         ).save_pretrained(final_checkpoint_dir)

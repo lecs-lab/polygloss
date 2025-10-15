@@ -101,30 +101,22 @@ def run(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
-        original_dataset=dataset["test"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
+    # Join with original dataset to add language info
+    predictions_with_langs = predictions.merge(
+        dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
+        on="id",
+        how="left",
+    )
 
-    # Only rank 0 handles saving and logging
     if distributed_parameters["rank"] == 0:
-        # Log predictions to WandB and CSV
-        wandb.log(
-            {
-                "predictions": wandb.Table(
-                    columns=["predicted", "reference", "output_key", "glottocode"],
-                    data=[[p.generation, p.label, info["output_key"], info["glottocode"]] for p, info in predictions],
-                )
-            }
-        )
-        df = pd.DataFrame(
-            [[p.generation, p.label, info["output_key"], info["glottocode"]] for p, info in predictions],
-            columns=["predicted", "reference", "output_key", "glottocode"],
-        )
-        df.to_csv(experiment_folder / f"{config.glottocode}" / "predictions.csv", index=False)
-        # Evaluate if labels exist 
-        if all(p.label is not None for p, _ in predictions):
-            metrics = evaluate(predictions)
+        wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
+
+        # Evaluation (if we have labels, ie not in inference mode)
+        if predictions_with_langs["reference"].notnull().all():  # type:ignore
+            metrics = evaluate(predictions_with_langs)
             wandb.log(data={"test": metrics})
             with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
                 json.dump(metrics, file, ensure_ascii=False, indent=4)
