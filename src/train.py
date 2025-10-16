@@ -5,7 +5,7 @@ import pathlib
 import torch
 import tqdm
 from torch.utils.data import DataLoader, DistributedSampler
-from peft import get_peft_model_state_dict
+from peft import set_peft_model_state_dict
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
@@ -175,7 +175,7 @@ def train(
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        # (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
+        (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
         final_checkpoint_dir = models_folder / f"{run_id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
