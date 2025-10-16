@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader, DistributedSampler
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-
+from peft import PeftModel, set_peft_model_state_dict
 logger = logging.getLogger(__name__)
 
 
@@ -62,9 +62,12 @@ def train(
             models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
             weights_only=True,
         )
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).load_state_dict(checkpoint["model_state_dict"])
+        if config.mode == "lora":
+            set_peft_model_state_dict(model, checkpoint["model_state_dict"])
+        else:
+            (
+                model.module if distributed_parameters["distributed"] else model
+            ).load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
@@ -168,11 +171,12 @@ def train(
                 },
                 models_folder / f"{run_id}.checkpoint.pt",
             )
+     
 
-    # Save final model and remove checkpoint
+    #save pretrained
     if distributed_parameters["rank"] == 0:
-        (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
-        final_checkpoint_dir = models_folder / f"{run_id}.model"
+        # (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
+        final_checkpoint_dir = models_folder / f"{run.id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
         ).save_pretrained(final_checkpoint_dir)

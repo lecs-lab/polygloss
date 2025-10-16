@@ -8,7 +8,8 @@ training-checkpoints/
 .venv
 wandb
 */checkpoint
-logs/
 *.pt
 pyrightconfig.json
 local
+*logs/
+*.sh
