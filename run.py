@@ -9,6 +9,7 @@ from dataclasses import asdict
 import torch
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
+from peft import LoraConfig, PeftModel, get_peft_model, TaskType
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
@@ -37,7 +38,6 @@ def run(
         if config.resume_from_checkpoint_id:
             wandb.init(
                 project="polygloss",
-                entity="lecs-general",
                 config=asdict(config),
                 id=config.resume_from_checkpoint_id,
                 resume="must",
@@ -45,7 +45,6 @@ def run(
         else:
             wandb.init(
                 project="polygloss",
-                entity="lecs-general",
                 config=asdict(config),
             )
 
@@ -53,6 +52,7 @@ def run(
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
     else:
         models_folder = experiment_folder
+   
 
     if config.glottocode is not None:
         # Create subfolders for each language if needed
@@ -71,6 +71,9 @@ def run(
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
+
+    if config.adapter_dir:
+        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     if config.model_type == "seq2seq":
         dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
@@ -79,8 +82,17 @@ def run(
         )
     else:
         raise NotImplementedError()
+    
+    if config.mode == "lora":
+        lora_config = LoraConfig(
+            task_type=TaskType.SEQ_2_SEQ_LM,
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout,
+        )
+        model = get_peft_model(model, lora_config)
 
-    if config.mode in ["pretrain", "finetune"]:
+    if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
             tokenizer=tokenizer,
