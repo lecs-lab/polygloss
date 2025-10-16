@@ -57,9 +57,11 @@ def run(
     # Load base model
     model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(distributed_parameters["device"])
     model.gradient_checkpointing_enable()
-
+    
+    if config.adapter_dir:
+        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     # LoRA
-    if config.mode == "lora" and not config.resume_from_checkpoint_id:
+    if config.mode == "lora":
         peft_config = LoraConfig(
             task_type=TaskType.SEQ_2_SEQ_LM,
             r=config.lora_rank,
@@ -67,6 +69,7 @@ def run(
             lora_dropout=config.lora_dropout
         )
         model = get_peft_model(model, peft_config)
+    
     # DDP wrapping
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -83,7 +86,6 @@ def run(
     else:
         raise NotImplementedError()
 
-    # Train
     if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
@@ -95,8 +97,6 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
-
-    # Generate predictions
     predictions = generate(
         model,
         tokenizer=tokenizer,
@@ -118,14 +118,15 @@ def run(
         if predictions_with_langs["reference"].notnull().all():  # type:ignore
             metrics = evaluate(predictions_with_langs)
             wandb.log(data={"test": metrics})
-            with open(experiment_folder / "metrics.json", "w", encoding="utf-8") as file:
+            with open(
+                experiment_folder / "metrics.json", "w", encoding="utf-8"
+            ) as file:
                 json.dump(metrics, file, ensure_ascii=False, indent=4)
-            logger.info("Metrics saved to %s", experiment_folder / "metrics.json")
-
-        wandb_run_id = wandb.run.id
-        wandb.finish()  # close current run
-
-        return {"metrics": metrics if all(p.label is not None for p, _ in predictions) else None, "final_model": f"{run_id}.model"}
+            logger.info(
+                "Metrics logged to WandB and saved to %s",
+                experiment_folder / "metrics.json",
+            )
+            return metrics
 
 
 if __name__ == "__main__":

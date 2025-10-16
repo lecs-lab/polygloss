@@ -9,8 +9,7 @@ from torch.utils.data import DataLoader, DistributedSampler
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from peft import PeftModel
-
+from peft import PeftModel, set_peft_model_state_dict
 logger = logging.getLogger(__name__)
 
 
@@ -59,19 +58,18 @@ def train(
     start_epoch = 0
     if config.resume_from_checkpoint_id:
         logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
+        checkpoint = torch.load(
+            models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
+            weights_only=True,
+        )
         if config.mode == "lora":
-            adapter_dir  =  models_folder / f"{config.resume_from_checkpoint_id}.model"
-            model = PeftModel.from_pretrained(model, adapter_dir, is_trainable=True)
+            set_peft_model_state_dict(model, checkpoint["model_state_dict"])
         else:
-            checkpoint = torch.load(
-                models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
-                weights_only=True,
-            )
             (
                 model.module if distributed_parameters["distributed"] else model
             ).load_state_dict(checkpoint["model_state_dict"])
-            optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-            start_epoch = checkpoint["epoch"]
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        start_epoch = checkpoint["epoch"]
 
     forward_params = inspect.signature(
         (model.module if distributed_parameters["distributed"] else model).forward
@@ -175,9 +173,9 @@ def train(
             )
      
 
-    #save pretraine
+    #save pretrained
     if distributed_parameters["rank"] == 0:
-        (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
+        # (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
         final_checkpoint_dir = models_folder / f"{run.id}.model"
         (
             model.module if distributed_parameters["distributed"] else model

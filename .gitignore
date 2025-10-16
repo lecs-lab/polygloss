@@ -12,3 +12,4 @@ wandb
 pyrightconfig.json
 local
 *logs/
+*.sh

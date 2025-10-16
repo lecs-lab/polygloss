@@ -92,6 +92,9 @@ class ExperimentConfig:
 
     resume_from_checkpoint_id: str | None = None
     """WandB ID (and checkpoint ID) for checkpoint to resume training from."""
+    
+    adapter_dir: str | None = None
+    """Directory of LoRA adapter. If provided, will add adaptor to pretrained model"""
 
     # ============================
     # Generation
