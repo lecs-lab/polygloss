@@ -3,6 +3,7 @@ import random
 import re
 
 import editdistance
+from glossing.igt import gloss_string_to_word_glosses
 
 logger = logging.getLogger(__name__)
 
@@ -13,6 +14,8 @@ def alignment_score(segments_and_glosses: list[tuple[str, str]]):
     # Log a few random examples
     log_indices = random.sample(range(len(segments_and_glosses)), k=10)
     for index, (segments, glosses) in enumerate(segments_and_glosses):
+        segments = " ".join(gloss_string_to_word_glosses(segments))
+        glosses = " ".join(gloss_string_to_word_glosses(glosses))
         segment_abstract = re.sub(r"[^\=\-\s]+", "x", segments)
         glosses_abstract = re.sub(r"[^\=\-\s]+", "x", glosses)
         edit_distance = editdistance.eval(segment_abstract, glosses_abstract)
@@ -21,7 +24,7 @@ def alignment_score(segments_and_glosses: list[tuple[str, str]]):
 
         if index in log_indices:
             logger.info(
-                f"Ex {index}\nSegmentation: {segments}\nGlosses: {glosses}\nScore: {sentence_score}"
+                f"Ex {index}\nSegmentation: {segments} ({segment_abstract})\nGlosses: {glosses} ({glosses_abstract})\nScore: {sentence_score}"
             )
 
         sum_edit_dist += sentence_score
