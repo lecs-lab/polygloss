@@ -21,7 +21,7 @@ from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
 from src.util.collator import FlexibleSeq2SeqCollator
 
-logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
