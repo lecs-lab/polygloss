@@ -11,7 +11,7 @@ from tqdm import tqdm
 from data.lang_codes import iso1_to_3, iso3_to_glotto, odin_to_glotto
 from data.model import IGTLine, load_igt
 
-logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 evaluation_languages = [
     "arap1274",
