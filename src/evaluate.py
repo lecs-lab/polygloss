@@ -66,7 +66,7 @@ def _evaluate(predictions: pd.DataFrame):
 
     if len(gloss_predictions) > 0 and len(segmentation_predictions) > 0:
         # We have both, let's calculate alignment
-        
+
         assert len(gloss_predictions) == len(segmentation_predictions), (
             f"Must have same number of glossing and segmentation predictions. Got {len(gloss_predictions)} glosses and {len(segmentation_predictions)} segmentations."
         )
@@ -75,10 +75,10 @@ def _evaluate(predictions: pd.DataFrame):
         )
         metrics["alignment"] = alignment_score(
             [
-                (g, s)
-                for g, s in zip(
-                    joint_predictions["predicted_glosses"].tolist(),
+                (s, g)
+                for s, g in zip(
                     joint_predictions["predicted_segmentations"].tolist(),
+                    joint_predictions["predicted_glosses"].tolist(),
                 )
             ]
         )
