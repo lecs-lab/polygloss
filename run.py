@@ -69,13 +69,22 @@ def run(
         distributed_parameters["device"]
     )
     model.gradient_checkpointing_enable()
+    if config.adapter_dir:
+        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
+    elif config.mode == "lora":
+        lora_config = LoraConfig(
+            task_type=TaskType.SEQ_2_SEQ_LM,
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout,
+        )
+        model = get_peft_model(model, lora_config)
+
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
 
-    if config.adapter_dir:
-        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     if config.model_type == "seq2seq":
         dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
@@ -85,15 +94,6 @@ def run(
     else:
         raise NotImplementedError()
     
-    if config.mode == "lora":
-        lora_config = LoraConfig(
-            task_type=TaskType.SEQ_2_SEQ_LM,
-            r=config.lora_rank,
-            lora_alpha=config.lora_alpha,
-            lora_dropout=config.lora_dropout,
-        )
-        model = get_peft_model(model, lora_config)
-
     if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
