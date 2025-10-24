@@ -5,7 +5,7 @@ import pathlib
 import torch
 import tqdm
 from torch.utils.data import DataLoader, DistributedSampler
-
+from peft import set_peft_model_state_dict
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
@@ -60,11 +60,14 @@ def train(
         logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
         checkpoint = torch.load(
             models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
-            weights_only=True,
+            map_location=device,
         )
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).load_state_dict(checkpoint["model_state_dict"])
+        model_to_load = model.module if distributed_parameters["distributed"] else model
+        if config.mode == "lora":
+            set_peft_model_state_dict(model_to_load, checkpoint["model_state_dict"])
+
+        else:
+            model_to_load.load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 

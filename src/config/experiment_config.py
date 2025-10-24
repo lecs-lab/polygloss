@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-TRAIN_MODE = Literal["pretrain", "predict", "finetune"]
+TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
 SEGMENTATION_MODE = Literal["segmented", "unsegmented", "both"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
 CREATE_EXAMPLE_TYPE = Literal["none", "train-only", "train-test"]
@@ -83,6 +83,18 @@ class ExperimentConfig:
 
     resume_from_checkpoint_id: str | None = None
     """WandB ID (and checkpoint ID) for checkpoint to resume training from."""
+
+    lora_rank: int = 8
+    """Rank for LoRa"""
+
+    lora_dropout: float = 0.2
+    """Dropout for LoRa"""
+
+    lora_alpha: int = 8
+    """Alpha for LoRa"""
+
+    adapter_dir: str | None = None
+    """LoRA adapter directory. If specified, will add adapter layer to pretrained model (for inference)"""
 
     # ============================
     # Generation
