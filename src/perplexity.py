@@ -5,6 +5,7 @@ import os
 import pathlib
 import typing
 
+import pandas as pd
 import torch
 import tqdm
 from datasets import Dataset
@@ -17,15 +18,14 @@ from src.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 
 logger = logging.getLogger(__name__)
 
-def calculate_ppl(
+def eval_ppl_per_lang(
     model,
     tokenizer,
     dev_dataset: Dataset,
-    models_folder: pathlib.Path,
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
-):
-    """Calculate perplexity (per token/byte, morpheme, and word) on the eval set."""    
+) -> pd.DataFrame:
+    """Calculate loss and perplexity per language on the eval set."""    
     model.eval()
     device = distributed_parameters["device"]
     
@@ -100,7 +100,7 @@ def calculate_ppl(
                 out = model(**batch)
                 
                 loss = _get_loss(out, batch["labels"]).item()
-                batch_tokens = (batch["labels"] != -100).sum().item()
+                batch_tokens = batch["labels"].size(0)
                 local_total_tokens += batch_tokens
                 local_eval_loss_sum += loss * batch_tokens
                 
@@ -112,27 +112,24 @@ def calculate_ppl(
                     local_total_words += len(decoded_text.split())
             
             if distributed_parameters["distributed"]:
-                local_loss_tensor = torch.tensor(local_eval_loss_sum, device=device)
-                local_tokens_tensor = torch.tensor(local_total_tokens, device=device)
-                local_morphemes_tensor = torch.tensor(local_total_morphemes, device=device)
-                local_words_tensor = torch.tensor(local_total_words, device=device)
-                
-                torch.distributed.all_reduce(local_loss_tensor, op=torch.distributed.ReduceOp.SUM)
-                torch.distributed.all_reduce(local_tokens_tensor, op=torch.distributed.ReduceOp.SUM)
-                torch.distributed.all_reduce(local_morphemes_tensor, op=torch.distributed.ReduceOp.SUM)
-                torch.distributed.all_reduce(local_words_tensor, op=torch.distributed.ReduceOp.SUM)
+                loss_and_counts = torch.tensor(
+                    [local_eval_loss_sum, local_total_tokens, local_total_morphemes, local_total_words],
+                    device=device,
+                )
 
-                eval_loss_sum = local_loss_tensor.item()
-                total_tokens = local_tokens_tensor.item()
-                total_morphemes = local_morphemes_tensor.item()
-                total_words = local_words_tensor.item()
+                torch.distributed.all_reduce(loss_and_counts, op=torch.distributed.ReduceOp.SUM)
+
+                eval_loss_sum = loss_and_counts[0].item()
+                total_tokens = loss_and_counts[1].item()
+                total_morphemes = loss_and_counts[2].item()
+                total_words = loss_and_counts[3].item()
             else:
                 eval_loss_sum = local_eval_loss_sum
                 total_tokens = local_total_tokens
                 total_morphemes = local_total_morphemes
                 total_words = local_total_words
             
-            eval_loss_per_language[glottocode] = eval_loss_sum
+            eval_loss_per_language[glottocode] = eval_loss_sum / total_tokens
             tokens_per_language[glottocode] = total_tokens
             morphemes_per_language[glottocode] = total_morphemes
             words_per_language[glottocode] = total_words
@@ -143,17 +140,21 @@ def calculate_ppl(
     if pbar is not None:
         pbar.close()
     
-    # convert loss to perplexity
-    ppl_per_language = {}
+    eval_rows = []
     for glottocode in glottocodes:
         loss = eval_loss_per_language[glottocode]
-        ppl_per_language[glottocode] = {
-            "ppl_per_token": torch.exp(torch.tensor(loss)).item() / tokens_per_language[glottocode],
-            "ppl_per_morpheme": torch.exp(torch.tensor(loss)).item() / morphemes_per_language[glottocode],
-            "ppl_per_word": torch.exp(torch.tensor(loss)).item() / words_per_language[glottocode],
-        }
-    
-    return ppl_per_language
+        lang_row = pd.Series({
+            "glottocode": glottocode,
+            "loss": loss,
+            "ppl": torch.exp(torch.tensor(loss)).item(),
+            "num_tokens": tokens_per_language[glottocode],
+            "num_morphemes": morphemes_per_language[glottocode],
+            "num_words": words_per_language[glottocode],
+        })
+        eval_rows.append(lang_row)
+    eval_ppl_per_language = pd.DataFrame(eval_rows)
+
+    return eval_ppl_per_language
 
 def _get_loss(out, labels):
     """Dynamically gets the loss from the model outputs, which are different depending on the model"""

@@ -2,6 +2,7 @@ import inspect
 import logging
 import pathlib
 
+import pandas as pd
 import torch
 import tqdm
 from torch.utils.data import DataLoader, DistributedSampler
@@ -9,6 +10,7 @@ from peft import set_peft_model_state_dict
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+from src.perplexity import eval_ppl_per_lang
 
 logger = logging.getLogger(__name__)
 
@@ -116,38 +118,28 @@ def train(
             if pbar:
                 pbar.update()
 
-        model.eval()
         logger.info("Evaluating...")
-        with (
-            torch.amp.autocast_mode.autocast(
-                distributed_parameters["device_type"], dtype=torch.bfloat16
-            ),
-            torch.inference_mode(),
-        ):
-            eval_loss_sum = 0.0
-            eval_n = 0
-            for batch in dev_dataloader:
-                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-                for key in keys_to_pop:
-                    batch.pop(key)
-                batch = batch.to(device)
-                out = model(**batch)
-                bs = batch["labels"].size(0)
-                loss = _get_loss(out, batch["labels"]).item()
-                eval_loss_sum += loss * bs
-                eval_n += bs
+        eval_ppl_per_language = eval_ppl_per_lang(
+            model,
+            tokenizer,
+            dev_dataloader.dataset,
+            config,
+            distributed_parameters,
+        )
+        # Get total loss and number of tokens across all languages
+        eval_loss_sum = eval_ppl_per_language["loss"].sum()
+        eval_n = eval_ppl_per_language["num_tokens"].sum()
+        eval_loss = eval_loss_sum / eval_n
 
-        # Sum losses over devices, if distributed
+        # Sum train losses over devices, if distributed
         if distributed_parameters["distributed"]:
             losses_tensor = torch.tensor(
-                [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
+                [train_loss_sum, train_n], device=device
             )
             torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
             train_loss = losses_tensor[0] / losses_tensor[1]
-            eval_loss = losses_tensor[2] / losses_tensor[3]
         else:
             train_loss = train_loss_sum / train_n
-            eval_loss = eval_loss_sum / eval_n
 
         if distributed_parameters["rank"] == 0:
             # Log results
@@ -158,6 +150,12 @@ def train(
                     "train/epoch": epoch,
                     "eval/loss": eval_loss,
                 },
+                step=epoch * len(train_dataloader),
+            )
+            # log per-language eval results
+            lang_loss_table = wandb.Table(dataframe=eval_ppl_per_language)
+            wandb.log(
+                {"eval/loss_per_language": lang_loss_table},
                 step=epoch * len(train_dataloader),
             )
             # Save checkpoint
