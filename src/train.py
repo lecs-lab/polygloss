@@ -127,9 +127,11 @@ def train(
             distributed_parameters,
         )
         # Get total loss and number of tokens across all languages
-        eval_loss_sum = eval_ppl_per_language["loss"].sum()
+        eval_ppl_per_language["total_loss"] = (
+            eval_ppl_per_language["loss"] * eval_ppl_per_language["num_tokens"]
+        )
         eval_n = eval_ppl_per_language["num_tokens"].sum()
-        eval_loss = eval_loss_sum / eval_n
+        eval_loss = eval_ppl_per_language["total_loss"].sum() / eval_n
 
         # Sum train losses over devices, if distributed
         if distributed_parameters["distributed"]:
