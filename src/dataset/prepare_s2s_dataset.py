@@ -4,19 +4,24 @@
 - Which kind of examples are created is determined by the options in `experiment_config.py`
 """
 
+import logging
 import os
 import typing
+from pathlib import Path
+from string import Template
 from typing import cast
 
 import datasets
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
-from transformers.data.data_collator import DataCollatorForSeq2Seq
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
+from src.util.collator import FlexibleSeq2SeqCollator
+
+logger = logging.getLogger(__name__)
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -36,55 +41,71 @@ def create_dataloaders(
     dataset = datasets.load_dataset(config.dataset_key)
     dataset = cast(datasets.DatasetDict, dataset)
     dataset = _filter(dataset, config.glottocode)
+    inputs_dataset = datasets.DatasetDict()
 
+    if "glosslm" in config.pretrained_model:
+        logger.warning("Detected GlossLM base model, using GlossLM prompt.")
+
+    # Make examples with different input/output combos
     for split in dataset:
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
-            if config.unsegmented_transcription:
+            if config.create_transcription_to_gloss == "train-test" or (
+                split != "test" and config.create_transcription_to_gloss == "train-only"
+            ):
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="transcription",
                         output_key="glosses",
                         use_translation=config.use_translation,
                     )
                 )
-            if (
-                config.segmented_transcription
-                and row["segmentation"]
-                and (
-                    (not config.exclude_st_segmented)
-                    or (not row["source"] == "sigmorphon_st")
+            if row["segmentation"] and (
+                config.create_segmentation_to_gloss == "train-test"
+                or (
+                    split != "test"
+                    and config.create_segmentation_to_gloss == "train-only"
                 )
             ):
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="segmentation",
                         output_key="glosses",
                         use_translation=config.use_translation,
                     )
                 )
-            if config.create_segmentation_examples and row["segmentation"]:
+            if row["segmentation"] and (
+                config.create_transcription_to_segmentation == "train-test"
+                or (
+                    split != "test"
+                    and config.create_transcription_to_segmentation == "train-only"
+                )
+            ):
                 examples.append(
                     _create_example(
                         row,
+                        config=config,
                         input_key="transcription",
                         output_key="segmentation",
                         use_translation=False,
                     )
                 )
-        dataset[split] = datasets.Dataset.from_list(examples)
+        inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
-    inputs_dataset = dataset.map(
+    inputs_dataset = inputs_dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
-        remove_columns=["input", "label", "output_key", "glottocode"],
+        remove_columns=["input", "label"],
         desc="Tokenizing",
     )
-    collator = DataCollatorForSeq2Seq(
+
+    collator = FlexibleSeq2SeqCollator(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
     )
     dataloaders = {}
@@ -136,7 +157,7 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
         # We must be pretraining
         # Instead of language-specific eval sets, let's use all of the pretraining and ID eval data and make iid splits
         pretraining_data = datasets.concatenate_datasets(
-            [dataset["pretrain"], dataset["dev"]]
+            [dataset["train"], dataset["dev"]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
         new_dataset["train"] = pretraining_data["train"]
@@ -163,6 +184,7 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
 
 def _create_example(
     row: typing.Mapping,
+    config: ExperimentConfig,
     input_key: InputKey = "transcription",
     output_key: OutputKey = "glosses",
     use_translation: bool = True,
@@ -180,22 +202,42 @@ def _create_example(
         if row["language"] == "" or not row["language"]
         else row["language"]
     )
-
-    # Build the prompt
-    prompt = f"Predict the {output_key} for the following {input_key} in {lang}."
-    prompt += f"\n\nTranscription in {lang}: {input_seq}"
-
-    if output_key == "glosses":
-        prompt += f"\nIs transcription segmented: {input_key == 'segmentation'}"
-
     if use_translation and row["translation"] and len(row["translation"].strip()) > 0:
         translation = " ".join((row["translation"]).split())
-        prompt += f"\nTranslation in {row['metalanguage'] or 'unknown'}: {translation}"
+        translation_text = (
+            f"Translation in {row['metalanguage'] or 'unknown'}: {translation}"
+        )
+    else:
+        translation_text = ""
 
-    prompt += f"\n\n{output_key.capitalize()}: "
+    if "glosslm" in config.pretrained_model:
+        prompt_path = Path(__file__).parent / "glosslm.s2s.prompt"
+        is_segmented_prefix = "Transcription segmented"
+    else:
+        prompt_path = Path(__file__).parent / "polygloss.s2s.prompt"
+        is_segmented_prefix = "Is text segmented"
+
+    with open(prompt_path, "r") as prompt_file:
+        prompt_text = prompt_file.read()
+        prompt_template = Template(prompt_text)
+
+    prompt = prompt_template.substitute(
+        {
+            "output_key": output_key,
+            "lang": lang,
+            "text": input_seq,
+            "is_segmented": (
+                f"\n{is_segmented_prefix}: {input_key == 'segmentation'}"
+                if output_key == "glosses"
+                else ""
+            ),
+            "translation": "\n" + translation_text,
+        }
+    )
     return {
         "input": prompt,
         "label": output_seq,
-        "output_key": output_key,
+        "input-output": f"{input_key}-{output_key}",
+        "id": row["id"],
         "glottocode": row["glottocode"],
     }

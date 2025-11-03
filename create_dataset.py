@@ -24,7 +24,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="\033[90m%(asctime)s \033[36m[%(levelname)s] \033[1;33m%(module)s\033[0m: %(message)s",
 )
-logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--message", "-m", required=True, help="Commit message")
@@ -65,7 +65,7 @@ for row in dataset:
     if row.get("designated_split") is not None:
         dataset_dict[row["designated_split"]].append(row)
     else:
-        dataset_dict["pretrain"].append(row)
+        dataset_dict["train"].append(row)
 dataset_dict = {
     key: datasets.Dataset.from_list(lst).remove_columns("designated_split")
     for key, lst in dataset_dict.items()

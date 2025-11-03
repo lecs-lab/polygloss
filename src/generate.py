@@ -1,11 +1,9 @@
 import inspect
 import itertools
 import logging
-from dataclasses import dataclass
-from typing import Mapping, cast
 
+import pandas as pd
 import torch
-from datasets import Dataset
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
@@ -15,24 +13,13 @@ from src.distributed import DistributedParameters
 logger = logging.getLogger(__name__)
 
 
-@dataclass
-class PredictedExample:
-    generation: str
-    label: str | None
-
-
-PredictionWithInfo = tuple[PredictedExample, Mapping]
-"""A PredictedExample paired with the original row from the dataset"""
-
-
 def generate(
     model,
     tokenizer,
     dataloader: DataLoader,
-    original_dataset: Dataset,
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
-) -> list[PredictionWithInfo]:
+) -> pd.DataFrame:
     """Runs inference, generating predictions for each item in the dataloader.
 
     Critically, the `original_dataset` should be the dataset *prior to tokenization*,
@@ -42,13 +29,13 @@ def generate(
     Returns:
         (list[PredictedExample]): The generated outputs and decoded labels (or None if not provided)
     """
-    assert len(dataloader.dataset) == len(original_dataset)  # type:ignore
-
     model.eval()
     device = distributed_parameters["device"]
 
     generations: list[str] = []
     labels: list[str | None] = []
+    input_output_keys: list[str] = []
+    ids: list[str] = []
 
     if distributed_parameters["distributed"]:
         model = model.module
@@ -79,25 +66,55 @@ def generate(
             )
         else:
             labels.extend([None] * len(batch_generations))
+        input_output_keys.extend(batch["input-output"])
+        ids.extend(batch["id"])
 
     # Gather all examples
     if distributed_parameters["distributed"]:
         all_generations = [None for _ in range(distributed_parameters["world_size"])]
         all_labels = [None for _ in range(distributed_parameters["world_size"])]
+        all_input_output_keys = [
+            None for _ in range(distributed_parameters["world_size"])
+        ]
+        all_ids = [None for _ in range(distributed_parameters["world_size"])]
 
         logger.info(
             f"[RANK {distributed_parameters['rank']}] Finished generation, entering gather"
         )
         torch.distributed.all_gather_object(all_generations, generations)
         torch.distributed.all_gather_object(all_labels, labels)
+        torch.distributed.all_gather_object(all_input_output_keys, input_output_keys)
+        torch.distributed.all_gather_object(all_ids, ids)
+
         # all_gather creates a list of lists, so we need to flatten
         all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
         all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
+        all_input_output_keys = list(
+            itertools.chain.from_iterable(all_input_output_keys)  # type:ignore
+        )
+        all_ids = list(itertools.chain.from_iterable(all_ids))  # type:ignore
     else:
         all_generations = generations
         all_labels = labels
+        all_input_output_keys = input_output_keys
+        all_ids = ids
     assert all(gen is not None for gen in all_generations)
-    return [
-        (PredictedExample(gen, label), cast(Mapping, info))
-        for gen, label, info in zip(all_generations, all_labels, original_dataset)
-    ]
+    df = pd.DataFrame(
+        [
+            {
+                "predicted": gen,
+                "reference": label,
+                "input_key": input_output_key.split("-")[0],
+                "output_key": input_output_key.split("-")[1],
+                "id": id,
+            }
+            for gen, label, input_output_key, id in zip(
+                all_generations, all_labels, all_input_output_keys, all_ids
+            )
+        ]
+    )
+    # De-dupe, since with DDP we might have dupe generations
+    df = df.drop_duplicates(
+        subset=["id", "input_key", "output_key"], keep="first"
+    ).reset_index(drop=True)
+    return df

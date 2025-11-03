@@ -5,7 +5,7 @@ import pathlib
 import torch
 import tqdm
 from torch.utils.data import DataLoader, DistributedSampler
-
+from peft import set_peft_model_state_dict
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
@@ -25,8 +25,13 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
-    if not (run := wandb.run):
-        raise Exception("WandB must be initialized!")
+
+    if distributed_parameters["rank"] == 0:
+        if not (run := wandb.run):
+            raise Exception("WandB must be initialized!")
+        run_id = run.id
+    else:
+        run_id = None
 
     if distributed_parameters["rank"] == 0:
         pbar = tqdm.tqdm(
@@ -55,11 +60,14 @@ def train(
         logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
         checkpoint = torch.load(
             models_folder / f"{config.resume_from_checkpoint_id}.checkpoint.pt",
-            weights_only=True,
+            map_location=device,
         )
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).load_state_dict(checkpoint["model_state_dict"])
+        model_to_load = model.module if distributed_parameters["distributed"] else model
+        if config.mode == "lora":
+            set_peft_model_state_dict(model_to_load, checkpoint["model_state_dict"])
+
+        else:
+            model_to_load.load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
 
@@ -161,18 +169,18 @@ def train(
                     ).state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
                 },
-                models_folder / f"{run.id}.checkpoint.pt",
+                models_folder / f"{run_id}.checkpoint.pt",
             )
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
-        (models_folder / f"{run.id}.checkpoint.pt").unlink(missing_ok=True)
-        final_checkpoint_dir = models_folder / f"{run.id}.model"
+        (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
+        final_checkpoint_dir = models_folder / f"{run_id}.model"
         (
             model.module if distributed_parameters["distributed"] else model
         ).save_pretrained(final_checkpoint_dir)
         tokenizer.save_pretrained(final_checkpoint_dir)
-        logger.info(f"Saved model to {final_checkpoint_dir}")
+        logger.info(f"Saved model to {final_checkpoint_dir.resolve()}")
 
 
 def _get_loss(out, labels):

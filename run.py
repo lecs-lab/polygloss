@@ -9,6 +9,7 @@ from dataclasses import asdict
 import torch
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
+from peft import LoraConfig, PeftModel, get_peft_model, TaskType
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
@@ -37,7 +38,7 @@ def run(
         if config.resume_from_checkpoint_id:
             wandb.init(
                 project="polygloss",
-                entity="wav2gloss",
+                entity="lecs-general",
                 config=asdict(config),
                 id=config.resume_from_checkpoint_id,
                 resume="must",
@@ -45,7 +46,7 @@ def run(
         else:
             wandb.init(
                 project="polygloss",
-                entity="wav2gloss",
+                entity="lecs-general",
                 config=asdict(config),
             )
 
@@ -53,6 +54,7 @@ def run(
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
     else:
         models_folder = experiment_folder
+   
 
     if config.glottocode is not None:
         # Create subfolders for each language if needed
@@ -67,10 +69,23 @@ def run(
         distributed_parameters["device"]
     )
     model.gradient_checkpointing_enable()
+    model.enable_input_require_grads()
+    if config.adapter_dir:
+        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
+    elif config.mode == "lora":
+        lora_config = LoraConfig(
+            task_type=TaskType.SEQ_2_SEQ_LM,
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout,
+        )
+        model = get_peft_model(model, lora_config)
+
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
+
     if config.model_type == "seq2seq":
         dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
             tokenizer=tokenizer,
@@ -79,8 +94,8 @@ def run(
         )
     else:
         raise NotImplementedError()
-
-    if config.mode in ["pretrain", "finetune"]:
+    
+    if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
             tokenizer=tokenizer,
@@ -95,26 +110,22 @@ def run(
         model,
         tokenizer=tokenizer,
         dataloader=dataloaders["test"],
-        original_dataset=dataset["test"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
+    # Join with original dataset to add language info
+    predictions_with_langs = predictions.merge(
+        dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
+        on="id",
+        how="left",
+    )
+
     if distributed_parameters["rank"] == 0:
-        wandb.log(
-            {
-                "predictions": wandb.Table(
-                    columns=["predicted", "reference", "output_key", "glottocode"],
-                    data=[
-                        [p.generation, p.label, info["output_key"], info["glottocode"]]
-                        for p, info in predictions
-                    ],
-                )
-            }
-        )
+        wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         # Evaluation (if we have labels, ie not in inference mode)
-        if all(p.label is not None for p, _ in predictions):
-            metrics = evaluate(predictions)
+        if predictions_with_langs["reference"].notnull().all():  # type:ignore
+            metrics = evaluate(predictions_with_langs)
             wandb.log(data={"test": metrics})
             with open(
                 experiment_folder / "metrics.json", "w", encoding="utf-8"
