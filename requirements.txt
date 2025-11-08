@@ -1,6 +1,6 @@
 datasets==3.5.0
 editdistance==0.8.1
-glossing>=1.0.3
+glossing>=1.0.4
 huggingface-hub>=0.19.4
 iso639_lang==2.6.1
 langid==1.1.6
