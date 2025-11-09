@@ -8,8 +8,8 @@ import glossing
 import pandas as pd
 import pytest
 
-from src.alignment_score import alignment_score
-from src.util.type_utils import all_not_none
+from ..util.type_utils import all_not_none
+from .alignment_score import alignment_score
 
 logger = logging.getLogger(__name__)
 

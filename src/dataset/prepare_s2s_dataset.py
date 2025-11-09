@@ -27,12 +27,11 @@ InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
 
 
-def create_dataloaders(
+def create_dataset(
     tokenizer: PreTrainedTokenizerBase,
     config: ExperimentConfig,
-    distributed_parameters: DistributedParameters,
-) -> tuple[dict[str, DataLoader], datasets.DatasetDict]:
-    """Creates dataloaders for training/finetuning
+) -> datasets.DatasetDict:
+    """Creates dataset for training/finetuning
 
     Args:
         tokenizer (transformers.AutoTokenizer): The pretrained tokenizer
@@ -98,44 +97,46 @@ def create_dataloaders(
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
-    inputs_dataset = inputs_dataset.map(
+    return inputs_dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
         batched=True,
         remove_columns=["input", "label"],
         desc="Tokenizing",
     )
 
+
+def create_dataloader(
+    dataset: datasets.Dataset,
+    shuffle: bool,
+    batch_size: int,
+    tokenizer: PreTrainedTokenizerBase,
+    distributed_parameters: DistributedParameters,
+):
+    """Creates a dataloader for a dataset"""
     collator = FlexibleSeq2SeqCollator(
         tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
     )
-    dataloaders = {}
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
         num_workers = 0
-    for split in ["train", "dev", "test"]:
-        if distributed_parameters["distributed"]:
-            sampler = DistributedSampler(
-                inputs_dataset[split],  # type:ignore
-                shuffle=split == "train",
-                num_replicas=distributed_parameters["world_size"],
-                rank=distributed_parameters["rank"],
-            )
-        else:
-            sampler = (
-                RandomSampler(inputs_dataset[split])
-                if split == "train"
-                else SequentialSampler(inputs_dataset[split])
-            )
-        dataloaders[split] = DataLoader(
-            inputs_dataset[split],  # type:ignore
-            batch_size=config.batch_size,
-            collate_fn=collator,
-            sampler=sampler,
-            num_workers=num_workers,
-            pin_memory=True,
+    if distributed_parameters["distributed"]:
+        sampler = DistributedSampler(
+            dataset,  # type:ignore
+            shuffle=shuffle,
+            num_replicas=distributed_parameters["world_size"],
+            rank=distributed_parameters["rank"],
         )
-    return dataloaders, dataset
+    else:
+        sampler = RandomSampler(dataset) if shuffle else SequentialSampler(dataset)
+    return DataLoader(
+        dataset,  # type:ignore
+        batch_size=batch_size,
+        collate_fn=collator,
+        sampler=sampler,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
 
 
 def _filter(dataset: datasets.DatasetDict, glottocode: str | None):

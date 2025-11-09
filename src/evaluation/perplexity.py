@@ -1,22 +1,18 @@
 import inspect
 import logging
 import re
-import os
-import pathlib
-import typing
 
 import pandas as pd
 import torch
 import tqdm
 from datasets import Dataset
-from torch.utils.data import DataLoader
-from transformers.data.data_collator import DataCollatorForSeq2Seq
 
 from config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from src.evaluate import DEFAULT_MORPHEME_BOUNDARIES
+from src.evaluation.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 
 logger = logging.getLogger(__name__)
+
 
 def eval_ppl_per_lang(
     model,
@@ -25,56 +21,40 @@ def eval_ppl_per_lang(
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
 ) -> pd.DataFrame:
-    """Calculate loss and perplexity per language on the eval set."""    
+    """Calculate loss and perplexity per language on the eval set."""
+    if config.model_type == "seq2seq":
+        from src.dataset.prepare_s2s_dataset import create_dataloader
+    else:
+        raise NotImplementedError()
+
     model.eval()
     device = distributed_parameters["device"]
-    
     if distributed_parameters["distributed"]:
         model = model.module
-    
-    if distributed_parameters["rank"] == 0:
-        pbar = tqdm.tqdm(
-            total=len(glottocodes), desc="Calculating PPL per language"
-        )
-    else:
-        pbar = None
-        
+
     forward_params = inspect.signature(
         (model.module if distributed_parameters["distributed"] else model).forward
     ).parameters
-    
+
     boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
-    
-    if "SLURM_CPUS_PER_TASK" in os.environ:
-        num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
-    else:
-        num_workers = 0
 
     # make dataloader per language
     glottocodes = dev_dataset.unique("glottocode")
     lang_dataloaders = {}
     for glottocode in glottocodes:
         lang_dataset = dev_dataset.filter(lambda x: x["glottocode"] == glottocode)
-        data_collator = DataCollatorForSeq2Seq(
-            tokenizer,
-            label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
-        )
-        dataloader = DataLoader(
-            lang_dataset,
-            collate_fn=data_collator,
+        lang_dataloaders[glottocode] = create_dataloader(
+            dataset=lang_dataset,
+            shuffle=False,
             batch_size=config.batch_size,
-            sampler=None
-            if not distributed_parameters["distributed"]
-            else torch.utils.data.distributed.DistributedSampler(
-                lang_dataset,
-                num_replicas=distributed_parameters["world_size"],
-                rank=distributed_parameters["rank"],
-                shuffle=False,
-            ),
-            num_workers=num_workers,
+            tokenizer=tokenizer,
+            distributed_parameters=distributed_parameters,
         )
-        lang_dataloaders[glottocode] = dataloader
-    
+
+    if distributed_parameters["rank"] == 0:
+        pbar = tqdm.tqdm(total=len(glottocodes), desc="Calculating PPL per language")
+    else:
+        pbar = None
     with (
         torch.amp.autocast_mode.autocast(
             distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -85,39 +65,50 @@ def eval_ppl_per_lang(
         tokens_per_language = {}
         morphemes_per_language = {}
         words_per_language = {}
-        
+
         for glottocode, dev_dataloader in lang_dataloaders.items():
             local_total_tokens = 0
             local_total_morphemes = 0
             local_total_words = 0
             local_eval_loss_sum = 0.0
-            
+
             for batch in dev_dataloader:
                 keys_to_pop = [k for k in batch.keys() if k not in forward_params]
                 for key in keys_to_pop:
                     batch.pop(key)
                 batch = batch.to(device)
                 out = model(**batch)
-                
+
                 loss = _get_loss(out, batch["labels"]).item()
                 batch_tokens = batch["labels"].size(0)
                 local_total_tokens += batch_tokens
                 local_eval_loss_sum += loss * batch_tokens
-                
+
                 # Count tokens, morphemes, and words
                 labels = batch["labels"]
-                decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
+                decoded_labels = tokenizer.batch_decode(
+                    labels, skip_special_tokens=True
+                )
                 for decoded_text in decoded_labels:
-                    local_total_morphemes += len(re.split(boundary_pattern, decoded_text))
+                    local_total_morphemes += len(
+                        re.split(boundary_pattern, decoded_text)
+                    )
                     local_total_words += len(decoded_text.split())
-            
+
             if distributed_parameters["distributed"]:
                 loss_and_counts = torch.tensor(
-                    [local_eval_loss_sum, local_total_tokens, local_total_morphemes, local_total_words],
+                    [
+                        local_eval_loss_sum,
+                        local_total_tokens,
+                        local_total_morphemes,
+                        local_total_words,
+                    ],
                     device=device,
                 )
 
-                torch.distributed.all_reduce(loss_and_counts, op=torch.distributed.ReduceOp.SUM)
+                torch.distributed.all_reduce(
+                    loss_and_counts, op=torch.distributed.ReduceOp.SUM
+                )
 
                 eval_loss_sum = loss_and_counts[0].item()
                 total_tokens = loss_and_counts[1].item()
@@ -128,33 +119,36 @@ def eval_ppl_per_lang(
                 total_tokens = local_total_tokens
                 total_morphemes = local_total_morphemes
                 total_words = local_total_words
-            
+
             eval_loss_per_language[glottocode] = eval_loss_sum / total_tokens
             tokens_per_language[glottocode] = total_tokens
             morphemes_per_language[glottocode] = total_morphemes
             words_per_language[glottocode] = total_words
-            
+
             if pbar is not None:
                 pbar.update(1)
 
     if pbar is not None:
         pbar.close()
-    
+
     eval_rows = []
     for glottocode in glottocodes:
         loss = eval_loss_per_language[glottocode]
-        lang_row = pd.Series({
-            "glottocode": glottocode,
-            "loss": loss,
-            "ppl": torch.exp(torch.tensor(loss)).item(),
-            "num_tokens": tokens_per_language[glottocode],
-            "num_morphemes": morphemes_per_language[glottocode],
-            "num_words": words_per_language[glottocode],
-        })
+        lang_row = pd.Series(
+            {
+                "glottocode": glottocode,
+                "loss": loss,
+                "ppl": torch.exp(torch.tensor(loss)).item(),
+                "num_tokens": tokens_per_language[glottocode],
+                "num_morphemes": morphemes_per_language[glottocode],
+                "num_words": words_per_language[glottocode],
+            }
+        )
         eval_rows.append(lang_row)
     eval_ppl_per_language = pd.DataFrame(eval_rows)
 
     return eval_ppl_per_language
+
 
 def _get_loss(out, labels):
     """Dynamically gets the loss from the model outputs, which are different depending on the model"""
