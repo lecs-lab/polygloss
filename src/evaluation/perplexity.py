@@ -7,7 +7,7 @@ import torch
 import tqdm
 from datasets import Dataset
 
-from config.experiment_config import ExperimentConfig
+from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
 from src.evaluation.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 
@@ -32,10 +32,7 @@ def eval_ppl_per_lang(
     if distributed_parameters["distributed"]:
         model = model.module
 
-    forward_params = inspect.signature(
-        (model.module if distributed_parameters["distributed"] else model).forward
-    ).parameters
-
+    forward_params = inspect.signature(model.forward).parameters
     boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
 
     # make dataloader per language
@@ -80,9 +77,9 @@ def eval_ppl_per_lang(
                 out = model(**batch)
 
                 loss = _get_loss(out, batch["labels"]).item()
-                batch_tokens = batch["labels"].size(0)
-                local_total_tokens += batch_tokens
-                local_eval_loss_sum += loss * batch_tokens
+                bs = batch["labels"].size(0)
+                local_total_tokens += bs
+                local_eval_loss_sum += loss * bs
 
                 # Count tokens, morphemes, and words
                 labels = batch["labels"]
