@@ -13,10 +13,10 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
-from evaluation.perplexity import eval_ppl_per_lang
 from src.config.config_to_dataclass import config_to_dataclass
 from src.distributed import DistributedParameters, setup_ddp
 from src.evaluation.evaluate import evaluate
+from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
 
