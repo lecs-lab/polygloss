@@ -13,6 +13,7 @@ from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
+from evaluation.perplexity import eval_ppl_per_lang
 from src.config.config_to_dataclass import config_to_dataclass
 from src.distributed import DistributedParameters, setup_ddp
 from src.evaluation.evaluate import evaluate
@@ -117,6 +118,17 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
+
+    # Compute perplexity for each language
+    perplexity_by_lang = eval_ppl_per_lang(
+        model=model,
+        tokenizer=tokenizer,
+        dev_dataset=dataset["dev"],
+        config=config,
+        distributed_parameters=distributed_parameters,
+    )
+
+    # Compute test predictions and metrics
     predictions = generate(
         model,
         tokenizer=tokenizer,
@@ -133,6 +145,9 @@ def run(
 
     if distributed_parameters["rank"] == 0:
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
+
+        lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
+        wandb.log({"eval/loss_per_language": lang_loss_table})
 
         # Evaluation (if we have labels, ie not in inference mode)
         if predictions_with_langs["reference"].notnull().all():  # type:ignore
