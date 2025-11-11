@@ -123,7 +123,7 @@ def run(
     perplexity_by_lang = eval_ppl_per_lang(
         model=model,
         tokenizer=tokenizer,
-        dev_dataset=dataset["dev"],
+        dev_dataloader=dataloaders["dev"],
         config=config,
         distributed_parameters=distributed_parameters,
     )

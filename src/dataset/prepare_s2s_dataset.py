@@ -113,9 +113,7 @@ def create_dataloader(
     distributed_parameters: DistributedParameters,
 ):
     """Creates a dataloader for a dataset"""
-    collator = FlexibleSeq2SeqCollator(
-        tokenizer, label_pad_token_id=typing.cast(int, tokenizer.pad_token_id)
-    )
+    collator = FlexibleSeq2SeqCollator(tokenizer, label_pad_token_id=-100)
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
