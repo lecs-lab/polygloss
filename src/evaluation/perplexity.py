@@ -54,7 +54,7 @@ def eval_ppl_per_lang(
             # Should be shape (batch_size,seq_length)
             losses = cross_entropy(
                 out.logits.permute(0, 2, 1),
-                batch["labels"],
+                batch["labels"].to(device),
                 ignore_index=-100,
                 reduction="none",
             )
