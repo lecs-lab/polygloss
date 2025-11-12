@@ -1,13 +1,13 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --gres=gpu:h100:4
+#SBATCH --gpus-per-node=4
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --cpus-per-task=4
 #SBATCH --time=7-00:00:00
-#SBATCH --qos=blanca-clearlab1
-#SBATCH --partition=blanca-clearlab1
-#SBATCH --account=blanca-clearlab1
+#SBATCH --partition=ghx4
+#SBATCH --account=mginn
+#SBATCH --gpu-bind=verbose,closest
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
@@ -18,10 +18,9 @@ export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export OMP_NUM_THREADS=4
 export PYTHONUNBUFFERED=1
 
-module purge
-module load miniforge
-mamba activate polygloss
-cd "/projects/bebe/$USER"
+module load python/miniforge3_pytorch
+conda activate polygloss
+cd "/projects/bebe/$USER/polygloss"
 
 set -x
 
