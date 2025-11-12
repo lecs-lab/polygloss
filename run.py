@@ -7,15 +7,16 @@ import random
 from dataclasses import asdict
 
 import torch
+from peft import LoraConfig, PeftModel, TaskType, get_peft_model
+from torch.utils.data.dataloader import DataLoader
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
-from peft import LoraConfig, PeftModel, get_peft_model, TaskType
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
-from src.dataset import prepare_s2s_dataset
 from src.distributed import DistributedParameters, setup_ddp
-from src.evaluate import evaluate
+from src.evaluation.evaluate import evaluate
+from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
 
@@ -54,7 +55,6 @@ def run(
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
     else:
         models_folder = experiment_folder
-   
 
     if config.glottocode is not None:
         # Create subfolders for each language if needed
@@ -86,15 +86,27 @@ def run(
             model, device_ids=[distributed_parameters["local_rank"]]
         )
 
+    dataloaders = {}
     if config.model_type == "seq2seq":
-        dataloaders, dataset = prepare_s2s_dataset.create_dataloaders(
-            tokenizer=tokenizer,
-            config=config,
-            distributed_parameters=distributed_parameters,
-        )
+        from src.dataset.prepare_s2s_dataset import create_dataloader, create_dataset
     else:
         raise NotImplementedError()
-    
+
+    dataset = create_dataset(
+        tokenizer=tokenizer,
+        config=config,
+    )
+    dataloaders: dict[str, DataLoader] = {
+        split: create_dataloader(
+            dataset[split],
+            shuffle=split == "train",
+            batch_size=config.batch_size,
+            tokenizer=tokenizer,
+            distributed_parameters=distributed_parameters,
+        )
+        for split in dataset.keys()
+    }
+
     if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
@@ -106,6 +118,17 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
+
+    # Compute perplexity for each language
+    perplexity_by_lang = eval_ppl_per_lang(
+        model=model,
+        tokenizer=tokenizer,
+        dev_dataloader=dataloaders["dev"],
+        config=config,
+        distributed_parameters=distributed_parameters,
+    )
+
+    # Compute test predictions and metrics
     predictions = generate(
         model,
         tokenizer=tokenizer,
@@ -122,6 +145,9 @@ def run(
 
     if distributed_parameters["rank"] == 0:
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
+
+        lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
+        wandb.log({"eval/loss_per_language": lang_loss_table})
 
         # Evaluation (if we have labels, ie not in inference mode)
         if predictions_with_langs["reference"].notnull().all():  # type:ignore

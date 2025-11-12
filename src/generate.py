@@ -61,6 +61,7 @@ def generate(
             tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
         )
         if "labels" in batch:
+            batch["labels"][batch["labels"] == -100] = tokenizer.pad_token_id
             labels.extend(
                 tokenizer.batch_decode(batch["labels"], skip_special_tokens=True)
             )
