@@ -4,22 +4,36 @@
 #SBATCH --gpus-per-node=4
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --cpus-per-task=4
-#SBATCH --time=7-00:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --partition=ghx4
-#SBATCH --account=mginn
+#SBATCH --account=bebe-dtai-gh
 #SBATCH --gpu-bind=verbose,closest
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
+
+echo "=== CUDA + PyTorch diagnostics ==="
+which python
+python - <<'PY'
+import torch, os
+print("CUDA visible devices:", os.environ.get("CUDA_VISIBLE_DEVICES"))
+print("Torch CUDA version:", torch.version.cuda)
+print("Torch built with:", torch.__config__.show())
+print("CUDA available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("Detected GPUs:", torch.cuda.device_count())
+    print("GPU 0:", torch.cuda.get_device_name(0))
+PY
+
 # Usage: sbatch run_curc_ddp.sh <path_to_config.cfg> (--monoling)
+
+module list
 
 export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export OMP_NUM_THREADS=4
 export PYTHONUNBUFFERED=1
 
-module load python/miniforge3_pytorch
-conda activate polygloss
 cd "/projects/bebe/$USER/polygloss"
 
 set -x
