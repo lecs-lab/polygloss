@@ -8,6 +8,7 @@ import pandas as pd
 import torch
 from torch.nn.functional import cross_entropy
 from torch.utils.data.dataloader import DataLoader
+from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
@@ -47,25 +48,26 @@ def eval_ppl_per_lang(
         ),
         torch.inference_mode(),
     ):
-        for batch in dev_dataloader:
+        for batch in tqdm(dev_dataloader, desc="Evaluating"):
             inputs = {k: v.to(device) for k, v in batch.items() if k in forward_params}
             out = model(**inputs)
             # Compute loss without reducing so we can split up by language
             # Should be shape (batch_size,seq_length)
+            labels = batch["labels"]
             losses = cross_entropy(
                 out.logits.permute(0, 2, 1),
-                batch["labels"].to(device),
+                labels.to(device),
                 ignore_index=-100,
                 reduction="none",
             )
-            labels = batch["labels"][batch["labels"] == -100] = 0
+            labels[labels == -100] = 0
             decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
             for seq_losses, glottocode, seq_labels, label_text in zip(
-                losses, batch["glottocode"], batch["labels"], decoded_labels
+                losses, batch["glottocode"], labels, decoded_labels
             ):
                 loss_sum_per_language[glottocode] += seq_losses.sum().detach().item()
                 num_tokens_per_language[glottocode] += (  # type:ignore
-                    torch.sum(seq_labels != -100).detach().item()
+                    torch.sum(seq_labels != 0).detach().item()
                 )
                 num_morphemes_per_language[glottocode] += len(
                     re.split(boundary_pattern, label_text)
