@@ -65,6 +65,8 @@ def eval_ppl_per_lang(
             for seq_losses, glottocode, seq_labels, label_text in zip(
                 losses, batch["glottocode"], labels, decoded_labels
             ):
+                if glottocode is None:
+                    glottocode = "<unknown>"
                 loss_sum_per_language[glottocode] += seq_losses.sum().detach().item()
                 num_tokens_per_language[glottocode] += (  # type:ignore
                     torch.sum(seq_labels != 0).detach().item()
