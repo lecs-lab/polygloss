@@ -58,9 +58,8 @@ def eval_ppl_per_lang(
                 ignore_index=-100,
                 reduction="none",
             )
-            decoded_labels = tokenizer.batch_decode(
-                batch["labels"], skip_special_tokens=True
-            )
+            labels = batch["labels"][batch["labels"] == -100] = 0
+            decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
             for seq_losses, glottocode, seq_labels, label_text in zip(
                 losses, batch["glottocode"], batch["labels"], decoded_labels
             ):
