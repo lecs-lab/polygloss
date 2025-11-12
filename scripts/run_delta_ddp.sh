@@ -11,6 +11,13 @@
 #SBATCH --out=logs/%j.log
 #SBATCH --error=logs/%j.log
 
+# Usage:
+# module use /sw/user/modules/python
+# module load python/miniforge3_pytorch
+# conda activate polygloss
+# sbatch run_curc_ddp.sh <path_to_config.cfg> (--monoling)
+
+# To create the env see here: https://docs.ncsa.illinois.edu/systems/deltaai/en/latest/user-guide/python/pytorch.html#pytorch-pip-install
 
 echo "=== CUDA + PyTorch diagnostics ==="
 which python
@@ -24,8 +31,6 @@ if torch.cuda.is_available():
     print("Detected GPUs:", torch.cuda.device_count())
     print("GPU 0:", torch.cuda.get_device_name(0))
 PY
-
-# Usage: sbatch run_curc_ddp.sh <path_to_config.cfg> (--monoling)
 
 module list
 
