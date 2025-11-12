@@ -37,7 +37,8 @@ def eval_ppl_per_lang(
     ).parameters
     boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
 
-    logger.info("Computing per-language perplexity...")
+    if distributed_parameters["rank"] == 0:
+        logger.info("Computing per-language perplexity...")
     loss_sum_per_language = defaultdict(float)
     num_tokens_per_language = defaultdict(int)
     num_morphemes_per_language = defaultdict(int)
@@ -48,7 +49,11 @@ def eval_ppl_per_lang(
         ),
         torch.inference_mode(),
     ):
-        for batch in tqdm(dev_dataloader, desc="Evaluating"):
+        for batch in tqdm(
+            dev_dataloader,
+            desc="Evaluating",
+            disable=distributed_parameters["rank"] != 0,
+        ):
             inputs = {k: v.to(device) for k, v in batch.items() if k in forward_params}
             out = model(**inputs)
             # Compute loss without reducing so we can split up by language
@@ -77,7 +82,13 @@ def eval_ppl_per_lang(
                 num_words_per_language[glottocode] += len(label_text.split())
 
     # Sum up language counts over ranks if distributed
-    glottocodes = sorted(loss_sum_per_language.keys())
+    if distributed_parameters["rank"] == 0:
+        logger.info("Accumulating over ranks...")
+
+    glottocodes = sorted(
+        set(c or "<unknown>" for c in dev_dataloader.dataset["glottocode"])
+    )
+
     if distributed_parameters["distributed"]:
         # Make one big evil tensor with all the counts we need to sum
         # (num_langs, 4)
