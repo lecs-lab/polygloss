@@ -69,8 +69,17 @@ class ExperimentConfig:
     learning_rate: float = 5e-5
     """Learning rate for the optimizer"""
 
+    min_learning_rate: float = 1e-5
+    """Minimum learning rate when using LR decay"""
+
     weight_decay: float = 0.01
     """Weight decay for the optimizer"""
+
+    use_warmup: bool = True
+    """If true, will use linear LR warmup for first 3% of steps"""
+
+    lr_schedule: Literal["none", "cosine"] = "cosine"
+    """cosine | none"""
 
     grad_norm: float = 20.0
     """Max gradient norm"""
