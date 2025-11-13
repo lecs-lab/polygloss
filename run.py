@@ -69,10 +69,11 @@ def run(
         distributed_parameters["device"]
     )
     model.gradient_checkpointing_enable()
-    model.enable_input_require_grads()
     if config.adapter_dir:
+        model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     elif config.mode == "lora":
+        model.enable_input_require_grads()
         lora_config = LoraConfig(
             task_type=TaskType.SEQ_2_SEQ_LM,
             r=config.lora_rank,
