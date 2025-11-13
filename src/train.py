@@ -4,8 +4,9 @@ import pathlib
 
 import torch
 import tqdm
-from torch.utils.data import DataLoader, DistributedSampler
 from peft import set_peft_model_state_dict
+from torch.utils.data import DataLoader, DistributedSampler
+
 import wandb
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
@@ -109,9 +110,9 @@ def train(
             scaler.update()
 
             # Calculate loss. We want to sum up the losses PER example, even if batches are differently sized
-            bs = batch["labels"].size(0)
-            train_loss_sum += loss.item() * bs
-            train_n += bs
+            num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+            train_loss_sum += loss.item() * num_tokens
+            train_n += num_tokens
 
             if pbar:
                 pbar.update()
@@ -132,10 +133,10 @@ def train(
                     batch.pop(key)
                 batch = batch.to(device)
                 out = model(**batch)
-                bs = batch["labels"].size(0)
                 loss = _get_loss(out, batch["labels"]).item()
-                eval_loss_sum += loss * bs
-                eval_n += bs
+                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+                eval_loss_sum += loss * num_tokens
+                eval_n += num_tokens
 
         # Sum losses over devices, if distributed
         if distributed_parameters["distributed"]:
