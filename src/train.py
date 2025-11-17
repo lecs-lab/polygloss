@@ -35,13 +35,6 @@ def train(
     else:
         run_id = None
 
-    if distributed_parameters["rank"] == 0:
-        pbar = tqdm.tqdm(
-            total=config.max_epochs * len(train_dataloader), desc="Training"
-        )
-    else:
-        pbar = None
-
     if config.optimizer == "adafactor":
         optimizer = torch.optim.Adafactor(
             model.parameters(),
@@ -56,7 +49,6 @@ def train(
     else:
         raise ValueError(f"Unrecognized optimizer: {config.optimizer}")
 
-    # Load from checkpoint, if it exists
     start_epoch = 0
     step = 0
     max_steps = config.max_epochs * len(train_dataloader)
@@ -65,6 +57,7 @@ def train(
     else:
         total_warmup_steps = 0
 
+    # Load from checkpoint, if it exists
     if config.resume_from_checkpoint_id:
         logger.info(f"Loading from checkpoint {config.resume_from_checkpoint_id}.")
         checkpoint = torch.load(
@@ -80,6 +73,15 @@ def train(
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         start_epoch = checkpoint["epoch"]
         step = start_epoch * len(train_dataloader)
+
+    if distributed_parameters["rank"] == 0:
+        pbar = tqdm.tqdm(
+            total=config.max_epochs * len(train_dataloader),
+            desc="Training",
+            initial=step,
+        )
+    else:
+        pbar = None
 
     forward_params = inspect.signature(
         (model.module if distributed_parameters["distributed"] else model).forward
@@ -196,7 +198,7 @@ def train(
             # Save checkpoint
             torch.save(
                 {
-                    "epoch": epoch,
+                    "epoch": epoch + 1,
                     "model_state_dict": (
                         model.module if distributed_parameters["distributed"] else model
                     ).state_dict(),
