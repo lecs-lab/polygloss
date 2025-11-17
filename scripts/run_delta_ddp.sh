@@ -65,5 +65,5 @@ else
     --node_rank=$SLURM_NODEID \
     --master_addr=$MASTER_ADDR \
     --master_port=$MASTER_PORT \
-    run.py "$1" --overries models_dir=/work/hdd/bebe/$USER/polygloss/
+    run.py "$1" --overrides models_dir=/work/hdd/bebe/$USER/polygloss/
 fi
