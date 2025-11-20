@@ -1,0 +1,6 @@
+Predict the morphological segmentation for the following text in $lang.
+
+Text in $lang: $transcription
+Translation in $metalang: $translation
+
+Segmentation: 

@@ -17,6 +17,7 @@ from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
+from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
 from src.util.collator import FlexibleSeq2SeqCollator
@@ -50,50 +51,48 @@ def create_dataset(
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
-            if config.create_transcription_to_gloss == "train-test" or (
-                split != "test" and config.create_transcription_to_gloss == "train-only"
-            ):
+            fields = _prepare_prompt_fields(row)
+
+            if config.task_format == "multitask":
+                # Create transcription -> glosses and transcription -> segmentation for both splits
+                # Create segmentation -> glosses for the train split ONLY
+                if "glosslm" in config.pretrained_model:
+                    prompt = _load_and_hydrate("glosslm.t2g", fields)
+                else:
+                    prompt = _load_and_hydrate("polygloss.multitask.t2g", fields)
                 examples.append(
                     _create_example(
+                        prompt,
+                        "transcription",
+                        "glosses",
                         row,
-                        config=config,
-                        input_key="transcription",
-                        output_key="glosses",
-                        use_translation=config.use_translation,
+                        config.model_type,
                     )
                 )
-            if row["segmentation"] and (
-                config.create_segmentation_to_gloss == "train-test"
-                or (
-                    split != "test"
-                    and config.create_segmentation_to_gloss == "train-only"
-                )
-            ):
-                examples.append(
-                    _create_example(
-                        row,
-                        config=config,
-                        input_key="segmentation",
-                        output_key="glosses",
-                        use_translation=config.use_translation,
-                    )
-                )
-            if row["segmentation"] and (
-                config.create_transcription_to_segmentation == "train-test"
-                or (
-                    split != "test"
-                    and config.create_transcription_to_segmentation == "train-only"
-                )
-            ):
-                examples.append(
-                    _create_example(
-                        row,
-                        config=config,
-                        input_key="transcription",
-                        output_key="segmentation",
-                        use_translation=False,
-                    )
-                )
+                if row["segmentation"]:
+                    if "glosslm" not in config.pretrained_model:
+                        prompt = _load_and_hydrate("polygloss.multitask.t2s", fields)
+                        examples.append(
+                            _create_example(
+                                prompt,
+                                "transcription",
+                                "segmentation",
+                                row,
+                                config.model_type,
+                            )
+                        )
+                    if split != "test":
+                        prompt = _load_and_hydrate("polygloss.multitask.s2g", fields)
+                        examples.append(
+                            _create_example(
+                                prompt,
+                                "segmentation",
+                                "glosses",
+                                row,
+                                config.model_type,
+                            )
+                        )
+
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
@@ -181,62 +180,65 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
     return _tokenize
 
 
-def _create_example(
-    row: typing.Mapping,
-    config: ExperimentConfig,
-    input_key: InputKey = "transcription",
-    output_key: OutputKey = "glosses",
-    use_translation: bool = True,
-):
-    """Creates an input prompt from the fields in the row.
-
-    Works for either glossing (when `output_key` is `glosses`)
-      or segmentation (when `output_key` is `segmentation`)
-    """
-
-    input_seq = " ".join((row[input_key]).split())
-    output_seq = " ".join((row[output_key]).split())
+def _prepare_prompt_fields(row: typing.Mapping):
+    """Given a row from the dataset, prepares the fields for the prompts"""
+    transcription = " ".join((row["transcription"]).split())
+    glosses = " ".join((row["glosses"]).split())
+    if row["segmentation"] and len(row["segmentation"].strip()) > 0:
+        segmentation = " ".join((row["segmentation"]).split())
+    else:
+        segmentation = None
     lang = (
         "an unknown language"
         if row["language"] == "" or not row["language"]
         else row["language"]
     )
-    if use_translation and row["translation"] and len(row["translation"].strip()) > 0:
+    if (
+        row["translation"]
+        and len(row["translation"].strip()) > 0
+        and row["translation"] != "Unknown"
+    ):
         translation = " ".join((row["translation"]).split())
-        translation_text = (
-            f"Translation in {row['metalanguage'] or 'unknown'}: {translation}"
-        )
+        metalang = row["metalanguage"]
+        assert metalang
     else:
-        translation_text = ""
+        translation = "None"
+        metalang = "English"
+    return {
+        "transcription": transcription,
+        "glosses": glosses,
+        "segmentation": segmentation,
+        "translation": translation,
+        "lang": lang,
+        "metalang": metalang,
+    }
 
-    if "glosslm" in config.pretrained_model:
-        prompt_path = Path(__file__).parent / "glosslm.s2s.prompt"
-        is_segmented_prefix = "Transcription segmented"
-    else:
-        prompt_path = Path(__file__).parent / "polygloss.s2s.prompt"
-        is_segmented_prefix = "Is text segmented"
 
+def _load_and_hydrate(prompt_key: str, fields: dict):
+    """Loads a prompt from a file and fills in fields"""
+    prompt_path = Path(__file__).parent / (prompt_key + ".prompt")
     with open(prompt_path, "r") as prompt_file:
         prompt_text = prompt_file.read()
-        prompt_template = Template(prompt_text)
+    prompt_template = Template(prompt_text)
+    prompt = prompt_template.substitute(fields)
+    return prompt
 
-    prompt = prompt_template.substitute(
-        {
-            "output_key": output_key,
-            "lang": lang,
-            "text": input_seq,
-            "is_segmented": (
-                f"\n{is_segmented_prefix}: {input_key == 'segmentation'}"
-                if output_key == "glosses"
-                else ""
-            ),
-            "translation": "\n" + translation_text,
+
+def _create_example(
+    prompt: str,
+    in_key: InputKey,
+    out_key: OutputKey,
+    row: typing.Mapping,
+    model_type: MODEL_TYPE,
+):
+    label = " ".join((row[out_key]).split())
+    if model_type == "seq2seq":
+        return {
+            "input": prompt,
+            "label": label,
+            "input-output": f"{in_key}-{out_key}",
+            "id": row["id"],
+            "glottocode": row["glottocode"],
         }
-    )
-    return {
-        "input": prompt,
-        "label": output_seq,
-        "input-output": f"{input_key}-{output_key}",
-        "id": row["id"],
-        "glottocode": row["glottocode"],
-    }
+    else:
+        raise NotImplementedError()

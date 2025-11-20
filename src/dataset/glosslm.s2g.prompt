@@ -1,0 +1,7 @@
+Provide the glosses for the following transcription in $lang.
+
+Transcription in $lang: $segmentation
+Transcription segmented: True
+Translation in $metalang: $translation
+
+Glosses: 
