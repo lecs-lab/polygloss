@@ -85,8 +85,9 @@ def create_dataset(
                             )
                         )
             elif config.task_format == "concatenated":
-                # Create transcription -> glosses
-                # and transcription -> [segmentation, glosses] if possible
+                # Create transcription -> glosses,
+                #        segmentation -> glosses,
+                #        transcription -> [segmentation, glosses] if possible
                 if "glosslm" in config.pretrained_model:
                     raise NotImplementedError(
                         "GlossLM does not support the `concatenated` format"
@@ -104,6 +105,13 @@ def create_dataset(
                             prompt, fields["glosses"], "t2g", row, config.model_type
                         )
                     )
+                    if fields["segmentation"]:
+                        prompt = _load_and_hydrate("polygloss.multitask.s2g", fields)
+                        examples.append(
+                            _create_example(
+                                prompt, fields["glosses"], "s2g", row, config.model_type
+                            )
+                        )
             elif config.task_format == "interleaved":
                 raise NotImplementedError()
             else:
