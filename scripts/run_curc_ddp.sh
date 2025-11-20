@@ -37,7 +37,7 @@ if [[ "$2" == "--monoling" ]]; then
             --node_rank=$SLURM_NODEID \
             --master_addr=$MASTER_ADDR \
             --master_port=$MASTER_PORT \
-            run.py "$1" --overrides glottocode=$glottocode models_dir=/work/hdd/bebe/$USER/polygloss/
+            run.py "$1" --overrides glottocode=$glottocode batch_size=36
     done
 else
     torchrun \
@@ -46,5 +46,5 @@ else
     --node_rank=$SLURM_NODEID \
     --master_addr=$MASTER_ADDR \
     --master_port=$MASTER_PORT \
-    run.py "$1" --overrides models_dir=/work/hdd/bebe/$USER/polygloss/
+    run.py "$1" --overrides batch_size=36
 fi
