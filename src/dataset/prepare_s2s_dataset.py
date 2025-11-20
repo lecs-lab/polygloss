@@ -62,11 +62,7 @@ def create_dataset(
                     prompt = _load_and_hydrate("polygloss.multitask.t2g", fields)
                 examples.append(
                     _create_example(
-                        prompt,
-                        "transcription",
-                        "glosses",
-                        row,
-                        config.model_type,
+                        prompt, fields["glosses"], "t2g", row, config.model_type
                     )
                 )
                 if row["segmentation"]:
@@ -75,8 +71,8 @@ def create_dataset(
                         examples.append(
                             _create_example(
                                 prompt,
-                                "transcription",
-                                "segmentation",
+                                fields["segmentation"],
+                                "t2s",
                                 row,
                                 config.model_type,
                             )
@@ -85,14 +81,33 @@ def create_dataset(
                         prompt = _load_and_hydrate("polygloss.multitask.s2g", fields)
                         examples.append(
                             _create_example(
-                                prompt,
-                                "segmentation",
-                                "glosses",
-                                row,
-                                config.model_type,
+                                prompt, fields["glosses"], "s2g", row, config.model_type
                             )
                         )
-
+            elif config.task_format == "concatenated":
+                # Create transcription -> glosses
+                # and transcription -> [segmentation, glosses] if possible
+                if "glosslm" in config.pretrained_model:
+                    raise NotImplementedError(
+                        "GlossLM does not support the `concatenated` format"
+                    )
+                if fields["segmentation"]:
+                    prompt = _load_and_hydrate("polygloss.concat.t2sg", fields)
+                    label = f"{fields['segmentation']}\nGlosses: {fields['glosses']}"
+                    examples.append(
+                        _create_example(prompt, label, "t2sg", row, config.model_type)
+                    )
+                if split != "test":
+                    prompt = _load_and_hydrate("polygloss.multitask.t2s", fields)
+                    examples.append(
+                        _create_example(
+                            prompt, fields["glosses"], "t2g", row, config.model_type
+                        )
+                    )
+            elif config.task_format == "interleaved":
+                raise NotImplementedError()
+            else:
+                raise ValueError(f"Illegal value for task format: {config.task_format}")
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
@@ -226,17 +241,16 @@ def _load_and_hydrate(prompt_key: str, fields: dict):
 
 def _create_example(
     prompt: str,
-    in_key: InputKey,
-    out_key: OutputKey,
+    label: str,
+    task_key: str,
     row: typing.Mapping,
     model_type: MODEL_TYPE,
 ):
-    label = " ".join((row[out_key]).split())
     if model_type == "seq2seq":
         return {
             "input": prompt,
             "label": label,
-            "input-output": f"{in_key}-{out_key}",
+            "task": task_key,
             "id": row["id"],
             "glottocode": row["glottocode"],
         }
