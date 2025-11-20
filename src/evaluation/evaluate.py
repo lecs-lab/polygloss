@@ -25,7 +25,7 @@ def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
 
     If multiple languages are present, we report both overall metrics and metrics per language
     """
-    assert {"glottocode", "predicted", "reference", "input_key", "output_key"}.issubset(
+    assert {"glottocode", "predicted", "reference", "task"}.issubset(
         predictions.columns
     )
     metrics = {}
@@ -37,8 +37,10 @@ def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
 
 
 def _evaluate(predictions: pd.DataFrame):
-    gloss_predictions = predictions[predictions["output_key"] == "glosses"]
-    segmentation_predictions = predictions[predictions["output_key"] == "segmentation"]
+    gloss_predictions = predictions[predictions["task"] in ["s2g", "t2g"]]
+    segmentation_predictions = predictions[predictions["task"] == "t2s"]
+
+    # TODO: Implement eval for joint t2sg task!!
 
     metrics: dict[str, dict | float] = {}
 
