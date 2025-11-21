@@ -37,10 +37,35 @@ def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
 
 
 def _evaluate(predictions: pd.DataFrame):
-    gloss_predictions = predictions[predictions["task"] in ["s2g", "t2g"]]
+    gloss_predictions = predictions[predictions["task"].isin(["s2g", "t2g"])]
     segmentation_predictions = predictions[predictions["task"] == "t2s"]
 
-    # TODO: Implement eval for joint t2sg task!!
+    # Eval for joint t2sg task!!
+    if (predictions["task"] == "t2sg").any():
+        assert len(gloss_predictions) == 0
+        assert len(segmentation_predictions) == 0
+        gloss_label = "\nGlosses: "  # Split on this label
+        joint_preds = predictions[predictions["task"] == "t2sg"]
+        ref_split = (
+            joint_preds["reference"]
+            .str.split(  # type:ignore
+                gloss_label, n=1, expand=True, regex=False
+            )
+            .fillna("")
+        )
+        pred_split = (
+            joint_preds["predicted"]
+            .str.split(  # type:ignore
+                gloss_label, n=1, expand=True, regex=False
+            )
+            .fillna("")
+        )
+        segmentation_predictions = joint_preds.copy()
+        gloss_predictions = joint_preds.copy()
+        segmentation_predictions["reference"] = ref_split[0]
+        segmentation_predictions["predicted"] = pred_split[0]
+        gloss_predictions["reference"] = ref_split[1]
+        gloss_predictions["predicted"] = pred_split[1]
 
     metrics: dict[str, dict | float] = {}
 

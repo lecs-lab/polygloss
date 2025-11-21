@@ -222,8 +222,7 @@ def _prepare_prompt_fields(row: typing.Mapping):
         and row["translation"] != "Unknown"
     ):
         translation = " ".join((row["translation"]).split())
-        metalang = row["metalanguage"]
-        assert metalang
+        metalang = row["metalanguage"] or "an unknown language"
     else:
         translation = "None"
         metalang = "English"

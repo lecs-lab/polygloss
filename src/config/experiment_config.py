@@ -45,18 +45,6 @@ class ExperimentConfig:
     task_format: TASK_FORMAT = "multitask"
     """Format for the joint seg/glossing"""
 
-    # create_segmentation_to_gloss: CREATE_EXAMPLE_TYPE = "train-only"
-    # """Whether to create glossing examples with segmented transcriptions as input"""
-
-    # create_transcription_to_gloss: CREATE_EXAMPLE_TYPE = "train-test"
-    # """Whether to create glossing examples with unsegmented transcriptions as input"""
-
-    # create_transcription_to_segmentation: CREATE_EXAMPLE_TYPE = "none"
-    # """Whether to create examples for the segmentation task (transcription → segmentation)"""
-
-    use_translation: bool = True
-    """Whether to include translations in the input prompts when available"""
-
     max_tokens: int = 1024
     """Truncate prompts to this many tokens"""
 
