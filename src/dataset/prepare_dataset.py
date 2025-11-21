@@ -99,7 +99,7 @@ def create_dataset(
                         _create_example(prompt, label, "t2sg", row, config.model_type)
                     )
                 if split != "test":
-                    prompt = _load_and_hydrate("polygloss.multitask.t2s", fields)
+                    prompt = _load_and_hydrate("polygloss.multitask.t2g", fields)
                     examples.append(
                         _create_example(
                             prompt, fields["glosses"], "t2g", row, config.model_type
