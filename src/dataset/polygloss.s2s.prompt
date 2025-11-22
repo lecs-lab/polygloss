@@ -1,5 +1,0 @@
-Predict the $output_key for the following text in $lang.
-
-Text in $lang: $text$is_segmented$translation
-
-$output_key:
