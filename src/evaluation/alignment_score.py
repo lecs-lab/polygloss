@@ -12,7 +12,9 @@ def alignment_score(segments_and_glosses: list[tuple[str, str]]):
     """Computes an alignment score between glossing predictions and segmentation predictions"""
     sum_edit_dist = 0
     # Log a few random examples
-    log_indices = random.sample(range(len(segments_and_glosses)), k=10)
+    log_indices = random.sample(
+        range(len(segments_and_glosses)), k=min(10, len(segments_and_glosses))
+    )
     for index, (segments, glosses) in enumerate(segments_and_glosses):
         segments = " ".join(gloss_string_to_word_glosses(segments))
         glosses = " ".join(gloss_string_to_word_glosses(glosses))
