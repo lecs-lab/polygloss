@@ -39,6 +39,7 @@ def generate(
 
     if distributed_parameters["distributed"]:
         model = model.module
+        dataloader.sampler.set_epoch(0)  # type:ignore
 
     for batch in (
         tqdm(dataloader, desc="Generating")

@@ -138,8 +138,11 @@ def run(
         distributed_parameters=distributed_parameters,
     )
     # Join with original dataset to add language info
+    meta = (
+        dataset["test"].to_pandas()[["id", "glottocode"]].drop_duplicates(subset=["id"])  # type:ignore
+    )
     predictions_with_langs = predictions.merge(
-        dataset["test"].to_pandas()[["id", "glottocode"]],  # type:ignore
+        meta,
         on="id",
         how="left",
     )
