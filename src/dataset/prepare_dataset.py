@@ -47,6 +47,16 @@ def create_dataset(
         logger.warning("Detected GlossLM base model, using GlossLM prompt.")
 
     # Make examples with different input/output combos
+    templates = {
+        key: _load(key)
+        for key in [
+            "glosslm.t2g",
+            "polygloss.multitask.t2g",
+            "polygloss.multitask.t2s",
+            "polygloss.multitask.s2g",
+            "polygloss.concat.t2sg",
+        ]
+    }
     for split in dataset:
         examples = []
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
@@ -57,9 +67,9 @@ def create_dataset(
                 # Create transcription -> glosses and transcription -> segmentation for both splits
                 # Create segmentation -> glosses for the train split ONLY
                 if "glosslm" in config.pretrained_model:
-                    prompt = _load_and_hydrate("glosslm.t2g", fields)
+                    prompt = templates["glosslm.t2g"].substitute(fields)
                 else:
-                    prompt = _load_and_hydrate("polygloss.multitask.t2g", fields)
+                    prompt = templates["polygloss.multitask.t2g"].substitute(fields)
                 examples.append(
                     _create_example(
                         prompt, fields["glosses"], "t2g", row, config.model_type
@@ -67,7 +77,7 @@ def create_dataset(
                 )
                 if row["segmentation"]:
                     if "glosslm" not in config.pretrained_model:
-                        prompt = _load_and_hydrate("polygloss.multitask.t2s", fields)
+                        prompt = templates["polygloss.multitask.t2s"].substitute(fields)
                         examples.append(
                             _create_example(
                                 prompt,
@@ -78,7 +88,7 @@ def create_dataset(
                             )
                         )
                     if split != "test":
-                        prompt = _load_and_hydrate("polygloss.multitask.s2g", fields)
+                        prompt = templates["polygloss.multitask.s2g"].substitute(fields)
                         examples.append(
                             _create_example(
                                 prompt, fields["glosses"], "s2g", row, config.model_type
@@ -93,20 +103,20 @@ def create_dataset(
                         "GlossLM does not support the `concatenated` format"
                     )
                 if fields["segmentation"]:
-                    prompt = _load_and_hydrate("polygloss.concat.t2sg", fields)
+                    prompt = templates["polygloss.concat.t2sg"].substitute(fields)
                     label = f"{fields['segmentation']}\nGlosses: {fields['glosses']}"
                     examples.append(
                         _create_example(prompt, label, "t2sg", row, config.model_type)
                     )
                 if split != "test":
-                    prompt = _load_and_hydrate("polygloss.multitask.t2g", fields)
+                    prompt = templates["polygloss.multitask.t2g"].substitute(fields)
                     examples.append(
                         _create_example(
                             prompt, fields["glosses"], "t2g", row, config.model_type
                         )
                     )
                     if fields["segmentation"]:
-                        prompt = _load_and_hydrate("polygloss.multitask.s2g", fields)
+                        prompt = templates["polygloss.multitask.s2g"].substitute(fields)
                         examples.append(
                             _create_example(
                                 prompt, fields["glosses"], "s2g", row, config.model_type
@@ -236,14 +246,12 @@ def _prepare_prompt_fields(row: typing.Mapping):
     }
 
 
-def _load_and_hydrate(prompt_key: str, fields: dict):
-    """Loads a prompt from a file and fills in fields"""
+def _load(prompt_key: str):
+    """Loads a prompt and returns a template"""
     prompt_path = Path(__file__).parent / (prompt_key + ".prompt")
     with open(prompt_path, "r") as prompt_file:
         prompt_text = prompt_file.read()
-    prompt_template = Template(prompt_text)
-    prompt = prompt_template.substitute(fields)
-    return prompt
+    return Template(prompt_text)
 
 
 def _create_example(
