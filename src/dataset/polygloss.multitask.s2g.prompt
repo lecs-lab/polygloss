@@ -1,0 +1,6 @@
+Predict the glosses for the following text in $lang.
+
+Text in $lang: $segmentation
+Translation in $metalang: $translation
+
+Glosses: 

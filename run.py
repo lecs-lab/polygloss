@@ -14,6 +14,7 @@ from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
+from src.dataset.prepare_dataset import create_dataloader, create_dataset
 from src.distributed import DistributedParameters, setup_ddp
 from src.evaluation.evaluate import evaluate
 from src.evaluation.perplexity import eval_ppl_per_lang
@@ -61,7 +62,7 @@ def run(
         experiment_folder /= config.glottocode
         experiment_folder.mkdir(exist_ok=True)
         models_folder /= config.glottocode
-        models_folder.mkdir(exist_ok=True, parents=True)
+    models_folder.mkdir(exist_ok=True, parents=True)
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
@@ -88,10 +89,6 @@ def run(
         )
 
     dataloaders = {}
-    if config.model_type == "seq2seq":
-        from src.dataset.prepare_s2s_dataset import create_dataloader, create_dataset
-    else:
-        raise NotImplementedError()
 
     dataset = create_dataset(
         tokenizer=tokenizer,

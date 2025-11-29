@@ -34,7 +34,7 @@ def generate(
 
     generations: list[str] = []
     labels: list[str | None] = []
-    input_output_keys: list[str] = []
+    task_keys: list[str] = []
     ids: list[str] = []
 
     if distributed_parameters["distributed"]:
@@ -68,16 +68,14 @@ def generate(
             )
         else:
             labels.extend([None] * len(batch_generations))
-        input_output_keys.extend(batch["input-output"])
+        task_keys.extend(batch["task"])
         ids.extend(batch["id"])
 
     # Gather all examples
     if distributed_parameters["distributed"]:
         all_generations = [None for _ in range(distributed_parameters["world_size"])]
         all_labels = [None for _ in range(distributed_parameters["world_size"])]
-        all_input_output_keys = [
-            None for _ in range(distributed_parameters["world_size"])
-        ]
+        all_task_keys = [None for _ in range(distributed_parameters["world_size"])]
         all_ids = [None for _ in range(distributed_parameters["world_size"])]
 
         logger.info(
@@ -85,20 +83,20 @@ def generate(
         )
         torch.distributed.all_gather_object(all_generations, generations)
         torch.distributed.all_gather_object(all_labels, labels)
-        torch.distributed.all_gather_object(all_input_output_keys, input_output_keys)
+        torch.distributed.all_gather_object(all_task_keys, task_keys)
         torch.distributed.all_gather_object(all_ids, ids)
 
         # all_gather creates a list of lists, so we need to flatten
         all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
         all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
-        all_input_output_keys = list(
-            itertools.chain.from_iterable(all_input_output_keys)  # type:ignore
+        all_task_keys = list(
+            itertools.chain.from_iterable(all_task_keys)  # type:ignore
         )
         all_ids = list(itertools.chain.from_iterable(all_ids))  # type:ignore
     else:
         all_generations = generations
         all_labels = labels
-        all_input_output_keys = input_output_keys
+        all_task_keys = task_keys
         all_ids = ids
     assert all(gen is not None for gen in all_generations)
     df = pd.DataFrame(
@@ -106,17 +104,15 @@ def generate(
             {
                 "predicted": gen,
                 "reference": label,
-                "input_key": input_output_key.split("-")[0],
-                "output_key": input_output_key.split("-")[1],
+                "task": task_key,
                 "id": id,
             }
-            for gen, label, input_output_key, id in zip(
-                all_generations, all_labels, all_input_output_keys, all_ids
+            for gen, label, task_key, id in zip(
+                all_generations, all_labels, all_task_keys, all_ids
             )
         ]
     )
     # De-dupe, since with DDP we might have dupe generations
-    df = df.drop_duplicates(
-        subset=["id", "input_key", "output_key"], keep="first"
-    ).reset_index(drop=True)
+    # ^ wait what we definitely shouldn't??
+    df = df.drop_duplicates(subset=["id", "task"], keep="first").reset_index(drop=True)
     return df

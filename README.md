@@ -112,8 +112,6 @@ pretrained_model = google/byt5-base
 
 # Dataset
 dataset_key = lecslab/polygloss-corpus
-exclude_st_seg = false
-use_translation = true
 
 # Training
 max_epochs = 50
