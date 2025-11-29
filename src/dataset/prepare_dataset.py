@@ -171,7 +171,6 @@ def create_dataset(
             else:
                 raise ValueError(f"Illegal value for task format: {config.task_format}")
         logger.info(f"Skipped {skipped} for split {split}")
-        breakpoint()
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
