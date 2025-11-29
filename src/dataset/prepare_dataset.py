@@ -6,6 +6,7 @@
 
 import logging
 import os
+import re
 import typing
 from pathlib import Path
 from string import Template
@@ -19,6 +20,7 @@ from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
+from src.evaluation.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 from src.train import ExperimentConfig
 from src.util.collator import FlexibleSeq2SeqCollator
 
@@ -26,6 +28,9 @@ logger = logging.getLogger(__name__)
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
+
+
+boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
 
 
 def create_dataset(
@@ -55,10 +60,12 @@ def create_dataset(
             "polygloss.multitask.t2s",
             "polygloss.multitask.s2g",
             "polygloss.concat.t2sg",
+            "polygloss.interleaved.t2sg",
         ]
     }
     for split in dataset:
         examples = []
+        skipped = 0
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
             fields = _prepare_prompt_fields(row)
@@ -123,9 +130,48 @@ def create_dataset(
                             )
                         )
             elif config.task_format == "interleaved":
-                raise NotImplementedError()
+                # Create transcription -> glosses,
+                #        segmentation -> glosses,
+                #        transcription -> interleaved[segmentation, glosses] if possible
+                if "glosslm" in config.pretrained_model:
+                    raise NotImplementedError(
+                        "GlossLM does not support the `interleaved` format"
+                    )
+                if fields["segmentation"]:
+                    prompt = templates["polygloss.interleaved.t2sg"].substitute(fields)
+
+                    # Make the interleaved label
+                    try:
+                        label = _get_interleaved_segments(
+                            row["id"], fields["segmentation"], fields["glosses"]
+                        )
+                        examples.append(
+                            _create_example(
+                                prompt, label, "t2sg", row, config.model_type
+                            )
+                        )
+                    except ValueError as e:
+                        logger.warning(e)
+                        skipped += 1
+
+                if split != "test":
+                    prompt = templates["polygloss.multitask.t2g"].substitute(fields)
+                    examples.append(
+                        _create_example(
+                            prompt, fields["glosses"], "t2g", row, config.model_type
+                        )
+                    )
+                    if fields["segmentation"]:
+                        prompt = templates["polygloss.multitask.s2g"].substitute(fields)
+                        examples.append(
+                            _create_example(
+                                prompt, fields["glosses"], "s2g", row, config.model_type
+                            )
+                        )
             else:
                 raise ValueError(f"Illegal value for task format: {config.task_format}")
+        logger.info(f"Skipped {skipped} for split {split}")
+        breakpoint()
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
     # Create prompts and tokenize
@@ -252,6 +298,36 @@ def _load(prompt_key: str):
     with open(prompt_path, "r") as prompt_file:
         prompt_text = prompt_file.read()
     return Template(prompt_text)
+
+
+def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
+    label = []
+    segment_words = segmentation_str.split()
+    gloss_words = gloss_string.split()
+
+    # Filter out non-word (e.g. punctuation words)
+    segment_words = [
+        w for w in segment_words if bool(re.search(r"[^\W_]|(?:\?\?\?)", w))
+    ]
+    gloss_words = [w for w in gloss_words if bool(re.search(r"[^\W_]|(?:\?\?\?)", w))]
+
+    if len(segment_words) != len(gloss_words):
+        raise ValueError(
+            f"Word mismatch! ID: {id}\nS: {segmentation_str}\nG: {gloss_string}"
+        )
+
+    for s_word, g_word in zip(segment_words, gloss_words):
+        segments = re.split(boundary_pattern, s_word)
+        glosses = re.split(boundary_pattern, g_word)
+        if len(segments) != len(glosses):
+            raise ValueError(
+                f"Morpheme mismatch! ID: {id}\nS: {segmentation_str}\nG: {gloss_string}"
+            )
+        dividers = re.findall(boundary_pattern, g_word) + [""]
+        word = "".join([f"{g}({s}){d}" for g, s, d in zip(glosses, segments, dividers)])
+        label.append(word)
+    label = " ".join(label)
+    return label
 
 
 def _create_example(
