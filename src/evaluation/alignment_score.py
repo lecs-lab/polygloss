@@ -1,8 +1,8 @@
 import logging
 import random
-import re
 
 import editdistance
+import regex as re
 from glossing.igt import gloss_string_to_word_glosses
 
 logger = logging.getLogger(__name__)

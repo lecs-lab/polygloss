@@ -6,21 +6,21 @@
 
 import logging
 import os
-import re
 import typing
 from pathlib import Path
 from string import Template
 from typing import cast
 
 import datasets
+import regex as re
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
+from data.model import boundary_pattern
 from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
-from src.evaluation.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 from src.train import ExperimentConfig
 from src.util.collator import FlexibleSeq2SeqCollator
 
@@ -28,9 +28,6 @@ logger = logging.getLogger(__name__)
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
-
-
-boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
 
 
 def create_dataset(

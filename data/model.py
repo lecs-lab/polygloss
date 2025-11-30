@@ -1,9 +1,17 @@
 """Defines models and functions for loading, manipulating, and writing task data"""
 
 import pathlib
-import re
 from dataclasses import dataclass
 from typing import List, Optional
+
+import regex as re
+
+# TODO: Make sure there aren't any other weird boundaries in our data
+DEFAULT_MORPHEME_BOUNDARIES = ["-", "="]
+
+boundary_pattern = re.compile(
+    "|".join(re.escape(b) for b in DEFAULT_MORPHEME_BOUNDARIES)
+)
 
 
 @dataclass

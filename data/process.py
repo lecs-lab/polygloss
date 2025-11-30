@@ -1,9 +1,10 @@
-import regex
+import regex as re
+from glossing.igt import gloss_string_to_word_glosses
 from langid.langid import LanguageIdentifier, model
 from pyglottolog import Glottolog
 
 from data.lang_codes import iso1_to_3, iso3_to_glotto
-from data.model import IGTLine
+from data.model import IGTLine, boundary_pattern
 
 identifier = LanguageIdentifier.from_modelstring(model, norm_probs=True)
 identifier.set_languages(["zh", "nl", "en", "es", "pt", "de", "fr", "it"])
@@ -51,10 +52,11 @@ def standardize(example: IGTLine) -> IGTLine:
 
     # Fix punctuation and such
     def _fix_punc(s: str):
-        s = regex.sub(r"(\w)\?", r"\1 ?", s)
-        s = regex.sub(r"(\w)\.(\s|$)", r"\1 .\2", s)
-        s = regex.sub(r"(\w)\!", r"\1 !", s)
-        s = regex.sub(r"(\w)\,", r"\1 ,", s)
+        s = re.sub(r"(\w),.(\w)", r"\1.\2", s)
+        s = re.sub(r"(\w)\?", r"\1 ?", s)
+        s = re.sub(r"(\w)\.(\s|$)", r"\1 .\2", s)
+        s = re.sub(r"(\w)\!", r"\1 !", s)
+        s = re.sub(r"(\w)\,", r"\1 ,", s)
         return s
 
     example.transcription = _fix_punc(example.transcription)
@@ -67,7 +69,14 @@ def standardize(example: IGTLine) -> IGTLine:
     # regex.sub("\-(\s|$)", " ")
 
     if example.glosses:
-        example.glosses = regex.sub("\t", " ", example.glosses)
+        example.glosses = re.sub("\t", " ", example.glosses)
         example.glosses = _fix_punc(example.glosses)
 
     return example
+
+
+def split_to_segments(s: str):
+    """Creates a 2d list of words and segments"""
+    words: list[str] = gloss_string_to_word_glosses(s)
+    morphemes = [re.split(boundary_pattern, w) for w in words]
+    return morphemes
