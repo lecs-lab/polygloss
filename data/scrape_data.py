@@ -6,10 +6,12 @@ import typing
 
 import datasets
 import pandas as pd
+import regex as re
 from tqdm import tqdm
 
 from data.lang_codes import iso1_to_3, iso3_to_glotto, odin_to_glotto
-from data.model import IGTLine, load_igt
+from data.model import IGTLine, boundary_pattern, load_igt
+from data.process import split_to_segments
 
 logger = logging.getLogger(__name__)
 
@@ -37,6 +39,16 @@ def scrape_odin() -> list[IGTLine]:
         data = load_igt(file, id_prefix=f"odin_{file.stem}", source="odin")
         for row in data:
             row.glottocode = glottocode
+
+            # ODIN has a lot of instances where the segmentation line isn't actually segmented
+            if row.segmentation and row.glosses:
+                segments = split_to_segments(row.segmentation)
+                glosses = split_to_segments(row.glosses)
+                if len(segments) != len(glosses) or any(
+                    [len(s) != len(g) for s, g in zip(segments, glosses)]
+                ):
+                    if not bool(re.search(boundary_pattern, row.segmentation)):
+                        row.segmentation = None
         all_data.extend(data)
     return all_data
 
@@ -109,17 +121,16 @@ def scrape_cldf() -> list[IGTLine]:
             segmentation = transcription if "-" in transcription else None
             transcription = transcription.replace("-", "")
             glottocode = row.Glottocode if isinstance(row.Glottocode, str) else None
-            data.append(
-                IGTLine(
-                    id=f"{dataset}_{row.ID_x}",
-                    source=dataset,
-                    transcription=transcription,
-                    segmentation=segmentation,
-                    glosses=row.Gloss.replace("\\t", " "),
-                    translation=row.Translated_Text,
-                    glottocode=glottocode,
-                )
+            row = IGTLine(
+                id=f"{dataset}_{row.ID_x}",
+                source=dataset,
+                transcription=transcription,
+                segmentation=segmentation,
+                glosses=row.Gloss.replace("\\t", " "),
+                translation=row.Translated_Text,
+                glottocode=glottocode,
             )
+            data.append(row)
     return data
 
 
@@ -210,17 +221,24 @@ def scrape_fieldwork() -> list[IGTLine]:
             else:
                 designated_split = None
 
-            all_data.append(
-                IGTLine(
-                    id=row["id"],
-                    source="wav2gloss",
-                    transcription=row["transcription"],
-                    segmentation=_remove_spaces(row["surface"]),
-                    glosses=_remove_spaces(row["gloss"]),
-                    translation=row["translation"],
-                    glottocode=glottocode,
-                    metalang_glottocode=metalang_glottocode,
-                    designated_split=designated_split,
-                )
+            row = IGTLine(
+                id=row["id"],
+                source="wav2gloss",
+                transcription=row["transcription"],
+                segmentation=_remove_spaces(row["surface"]),
+                glosses=_remove_spaces(row["gloss"]),
+                translation=row["translation"],
+                glottocode=glottocode,
+                metalang_glottocode=metalang_glottocode,
+                designated_split=designated_split,
             )
+            if row.segmentation and row.glosses:
+                segments = split_to_segments(row.segmentation)
+                glosses = split_to_segments(row.glosses)
+                if len(segments) != len(glosses) or any(
+                    [len(s) != len(g) for s, g in zip(segments, glosses)]
+                ):
+                    # If we have a misalignment, we need this row to be in the train set
+                    row.designated_split = "train"
+            all_data.append(row)
     return all_data

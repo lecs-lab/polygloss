@@ -1,18 +1,18 @@
 import inspect
 import logging
 import math
-import re
 from collections import defaultdict
 
 import pandas as pd
+import regex as re
 import torch
 from torch.nn.functional import cross_entropy
 from torch.utils.data.dataloader import DataLoader
 from tqdm import tqdm
 
+from data.model import boundary_pattern
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from src.evaluation.evaluate import DEFAULT_MORPHEME_BOUNDARIES
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,6 @@ def eval_ppl_per_lang(
     forward_params = inspect.signature(
         (model.module if distributed_parameters["distributed"] else model).forward
     ).parameters
-    boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
 
     if distributed_parameters["rank"] == 0:
         logger.info("Computing per-language perplexity...")

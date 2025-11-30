@@ -1,20 +1,19 @@
 import collections
 import logging
-import re
 from typing import Any
 
 import editdistance
 import glossing
 import pandas as pd
 import pytest
+import regex as re
+
+from data.model import boundary_pattern
 
 from ..util.type_utils import all_not_none
 from .alignment_score import alignment_score
 
 logger = logging.getLogger(__name__)
-
-# TODO: Make sure there aren't any other weird boundaries in our data
-DEFAULT_MORPHEME_BOUNDARIES = ["-", "="]
 
 
 def evaluate(predictions: pd.DataFrame) -> dict[str, Any]:
@@ -119,7 +118,6 @@ def _evaluate_segmentation_example(generation: str, label: str):
     predicted_words = generation.split()
     label_words = label.split()
 
-    boundary_pattern = re.compile("|".join(DEFAULT_MORPHEME_BOUNDARIES))
     predicted_morphemes = [re.split(boundary_pattern, word) for word in predicted_words]
     label_morphemes = [re.split(boundary_pattern, word) for word in label_words]
 
