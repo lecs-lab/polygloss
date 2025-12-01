@@ -95,6 +95,10 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
                     row.glottocode = glottocode
                     row.metalang_glottocode = metalang_code
                     row.designated_split = split
+
+                    if glottocode == "arap1274" and row.glosses is not None:
+                        # Specific fix for Arapaho
+                        row.glosses = re.sub(r"(\w),\.(\w)", r"\1\.\2", row.glosses)
                 all_data.extend(data)
 
     return all_data
