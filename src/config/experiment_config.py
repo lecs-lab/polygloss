@@ -35,6 +35,9 @@ class ExperimentConfig:
     model_type: MODEL_TYPE = "seq2seq"
     """Architecture type: 'seq2seq' for encoder-decoder models or 'decoder' for decoder-only models"""
 
+    new_hub_identifier: str | None = None
+    """If provided, pushes the model to the HuggingFace hub"""
+
     # Dataset
     dataset_key: str = "lecslab/polygloss-corpus"
     """Hugging Face dataset identifier for the corpus to use"""

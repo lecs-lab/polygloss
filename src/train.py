@@ -217,6 +217,12 @@ def train(
         tokenizer.save_pretrained(final_checkpoint_dir)
         logger.info(f"Saved model to {final_checkpoint_dir.resolve()}")
 
+        if config.new_hub_identifier:
+            (
+                model.module if distributed_parameters["distributed"] else model
+            ).push_to_hub(config.new_hub_identifier)
+            tokenizer.push_to_hub(config.new_hub_identifier)
+
 
 def _get_loss(out, labels):
     """Dynamically gets the loss from the model outputs, which are different depending on the model"""
