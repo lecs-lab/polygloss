@@ -222,6 +222,7 @@ def train(
                 model.module if distributed_parameters["distributed"] else model
             ).push_to_hub(config.new_hub_identifier)
             tokenizer.push_to_hub(config.new_hub_identifier)
+            logger.info(f"Pushed model and tokenizer to hub: {config.new_hub_identifier}")
 
 
 def _get_loss(out, labels):
