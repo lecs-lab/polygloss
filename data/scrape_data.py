@@ -99,6 +99,15 @@ def scrape_sigmorphon_st() -> list[IGTLine]:
                     if glottocode == "arap1274" and row.glosses is not None:
                         # Specific fix for Arapaho
                         row.glosses = re.sub(r"(\w),\.(\w)", r"\1\.\2", row.glosses)
+                    # Move to train if misaligned
+                    if row.segmentation and row.glosses:
+                        segments = split_to_segments(row.segmentation)
+                        glosses = split_to_segments(row.glosses)
+                        if len(segments) != len(glosses) or any(
+                            [len(s) != len(g) for s, g in zip(segments, glosses)]
+                        ):
+                            # If we have a misalignment, we need this row to be in the train set
+                            row.designated_split = "train"
                 all_data.extend(data)
 
     return all_data

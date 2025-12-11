@@ -54,9 +54,7 @@ old_len = len(df)
 df = df.drop_duplicates(subset=["transcription", "glosses", "glottocode"])
 logger.info(f"Removed {old_len - len(df)} duplicates for {len(df)} unique rows.")
 
-# 4. Audit
 dataset = datasets.Dataset.from_pandas(df, preserve_index=False)
-audit(dataset)
 
 # 5. Split
 dataset_dict = defaultdict(lambda: [])
@@ -71,6 +69,10 @@ dataset_dict = {
     for key, lst in dataset_dict.items()
 }
 dataset_dict = datasets.DatasetDict(dataset_dict)
+
+for split in dataset_dict:
+    logger.info(f"Auditing '{split}'")
+    audit(dataset_dict[split])
 
 # 6. Push updated dataset
 dataset_dict.push_to_hub("lecslab/polygloss-corpus", commit_message=args.message)

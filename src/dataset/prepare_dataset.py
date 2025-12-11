@@ -13,6 +13,7 @@ from typing import cast
 
 import datasets
 import regex as re
+from glossing.igt import gloss_string_to_word_glosses
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
@@ -41,6 +42,7 @@ def create_dataset(
         config (ExperimentConfig): The experiment configuration
     """
     dataset = datasets.load_dataset(config.dataset_key)
+
     dataset = cast(datasets.DatasetDict, dataset)
     dataset = _filter(dataset, config.glottocode)
     inputs_dataset = datasets.DatasetDict()
@@ -148,7 +150,8 @@ def create_dataset(
                             )
                         )
                     except ValueError as e:
-                        logger.warning(e)
+                        if split == "test":
+                            logger.warning(e)
                         skipped += 1
 
                 if split != "test":
@@ -298,14 +301,8 @@ def _load(prompt_key: str):
 
 def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
     label = []
-    segment_words = segmentation_str.split()
-    gloss_words = gloss_string.split()
-
-    # Filter out non-word (e.g. punctuation words)
-    segment_words = [
-        w for w in segment_words if bool(re.search(r"[^\W_]|(?:\?\?\?)", w))
-    ]
-    gloss_words = [w for w in gloss_words if bool(re.search(r"[^\W_]|(?:\?\?\?)", w))]
+    segment_words = gloss_string_to_word_glosses(segmentation_str)
+    gloss_words = gloss_string_to_word_glosses(gloss_string)
 
     if len(segment_words) != len(gloss_words):
         raise ValueError(
