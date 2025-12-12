@@ -65,6 +65,9 @@ def _evaluate(predictions: pd.DataFrame):
         segmentation_predictions["predicted"] = pred_split[0]
         gloss_predictions["reference"] = ref_split[1]
         gloss_predictions["predicted"] = pred_split[1]
+    elif (predictions["task"] == "t2sg_interleaved").any():
+        assert len(gloss_predictions) == 0
+        assert len(segmentation_predictions) == 0
 
     metrics: dict[str, dict | float] = {}
 

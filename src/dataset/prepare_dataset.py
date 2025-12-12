@@ -141,7 +141,7 @@ def create_dataset(
 
                     # Make the interleaved label
                     try:
-                        label = _get_interleaved_segments(
+                        label = create_interleaved_segments(
                             row["id"], fields["segmentation"], fields["glosses"]
                         )
                         examples.append(
@@ -299,7 +299,16 @@ def _load(prompt_key: str):
     return Template(prompt_text)
 
 
-def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
+def create_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
+    """Given a plain-text segmentation and gloss string, creates an interleaved string.
+
+    For example, given:
+        Segments: "the cat-s run"
+        Glosses: "DET cat-PL run.SG"
+
+    We would return
+        "DET(the) cat(cat)-PL(s) run.SG(run)"
+    """
     label = []
     segment_words = gloss_string_to_word_glosses(segmentation_str)
     gloss_words = gloss_string_to_word_glosses(gloss_string)
@@ -321,6 +330,38 @@ def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str)
         label.append(word)
     label = " ".join(label)
     return label
+
+
+def split_interleaved_segments(interleaved: str):
+    """Given an interleaved string, splits into separate segment and gloss strings.
+
+    For example, given:
+        "DET(the) cat(cat)-PL(s) run.SG(run)"
+
+    We would return
+        Segments: "the cat-s run"
+        Glosses: "DET cat-PL run.SG"
+    """
+    words = interleaved.split()
+    segmentation_words = []
+    gloss_words = []
+    for word in words:
+        interleaved_segments = re.split(boundary_pattern, word)
+        dividers = re.findall(boundary_pattern, word) + [""]
+        word_segments = []
+        word_glosses = []
+        for int_segment in interleaved_segments:
+            match = re.match(r"(.*)\((.*)\)", int_segment)
+            assert match
+            word_glosses.append(match.group(1))
+            word_segments.append(match.group(2))
+        segmentation_words.append(
+            "".join([f"{s}{d}" for s, d in zip(word_segments, dividers)])
+        )
+        gloss_words.append("".join([f"{g}{d}" for g, d in zip(word_glosses, dividers)]))
+    segmentation = " ".join(segmentation_words)
+    glosses = " ".join(gloss_words)
+    return segmentation, glosses
 
 
 def _create_example(
