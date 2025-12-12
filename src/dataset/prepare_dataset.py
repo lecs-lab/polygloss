@@ -146,7 +146,11 @@ def create_dataset(
                         )
                         examples.append(
                             _create_example(
-                                prompt, label, "t2sg", row, config.model_type
+                                prompt,
+                                label,
+                                "t2sg_interleaved",
+                                row,
+                                config.model_type,
                             )
                         )
                     except ValueError as e:

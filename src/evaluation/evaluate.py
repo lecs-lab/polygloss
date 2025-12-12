@@ -68,6 +68,7 @@ def _evaluate(predictions: pd.DataFrame):
     elif (predictions["task"] == "t2sg_interleaved").any():
         assert len(gloss_predictions) == 0
         assert len(segmentation_predictions) == 0
+        # TODO: Use `split_interleaved_segments` to split
 
     metrics: dict[str, dict | float] = {}
 
