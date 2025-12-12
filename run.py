@@ -22,7 +22,7 @@ from src.evaluation.evaluate import evaluate
 from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
-from util.pip_freeze import log_pip_freeze_artifact
+from src.util.pip_freeze import log_pip_freeze_artifact
 
 logging.basicConfig(
     level=logging.INFO,
