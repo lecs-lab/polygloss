@@ -13,3 +13,4 @@ logs/
 pyrightconfig.json
 local
 enora's junk/
+pip_freeze.txt
