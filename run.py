@@ -55,15 +55,15 @@ def run(
                 config=asdict(config),
             )
 
-    # Log some other useful info
-    api = HfApi()
-    wandb.config.update(
-        {
-            "dataset.sha": api.dataset_info(config.dataset_key).sha,
-            "python_version": sys.version,
-        }
-    )
-    log_pip_freeze_artifact(f"pip-freeze-{wandb.run.id}")  # type:ignore
+        # Log some other useful info
+        api = HfApi()
+        wandb.config.update(
+            {
+                "dataset.sha": api.dataset_info(config.dataset_key).sha,
+                "python_version": sys.version,
+            }
+        )
+        log_pip_freeze_artifact(f"pip-freeze-{wandb.run.id}")  # type:ignore
 
     if config.models_dir:
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
