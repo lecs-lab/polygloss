@@ -4,9 +4,11 @@ import logging
 import pathlib
 import pprint
 import random
+import sys
 from dataclasses import asdict
 
 import torch
+from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
@@ -20,6 +22,7 @@ from src.evaluation.evaluate import evaluate
 from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
+from util.pip_freeze import log_pip_freeze_artifact
 
 logging.basicConfig(
     level=logging.INFO,
@@ -51,6 +54,16 @@ def run(
                 entity="lecs-general",
                 config=asdict(config),
             )
+
+    # Log some other useful info
+    api = HfApi()
+    wandb.config.update(
+        {
+            "dataset.sha": api.dataset_info(config.dataset_key).sha,
+            "python_version": sys.version,
+        }
+    )
+    log_pip_freeze_artifact(f"pip-freeze-{wandb.run.id}")  # type:ignore
 
     if config.models_dir:
         models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
