@@ -1,6 +1,6 @@
 import collections
 import logging
-from typing import Any
+from typing import Any, cast
 
 import editdistance
 import glossing
@@ -69,13 +69,14 @@ def _evaluate(predictions: pd.DataFrame):
     elif (predictions["task"] == "t2sg_interleaved").any():
         assert len(gloss_predictions) == 0
         assert len(segmentation_predictions) == 0
-        # TODO: Use `split_interleaved_segments` to split
-        joint_preds = predictions[predictions["task"] == "t2sg_interleaved"]
+        joint_preds = cast(
+            pd.DataFrame, predictions[predictions["task"] == "t2sg_interleaved"]
+        )
         pred_split = (
-            predictions["predicted"].apply(split_interleaved_segments).apply(pd.Series)
+            joint_preds["predicted"].apply(split_interleaved_segments).apply(pd.Series)
         )
         ref_split = (
-            predictions["reference"].apply(split_interleaved_segments).apply(pd.Series)
+            joint_preds["reference"].apply(split_interleaved_segments).apply(pd.Series)
         )
         segmentation_predictions = joint_preds.copy()
         gloss_predictions = joint_preds.copy()

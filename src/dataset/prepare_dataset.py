@@ -363,6 +363,7 @@ def split_interleaved_segments(interleaved: str):
                 # If we can't match the pattern, must be a bad prediction
                 # Just add as a gloss
                 word_glosses.append(int_segment)
+                word_segments.append("")
         segmentation_words.append(
             "".join([f"{s}{d}" for s, d in zip(word_segments, dividers)])
         )
