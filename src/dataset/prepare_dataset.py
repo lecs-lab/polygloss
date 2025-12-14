@@ -356,9 +356,13 @@ def split_interleaved_segments(interleaved: str):
         word_glosses = []
         for int_segment in interleaved_segments:
             match = re.match(r"(.*)\((.*)\)", int_segment)
-            assert match
-            word_glosses.append(match.group(1))
-            word_segments.append(match.group(2))
+            if match:
+                word_glosses.append(match.group(1))
+                word_segments.append(match.group(2))
+            else:
+                # If we can't match the pattern, must be a bad prediction
+                # Just add as a gloss
+                word_glosses.append(int_segment)
         segmentation_words.append(
             "".join([f"{s}{d}" for s, d in zip(word_segments, dividers)])
         )

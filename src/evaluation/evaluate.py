@@ -9,6 +9,7 @@ import pytest
 import regex as re
 
 from data.model import boundary_pattern
+from src.dataset.prepare_dataset import split_interleaved_segments
 
 from ..util.type_utils import all_not_none
 from .alignment_score import alignment_score
@@ -69,6 +70,19 @@ def _evaluate(predictions: pd.DataFrame):
         assert len(gloss_predictions) == 0
         assert len(segmentation_predictions) == 0
         # TODO: Use `split_interleaved_segments` to split
+        joint_preds = predictions[predictions["task"] == "t2sg_interleaved"]
+        pred_split = (
+            predictions["predicted"].apply(split_interleaved_segments).apply(pd.Series)
+        )
+        ref_split = (
+            predictions["reference"].apply(split_interleaved_segments).apply(pd.Series)
+        )
+        segmentation_predictions = joint_preds.copy()
+        gloss_predictions = joint_preds.copy()
+        segmentation_predictions["reference"] = ref_split[0]
+        segmentation_predictions["predicted"] = pred_split[0]
+        gloss_predictions["reference"] = ref_split[1]
+        gloss_predictions["predicted"] = pred_split[1]
 
     metrics: dict[str, dict | float] = {}
 
