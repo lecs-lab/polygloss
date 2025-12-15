@@ -8,13 +8,13 @@ import sys
 from dataclasses import asdict
 
 import torch
+import wandb
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
 from transformers.models.auto.modeling_auto import AutoModelForPreTraining
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
-import wandb
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset.prepare_dataset import create_dataloader, create_dataset
 from src.distributed import DistributedParameters, setup_ddp
@@ -111,7 +111,7 @@ def run(
         split: create_dataloader(
             dataset[split],
             shuffle=split == "train",
-            batch_size=config.batch_size,
+            config=config,
             tokenizer=tokenizer,
             distributed_parameters=distributed_parameters,
         )
@@ -125,7 +125,6 @@ def run(
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
             config=config,
-            experiment_folder=experiment_folder,
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )

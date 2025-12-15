@@ -27,7 +27,7 @@ from data.model import boundary_pattern
 from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
-from src.util.collator import FlexibleSeq2SeqCollator, FlexibleCausalLMCollator
+from src.util.collator import FlexibleCausalLMCollator, FlexibleSeq2SeqCollator
 
 logger = logging.getLogger(__name__)
 
@@ -147,12 +147,16 @@ def create_dataset(
 
                     # Make the interleaved label
                     try:
-                        label = _get_interleaved_segments(
+                        label = create_interleaved_segments(
                             row["id"], fields["segmentation"], fields["glosses"]
                         )
                         examples.append(
                             _create_example(
-                                prompt, label, "t2sg", row, config.model_type
+                                prompt,
+                                label,
+                                "t2sg_interleaved",
+                                row,
+                                config.model_type,
                             )
                         )
                     except ValueError as e:
@@ -200,18 +204,17 @@ def create_dataset(
 def create_dataloader(
     dataset: datasets.Dataset,
     shuffle: bool,
-    batch_size: int,
+    config: ExperimentConfig,
     tokenizer: PreTrainedTokenizerBase,
     distributed_parameters: DistributedParameters,
-    model_type: str,
 ):
     """Creates a dataloader for a dataset"""
-    if model_type == "seq2seq":
+    if config.model_type == "seq2seq":
         collator = FlexibleSeq2SeqCollator(tokenizer, label_pad_token_id=-100)
-    elif model_type == "decoder":
+    elif config.model_type == "decoder":
         collator = FlexibleCausalLMCollator(tokenizer, mlm=False)
     else:
-        raise ValueError(f"Unknown model_type: {model_type}")
+        raise ValueError(f"Unknown model_type: {config.model_type}")
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
@@ -227,7 +230,7 @@ def create_dataloader(
         sampler = RandomSampler(dataset) if shuffle else SequentialSampler(dataset)
     return DataLoader(
         dataset,  # type:ignore
-        batch_size=batch_size,
+        batch_size=config.batch_size,
         collate_fn=collator,
         sampler=sampler,
         num_workers=num_workers,
@@ -265,6 +268,7 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
 
 def _make_seq2seq_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
     """Tokenizer function for seq2seq models"""
+
     def _tokenize(batch):
         nonlocal tokenizer, max_length
         targets = batch.get("label")
@@ -281,32 +285,31 @@ def _make_seq2seq_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int)
 
 
 def _make_causal_tokenizer_with_chat_template(
-    tokenizer: PreTrainedTokenizerBase, 
-    max_length: int,
-    use_thinking: bool = False
+    tokenizer: PreTrainedTokenizerBase, max_length: int, use_thinking: bool = False
 ):
-    """Tokenizer function for decoder-only causal LMs using chat templates, specifically Qwen 3.    
+    """Tokenizer function for decoder-only causal LMs using chat templates, specifically Qwen 3.
     Args:
         tokenizer: The tokenizer instance
         max_length: Maximum sequence length
         use_thinking: Whether to enable Qwen 3's thinking mode (default: False)
     """
+
     def _tokenize(batch):
         nonlocal tokenizer, max_length, use_thinking
-        
+
         # Ensure tokenizer has pad token
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
-        
+
         full_texts = []
         assistant_start_positions = []  # Track where assistant response starts
-        
+
         for prompt, label in zip(batch["input"], batch["label"]):
             messages = [
                 {"role": "user", "content": prompt},
-                {"role": "assistant", "content": label}
+                {"role": "assistant", "content": label},
             ]
-            
+
             # Apply chat template
             full_text = tokenizer.apply_chat_template(
                 messages,
@@ -315,15 +318,15 @@ def _make_causal_tokenizer_with_chat_template(
                 enable_thinking=use_thinking,
             )
             full_texts.append(full_text)
-            
+
             prompt_only = tokenizer.apply_chat_template(
                 [{"role": "user", "content": prompt}],
                 tokenize=False,
                 add_generation_prompt=True,  # True to get the assistant start token
-                enable_thinking=use_thinking
-                )
+                enable_thinking=use_thinking,
+            )
             assistant_start_positions.append(prompt_only)
-        
+
         # Tokenize the full conversations
         model_inputs = tokenizer(
             full_texts,
@@ -331,7 +334,7 @@ def _make_causal_tokenizer_with_chat_template(
             padding=False,
             max_length=max_length,
         )
-        
+
         # Create labels with prompt tokens masked
         labels = []
         for i, prompt_only in enumerate(assistant_start_positions):
@@ -341,16 +344,18 @@ def _make_causal_tokenizer_with_chat_template(
                 truncation=False,
                 padding=False,
             )["input_ids"]
-            
+
             prompt_length = len(prompt_tokens)
             full_length = len(model_inputs["input_ids"][i])
-            
+
             # Mask prompt tokens, train on assistant tokens only
-            label_seq = [-100] * prompt_length + model_inputs["input_ids"][i][prompt_length:]
-            
+            label_seq = [-100] * prompt_length + model_inputs["input_ids"][i][
+                prompt_length:
+            ]
+
             # Ensure label sequence matches input sequence length
             labels.append(label_seq[:full_length])
-        
+
         model_inputs["labels"] = labels
         return model_inputs
 
@@ -390,7 +395,6 @@ def _prepare_prompt_fields(row: typing.Mapping):
     }
 
 
-
 def _load(prompt_key: str):
     """Loads a prompt and returns a template"""
     prompt_path = Path(__file__).parent / (prompt_key + ".prompt")
@@ -399,16 +403,21 @@ def _load(prompt_key: str):
     return Template(prompt_text)
 
 
-def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
+def create_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
+    """Given a plain-text segmentation and gloss string, creates an interleaved string.
+    For example, given:
+        Segments: "the cat-s run"
+        Glosses: "DET cat-PL run.SG"
+    We would return
+        "DET(the) cat(cat)-PL(s) run.SG(run)"
+    """
     label = []
     segment_words = gloss_string_to_word_glosses(segmentation_str)
     gloss_words = gloss_string_to_word_glosses(gloss_string)
-
     if len(segment_words) != len(gloss_words):
         raise ValueError(
             f"Word mismatch! ID: {id}\nS: {segmentation_str}\nG: {gloss_string}"
         )
-
     for s_word, g_word in zip(segment_words, gloss_words):
         segments = re.split(boundary_pattern, s_word)
         glosses = re.split(boundary_pattern, g_word)
@@ -421,6 +430,41 @@ def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str)
         label.append(word)
     label = " ".join(label)
     return label
+
+
+def split_interleaved_segments(interleaved: str):
+    """Given an interleaved string, splits into separate segment and gloss strings.
+    For example, given:
+        "DET(the) cat(cat)-PL(s) run.SG(run)"
+    We would return
+        Segments: "the cat-s run"
+        Glosses: "DET cat-PL run.SG"
+    """
+    words = interleaved.split()
+    segmentation_words = []
+    gloss_words = []
+    for word in words:
+        interleaved_segments = re.split(boundary_pattern, word)
+        dividers = re.findall(boundary_pattern, word) + [""]
+        word_segments = []
+        word_glosses = []
+        for int_segment in interleaved_segments:
+            match = re.match(r"(.*)\((.*)\)", int_segment)
+            if match:
+                word_glosses.append(match.group(1))
+                word_segments.append(match.group(2))
+            else:
+                # If we can't match the pattern, must be a bad prediction
+                # Just add as a gloss
+                word_glosses.append(int_segment)
+                word_segments.append("")
+        segmentation_words.append(
+            "".join([f"{s}{d}" for s, d in zip(word_segments, dividers)])
+        )
+        gloss_words.append("".join([f"{g}{d}" for g, d in zip(word_glosses, dividers)]))
+    segmentation = " ".join(segmentation_words)
+    glosses = " ".join(gloss_words)
+    return segmentation, glosses
 
 
 def _create_example(
