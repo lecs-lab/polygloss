@@ -1,6 +1,6 @@
 import collections
 import logging
-from typing import Any
+from typing import Any, cast
 
 import editdistance
 import glossing
@@ -9,6 +9,7 @@ import pytest
 import regex as re
 
 from data.model import boundary_pattern
+from src.dataset.prepare_dataset import split_interleaved_segments
 
 from ..util.type_utils import all_not_none
 from .alignment_score import alignment_score
@@ -58,6 +59,24 @@ def _evaluate(predictions: pd.DataFrame):
                 gloss_label, n=1, expand=True, regex=False
             )
             .fillna("")
+        )
+        segmentation_predictions = joint_preds.copy()
+        gloss_predictions = joint_preds.copy()
+        segmentation_predictions["reference"] = ref_split[0]
+        segmentation_predictions["predicted"] = pred_split[0]
+        gloss_predictions["reference"] = ref_split[1]
+        gloss_predictions["predicted"] = pred_split[1]
+    elif (predictions["task"] == "t2sg_interleaved").any():
+        assert len(gloss_predictions) == 0
+        assert len(segmentation_predictions) == 0
+        joint_preds = cast(
+            pd.DataFrame, predictions[predictions["task"] == "t2sg_interleaved"]
+        )
+        pred_split = (
+            joint_preds["predicted"].apply(split_interleaved_segments).apply(pd.Series)
+        )
+        ref_split = (
+            joint_preds["reference"].apply(split_interleaved_segments).apply(pd.Series)
         )
         segmentation_predictions = joint_preds.copy()
         gloss_predictions = joint_preds.copy()

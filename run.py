@@ -176,6 +176,12 @@ def run(
                 experiment_folder / "metrics.json",
             )
             return metrics
+    if distributed_parameters["distributed"]:
+        torch.distributed.barrier()
+        if distributed_parameters["rank"] == 0:
+            wandb.finish()
+    else:
+        wandb.finish()
 
 
 if __name__ == "__main__":
