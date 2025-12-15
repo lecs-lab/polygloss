@@ -8,13 +8,13 @@ import sys
 from dataclasses import asdict
 
 import torch
-import wandb
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
-from transformers.models.auto.modeling_auto import AutoModelForPreTraining
+from transformers.models.auto.modeling_auto import AutoModelForCausalLM
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
+import wandb
 from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset.prepare_dataset import create_dataloader, create_dataset
 from src.distributed import DistributedParameters, setup_ddp
@@ -79,7 +79,7 @@ def run(
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
+    model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
         distributed_parameters["device"]
     )
     model.gradient_checkpointing_enable()
@@ -88,8 +88,14 @@ def run(
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     elif config.mode == "lora":
         model.enable_input_require_grads()
+        if config.model_type == "seq2seq":
+            task_type = TaskType.SEQ_2_SEQ_LM
+        elif config.model_type == "decoder":
+            task_type = TaskType.CAUSAL_LM
+        else:
+            raise NotImplementedError()
         lora_config = LoraConfig(
-            task_type=TaskType.SEQ_2_SEQ_LM,
+            task_type=task_type,
             r=config.lora_rank,
             lora_alpha=config.lora_alpha,
             lora_dropout=config.lora_dropout,
