@@ -51,16 +51,38 @@ def generate(
             for k, v in batch.items()
             if k in inspect.signature(model.forward).parameters
         }
-        batch_generations = model.generate(
-            **inputs,
-            use_model_defaults=True,
-            do_sample=False,
-            num_beams=config.num_beams,
-            max_length=1024,
-        )
-        generations.extend(
-            tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
-        )
+
+        if config.model_type == "seq2seq":
+            batch_generations = model.generate(
+                **inputs,
+                use_model_defaults=True,
+                do_sample=False,
+                num_beams=config.num_beams,
+                max_length=1024,
+            )
+            generations.extend(
+                tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
+            )
+        elif config.model_type == "decoder":
+            prompt_lengths = (inputs["attention_mask"].sum(dim=1)).tolist()
+            
+            batch_generations = model.generate(
+                **inputs,
+                do_sample=False,
+                num_beams=config.num_beams,
+                max_new_tokens=1024,
+                pad_token_id=tokenizer.pad_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+            
+            # Decode only the generated part (skip the prompt)
+            # Note: we don't use thinking tokens in training or eval
+            for _, (generation, prompt_len) in enumerate(zip(batch_generations, prompt_lengths)):
+                generated_tokens = generation[prompt_len:]
+                decoded = tokenizer.decode(generated_tokens, skip_special_tokens=True)
+                
+                generations.append(decoded.strip())
+
         if "labels" in batch:
             batch["labels"][batch["labels"] == -100] = tokenizer.pad_token_id
             labels.extend(

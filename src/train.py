@@ -21,7 +21,6 @@ def train(
     train_dataloader: DataLoader,
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
-    experiment_folder: pathlib.Path,
     models_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):

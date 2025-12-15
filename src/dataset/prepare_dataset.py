@@ -1,6 +1,9 @@
-"""Exposes `prepare_dataset`, which creates a dataset of examples designed for a seq2seq model.
+"""Exposes `prepare_dataset`.
+Creates a dataset of examples designed for either a seq2seq or decoder-only causal LM (specifically Qwen 3).
 
-- Examples will be tokenized and have separate input and label sequences.
+- Examples will be tokenized and have:
+    - separate input and label sequences (seq2seq)
+    - combined prompt+completion sequences, with prompt masked in loss calculation (decoder-only causal LM)
 - Which kind of examples are created is determined by the options in `experiment_config.py`
 """
 
@@ -17,15 +20,18 @@ from glossing.igt import gloss_string_to_word_glosses
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
+from transformers import AutoConfig
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from data.model import boundary_pattern
 from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
-from src.util.collator import FlexibleSeq2SeqCollator
+from src.util.collator import FlexibleSeq2SeqCollator, FlexibleCausalLMCollator
 
 logger = logging.getLogger(__name__)
+
+supported_decoder_models = ["qwen3"]
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -141,16 +147,12 @@ def create_dataset(
 
                     # Make the interleaved label
                     try:
-                        label = create_interleaved_segments(
+                        label = _get_interleaved_segments(
                             row["id"], fields["segmentation"], fields["glosses"]
                         )
                         examples.append(
                             _create_example(
-                                prompt,
-                                label,
-                                "t2sg_interleaved",
-                                row,
-                                config.model_type,
+                                prompt, label, "t2sg", row, config.model_type
                             )
                         )
                     except ValueError as e:
@@ -177,6 +179,15 @@ def create_dataset(
         logger.info(f"Skipped {skipped} for split {split}")
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
+    model_config = AutoConfig.from_pretrained(config.pretrained_model)
+    if model_config.is_encoder_decoder:
+        _make_tokenizer = _make_seq2seq_tokenizer
+    elif model_config.model_type in supported_decoder_models:
+        # for now, only Qwen 3 is supported (uses chat template)
+        _make_tokenizer = _make_causal_tokenizer_with_chat_template
+    else:
+        raise ValueError(f"Unknown model_type: {config.model_type}")
+
     # Create prompts and tokenize
     return inputs_dataset.map(
         _make_tokenizer(tokenizer, max_length=config.max_tokens),
@@ -192,9 +203,15 @@ def create_dataloader(
     batch_size: int,
     tokenizer: PreTrainedTokenizerBase,
     distributed_parameters: DistributedParameters,
+    model_type: str,
 ):
     """Creates a dataloader for a dataset"""
-    collator = FlexibleSeq2SeqCollator(tokenizer, label_pad_token_id=-100)
+    if model_type == "seq2seq":
+        collator = FlexibleSeq2SeqCollator(tokenizer, label_pad_token_id=-100)
+    elif model_type == "decoder":
+        collator = FlexibleCausalLMCollator(tokenizer, mlm=False)
+    else:
+        raise ValueError(f"Unknown model_type: {model_type}")
     if "SLURM_CPUS_PER_TASK" in os.environ:
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
@@ -246,7 +263,8 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
     return new_dataset
 
 
-def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
+def _make_seq2seq_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
+    """Tokenizer function for seq2seq models"""
     def _tokenize(batch):
         nonlocal tokenizer, max_length
         targets = batch.get("label")
@@ -257,6 +275,83 @@ def _make_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int):
             padding=False,
             max_length=max_length,
         )
+        return model_inputs
+
+    return _tokenize
+
+
+def _make_causal_tokenizer_with_chat_template(
+    tokenizer: PreTrainedTokenizerBase, 
+    max_length: int,
+    use_thinking: bool = False
+):
+    """Tokenizer function for decoder-only causal LMs using chat templates, specifically Qwen 3.    
+    Args:
+        tokenizer: The tokenizer instance
+        max_length: Maximum sequence length
+        use_thinking: Whether to enable Qwen 3's thinking mode (default: False)
+    """
+    def _tokenize(batch):
+        nonlocal tokenizer, max_length, use_thinking
+        
+        # Ensure tokenizer has pad token
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
+        
+        full_texts = []
+        assistant_start_positions = []  # Track where assistant response starts
+        
+        for prompt, label in zip(batch["input"], batch["label"]):
+            messages = [
+                {"role": "user", "content": prompt},
+                {"role": "assistant", "content": label}
+            ]
+            
+            # Apply chat template
+            full_text = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=False,
+                enable_thinking=use_thinking,
+            )
+            full_texts.append(full_text)
+            
+            prompt_only = tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                tokenize=False,
+                add_generation_prompt=True,  # True to get the assistant start token
+                enable_thinking=use_thinking
+                )
+            assistant_start_positions.append(prompt_only)
+        
+        # Tokenize the full conversations
+        model_inputs = tokenizer(
+            full_texts,
+            truncation=True,
+            padding=False,
+            max_length=max_length,
+        )
+        
+        # Create labels with prompt tokens masked
+        labels = []
+        for i, prompt_only in enumerate(assistant_start_positions):
+            # Tokenize the prompt-only part to find where assistant starts
+            prompt_tokens = tokenizer(
+                prompt_only,
+                truncation=False,
+                padding=False,
+            )["input_ids"]
+            
+            prompt_length = len(prompt_tokens)
+            full_length = len(model_inputs["input_ids"][i])
+            
+            # Mask prompt tokens, train on assistant tokens only
+            label_seq = [-100] * prompt_length + model_inputs["input_ids"][i][prompt_length:]
+            
+            # Ensure label sequence matches input sequence length
+            labels.append(label_seq[:full_length])
+        
+        model_inputs["labels"] = labels
         return model_inputs
 
     return _tokenize
@@ -295,6 +390,7 @@ def _prepare_prompt_fields(row: typing.Mapping):
     }
 
 
+
 def _load(prompt_key: str):
     """Loads a prompt and returns a template"""
     prompt_path = Path(__file__).parent / (prompt_key + ".prompt")
@@ -303,16 +399,7 @@ def _load(prompt_key: str):
     return Template(prompt_text)
 
 
-def create_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
-    """Given a plain-text segmentation and gloss string, creates an interleaved string.
-
-    For example, given:
-        Segments: "the cat-s run"
-        Glosses: "DET cat-PL run.SG"
-
-    We would return
-        "DET(the) cat(cat)-PL(s) run.SG(run)"
-    """
+def _get_interleaved_segments(id: str, segmentation_str: str, gloss_string: str):
     label = []
     segment_words = gloss_string_to_word_glosses(segmentation_str)
     gloss_words = gloss_string_to_word_glosses(gloss_string)
@@ -336,43 +423,6 @@ def create_interleaved_segments(id: str, segmentation_str: str, gloss_string: st
     return label
 
 
-def split_interleaved_segments(interleaved: str):
-    """Given an interleaved string, splits into separate segment and gloss strings.
-
-    For example, given:
-        "DET(the) cat(cat)-PL(s) run.SG(run)"
-
-    We would return
-        Segments: "the cat-s run"
-        Glosses: "DET cat-PL run.SG"
-    """
-    words = interleaved.split()
-    segmentation_words = []
-    gloss_words = []
-    for word in words:
-        interleaved_segments = re.split(boundary_pattern, word)
-        dividers = re.findall(boundary_pattern, word) + [""]
-        word_segments = []
-        word_glosses = []
-        for int_segment in interleaved_segments:
-            match = re.match(r"(.*)\((.*)\)", int_segment)
-            if match:
-                word_glosses.append(match.group(1))
-                word_segments.append(match.group(2))
-            else:
-                # If we can't match the pattern, must be a bad prediction
-                # Just add as a gloss
-                word_glosses.append(int_segment)
-                word_segments.append("")
-        segmentation_words.append(
-            "".join([f"{s}{d}" for s, d in zip(word_segments, dividers)])
-        )
-        gloss_words.append("".join([f"{g}{d}" for g, d in zip(word_glosses, dividers)]))
-    segmentation = " ".join(segmentation_words)
-    glosses = " ".join(gloss_words)
-    return segmentation, glosses
-
-
 def _create_example(
     prompt: str,
     label: str,
@@ -380,7 +430,7 @@ def _create_example(
     row: typing.Mapping,
     model_type: MODEL_TYPE,
 ):
-    if model_type == "seq2seq":
+    if model_type in ["seq2seq", "decoder"]:
         return {
             "input": prompt,
             "label": label,
