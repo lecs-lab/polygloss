@@ -14,7 +14,7 @@
 #SBATCH --mail-user=lindiat@andrew.cmu.edu
 #SBATCH --mail-type=START,END,FAIL
 
-model_dir="/project/flame/lindiat/polygloss/models"
+models_dir="/project/flame/lindiat/polygloss/models"
 config="experiments/qwen_g+s_interleaved/pretrain.cfg"
 
 source ~/miniconda3/etc/profile.d/conda.sh
@@ -32,4 +32,4 @@ torchrun \
     --node_rank=$SLURM_NODEID \
     --master_addr=$MASTER_ADDR \
     --master_port=$MASTER_PORT \
-    run.py $config --overrides batch_size=24 model_dir=$model_dir
+    run.py $config --overrides models_dir=$models_dir

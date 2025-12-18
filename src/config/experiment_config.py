@@ -82,6 +82,9 @@ class ExperimentConfig:
     batch_size: int = 64  # per gpu
     """Batch size per GPU for training and evaluation"""
 
+    gradient_accumulation_steps: int = 1
+    """Number of gradient accumulation steps to simulate larger batch sizes"""
+
     models_dir: str | None = None
     """Directory to store checkpoints and models in. If not provided, use the same folder as the config file."""
 
