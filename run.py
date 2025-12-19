@@ -11,7 +11,10 @@ import torch
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
-from transformers.models.auto.modeling_auto import AutoModelForCausalLM
+from transformers.models.auto.modeling_auto import (
+    AutoModelForCausalLM,
+    AutoModelForSeq2SeqLM,
+)
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
@@ -79,9 +82,14 @@ def run(
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
-        distributed_parameters["device"]
-    )
+    if config.model_type == "seq2seq":
+        model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model.enable_input_require_grads()
