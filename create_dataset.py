@@ -27,7 +27,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--message", "-m", required=True, help="Commit message")
+parser.add_argument("--message", "-m", help="Commit message")
 args = parser.parse_args()
 
 # 1. Collate data from various sources
@@ -75,4 +75,7 @@ for split in dataset_dict:
     audit(dataset_dict[split])
 
 # 6. Push updated dataset
-dataset_dict.push_to_hub("lecslab/polygloss-corpus", commit_message=args.message)
+if args.message is not None:
+    dataset_dict.push_to_hub("lecslab/polygloss-corpus", commit_message=args.message)
+else:
+    logger.warning("No message, not pushing to hub")
