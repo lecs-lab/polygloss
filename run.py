@@ -90,6 +90,15 @@ def run(
         model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
             distributed_parameters["device"]
         )
+
+    # Freeze vision-related params for T5Gemma model
+    if hasattr(model, "vision_tower"):
+        for parameter in model.vision_tower.parameters():  # type:ignore
+            parameter.requires_grad = False
+    if hasattr(model, "multi_modal_projector"):
+        for parameter in model.multi_modal_projector.parameters():  # type:ignore
+            parameter.requires_grad = False
+
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model.enable_input_require_grads()
