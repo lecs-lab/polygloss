@@ -92,12 +92,18 @@ def run(
         )
 
     # Freeze vision-related params for T5Gemma model
-    if hasattr(model, "vision_tower"):
-        for parameter in model.vision_tower.parameters():  # type:ignore
-            parameter.requires_grad = False
-    if hasattr(model, "multi_modal_projector"):
-        for parameter in model.multi_modal_projector.parameters():  # type:ignore
-            parameter.requires_grad = False
+    def freeze(base, module_name):
+        if hasattr(model, module_name):
+            logger.info(f"Freezing `{module_name}`")
+            for parameter in getattr(model, module_name).parameters():  # type:ignore
+                parameter.requires_grad = False
+        if hasattr(base, "encoder"):
+            freeze(base.encoder, module_name)
+        if hasattr(base, "decoder"):
+            freeze(base.decoder, module_name)
+
+    for module_name in ["vision_tower", "multi_modal_projector"]:
+        freeze(model, module_name)
 
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
