@@ -39,6 +39,7 @@ export MASTER_PORT=$((10000 + SLURM_JOB_ID % 50000))
 export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export OMP_NUM_THREADS=4
 export PYTHONUNBUFFERED=1
+export TORCH_DISTRIBUTED_DEBUG=DETAIL
 
 cd "/projects/bebe/$USER/polygloss"
 
