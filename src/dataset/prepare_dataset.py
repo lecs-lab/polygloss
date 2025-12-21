@@ -285,7 +285,9 @@ def _make_seq2seq_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int)
 
 
 def _make_causal_tokenizer_with_chat_template(
-    tokenizer: PreTrainedTokenizerBase, max_length: int, use_thinking: bool = False
+    tokenizer: PreTrainedTokenizerBase,
+    max_length: int,
+    use_thinking: bool = False,
 ):
     """Tokenizer function for decoder-only causal LMs using chat templates, specifically Qwen 3.
     Args:

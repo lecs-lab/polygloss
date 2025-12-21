@@ -50,7 +50,7 @@ def train(
 
     start_epoch = 0
     step = 0
-    max_steps = config.max_epochs * len(train_dataloader)
+    max_steps = config.max_epochs * len(train_dataloader) / config.gradient_accumulation_steps
     if config.use_warmup:
         total_warmup_steps = int(0.03 * max_steps)
     else:

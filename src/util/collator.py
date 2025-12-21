@@ -51,7 +51,7 @@ class FlexibleSeq2SeqCollator(DataCollatorForSeq2Seq):
 
 
 class FlexibleCausalLMCollator(DataCollatorForLanguageModeling):
-    """Fixed version with explicit padding"""
+    """Supports both left and right padding based on tokenizer.padding_side"""
     
     def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, Any]:
         if not features:
@@ -59,25 +59,35 @@ class FlexibleCausalLMCollator(DataCollatorForLanguageModeling):
         
         keys = list(features[0].keys())
         
+        # Extract non-tensor metadata
         extras: Dict[str, List[Any]] = {}
-        for k in keys:
-            values = [f[k] for f in features if k in f]
-            if values and not _is_tensor_like(values):
-                extras[k] = values
-                for f in features:
-                    f.pop(k, None)
+        tensor_features = []
         
-        batch = self._pad_batch(features)
-        batch = BatchEncoding(batch)
+        for feature in features:
+            tensor_feature = {}
+            for k in keys:
+                if k in feature:
+                    value = feature[k]
+                    if k in ["task", "id", "glottocode"] or isinstance(value, str):
+                        if k not in extras:
+                            extras[k] = []
+                        extras[k].append(value)
+                    else:
+                        tensor_feature[k] = value
+            tensor_features.append(tensor_feature)
         
+        # Pad tensor fields
+        batch = self._pad_batch(tensor_features)
+        
+        # Add metadata back
         batch.update(extras)
         
         return batch
     
     def _pad_batch(self, features: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
-        """Explicitly pad input_ids, attention_mask, and labels"""
+        if not features:
+            return {}
         
-        # Find max length in this batch
         max_length = max(len(f["input_ids"]) for f in features)
         
         batch = {
@@ -89,30 +99,34 @@ class FlexibleCausalLMCollator(DataCollatorForLanguageModeling):
         if has_labels:
             batch["labels"] = []
         
+        # Check padding side
+        padding_side = getattr(self.tokenizer, 'padding_side', 'right')
+        
         for feature in features:
             input_ids = feature["input_ids"]
             seq_length = len(input_ids)
             padding_length = max_length - seq_length
             
-            # Pad input_ids with pad_token_id
-            padded_input_ids = input_ids + [self.tokenizer.pad_token_id] * padding_length
-            
-            # Create attention_mask (1 for real, 0 for padding)
-            if "attention_mask" in feature:
-                attention_mask = feature["attention_mask"] + [0] * padding_length
+            if padding_side == 'left':
+                # Left padding (for generation/eval)
+                padded_input_ids = [self.tokenizer.pad_token_id] * padding_length + input_ids
+                attention_mask = [0] * padding_length + ([1] * seq_length)
+                
+                if has_labels:
+                    labels = feature["labels"]
+                    padded_labels = [-100] * padding_length + labels
+                    batch["labels"].append(padded_labels)
             else:
+                # Right padding (for training)
+                padded_input_ids = input_ids + [self.tokenizer.pad_token_id] * padding_length
                 attention_mask = [1] * seq_length + [0] * padding_length
+                
+                if has_labels:
+                    labels = feature["labels"]
+                    padded_labels = labels + [-100] * padding_length
+                    batch["labels"].append(padded_labels)
             
             batch["input_ids"].append(padded_input_ids)
             batch["attention_mask"].append(attention_mask)
-            
-            # Pad labels with -100 (ignore index)
-            if has_labels:
-                labels = feature["labels"]
-                padded_labels = labels + [-100] * padding_length
-                batch["labels"].append(padded_labels)
         
-        # Convert to tensors
-        batch = {k: torch.tensor(v, dtype=torch.long) for k, v in batch.items()}
-        
-        return batch
+        return {k: torch.tensor(v, dtype=torch.long) for k, v in batch.items()}
