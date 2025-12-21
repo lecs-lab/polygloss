@@ -69,6 +69,8 @@ def create_dataset(
         ]
     }
     for split in dataset:
+        if split == "train" and config.mode == "predict":
+            continue
         examples = []
         skipped = 0
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
