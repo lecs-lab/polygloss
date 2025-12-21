@@ -24,12 +24,10 @@ def eval_ppl_per_lang(
     config: ExperimentConfig,
     distributed_parameters: DistributedParameters,
 ) -> pd.DataFrame | None:
-    """Calculate loss and perplexity per language on the eval set."""
-    if config.model_type == "seq2seq":
-        pass
-    else:
-        raise NotImplementedError()
-
+    """Calculate loss and perplexity per language on the eval set.
+    
+    Supports both seq2seq and causal LM models.
+    """
     model.eval()
     device = distributed_parameters["device"]
     forward_params = inspect.signature(
@@ -38,10 +36,12 @@ def eval_ppl_per_lang(
 
     if distributed_parameters["rank"] == 0:
         logger.info("Computing per-language perplexity...")
+    
     loss_sum_per_language = defaultdict(float)
     num_tokens_per_language = defaultdict(int)
     num_morphemes_per_language = defaultdict(int)
     num_words_per_language = defaultdict(int)
+    
     with (
         torch.amp.autocast_mode.autocast(
             distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -55,26 +55,65 @@ def eval_ppl_per_lang(
         ):
             inputs = {k: v.to(device) for k, v in batch.items() if k in forward_params}
             out = model(**inputs)
+            
+            # Get labels
+            labels = batch["labels"].to(device)
+            
             # Compute loss without reducing so we can split up by language
-            # Should be shape (batch_size,seq_length)
-            labels = batch["labels"]
-            losses = cross_entropy(
-                out.logits.permute(0, 2, 1),
-                labels.to(device),
-                ignore_index=-100,
-                reduction="none",
+            if config.model_type == "seq2seq":
+                # Seq2seq: logits shape is (batch_size, seq_length, vocab_size)
+                # Permute to (batch_size, vocab_size, seq_length) for cross_entropy
+                losses = cross_entropy(
+                    out.logits.permute(0, 2, 1),
+                    labels,
+                    ignore_index=-100,
+                    reduction="none",
+                )
+            elif config.model_type == "decoder":
+                # Shift logits and labels for next-token prediction
+                # logits[:, :-1] predicts labels[:, 1:]
+                shift_logits = out.logits[:, :-1, :].contiguous()
+                shift_labels = labels[:, 1:].contiguous()
+                
+                # Compute loss
+                # cross_entropy expects (batch, vocab, seq_len)
+                losses = cross_entropy(
+                    shift_logits.permute(0, 2, 1),
+                    shift_labels,
+                    ignore_index=-100,
+                    reduction="none",
+                )
+            else:
+                raise ValueError(f"Unknown model_type: {config.model_type}")
+            
+            # Decode labels for morpheme/word counting
+            # Replace -100 with 0 (or pad_token_id) for decoding
+            labels_for_decode = labels.clone()
+            labels_for_decode[labels_for_decode == -100] = 0
+            
+            decoded_labels = tokenizer.batch_decode(
+                labels_for_decode, 
+                skip_special_tokens=True
             )
-            labels[labels == -100] = 0
-            decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
-            for seq_losses, glottocode, seq_labels, label_text in zip(
-                losses, batch["glottocode"], labels, decoded_labels
+            
+            # Accumulate per language
+            for idx, (seq_losses, glottocode, label_text) in enumerate(
+                zip(losses, batch["glottocode"], decoded_labels)
             ):
                 if glottocode is None:
                     glottocode = "<unknown>"
+                
+                # Sum of losses for this sequence
                 loss_sum_per_language[glottocode] += seq_losses.sum().detach().item()
-                num_tokens_per_language[glottocode] += (  # type:ignore
-                    torch.sum(seq_labels != 0).detach().item()
+                
+                # Count non-padding tokens (tokens that contributed to loss)
+                # For both seq2seq and causal: count non--100 tokens in original labels
+                original_labels = batch["labels"][idx]
+                num_tokens_per_language[glottocode] += (
+                    torch.sum(original_labels != -100).detach().item()
                 )
+                
+                # Count morphemes and words from decoded text
                 num_morphemes_per_language[glottocode] += len(
                     re.split(boundary_pattern, label_text)
                 )
@@ -115,20 +154,21 @@ def eval_ppl_per_lang(
     if distributed_parameters["rank"] == 0:
         rows = []
         for glottocode in glottocodes:
-            mean_loss = (
-                loss_sum_per_language[glottocode] / num_tokens_per_language[glottocode]
-            )
-            lang_row = pd.Series(
-                {
-                    "glottocode": glottocode,
-                    "loss": mean_loss,
-                    "ppl": math.exp(mean_loss),
-                    "num_tokens": num_tokens_per_language[glottocode],
-                    "num_morphemes": num_morphemes_per_language[glottocode],
-                    "num_words": num_words_per_language[glottocode],
-                }
-            )
-            rows.append(lang_row)
+            if num_tokens_per_language[glottocode] > 0:
+                mean_loss = (
+                    loss_sum_per_language[glottocode] / num_tokens_per_language[glottocode]
+                )
+                lang_row = pd.Series(
+                    {
+                        "glottocode": glottocode,
+                        "loss": mean_loss,
+                        "ppl": math.exp(mean_loss),
+                        "num_tokens": num_tokens_per_language[glottocode],
+                        "num_morphemes": num_morphemes_per_language[glottocode],
+                        "num_words": num_words_per_language[glottocode],
+                    }
+                )
+                rows.append(lang_row)
 
         return pd.DataFrame(rows)
     else:

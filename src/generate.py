@@ -32,6 +32,10 @@ def generate(
     model.eval()
     device = distributed_parameters["device"]
 
+    if config.model_type == "decoder":
+        # left padding for decoder models in generation
+        tokenizer.padding_side = "left"
+
     generations: list[str] = []
     labels: list[str | None] = []
     task_keys: list[str] = []
