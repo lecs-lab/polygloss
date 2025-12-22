@@ -28,7 +28,7 @@ set -x
 if [[ "$2" == "--monoling" ]]; then
     echo "Running multiple monolingual experiments"
 
-    for glottocode in ainu1240 ruul1235 lezg1247 natu1246 nyan1302 dido1241 uspa1245 arap1274
+    for glottocode in ainu1240 ruul1235 lezg1247 natu1246 nyan1302 dido1241 uspa1245 arap1274 gitx1241
     do
         echo "Running with $glottocode"
         torchrun \
