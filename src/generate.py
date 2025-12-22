@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+from src.util.trim_and_left_pad import trim_and_left_pad
 
 logger = logging.getLogger(__name__)
 
@@ -32,10 +33,6 @@ def generate(
     model.eval()
     device = distributed_parameters["device"]
 
-    if config.model_type == "decoder":
-        # left padding for decoder models in generation
-        tokenizer.padding_side = "left"
-
     generations: list[str] = []
     labels: list[str | None] = []
     task_keys: list[str] = []
@@ -50,42 +47,28 @@ def generate(
         if distributed_parameters["rank"] == 0
         else dataloader
     ):
+        if config.model_type == "decoder":
+            batch = trim_and_left_pad(batch, tokenizer.pad_token_id)
+
         inputs = {
             k: v.to(device)
             for k, v in batch.items()
             if k in inspect.signature(model.forward).parameters
         }
 
-        if config.model_type == "seq2seq":
-            batch_generations = model.generate(
-                **inputs,
-                use_model_defaults=True,
-                do_sample=False,
-                num_beams=config.num_beams,
-                max_length=1024,
-            )
-            generations.extend(
-                tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
-            )
-        elif config.model_type == "decoder":
-            prompt_lengths = (inputs["attention_mask"].sum(dim=1)).tolist()
-            
-            batch_generations = model.generate(
-                **inputs,
-                do_sample=False,
-                num_beams=config.num_beams,
-                max_new_tokens=1024,
-                pad_token_id=tokenizer.pad_token_id,
-                eos_token_id=tokenizer.eos_token_id,
-            )
-            
-            # Decode only the generated part (skip the prompt)
-            # Note: we don't use thinking tokens in training or eval
-            for _, (generation, prompt_len) in enumerate(zip(batch_generations, prompt_lengths)):
-                generated_tokens = generation[prompt_len:]
-                decoded = tokenizer.decode(generated_tokens, skip_special_tokens=True)
-                
-                generations.append(decoded.strip())
+        batch_generations = model.generate(
+            **inputs,
+            do_sample=False,
+            num_beams=config.num_beams,
+            max_new_tokens=1024,
+            pad_token_id=tokenizer.pad_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+        )
+        if config.model_type == "decoder":
+            batch_generations = batch_generations[:, inputs["input_ids"].size(-1) :]
+        generations.extend(
+            tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
+        )
 
         if "labels" in batch:
             batch["labels"][batch["labels"] == -100] = tokenizer.pad_token_id
@@ -96,6 +79,7 @@ def generate(
             labels.extend([None] * len(batch_generations))
         task_keys.extend(batch["task"])
         ids.extend(batch["id"])
+        breakpoint()
 
     # Gather all examples
     if distributed_parameters["distributed"]:

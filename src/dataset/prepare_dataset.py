@@ -27,7 +27,7 @@ from data.model import boundary_pattern
 from src.config.experiment_config import MODEL_TYPE
 from src.distributed import DistributedParameters
 from src.train import ExperimentConfig
-from src.util.collator import FlexibleCausalLMCollator, FlexibleSeq2SeqCollator
+from src.util.collator import FlexibleCollatorWithPadding, FlexibleSeq2SeqCollator
 
 logger = logging.getLogger(__name__)
 
@@ -212,9 +212,13 @@ def create_dataloader(
 ):
     """Creates a dataloader for a dataset"""
     if config.model_type == "seq2seq":
-        collator = FlexibleSeq2SeqCollator(tokenizer, label_pad_token_id=-100)
+        collator = FlexibleSeq2SeqCollator(tokenizer=tokenizer, label_pad_token_id=-100)
     elif config.model_type == "decoder":
-        collator = FlexibleCausalLMCollator(tokenizer, mlm=False)
+        collator = FlexibleCollatorWithPadding(
+            tokenizer=tokenizer,
+            label_pad_token_id=-100,
+            mlm=False,
+        )
     else:
         raise ValueError(f"Unknown model_type: {config.model_type}")
     if "SLURM_CPUS_PER_TASK" in os.environ:
@@ -305,62 +309,41 @@ def _make_causal_tokenizer_with_chat_template(
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
 
-        full_texts = []
-        assistant_start_positions = []  # Track where assistant response starts
+        user_and_assistant_turns = []
+        prompt_lengths = []  # Track where assistant response starts for loss masking
 
         for prompt, label in zip(batch["input"], batch["label"]):
-            messages = [
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": label},
-            ]
-
             # Apply chat template
-            full_text = tokenizer.apply_chat_template(
-                messages,
-                tokenize=False,
-                add_generation_prompt=False,
-                enable_thinking=use_thinking,
+            user_and_assistant_turns.append(
+                tokenizer.apply_chat_template(
+                    [
+                        {"role": "user", "content": prompt},
+                        {"role": "assistant", "content": label},
+                    ],
+                    tokenize=False,
+                    add_generation_prompt=False,
+                    enable_thinking=use_thinking,
+                )
             )
-            full_texts.append(full_text)
-
-            prompt_only = tokenizer.apply_chat_template(
-                [{"role": "user", "content": prompt}],
-                tokenize=False,
-                add_generation_prompt=True,  # True to get the assistant start token
-                enable_thinking=use_thinking,
+            prompt_lengths.append(
+                len(
+                    tokenizer.apply_chat_template(
+                        [{"role": "user", "content": prompt}],
+                        tokenize=True,
+                        add_generation_prompt=True,  # True to get the assistant start token
+                        enable_thinking=use_thinking,
+                    )["input_ids"]  # type:ignore
+                )
             )
-            assistant_start_positions.append(prompt_only)
 
         # Tokenize the full conversations
         model_inputs = tokenizer(
-            full_texts,
+            user_and_assistant_turns,
             truncation=True,
             padding=False,
             max_length=max_length,
         )
-
-        # Create labels with prompt tokens masked
-        labels = []
-        for i, prompt_only in enumerate(assistant_start_positions):
-            # Tokenize the prompt-only part to find where assistant starts
-            prompt_tokens = tokenizer(
-                prompt_only,
-                truncation=False,
-                padding=False,
-            )["input_ids"]
-
-            prompt_length = len(prompt_tokens)
-            full_length = len(model_inputs["input_ids"][i])
-
-            # Mask prompt tokens, train on assistant tokens only
-            label_seq = [-100] * prompt_length + model_inputs["input_ids"][i][
-                prompt_length:
-            ]
-
-            # Ensure label sequence matches input sequence length
-            labels.append(label_seq[:full_length])
-
-        model_inputs["labels"] = labels
+        model_inputs["prompt_lengths"] = prompt_lengths
         return model_inputs
 
     return _tokenize
