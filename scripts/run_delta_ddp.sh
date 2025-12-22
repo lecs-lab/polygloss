@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=4
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=200GB
 #SBATCH --time=2-00:00:00
 #SBATCH --partition=ghx4
 #SBATCH --account=bebe-dtai-gh
@@ -52,7 +52,7 @@ if [[ "$2" == "--monoling" ]]; then
     do
         echo "Running with $glottocode"
         torchrun \
-            --nproc_per_node=$SLURM_NTASKS_PER_NODE \
+            --nproc_per_node=4 \
             --nnodes=$SLURM_NNODES \
             --node_rank=$SLURM_NODEID \
             --master_addr=$MASTER_ADDR \
@@ -61,7 +61,7 @@ if [[ "$2" == "--monoling" ]]; then
     done
 else
     torchrun \
-    --nproc_per_node=$SLURM_NTASKS_PER_NODE \
+    --nproc_per_node=4 \
     --nnodes=$SLURM_NNODES \
     --node_rank=$SLURM_NODEID \
     --master_addr=$MASTER_ADDR \
