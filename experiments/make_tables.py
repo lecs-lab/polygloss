@@ -5,11 +5,13 @@ api = wandb.Api()
 
 metrics = ["glossing.morphemes.error_rate", "segmentation.f1", "alignment"]
 runs = [
+    "glosslm-v1",
     "polygloss-byt5-multitask (fixed eval)",
     "polygloss-byt5-concat (fixed eval)",
     "polygloss-byt5-interleaved (fixed eval)",
 ]
 nice_names = [
+    "\\textsc{GlossLM}",
     "\\textsc{PolyGloss} (ByT5, multitask)",
     "\\textsc{PolyGloss} (ByT5, concat)",
     "\\textsc{PolyGloss} (ByT5, interleaved)",
@@ -23,9 +25,17 @@ for run in api.runs(path="lecs-general/polygloss"):
             for lang in evaluation_languages:
                 score = run.summary_metrics["test"][lang]
                 for key in metric.split("."):
+                    if key not in score:
+                        score = None
+                        break
                     score = score[key]
                 results[run.name][metric].append(score)
-            average = sum(results[run.name][metric]) / len(results[run.name][metric])
+            if all(m is not None for m in results[run.name][metric]):
+                average = sum(results[run.name][metric]) / len(
+                    results[run.name][metric]
+                )
+            else:
+                average = None
             results[run.name][metric].append(average)
 
 # Print LaTeX
@@ -36,6 +46,8 @@ for m in metrics:
             "    "
             + nice_name
             + " & "
-            + " & ".join([f"{r:.3f}" for r in results[run_name][m]])
+            + " & ".join(
+                [f"{r:.3f}" if r is not None else "" for r in results[run_name][m]]
+            )
             + " \\\\"
         )
