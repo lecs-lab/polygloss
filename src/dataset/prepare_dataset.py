@@ -77,7 +77,41 @@ def create_dataset(
             row = typing.cast(typing.Mapping, row)
             fields = _prepare_prompt_fields(row)
 
-            if config.task_format == "multitask":
+            if config.task_format == "gloss-only":
+                if "glosslm" in config.pretrained_model:
+                    raise NotImplementedError(
+                        "GlossLM does not support the `gloss-only` format"
+                    )
+                prompt = templates["polygloss.multitask.t2g"].substitute(fields)
+                examples.append(
+                    _create_example(
+                        prompt, fields["glosses"], "t2g", row, config.model_type
+                    )
+                )
+                if split != "test":
+                    prompt = templates["polygloss.multitask.s2g"].substitute(fields)
+                    examples.append(
+                        _create_example(
+                            prompt, fields["glosses"], "s2g", row, config.model_type
+                        )
+                    )
+            elif config.task_format == "segment-only":
+                if "glosslm" in config.pretrained_model:
+                    raise NotImplementedError(
+                        "GlossLM does not support the `segment-only` format"
+                    )
+                if row["segmentation"]:
+                    prompt = templates["polygloss.multitask.t2s"].substitute(fields)
+                    examples.append(
+                        _create_example(
+                            prompt,
+                            fields["segmentation"],
+                            "t2s",
+                            row,
+                            config.model_type,
+                        )
+                    )
+            elif config.task_format == "multitask":
                 # Create transcription -> glosses and transcription -> segmentation for both splits
                 # Create segmentation -> glosses for the train split ONLY
                 if "glosslm" in config.pretrained_model:
