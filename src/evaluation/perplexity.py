@@ -25,7 +25,7 @@ def eval_ppl_per_lang(
     distributed_parameters: DistributedParameters,
 ) -> pd.DataFrame | None:
     """Calculate loss and perplexity per language on the eval set.
-    
+
     Supports both seq2seq and causal LM models.
     """
     model.eval()
@@ -36,12 +36,12 @@ def eval_ppl_per_lang(
 
     if distributed_parameters["rank"] == 0:
         logger.info("Computing per-language perplexity...")
-    
+
     loss_sum_per_language = defaultdict(float)
     num_tokens_per_language = defaultdict(int)
     num_morphemes_per_language = defaultdict(int)
     num_words_per_language = defaultdict(int)
-    
+
     with (
         torch.amp.autocast_mode.autocast(
             distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -55,10 +55,10 @@ def eval_ppl_per_lang(
         ):
             inputs = {k: v.to(device) for k, v in batch.items() if k in forward_params}
             out = model(**inputs)
-            
+
             # Get labels
             labels = batch["labels"].to(device)
-            
+
             # Compute loss without reducing so we can split up by language
             if config.model_type == "seq2seq":
                 # Seq2seq: logits shape is (batch_size, seq_length, vocab_size)
@@ -74,7 +74,7 @@ def eval_ppl_per_lang(
                 # logits[:, :-1] predicts labels[:, 1:]
                 shift_logits = out.logits[:, :-1, :].contiguous()
                 shift_labels = labels[:, 1:].contiguous()
-                
+
                 # Compute loss
                 # cross_entropy expects (batch, vocab, seq_len)
                 losses = cross_entropy(
@@ -85,34 +85,33 @@ def eval_ppl_per_lang(
                 )
             else:
                 raise ValueError(f"Unknown model_type: {config.model_type}")
-            
+
             # Decode labels for morpheme/word counting
             # Replace -100 with 0 (or pad_token_id) for decoding
             labels_for_decode = labels.clone()
             labels_for_decode[labels_for_decode == -100] = 0
-            
+
             decoded_labels = tokenizer.batch_decode(
-                labels_for_decode, 
-                skip_special_tokens=True
+                labels_for_decode, skip_special_tokens=True
             )
-            
+
             # Accumulate per language
             for idx, (seq_losses, glottocode, label_text) in enumerate(
                 zip(losses, batch["glottocode"], decoded_labels)
             ):
                 if glottocode is None:
                     glottocode = "<unknown>"
-                
+
                 # Sum of losses for this sequence
                 loss_sum_per_language[glottocode] += seq_losses.sum().detach().item()
-                
+
                 # Count non-padding tokens (tokens that contributed to loss)
                 # For both seq2seq and causal: count non--100 tokens in original labels
                 original_labels = batch["labels"][idx]
-                num_tokens_per_language[glottocode] += (
+                num_tokens_per_language[glottocode] += (  # type:ignore
                     torch.sum(original_labels != -100).detach().item()
                 )
-                
+
                 # Count morphemes and words from decoded text
                 num_morphemes_per_language[glottocode] += len(
                     re.split(boundary_pattern, label_text)
@@ -156,7 +155,8 @@ def eval_ppl_per_lang(
         for glottocode in glottocodes:
             if num_tokens_per_language[glottocode] > 0:
                 mean_loss = (
-                    loss_sum_per_language[glottocode] / num_tokens_per_language[glottocode]
+                    loss_sum_per_language[glottocode]
+                    / num_tokens_per_language[glottocode]
                 )
                 lang_row = pd.Series(
                     {
