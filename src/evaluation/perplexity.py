@@ -115,6 +115,8 @@ def eval_ppl_per_lang(
     if distributed_parameters["rank"] == 0:
         rows = []
         for glottocode in glottocodes:
+            if num_tokens_per_language[glottocode] == 0:
+                print(f"Offender: {glottocode}")
             mean_loss = (
                 loss_sum_per_language[glottocode] / num_tokens_per_language[glottocode]
             )
