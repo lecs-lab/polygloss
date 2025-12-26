@@ -192,7 +192,10 @@ def create_dataset(
         # for now, only Qwen 3 is supported (uses chat template)
         _make_tokenizer = _make_causal_tokenizer_with_chat_template
     else:
-        raise ValueError(f"Unknown model_type: {config.model_type}")
+        raise ValueError(
+            f"Unknown or unsupported model_type from pretrained config: {model_config.model_type!r}. "
+            f"Supported decoder-only model types: {supported_decoder_models}."
+        )
 
     # Create prompts and tokenize
     return inputs_dataset.map(
