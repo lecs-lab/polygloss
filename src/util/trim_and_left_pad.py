@@ -2,8 +2,8 @@ import torch
 
 
 def trim_and_left_pad(batch, pad_token_id: int):
-    """Given a batch with `input_ids`, `labels`, `prompt_lengths` and `attention_mask`,
-    trims each `input_ids` to the `prompt_length`, and then re-pads on the left"""
+    """Given a batch with `input_ids`, `prompt_lengths` and `attention_mask`,
+    trims each sequence to its `prompt_length`, and then re-pads on the left."""
     assert all(k in batch for k in ["input_ids", "prompt_lengths", "attention_mask"])
 
     device = batch["input_ids"].device
