@@ -22,7 +22,10 @@ def alignment_score(segments_and_glosses: list[tuple[str, str]]):
         glosses_abstract = re.sub(r"[^\=\-\s]+", "x", glosses)
         edit_distance = editdistance.eval(segment_abstract, glosses_abstract)
         max_edit_distance = max(len(segment_abstract), len(glosses_abstract))
-        sentence_score = 1 - (edit_distance / max_edit_distance)
+        if max_edit_distance == 0:
+            sentence_score = 1
+        else:
+            sentence_score = 1 - (edit_distance / max_edit_distance)
 
         if index in log_indices:
             logger.info(

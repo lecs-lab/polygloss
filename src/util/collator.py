@@ -1,6 +1,10 @@
 from typing import Any, Dict, List
 
-from transformers.data.data_collator import DataCollatorForSeq2Seq
+import torch
+from transformers.data.data_collator import (
+    DataCollatorForLanguageModeling,
+    DataCollatorForSeq2Seq,
+)
 
 
 def _is_tensor_like(v: Any) -> bool:
@@ -43,6 +47,43 @@ class FlexibleSeq2SeqCollator(DataCollatorForSeq2Seq):
 
         # Let DataCollatorForSeq2Seq do its usual padding on the remaining numeric fields
         batch = super().__call__(features)
+
+        # Add the untouched extras back
+        batch.update(extras)
+        return batch
+
+
+class FlexibleCollatorWithPadding(DataCollatorForLanguageModeling):
+    def __init__(self, label_pad_token_id: int, *args, **kwargs):
+        super(FlexibleCollatorWithPadding, self).__init__(*args, **kwargs)
+        self.label_pad_token_id = label_pad_token_id
+
+    def __call__(
+        self, features: List[Dict[str, Any]], return_tensors: str | None = None
+    ) -> Dict[str, Any]:
+        # Collect names of fields to preserve
+        if not features:
+            return {}
+        keys = list(features[0].keys())
+
+        # Extract non-tensor fields
+        extras: Dict[str, List[Any]] = {}
+        for k in keys:
+            values = [f[k] for f in features if k in f]
+            if values and not _is_tensor_like(values):
+                extras[k] = values
+                for f in features:
+                    f.pop(k, None)  # remove before parent collator
+
+        # Let DataCollatorForLanguageModeling do its usual padding on the remaining numeric fields
+        batch = super().__call__(features, return_tensors)
+
+        # Mask labels for prompt
+        prompt_mask = torch.arange(batch["input_ids"].size(-1)).expand(
+            batch["input_ids"].shape
+        )
+        prompt_mask = prompt_mask < (batch["prompt_lengths"]).unsqueeze(-1)
+        batch["labels"].masked_fill_(prompt_mask, -100)
 
         # Add the untouched extras back
         batch.update(extras)
