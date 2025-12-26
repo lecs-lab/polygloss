@@ -5,7 +5,7 @@ from typing import Literal
 TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
 TASK_FORMAT = Literal[
-    "multitask", "concatenated", "interleaved"
+    "multitask", "concatenated", "interleaved", "gloss-only", "segment-only"
 ]  # Format for glossing/segmentation task
 
 _glotto_to_iso = {
