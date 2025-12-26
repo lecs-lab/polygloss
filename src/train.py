@@ -50,7 +50,9 @@ def train(
 
     start_epoch = 0
     step = 0
-    max_steps = config.max_epochs * len(train_dataloader) / config.gradient_accumulation_steps
+    max_steps = (
+        config.max_epochs * len(train_dataloader) // config.gradient_accumulation_steps
+    )
     if config.use_warmup:
         total_warmup_steps = int(0.03 * max_steps)
     else:
@@ -96,17 +98,17 @@ def train(
             assert isinstance(dev_dataloader.sampler, DistributedSampler)
             train_dataloader.sampler.set_epoch(epoch)
             dev_dataloader.sampler.set_epoch(epoch)
-        
+
         model.train()
         train_loss_sum = 0.0
         train_n = 0
-        
+
         for batch_idx, batch in enumerate(train_dataloader):
             keys_to_pop = [k for k in batch.keys() if k not in forward_params]
             for key in keys_to_pop:
                 batch.pop(key)
             batch = batch.to(device)
-            
+
             # Train in bfloat16
             with torch.amp.autocast_mode.autocast(
                 distributed_parameters["device_type"], dtype=torch.bfloat16
@@ -115,16 +117,16 @@ def train(
                 loss = _get_loss(out, batch["labels"])
                 # Normalize loss by accumulation steps
                 loss = loss / config.gradient_accumulation_steps
-            
+
             scaler.scale(loss).backward()
-            
+
             # Only update weights every accumulation_steps batches
             if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm_(
                     model.parameters(), max_norm=config.grad_norm
                 )
-                
+
                 # Update LR as needed
                 if step < total_warmup_steps:
                     # Linear warmup
@@ -137,25 +139,28 @@ def train(
                     cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
                     new_lr = (
                         config.min_learning_rate
-                        + (config.learning_rate - config.min_learning_rate) * cosine_decay
+                        + (config.learning_rate - config.min_learning_rate)
+                        * cosine_decay
                     )
-                
+
                 for param_group in optimizer.param_groups:
                     param_group["lr"] = new_lr
-                
+
                 if distributed_parameters["rank"] == 0:
                     wandb.log({"train/lr": new_lr}, step=step)
-                
+
                 scaler.step(optimizer)
                 scaler.update()
                 optimizer.zero_grad()
                 step += 1
-            
+
             # Note: multiply by accumulation_steps to get the actual loss value
             num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-            train_loss_sum += loss.item() * num_tokens * config.gradient_accumulation_steps
+            train_loss_sum += (
+                loss.item() * num_tokens * config.gradient_accumulation_steps
+            )
             train_n += num_tokens
-            
+
             if pbar:
                 pbar.update()
 
@@ -230,7 +235,9 @@ def train(
                 model.module if distributed_parameters["distributed"] else model
             ).push_to_hub(config.new_hub_identifier)
             tokenizer.push_to_hub(config.new_hub_identifier)
-            logger.info(f"Pushed model and tokenizer to hub: {config.new_hub_identifier}")
+            logger.info(
+                f"Pushed model and tokenizer to hub: {config.new_hub_identifier}"
+            )
 
 
 def _get_loss(out, labels):
