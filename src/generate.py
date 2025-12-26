@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+from src.util.trim_and_left_pad import trim_and_left_pad
 
 logger = logging.getLogger(__name__)
 
@@ -46,21 +47,29 @@ def generate(
         if distributed_parameters["rank"] == 0
         else dataloader
     ):
+        if config.model_type == "decoder":
+            batch = trim_and_left_pad(batch, tokenizer.pad_token_id)
+
         inputs = {
             k: v.to(device)
             for k, v in batch.items()
             if k in inspect.signature(model.forward).parameters
         }
+
         batch_generations = model.generate(
             **inputs,
-            use_model_defaults=True,
             do_sample=False,
             num_beams=config.num_beams,
-            max_length=1024,
+            max_new_tokens=1024,
+            pad_token_id=tokenizer.pad_token_id,
+            eos_token_id=tokenizer.eos_token_id,
         )
+        if config.model_type == "decoder":
+            batch_generations = batch_generations[:, inputs["input_ids"].size(-1) :]
         generations.extend(
             tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
         )
+
         if "labels" in batch:
             batch["labels"][batch["labels"] == -100] = tokenizer.pad_token_id
             labels.extend(

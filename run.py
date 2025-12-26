@@ -11,7 +11,10 @@ import torch
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
-from transformers.models.auto.modeling_auto import AutoModelForPreTraining
+from transformers.models.auto.modeling_auto import (
+    AutoModelForCausalLM,
+    AutoModelForSeq2SeqLM,
+)
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 
 import wandb
@@ -79,17 +82,28 @@ def run(
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    model = AutoModelForPreTraining.from_pretrained(config.pretrained_model).to(
-        distributed_parameters["device"]
-    )
+    if config.model_type == "seq2seq":
+        model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     elif config.mode == "lora":
         model.enable_input_require_grads()
+        if config.model_type == "seq2seq":
+            task_type = TaskType.SEQ_2_SEQ_LM
+        elif config.model_type == "decoder":
+            task_type = TaskType.CAUSAL_LM
+        else:
+            raise NotImplementedError()
         lora_config = LoraConfig(
-            task_type=TaskType.SEQ_2_SEQ_LM,
+            task_type=task_type,
             r=config.lora_rank,
             lora_alpha=config.lora_alpha,
             lora_dropout=config.lora_dropout,
@@ -111,7 +125,7 @@ def run(
         split: create_dataloader(
             dataset[split],
             shuffle=split == "train",
-            batch_size=config.batch_size,
+            config=config,
             tokenizer=tokenizer,
             distributed_parameters=distributed_parameters,
         )
@@ -125,7 +139,6 @@ def run(
             train_dataloader=dataloaders["train"],
             dev_dataloader=dataloaders["dev"],
             config=config,
-            experiment_folder=experiment_folder,
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
