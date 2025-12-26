@@ -79,7 +79,6 @@ def generate(
             labels.extend([None] * len(batch_generations))
         task_keys.extend(batch["task"])
         ids.extend(batch["id"])
-        breakpoint()
 
     # Gather all examples
     if distributed_parameters["distributed"]:
