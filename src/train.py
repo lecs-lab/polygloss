@@ -93,9 +93,7 @@ def train(
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
-            assert isinstance(dev_dataloader.sampler, DistributedSampler)
             train_dataloader.sampler.set_epoch(epoch)
-            dev_dataloader.sampler.set_epoch(epoch)
 
         model.train()
         train_loss_sum = 0.0
