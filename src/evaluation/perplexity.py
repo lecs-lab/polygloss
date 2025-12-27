@@ -38,81 +38,58 @@ def eval_ppl_per_lang(
 
     if distributed_parameters["rank"] == 0:
         logger.info("Computing per-language perplexity...")
-    loss_sum_per_language = defaultdict(float)
-    num_tokens_per_language = defaultdict(int)
-    num_morphemes_per_language = defaultdict(int)
-    num_words_per_language = defaultdict(int)
-    with (
-        torch.amp.autocast_mode.autocast(
-            distributed_parameters["device_type"], dtype=torch.bfloat16
-        ),
-        torch.inference_mode(),
-    ):
-        for batch in tqdm(
-            dev_dataloader,
-            desc="Evaluating",
-            disable=distributed_parameters["rank"] != 0,
+        loss_sum_per_language = defaultdict(float)
+        num_tokens_per_language = defaultdict(int)
+        num_morphemes_per_language = defaultdict(int)
+        num_words_per_language = defaultdict(int)
+        with (
+            torch.amp.autocast_mode.autocast(
+                distributed_parameters["device_type"], dtype=torch.bfloat16
+            ),
+            torch.inference_mode(),
         ):
-            inputs = {k: v.to(device) for k, v in batch.items() if k in forward_params}
-            out = model(**inputs)
-            # Compute loss without reducing so we can split up by language
-            # Should be shape (batch_size,seq_length)
-            labels = batch["labels"]
-            losses = cross_entropy(
-                out.logits.permute(0, 2, 1),
-                labels.to(device),
-                ignore_index=-100,
-                reduction="none",
-            )
-            labels[labels == -100] = 0
-            decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
-            for seq_losses, glottocode, seq_labels, label_text in zip(
-                losses, batch["glottocode"], labels, decoded_labels
+            for batch in tqdm(
+                dev_dataloader,
+                desc="Evaluating",
             ):
-                if glottocode is None:
-                    glottocode = "<unknown>"
-                loss_sum_per_language[glottocode] += seq_losses.sum().detach().item()
-                num_tokens_per_language[glottocode] += (  # type:ignore
-                    torch.sum(seq_labels != 0).detach().item()
+                inputs = {
+                    k: v.to(device) for k, v in batch.items() if k in forward_params
+                }
+                out = model(**inputs)
+                # Compute loss without reducing so we can split up by language
+                # Should be shape (batch_size,seq_length)
+                labels = batch["labels"]
+                losses = cross_entropy(
+                    out.logits.permute(0, 2, 1),
+                    labels.to(device),
+                    ignore_index=-100,
+                    reduction="none",
                 )
-                num_morphemes_per_language[glottocode] += len(
-                    re.split(boundary_pattern, label_text)
+                labels[labels == -100] = 0
+                decoded_labels = tokenizer.batch_decode(
+                    labels, skip_special_tokens=True
                 )
-                num_words_per_language[glottocode] += len(label_text.split())
+                for seq_losses, glottocode, seq_labels, label_text in zip(
+                    losses, batch["glottocode"], labels, decoded_labels
+                ):
+                    if glottocode is None:
+                        glottocode = "<unknown>"
+                    loss_sum_per_language[glottocode] += (
+                        seq_losses.sum().detach().item()
+                    )
+                    num_tokens_per_language[glottocode] += (  # type:ignore
+                        torch.sum(seq_labels != 0).detach().item()
+                    )
+                    num_morphemes_per_language[glottocode] += len(
+                        re.split(boundary_pattern, label_text)
+                    )
+                    num_words_per_language[glottocode] += len(label_text.split())
 
-    # Sum up language counts over ranks if distributed
-    if distributed_parameters["rank"] == 0:
-        logger.info("Accumulating over ranks...")
-
-    glottocodes = sorted(
-        set(c or "<unknown>" for c in dev_dataloader.dataset["glottocode"])
-    )
-
-    if distributed_parameters["distributed"]:
-        # Make one big evil tensor with all the counts we need to sum
-        # (num_langs, 4)
-        counts = torch.tensor(
-            [
-                [
-                    loss_sum_per_language[glottocode],
-                    num_tokens_per_language[glottocode],
-                    num_morphemes_per_language[glottocode],
-                    num_words_per_language[glottocode],
-                ]
-                for glottocode in glottocodes
-            ],
-            device=device,
+        glottocodes = sorted(
+            set(c or "<unknown>" for c in dev_dataloader.dataset["glottocode"])
         )
-        torch.distributed.all_reduce(counts, op=torch.distributed.ReduceOp.SUM)
-        # Rebuild the dicts
-        for index, glottocode in enumerate(glottocodes):
-            loss_sum_per_language[glottocode] = counts[index][0].item()
-            num_tokens_per_language[glottocode] = counts[index][1].item().__int__()
-            num_morphemes_per_language[glottocode] = counts[index][2].item().__int__()
-            num_words_per_language[glottocode] = counts[index][3].item().__int__()
 
-    # Compute final dataframe
-    if distributed_parameters["rank"] == 0:
+        # Compute final dataframe
         rows = []
         for glottocode in glottocodes:
             if num_tokens_per_language[glottocode] == 0:
@@ -133,5 +110,3 @@ def eval_ppl_per_lang(
             rows.append(lang_row)
 
         return pd.DataFrame(rows)
-    else:
-        return None

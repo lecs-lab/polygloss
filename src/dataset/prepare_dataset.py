@@ -9,7 +9,7 @@ import os
 import typing
 from pathlib import Path
 from string import Template
-from typing import cast
+from typing import Literal, cast
 
 import datasets
 import regex as re
@@ -188,7 +188,7 @@ def create_dataset(
 
 def create_dataloader(
     dataset: datasets.Dataset,
-    shuffle: bool,
+    split: Literal["train", "dev", "test"],
     batch_size: int,
     tokenizer: PreTrainedTokenizerBase,
     distributed_parameters: DistributedParameters,
@@ -199,15 +199,18 @@ def create_dataloader(
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
         num_workers = 0
-    if distributed_parameters["distributed"]:
+    if distributed_parameters["distributed"] and split == "train":
         sampler = DistributedSampler(
             dataset,  # type:ignore
-            shuffle=shuffle,
+            shuffle=True,
             num_replicas=distributed_parameters["world_size"],
             rank=distributed_parameters["rank"],
+            drop_last=True,
         )
     else:
-        sampler = RandomSampler(dataset) if shuffle else SequentialSampler(dataset)
+        sampler = (
+            RandomSampler(dataset) if split == "train" else SequentialSampler(dataset)
+        )
     return DataLoader(
         dataset,  # type:ignore
         batch_size=batch_size,
@@ -215,6 +218,7 @@ def create_dataloader(
         sampler=sampler,
         num_workers=num_workers,
         pin_memory=True,
+        drop_last=distributed_parameters["distributed"] and split == "train",
     )
 
 

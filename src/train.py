@@ -87,7 +87,6 @@ def train(
         (model.module if distributed_parameters["distributed"] else model).forward
     ).parameters
 
-    scaler = torch.amp.grad_scaler.GradScaler()
     logger.info(
         f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
     )
@@ -114,8 +113,7 @@ def train(
             ):
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
-            scaler.scale(loss).backward()
-            scaler.unscale_(optimizer)
+            loss.backward()
             torch.nn.utils.clip_grad_norm_(
                 model.parameters(), max_norm=config.grad_norm
             )
@@ -139,8 +137,7 @@ def train(
             if distributed_parameters["rank"] == 0:
                 wandb.log({"train/lr": new_lr}, step=step)
 
-            scaler.step(optimizer)
-            scaler.update()
+            optimizer.step()
             step += 1
 
             # Calculate loss, we will average over tokens
@@ -151,40 +148,30 @@ def train(
             if pbar:
                 pbar.update()
 
-        model.eval()
-        logger.info("Evaluating...")
-        with (
-            torch.amp.autocast_mode.autocast(
-                distributed_parameters["device_type"], dtype=torch.bfloat16
-            ),
-            torch.inference_mode(),
-        ):
-            eval_loss_sum = 0.0
-            eval_n = 0
-            for batch in dev_dataloader:
-                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-                for key in keys_to_pop:
-                    batch.pop(key)
-                batch = batch.to(device)
-                out = model(**batch)
-                loss = _get_loss(out, batch["labels"]).item()
-                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-                eval_loss_sum += loss * num_tokens
-                eval_n += num_tokens
-
-        # Sum losses over devices, if distributed
-        if distributed_parameters["distributed"]:
-            losses_tensor = torch.tensor(
-                [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
-            )
-            torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
-            train_loss = losses_tensor[0] / losses_tensor[1]
-            eval_loss = losses_tensor[2] / losses_tensor[3]
-        else:
-            train_loss = train_loss_sum / train_n
-            eval_loss = eval_loss_sum / eval_n
-
         if distributed_parameters["rank"] == 0:
+            model.eval()
+            logger.info("Evaluating...")
+            with (
+                torch.amp.autocast_mode.autocast(
+                    distributed_parameters["device_type"], dtype=torch.bfloat16
+                ),
+                torch.inference_mode(),
+            ):
+                eval_loss_sum = 0.0
+                eval_n = 0
+                for batch in dev_dataloader:
+                    keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+                    for key in keys_to_pop:
+                        batch.pop(key)
+                    batch = batch.to(device)
+                    out = model(**batch)
+                    loss = _get_loss(out, batch["labels"]).item()
+                    num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+                    eval_loss_sum += loss * num_tokens
+                    eval_n += num_tokens
+
+                train_loss = train_loss_sum / train_n
+                eval_loss = eval_loss_sum / eval_n
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
@@ -222,7 +209,9 @@ def train(
                 model.module if distributed_parameters["distributed"] else model
             ).push_to_hub(config.new_hub_identifier)
             tokenizer.push_to_hub(config.new_hub_identifier)
-            logger.info(f"Pushed model and tokenizer to hub: {config.new_hub_identifier}")
+            logger.info(
+                f"Pushed model and tokenizer to hub: {config.new_hub_identifier}"
+            )
 
 
 def _get_loss(out, labels):

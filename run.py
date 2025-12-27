@@ -110,7 +110,7 @@ def run(
     dataloaders: dict[str, DataLoader] = {
         split: create_dataloader(
             dataset[split],
-            shuffle=split == "train",
+            split=split,
             batch_size=config.batch_size,
             tokenizer=tokenizer,
             distributed_parameters=distributed_parameters,
@@ -147,17 +147,21 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-    # Join with original dataset to add language info
-    meta = (
-        dataset["test"].to_pandas()[["id", "glottocode"]].drop_duplicates(subset=["id"])  # type:ignore
-    )
-    predictions_with_langs = predictions.merge(
-        meta,
-        on="id",
-        how="left",
-    )
 
     if distributed_parameters["rank"] == 0:
+        assert predictions is not None, perplexity_by_lang is not None
+        # Join with original dataset to add language info
+        meta = (
+            dataset["test"]  # type:ignore
+            .to_pandas()[["id", "glottocode"]]
+            .drop_duplicates(subset=["id"])
+        )
+        predictions_with_langs = predictions.merge(
+            meta,
+            on="id",
+            how="left",
+        )
+
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
