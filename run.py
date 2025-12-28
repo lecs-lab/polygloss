@@ -162,7 +162,8 @@ def run(
     )
 
     if distributed_parameters["rank"] == 0:
-        assert predictions is not None, perplexity_by_lang is not None
+        assert predictions is not None
+        assert perplexity_by_lang is not None
         # Join with original dataset to add language info
         meta = (
             dataset["test"]  # type:ignore
