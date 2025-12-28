@@ -157,6 +157,15 @@ def train(
             if pbar:
                 pbar.update()
 
+        if distributed_parameters["distributed"]:
+            stats = torch.tensor(
+                [train_loss_sum, train_n],
+                device=device,
+                dtype=torch.float64,
+            )
+            torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
+            train_loss_sum, train_n = stats.tolist()
+
         if distributed_parameters["rank"] == 0:
             model.eval()
             logger.info("Evaluating...")
