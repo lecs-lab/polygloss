@@ -56,7 +56,7 @@ def eval_ppl_per_lang(
                 out = model(**inputs)
                 # Compute loss without reducing so we can split up by language
                 # Should be shape (batch_size,seq_length)
-                labels = batch["labels"]
+                labels = batch["labels"].to(device)
                 if config.model_type == "seq2seq":
                     # Seq2seq: logits shape is (batch_size, seq_length, vocab_size)
                     # Permute to (batch_size, vocab_size, seq_length) for cross_entropy
