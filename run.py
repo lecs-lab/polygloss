@@ -143,6 +143,11 @@ def run(
             distributed_parameters=distributed_parameters,
         )
 
+    if distributed_parameters["distributed"]:
+        torch.distributed.barrier()
+        torch.distributed.destroy_process_group()
+        model = model.module
+
     # Compute perplexity for each language
     perplexity_by_lang = eval_ppl_per_lang(
         model=model,
@@ -195,7 +200,6 @@ def run(
             )
             return metrics
     if distributed_parameters["distributed"]:
-        torch.distributed.barrier()
         if distributed_parameters["rank"] == 0:
             wandb.finish()
     else:
