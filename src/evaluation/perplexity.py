@@ -115,7 +115,8 @@ def eval_ppl_per_lang(
         rows = []
         for glottocode in glottocodes:
             if num_tokens_per_language[glottocode] == 0:
-                print(f"Offender: {glottocode}")
+                logger.warning(f"Glottocode {glottocode} has no tokens!")
+                continue
             mean_loss = (
                 loss_sum_per_language[glottocode] / num_tokens_per_language[glottocode]
             )
