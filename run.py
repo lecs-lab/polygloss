@@ -102,11 +102,16 @@ def run(
             task_type = TaskType.CAUSAL_LM
         else:
             raise NotImplementedError()
+        if config.target_modules is not None:
+            target_modules = json.loads(config.target_modules)
+        else:
+            target_modules = None
         lora_config = LoraConfig(
             task_type=task_type,
             r=config.lora_rank,
             lora_alpha=config.lora_alpha,
             lora_dropout=config.lora_dropout,
+            target_modules=target_modules,
         )
         model = get_peft_model(model, lora_config)
 

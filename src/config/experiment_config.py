@@ -100,6 +100,9 @@ class ExperimentConfig:
     lora_alpha: int = 8
     """Alpha for LoRa"""
 
+    target_modules: str | None = None
+    """Target modules for LoRA"""
+
     adapter_dir: str | None = None
     """LoRA adapter directory. If specified, will add adapter layer to pretrained model (for inference)"""
 

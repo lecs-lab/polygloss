@@ -31,7 +31,7 @@ from src.util.collator import FlexibleCollatorWithPadding, FlexibleSeq2SeqCollat
 
 logger = logging.getLogger(__name__)
 
-supported_decoder_models = ["qwen3"]
+supported_decoder_models = ["qwen3", "cohere"]
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
