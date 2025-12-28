@@ -7,7 +7,6 @@ from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
-from src.util.trim_and_left_pad import trim_and_left_pad
 
 logger = logging.getLogger(__name__)
 
@@ -81,10 +80,5 @@ def generate(
                 }
                 for gen, label, task_key, id in zip(generations, labels, task_keys, ids)
             ]
-        )
-        # De-dupe, since with DDP we might have dupe generations
-        # ^ wait what we definitely shouldn't??
-        df = df.drop_duplicates(subset=["id", "task"], keep="first").reset_index(
-            drop=True
         )
         return df
