@@ -21,7 +21,6 @@ def train(
     train_dataloader: DataLoader,
     dev_dataloader: DataLoader,
     config: ExperimentConfig,
-    experiment_folder: pathlib.Path,
     models_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
 ):
@@ -51,7 +50,9 @@ def train(
 
     start_epoch = 0
     step = 0
-    max_steps = config.max_epochs * len(train_dataloader)
+    max_steps = (
+        config.max_epochs * len(train_dataloader) // config.gradient_accumulation_steps
+    )
     if config.use_warmup:
         total_warmup_steps = int(0.03 * max_steps)
     else:
@@ -98,7 +99,8 @@ def train(
         model.train()
         train_loss_sum = 0.0
         train_n = 0
-        for batch in train_dataloader:
+
+        for batch_idx, batch in enumerate(train_dataloader):
             keys_to_pop = [k for k in batch.keys() if k not in forward_params]
             for key in keys_to_pop:
                 batch.pop(key)
@@ -111,36 +113,45 @@ def train(
             ):
                 out = model(**batch)
                 loss = _get_loss(out, batch["labels"])
+                loss = loss / config.gradient_accumulation_steps
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(
-                model.parameters(), max_norm=config.grad_norm
-            )
 
-            # Update LR as needed
-            if step < total_warmup_steps:
-                # Linear warmup
-                new_lr = config.learning_rate * step / total_warmup_steps
-            else:
-                # Cosine decay
-                progress = (step - total_warmup_steps) / (
-                    max_steps - total_warmup_steps
+            # Only update weights every accumulation_steps batches
+            if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
+                torch.nn.utils.clip_grad_norm_(
+                    model.parameters(), max_norm=config.grad_norm
                 )
-                cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
-                new_lr = (
-                    config.min_learning_rate
-                    + (config.learning_rate - config.min_learning_rate) * cosine_decay
-                )
-            for param_group in optimizer.param_groups:
-                param_group["lr"] = new_lr
-            if distributed_parameters["rank"] == 0:
-                wandb.log({"train/lr": new_lr}, step=step)
 
-            optimizer.step()
-            step += 1
+                # Update LR as needed
+                if step < total_warmup_steps:
+                    # Linear warmup
+                    new_lr = config.learning_rate * step / total_warmup_steps
+                else:
+                    # Cosine decay
+                    progress = (step - total_warmup_steps) / (
+                        max_steps - total_warmup_steps
+                    )
+                    cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+                    new_lr = (
+                        config.min_learning_rate
+                        + (config.learning_rate - config.min_learning_rate)
+                        * cosine_decay
+                    )
 
-            # Calculate loss, we will average over tokens
+                for param_group in optimizer.param_groups:
+                    param_group["lr"] = new_lr
+
+                if distributed_parameters["rank"] == 0:
+                    wandb.log({"train/lr": new_lr}, step=step)
+
+                optimizer.step()
+                step += 1
+
+            # Note: multiply by accumulation_steps to get the actual loss value
             num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-            train_loss_sum += loss.item() * num_tokens
+            train_loss_sum += (
+                loss.item() * num_tokens * config.gradient_accumulation_steps
+            )
             train_n += num_tokens
 
             if pbar:

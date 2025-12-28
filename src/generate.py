@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 from src.config.experiment_config import ExperimentConfig
 from src.distributed import DistributedParameters
+from src.util.trim_and_left_pad import trim_and_left_pad
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +52,11 @@ def generate(
                 do_sample=False,
                 num_beams=config.num_beams,
                 max_length=1024,
+                pad_token_id=tokenizer.pad_token_id,
+                eos_token_id=tokenizer.eos_token_id,
             )
+            if config.model_type == "decoder":
+                batch_generations = batch_generations[:, inputs["input_ids"].size(-1) :]
             generations.extend(
                 tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
             )
