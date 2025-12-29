@@ -6,13 +6,9 @@ import pathlib
 import torch
 import tqdm
 from peft import set_peft_model_state_dict
-<<<<<<< HEAD
 from torch.distributed import ReduceOp
 from torch.optim import Adafactor
 from torch.optim.adamw import AdamW
-=======
-from torch.profiler import record_function
->>>>>>> 770b627 (Fix with)
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
