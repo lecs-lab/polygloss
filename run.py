@@ -93,11 +93,8 @@ def run(
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
-<<<<<<< HEAD
     elif config.mode in ["lora", "grpo"]:
         logger.info("Creating LoRA adapter")
-=======
->>>>>>> c74895c (enable input after peft)
         model.enable_input_require_grads()
     elif config.mode == "lora":
         if config.model_type == "seq2seq":
