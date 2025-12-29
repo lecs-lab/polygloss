@@ -81,7 +81,7 @@ def run(
     models_folder.mkdir(exist_ok=True, parents=True)
 
     # Prepare model, dataset, tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
+    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=True)
     if config.model_type == "seq2seq":
         model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
             distributed_parameters["device"]
