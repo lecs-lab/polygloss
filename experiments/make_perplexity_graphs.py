@@ -7,12 +7,12 @@ import seaborn as sns
 from scipy import stats
 
 import wandb
-from data.scrape_data import evaluation_languages
+from data.scrape_data import evaluation_isocodes, evaluation_languages
 
 api = wandb.Api()
 
-RUN_ID = "nuiz8jqs"
-ARTIFACT_ID = "run-nuiz8jqs-evalloss_per_language-afc56d0b2a0a7996dffc6f3107d989f1:v0"
+RUN_ID = "i4nlgun4"
+ARTIFACT_ID = "run-i4nlgun4-evalloss_per_language-659c5b48426ce30e35b6d6fdec0e6d26:v0"
 
 run = api.run(f"lecs-general/polygloss/{RUN_ID}")
 artifact = api.artifact(f"lecs-general/polygloss/{ARTIFACT_ID}")
@@ -35,8 +35,8 @@ plt.close(f)
 # Scatter plot
 metrics = ["glossing.morphemes.error_rate", "segmentation.f1", "alignment"]
 rows = []
-for lang in evaluation_languages:
-    row = {"Lang": lang}
+for lang, iso in zip(evaluation_languages, evaluation_isocodes):
+    row = {"Lang": iso}
     for metric in metrics:
         score = run.summary_metrics["test"][lang]
         for key in metric.split("."):
@@ -60,9 +60,11 @@ sns.regplot(
     ci=None,
     line_kws={"color": "grey", "linestyle": "--"},
 )
-plt.legend(fontsize="xx-small", loc="lower right")
-plt.xlabel("Perplexity")
-plt.ylabel("Glossing Error Rate")
+leg = plt.legend(fontsize="x-small", loc="lower right")
+for text in leg.get_texts():
+    text.set_fontweight("bold")
+plt.xlabel("Perplexity", fontweight="bold")
+plt.ylabel("Glossing Error Rate", fontweight="bold")
 plt.savefig(
     viz_dir / "corr.pdf", format="pdf", bbox_inches="tight"
 )  # bbox_inches="tight" removes extra whitespace
