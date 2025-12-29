@@ -4,6 +4,7 @@ import math
 import pathlib
 
 import torch
+from torch.profiler import record_function
 import tqdm
 from peft import set_peft_model_state_dict
 from torch.utils.data import DataLoader, DistributedSampler
@@ -102,59 +103,80 @@ def train(
         train_loss_sum = 0.0
         train_n = 0
 
-        for batch_idx, batch in enumerate(train_dataloader):
-            keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-            for key in keys_to_pop:
-                batch.pop(key)
-            batch = batch.to(device)
-            optimizer.zero_grad()
+        count = 0
+        with torch.profiler.profile(
+            activities=[
+                torch.profiler.ProfilerActivity.CPU,
+                torch.profiler.ProfilerActivity.CUDA,
+            ],
+            schedule=torch.profiler.schedule(wait=0, warmup=0, active=6, repeat=1),
+            record_shapes=True,
+            profile_memory=True,
+            with_stack=True,
+            # on_trace_ready=trace_handler,
+        ) as prof:
+            for batch_idx, batch in enumerate(train_dataloader):
+                if count >= 5:
+                    prof.export_memory_timeline(f"profile.html", device="cuda:0")
+                    return
+                count += 1
+                prof.step()
+                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+                for key in keys_to_pop:
+                    batch.pop(key)
+                batch = batch.to(device)
+                # optimizer.zero_grad()
 
-            # Train in bfloat16
-            with torch.amp.autocast_mode.autocast(
-                distributed_parameters["device_type"], dtype=torch.bfloat16
-            ):
-                out = model(**batch)
-                loss = _get_loss(out, batch["labels"])
-                loss = loss / config.gradient_accumulation_steps
-            loss.backward()
+                # Train in bfloat16
+                with record_function("## forward ##")
+                    with torch.amp.autocast_mode.autocast(
+                        distributed_parameters["device_type"], dtype=torch.bfloat16
+                    ):
+                        out = model(**batch)
+                        loss = _get_loss(out, batch["labels"])
+                        loss = loss / config.gradient_accumulation_steps
+                with record_function("## backward ##")
+                    loss.backward()
 
-            # Only update weights every accumulation_steps batches
-            if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
-                torch.nn.utils.clip_grad_norm_(
-                    model.parameters(), max_norm=config.grad_norm
+                # Only update weights every accumulation_steps batches
+                if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
+                    torch.nn.utils.clip_grad_norm_(
+                        model.parameters(), max_norm=config.grad_norm
+                    )
+
+                    # Update LR as needed
+                    if step < total_warmup_steps:
+                        # Linear warmup
+                        new_lr = config.learning_rate * step / total_warmup_steps
+                    else:
+                        # Cosine decay
+                        progress = (step - total_warmup_steps) / (
+                            max_steps - total_warmup_steps
+                        )
+                        cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+                        new_lr = (
+                            config.min_learning_rate
+                            + (config.learning_rate - config.min_learning_rate)
+                            * cosine_decay
+                        )
+
+                    for param_group in optimizer.param_groups:
+                        param_group["lr"] = new_lr
+
+                    if distributed_parameters["rank"] == 0:
+                        wandb.log({"train/lr": new_lr}, step=step)
+
+                    with record_function("## optimizer ##"):
+                        optimizer.step()
+                        optimizer.zero_grad(set_to_none=True)
+                        step += 1
+
+                # Note: multiply by accumulation_steps to get the actual loss value
+                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+                train_loss_sum += (
+                    loss.item() * num_tokens * config.gradient_accumulation_steps
                 )
-
-                # Update LR as needed
-                if step < total_warmup_steps:
-                    # Linear warmup
-                    new_lr = config.learning_rate * step / total_warmup_steps
-                else:
-                    # Cosine decay
-                    progress = (step - total_warmup_steps) / (
-                        max_steps - total_warmup_steps
-                    )
-                    cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
-                    new_lr = (
-                        config.min_learning_rate
-                        + (config.learning_rate - config.min_learning_rate)
-                        * cosine_decay
-                    )
-
-                for param_group in optimizer.param_groups:
-                    param_group["lr"] = new_lr
-
-                if distributed_parameters["rank"] == 0:
-                    wandb.log({"train/lr": new_lr}, step=step)
-
-                optimizer.step()
-                step += 1
-
-            # Note: multiply by accumulation_steps to get the actual loss value
-            num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-            train_loss_sum += (
-                loss.item() * num_tokens * config.gradient_accumulation_steps
-            )
-            train_n += num_tokens
+                train_n += num_tokens
 
             if pbar:
                 pbar.update()
