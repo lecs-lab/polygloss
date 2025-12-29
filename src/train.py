@@ -26,6 +26,9 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
+    logger.info(
+        f"Model has {sum(p.numel() for p in model.parameters())}, {sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable"
+    )
 
     if distributed_parameters["rank"] == 0:
         if not (run := wandb.run):
@@ -47,7 +50,6 @@ def train(
         )
     else:
         raise ValueError(f"Unrecognized optimizer: {config.optimizer}")
-
     start_epoch = 0
     step = 0
     max_steps = (
