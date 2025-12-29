@@ -394,7 +394,7 @@ def _make_causal_tokenizer_with_chat_template(
                         tokenize=True,
                         add_generation_prompt=True,  # True to get the assistant start token
                         enable_thinking=use_thinking,
-                    )["input_ids"]  # type:ignore
+                    )  # type:ignore
                 )
             )
 
