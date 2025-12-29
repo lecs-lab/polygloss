@@ -4,9 +4,9 @@ import math
 import pathlib
 
 import torch
-from torch.profiler import record_function
 import tqdm
 from peft import set_peft_model_state_dict
+from torch.profiler import record_function
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
@@ -117,7 +117,7 @@ def train(
         ) as prof:
             for batch_idx, batch in enumerate(train_dataloader):
                 if count >= 5:
-                    prof.export_memory_timeline(f"profile.html", device="cuda:0")
+                    prof.export_memory_timeline("profile.html", device="cuda:0")
                     return
                 count += 1
                 prof.step()
@@ -128,14 +128,14 @@ def train(
                 # optimizer.zero_grad()
 
                 # Train in bfloat16
-                with record_function("## forward ##")
+                with record_function("## forward ##"):
                     with torch.amp.autocast_mode.autocast(
                         distributed_parameters["device_type"], dtype=torch.bfloat16
                     ):
                         out = model(**batch)
                         loss = _get_loss(out, batch["labels"])
                         loss = loss / config.gradient_accumulation_steps
-                with record_function("## backward ##")
+                with record_function("## backward ##"):
                     loss.backward()
 
                 # Only update weights every accumulation_steps batches
