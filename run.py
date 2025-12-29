@@ -92,10 +92,9 @@ def run(
         )
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
-        model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
-    elif config.mode == "lora":
         model.enable_input_require_grads()
+    elif config.mode == "lora":
         if config.model_type == "seq2seq":
             task_type = TaskType.SEQ_2_SEQ_LM
         elif config.model_type == "decoder":
@@ -114,6 +113,7 @@ def run(
             target_modules=target_modules,
         )
         model = get_peft_model(model, lora_config)
+        model.enable_input_require_grads()
 
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
