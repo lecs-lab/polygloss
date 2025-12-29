@@ -6,9 +6,9 @@ api = wandb.Api()
 metrics = ["glossing.morphemes.error_rate", "segmentation.f1", "alignment"]
 runs = [
     "glosslm-v1",
-    "polygloss-byt5-multitask (fixed eval)",
-    "polygloss-byt5-concat (fixed eval)",
-    "polygloss-byt5-interleaved (fixed eval)",
+    "polygloss-byt5-multitask-adamw (fixed eval)",
+    "polygloss-byt5-concat-adamw (fixed eval)",
+    "polygloss-byt5-interleaved-adamw (fixed eval)",
 ]
 nice_names = [
     "\\textsc{GlossLM}",

@@ -26,6 +26,7 @@ evaluation_languages = [
     "nyan1302",
     "ruul1235",
 ]
+evaluation_isocodes = ["arp", "ddo", "git", "usp", "ain", "lez", "ntu", "nyb", "ruc"]
 
 
 def scrape_odin() -> list[IGTLine]:
