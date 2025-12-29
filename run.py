@@ -16,6 +16,7 @@ from transformers.models.auto.modeling_auto import (
     AutoModelForSeq2SeqLM,
 )
 from transformers.models.auto.tokenization_auto import AutoTokenizer
+from transformers.utils.quantization_config import BitsAndBytesConfig
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
@@ -82,14 +83,24 @@ def run(
 
     # Prepare model, dataset, tokenizer
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=True)
-    if config.model_type == "seq2seq":
-        model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]
+    if config.quantize:
+        logger.info("Quantizing base model")
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
         )
     else:
-        model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]  # type:ignore
-        )
+        bnb_config = None
+    if config.model_type == "seq2seq":
+        model = AutoModelForSeq2SeqLM.from_pretrained(
+            config.pretrained_model, quantization_config=bnb_config
+        ).to(distributed_parameters["device"])
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            config.pretrained_model, quantization_config=bnb_config
+        ).to(distributed_parameters["device"])
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)

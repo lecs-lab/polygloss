@@ -38,6 +38,9 @@ class ExperimentConfig:
     new_hub_identifier: str | None = None
     """If provided, pushes the model to the HuggingFace hub"""
 
+    quantize: bool = False
+    """If true, will use 4-bit quantization"""
+
     # Dataset
     dataset_key: str = "lecslab/polygloss-corpus"
     """Hugging Face dataset identifier for the corpus to use"""
