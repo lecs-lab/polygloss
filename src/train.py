@@ -109,7 +109,7 @@ def train(
                 torch.profiler.ProfilerActivity.CPU,
                 torch.profiler.ProfilerActivity.CUDA,
             ],
-            schedule=torch.profiler.schedule(wait=0, warmup=0, active=6, repeat=1),
+            schedule=torch.profiler.schedule(wait=0, warmup=0, active=6, repeat=0),
             record_shapes=True,
             profile_memory=True,
             with_stack=True,
