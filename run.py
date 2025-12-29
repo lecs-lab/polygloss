@@ -88,13 +88,14 @@ def run(
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]
+            distributed_parameters["device"]  # type:ignore
         )
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
-    elif config.mode == "lora":
+    elif config.mode in ["lora", "grpo"]:
+        logger.info("Creating LoRA adapter")
         model.enable_input_require_grads()
         if config.model_type == "seq2seq":
             task_type = TaskType.SEQ_2_SEQ_LM
@@ -147,6 +148,8 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
+    elif config.mode == 'grpo':
+
 
     if distributed_parameters["distributed"]:
         torch.distributed.barrier()
