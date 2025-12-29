@@ -116,9 +116,8 @@ def train(
             # on_trace_ready=trace_handler,
         ) as prof:
             for batch_idx, batch in enumerate(train_dataloader):
-                if count >= 5:
-                    prof.export_memory_timeline("profile.html", device="cuda:0")
-                    return
+                if count >= 6:
+                    break
                 count += 1
                 prof.step()
                 keys_to_pop = [k for k in batch.keys() if k not in forward_params]
@@ -180,7 +179,7 @@ def train(
 
             if pbar:
                 pbar.update()
-
+        prof.export_memory_timeline("profile.html", device="cuda:0")
         if distributed_parameters["distributed"]:
             stats = torch.tensor(
                 [train_loss_sum, train_n],
