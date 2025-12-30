@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
+TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora", "grpo"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
 TASK_FORMAT = Literal[
     "multitask", "concatenated", "interleaved", "gloss-only", "segment-only"
@@ -113,6 +113,9 @@ class ExperimentConfig:
     num_beams: int = 2
     """Num beams for beam search"""
 
+    grpo_group_size: int = 4
+    """Num of generations for a GRPO group"""
+
     # ============================
     # Computed properties
     # ============================
@@ -135,3 +138,5 @@ class ExperimentConfig:
         else:
             if self.mode == "finetune":
                 raise ValueError("Finetuning must have a glottocode!")
+        if self.mode == "grpo" and self.task_format != "concatenated":
+            raise ValueError("Can only do GRPO with `task_format=concatenated`")
