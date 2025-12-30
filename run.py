@@ -138,7 +138,7 @@ def run(
         for split in dataset.keys()
     }
 
-    if config.mode in ["pretrain", "finetune", "lora"]:
+    if config.mode in ["pretrain", "finetune", "lora", "grpo"]:
         train(
             model,
             tokenizer=tokenizer,
@@ -148,8 +148,6 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
-    elif config.mode == 'grpo':
-
 
     if distributed_parameters["distributed"]:
         torch.distributed.barrier()
