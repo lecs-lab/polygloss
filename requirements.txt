@@ -13,3 +13,4 @@ tqdm==4.67.1
 transformers==4.51.1
 peft==0.17.1
 wandb
+bitsandbytes
