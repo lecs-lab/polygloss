@@ -137,7 +137,7 @@ def run(
             model,
             tokenizer=tokenizer,
             train_dataloader=dataloaders["train"],
-            dev_dataloader=dataloaders["dev"],
+            dev_dataloader=dataloaders["eval"],
             config=config,
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
@@ -152,7 +152,7 @@ def run(
     perplexity_by_lang = eval_ppl_per_lang(
         model=model,
         tokenizer=tokenizer,
-        dev_dataloader=dataloaders["dev"],
+        dev_dataloader=dataloaders["eval"],
         config=config,
         distributed_parameters=distributed_parameters,
     )
@@ -175,6 +175,8 @@ def run(
             .to_pandas()[["id", "glottocode"]]
             .drop_duplicates(subset=["id"])
         )
+        meta["id"] = meta["id"].astype(str)
+        predictions["id"] = predictions["id"].astype(str)
         predictions_with_langs = predictions.merge(
             meta,
             on="id",
