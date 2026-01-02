@@ -107,7 +107,6 @@ def train(
             for key in keys_to_pop:
                 batch.pop(key)
             batch = batch.to(device)
-            optimizer.zero_grad()
 
             # Train in bfloat16
             with torch.amp.autocast_mode.autocast(
@@ -147,6 +146,7 @@ def train(
                     wandb.log({"train/lr": new_lr}, step=step)
 
                 optimizer.step()
+                optimizer.zero_grad()
                 step += 1
 
             # Note: multiply by accumulation_steps to get the actual loss value
@@ -167,6 +167,7 @@ def train(
             )
             torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
             train_loss_sum, train_n = stats.tolist()
+            torch.distributed.barrier()
 
         if distributed_parameters["rank"] == 0:
             model.eval()
@@ -213,6 +214,8 @@ def train(
                 },
                 models_folder / f"{run_id}.checkpoint.pt",
             )
+            if distributed_parameters["distributed"]:
+                torch.distributed.barrier()
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
