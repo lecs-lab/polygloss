@@ -24,16 +24,17 @@ def train(
     experiment_folder: pathlib.Path,
     models_folder: pathlib.Path,
     distributed_parameters: DistributedParameters,
+    want_to_log = True,
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
 
-    if distributed_parameters["rank"] == 0:
+    if distributed_parameters["rank"] == 0 and want_to_log:
         if not (run := wandb.run):
             raise Exception("WandB must be initialized!")
         run_id = run.id
     else:
-        run_id = None
+        run_id = 'latest'
 
     if config.optimizer == "adafactor":
         optimizer = torch.optim.Adafactor(
@@ -91,6 +92,11 @@ def train(
     logger.info(
         f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
     )
+
+    eval_losses = []
+    min_eval_loss = 1000000000
+    since_best = 0
+
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
@@ -136,7 +142,7 @@ def train(
                 )
             for param_group in optimizer.param_groups:
                 param_group["lr"] = new_lr
-            if distributed_parameters["rank"] == 0:
+            if distributed_parameters["rank"] == 0 and want_to_log:
                 wandb.log({"train/lr": new_lr}, step=step)
 
             scaler.step(optimizer)
@@ -184,17 +190,20 @@ def train(
             train_loss = train_loss_sum / train_n
             eval_loss = eval_loss_sum / eval_n
 
+        
+
         if distributed_parameters["rank"] == 0:
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
-            wandb.log(
-                {
-                    "train/loss": train_loss,
-                    "train/epoch": epoch,
-                    "eval/loss": eval_loss,
-                },
-                step=step,
-            )
+            if want_to_log:
+                wandb.log(
+                    {
+                        "train/loss": train_loss,
+                        "train/epoch": epoch,
+                        "eval/loss": eval_loss,
+                    },
+                    step=step,
+                )
             # Save checkpoint
             torch.save(
                 {
@@ -206,6 +215,23 @@ def train(
                 },
                 models_folder / f"{run_id}.checkpoint.pt",
             )
+
+            if eval_loss < min_eval_loss:
+                min_eval_loss = eval_loss
+                since_best = 0
+                best_checkpoint_dir = models_folder / f"best_checkpoint"
+                model.save_pretrained(best_checkpoint_dir)
+                tokenizer.save_pretrained(best_checkpoint_dir)
+                logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
+            else:
+                since_best += 1
+
+
+
+        if (epoch + 1) >= config.min_epochs and config.early_stopping > 0 and since_best >= config.early_stopping:
+            print(f"Early stopping. No imrovements in the last {since_best} epochs")
+            break
+
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:

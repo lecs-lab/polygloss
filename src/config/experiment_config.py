@@ -3,10 +3,11 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
-MODEL_TYPE = Literal["seq2seq", "decoder"]
+MODEL_TYPE = Literal["seq2seq", "decoder", "encoder"]
 TASK_FORMAT = Literal[
-    "multitask", "concatenated", "interleaved"
+    "multitask", "concatenated", "interleaved", "t2s_only", "s2g_only"
 ]  # Format for glossing/segmentation task
+
 
 _glotto_to_iso = {
     "arap1274": "arp",
@@ -33,7 +34,7 @@ class ExperimentConfig:
     """Hugging Face model identifier for the pretrained model to use"""
 
     model_type: MODEL_TYPE = "seq2seq"
-    """Architecture type: 'seq2seq' for encoder-decoder models or 'decoder' for decoder-only models"""
+    """Architecture type: 'seq2seq' for encoder-decoder models, 'decoder' for decoder-only models, or 'encoder' for the pipeline baseline only"""
 
     new_hub_identifier: str | None = None
     """If provided, pushes the model to the HuggingFace hub"""
@@ -57,6 +58,12 @@ class ExperimentConfig:
 
     max_epochs: int = 50
     """Maximum number of training epochs"""
+
+    min_epochs: int = 15
+    """Minimum number of training epochs"""
+
+    early_stopping: int = 0
+    """Will tolerate this many epochs without improvements. If set to 0, there is no early stopping. """
 
     optimizer: str = "adafactor"
     """adamw | adafactor"""
