@@ -91,6 +91,9 @@ def train(
     logger.info(
         f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
     )
+    eval_losses = []
+    min_eval_loss = 1000000000
+    since_best = 0
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
@@ -211,15 +214,38 @@ def train(
                 },
                 models_folder / f"{run_id}.checkpoint.pt",
             )
+            if eval_loss < min_eval_loss:
+                min_eval_loss = eval_loss
+                since_best = 0
+                best_checkpoint_dir = models_folder / f"{run_id}.model"
+                (
+                    model.module if distributed_parameters["distributed"] else model
+                ).save_pretrained(best_checkpoint_dir)
+                tokenizer.save_pretrained(best_checkpoint_dir)
+                logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
+            else:
+                since_best += 1
+                if (
+                    (epoch + 1) >= config.min_epochs
+                    and config.early_stopping > 0
+                    and since_best >= config.early_stopping
+                ):
+                    print(
+                        f"Early stopping. No improvements in the last {since_best} epochs"
+                    )
+                    break
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
         (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
         final_checkpoint_dir = models_folder / f"{run_id}.model"
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).save_pretrained(final_checkpoint_dir)
-        tokenizer.save_pretrained(final_checkpoint_dir)
+        if not final_checkpoint_dir.exists():
+            # If the checkpoint already exists, we must have early stopped
+            # If not, make it now
+            (
+                model.module if distributed_parameters["distributed"] else model
+            ).save_pretrained(final_checkpoint_dir)
+            tokenizer.save_pretrained(final_checkpoint_dir)
         logger.info(f"Saved model to {final_checkpoint_dir.resolve()}")
 
         if config.new_hub_identifier:
