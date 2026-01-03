@@ -269,13 +269,13 @@ def create_dataloader(
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
         num_workers = 0
-    if distributed_parameters["distributed"] and split == "train":
+    if distributed_parameters["distributed"]:
         sampler = DistributedSampler(
             dataset,  # type:ignore
-            shuffle=True,
+            shuffle=split == "train",
             num_replicas=distributed_parameters["world_size"],
             rank=distributed_parameters["rank"],
-            drop_last=True,
+            drop_last=split == "train",
         )
     else:
         sampler = (

@@ -15,7 +15,7 @@
 # cd polygloss
 # module use /sw/user/modules/python
 # module load python/miniforge3_pytorch
-# conda activate polygloss
+# conda activate polygloss2
 # sbatch scripts/run_delta_ddp.sh <path_to_config.cfg> (--monoling)
 
 # To create the env see here: https://docs.ncsa.illinois.edu/systems/deltaai/en/latest/user-guide/python/pytorch.html#pytorch-pip-install
