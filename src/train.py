@@ -96,6 +96,7 @@ def train(
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
+            assert isinstance(dev_dataloader.sampler, DistributedSampler)
             train_dataloader.sampler.set_epoch(epoch)
 
         model.train()
@@ -169,30 +170,40 @@ def train(
             train_loss_sum, train_n = stats.tolist()
             torch.distributed.barrier()
 
-        if distributed_parameters["rank"] == 0:
-            model.eval()
-            logger.info("Evaluating...")
-            with (
-                torch.amp.autocast_mode.autocast(
-                    distributed_parameters["device_type"], dtype=torch.bfloat16
-                ),
-                torch.inference_mode(),
-            ):
-                eval_loss_sum = 0.0
-                eval_n = 0
-                for batch in dev_dataloader:
-                    keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-                    for key in keys_to_pop:
-                        batch.pop(key)
-                    batch = batch.to(device)
-                    out = model(**batch)
-                    loss = _get_loss(out, batch["labels"]).item()
-                    num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-                    eval_loss_sum += loss * num_tokens
-                    eval_n += num_tokens
+        model.eval()
+        logger.info("Evaluating...")
+        with (
+            torch.amp.autocast_mode.autocast(
+                distributed_parameters["device_type"], dtype=torch.bfloat16
+            ),
+            torch.inference_mode(),
+        ):
+            eval_loss_sum = 0.0
+            eval_n = 0
+            for batch in dev_dataloader:
+                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+                for key in keys_to_pop:
+                    batch.pop(key)
+                batch = batch.to(device)
+                out = model(**batch)
+                loss = _get_loss(out, batch["labels"]).item()
+                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+                eval_loss_sum += loss * num_tokens
+                eval_n += num_tokens
 
-                train_loss = train_loss_sum / train_n
-                eval_loss = eval_loss_sum / eval_n
+        # Sum losses over devices, if distributed
+        if distributed_parameters["distributed"]:
+            losses_tensor = torch.tensor(
+                [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
+            )
+            torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
+            train_loss = losses_tensor[0] / losses_tensor[1]
+            eval_loss = losses_tensor[2] / losses_tensor[3]
+        else:
+            train_loss = train_loss_sum / train_n
+            eval_loss = eval_loss_sum / eval_n
+
+        if distributed_parameters["rank"] == 0:
             # Log results
             print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
