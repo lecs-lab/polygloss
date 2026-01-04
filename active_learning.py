@@ -1,6 +1,212 @@
 import argparse
+import json
+import logging
+import pathlib
+import pprint
+import random
+import sys
+from dataclasses import asdict
+import copy
 import torch
-from src.run import run  
+import datasets
+from huggingface_hub import HfApi
+from peft import LoraConfig, PeftModel, TaskType, get_peft_model
+from torch.utils.data.dataloader import DataLoader
+from transformers.models.auto.modeling_auto import (
+    AutoModelForCausalLM,
+    AutoModelForSeq2SeqLM,
+)
+from transformers.models.auto.tokenization_auto import AutoTokenizer
+
+import wandb
+from src.config.config_to_dataclass import config_to_dataclass
+from src.dataset.prepare_dataset import create_dataloader, create_dataset
+from src.distributed import DistributedParameters, setup_ddp
+from src.evaluation.evaluate import evaluate
+from src.evaluation.perplexity import eval_ppl_per_lang
+from src.generate import generate
+from src.train import ExperimentConfig, train
+from src.util.pip_freeze import log_pip_freeze_artifact
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="\033[90m%(asctime)s \033[36m[%(levelname)s] \033[1;33m%(module)s\033[0m: %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+
+def run(
+    config: ExperimentConfig,
+    experiment_folder: pathlib.Path,
+    distributed_parameters: DistributedParameters,
+    dataset: datasets.DatasetDict,
+):
+    random.seed(0)
+
+    # Initialize WandB experiment
+    if distributed_parameters["rank"] == 0:
+        if config.resume_from_checkpoint_id:
+            wandb.init(
+                project="polygloss",
+                entity="lecs-general",
+                config=asdict(config),
+                id=config.resume_from_checkpoint_id,
+                resume="must",
+            )
+        else:
+            wandb.init(
+                project="polygloss",
+                entity="lecs-general",
+                config=asdict(config),
+            )
+
+        # Log some other useful info
+        api = HfApi()
+        wandb.config.update(
+            {
+                "dataset.sha": api.dataset_info(config.dataset_key).sha,
+                "python_version": sys.version,
+            }
+        )
+        log_pip_freeze_artifact(f"pip-freeze-{wandb.run.id}")  # type:ignore
+
+    if config.models_dir:
+        models_folder = pathlib.Path(config.models_dir) / experiment_folder.stem
+    else:
+        models_folder = experiment_folder
+
+    if config.glottocode is not None:
+        # Create subfolders for each language if needed
+        experiment_folder /= config.glottocode
+        experiment_folder.mkdir(exist_ok=True)
+        models_folder /= config.glottocode
+    models_folder.mkdir(exist_ok=True, parents=True)
+
+    # Prepare model, dataset, tokenizer
+    if config.model_type == "seq2seq":
+        model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
+    else:
+        model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
+            distributed_parameters["device"]
+        )
+    model.gradient_checkpointing_enable()
+    if config.adapter_dir:
+        model.enable_input_require_grads()
+        model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
+    elif config.mode == "lora":
+        model.enable_input_require_grads()
+        if config.model_type == "seq2seq":
+            task_type = TaskType.SEQ_2_SEQ_LM
+        elif config.model_type == "decoder":
+            task_type = TaskType.CAUSAL_LM
+        else:
+            raise NotImplementedError()
+        lora_config = LoraConfig(
+            task_type=task_type,
+            r=config.lora_rank,
+            lora_alpha=config.lora_alpha,
+            lora_dropout=config.lora_dropout,
+        )
+        model = get_peft_model(model, lora_config)
+
+    if distributed_parameters["distributed"]:
+        model = torch.nn.parallel.DistributedDataParallel(
+            model, device_ids=[distributed_parameters["local_rank"]]
+        )
+
+    dataloaders = {}
+    dataloaders: dict[str, DataLoader] = {
+        split: create_dataloader(
+            dataset[split],
+            split=split,
+            config=config,
+            tokenizer=tokenizer,
+            distributed_parameters=distributed_parameters,
+        )
+        for split in dataset.keys()
+    }
+
+    if config.mode in ["pretrain", "finetune", "lora"]:
+        key = "eval" if "eval" in dataloaders else "dev"
+        train(
+            model,
+            tokenizer=tokenizer,
+            train_dataloader=dataloaders["train"],
+            dev_dataloader=dataloaders[key],
+            config=config,
+            models_folder=models_folder,
+            distributed_parameters=distributed_parameters,
+        )
+
+    if distributed_parameters["distributed"]:
+        torch.distributed.barrier()
+        torch.distributed.destroy_process_group()
+        model = model.module
+
+    # Compute perplexity for each language
+    key = "eval" if "eval" in dataloaders else "dev"
+    perplexity_by_lang = eval_ppl_per_lang(
+        model=model,
+        tokenizer=tokenizer,
+        dev_dataloader=dataloaders[key],
+        config=config,
+        distributed_parameters=distributed_parameters,
+    )
+
+    # Compute test predictions and metrics
+    predictions = generate(
+        model,
+        tokenizer=tokenizer,
+        dataloader=dataloaders["test"],
+        config=config,
+        distributed_parameters=distributed_parameters,
+    )
+    metrics=None
+    if distributed_parameters["rank"] == 0:
+        assert predictions is not None
+        assert perplexity_by_lang is not None
+        # Join with original dataset to add language info
+        meta = (
+            dataset["test"]  # type:ignore
+            .to_pandas()[["id", "glottocode"]]
+            .drop_duplicates(subset=["id"])
+        )
+        meta["id"] = meta["id"].astype(str)
+        predictions["id"] = predictions["id"].astype(str)
+        predictions_with_langs = predictions.merge(
+            meta,
+            on="id",
+            how="left",
+        )
+        predictions.to_csv("wtf.csv")
+
+        wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
+
+        lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
+        wandb.log({"eval/loss_per_language": lang_loss_table})
+
+        # Evaluation (if we have labels, ie not in inference mode)
+        if predictions_with_langs["reference"].notnull().all():  # type:ignore
+            metrics = evaluate(predictions_with_langs)
+            wandb.log(data={"test": metrics})
+            with open(
+                experiment_folder / "metrics.json", "w", encoding="utf-8"
+            ) as file:
+                json.dump(metrics, file, ensure_ascii=False, indent=4)
+            logger.info(
+                "Metrics logged to WandB and saved to %s",
+                experiment_folder / "metrics.json",
+            )
+    if distributed_parameters["distributed"]:
+        if distributed_parameters["rank"] == 0:
+            wandb.finish()
+    else:
+        wandb.finish()
+    return metrics
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -20,51 +226,38 @@ if __name__ == "__main__":
         dataclass_type=ExperimentConfig,
     )
     logger.info(f"Experiment config:\n{pprint.pformat(config)}")
-    total_size = len(config.dataset["train"])
-    dataset = config.dataset["train"]
+
+    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
+    dataset = datasets.load_dataset(config.dataset_key)
+    total_size = len(dataset["train"])
+    logger.info(f"TOTAL training samples = {total_size}")
+
     folder = pathlib.Path(args.config).parent
-    epochs = config.max_epochs
-    chunk_size=100
+    chunk_size=50
         # Loop through dataset in chunks
 
-i    )
-    logger.info(f"Experiment config:\n{pprint.pformat(config)}")
-    total_size = len(config.dataset["train"])
-    dataset = config.dataset["train"]
-    folder = pathlib.Path(args.config).parent
-    epochs = config.max_epochs
-    chunk_size=100
-        # Loop through dataset in chunks
-
-    #if i resume from checkpoint t restores the optimizer 
-    #if i load put "adapter_dir" each time it is only the statedict
-    wandb_run_id = None  # store W&B run ID across chunks
-    i = 0
-    for start_idx in range(0, total_size, 100):
-        end_idx = min(start_idx + chunk_size, total_size)
-        logger.info(f"Starting chunk {start_idx}–{end_idx}")
-        if wandb_run_id is not None:
-            config.resume_from_checkpoint_id = wandb_run_id
-        config.max_epochs = epochs * (i + 1)
+    for i in range(1,3):
+        end_idx = min(chunk_size*i, total_size)
+        dataset = create_dataset(
+            tokenizer=tokenizer,
+            config=config,
+            end_idx=end_idx
+        )
+        logger.info(f"Starting chunk {end_idx}")
         # Setup distributed parameters
         distributed_parameters = setup_ddp()
         exp_folder= folder / f"chunk_{str(i)}"
+        exp_folder.mkdir(exist_ok=True)
         # Run training/evaluation for this chunk
-        config.dataset["train"] = dataset[start_idx:end]
         out = run(
             config=config,
             experiment_folder=exp_folder,
             distributed_parameters=distributed_parameters,
+            dataset=dataset,
         )
-
-        if out is not None:
-            wandb_run_id = out.get("wandb_run_id")
-            logger.info(f"Resuming next chunk from W&B run ID: {wandb_run_id}")
-
         # Clean up DDP if needed
         if distributed_parameters.get("distributed"):
             torch.distributed.destroy_process_group()
-        i+=1
 
     logger.info("All chunks processed successfully.")
 

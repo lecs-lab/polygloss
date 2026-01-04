@@ -40,6 +40,7 @@ OutputKey = typing.Literal["segmentation", "glosses"]
 def create_dataset(
     tokenizer: PreTrainedTokenizerBase,
     config: ExperimentConfig,
+    end_idx: int = None
 ) -> datasets.DatasetDict:
     """Creates dataset for training/finetuning
 
@@ -48,7 +49,9 @@ def create_dataset(
         config (ExperimentConfig): The experiment configuration
     """
     dataset = datasets.load_dataset(config.dataset_key)
-
+    if end_idx:
+        logger.info(f"Limiting to {end_idx} samples")
+        dataset["train"] = dataset["train"].select(range(end_idx))
     dataset = cast(datasets.DatasetDict, dataset)
     dataset = _filter(dataset, config.glottocode)
     inputs_dataset = datasets.DatasetDict()
@@ -242,7 +245,7 @@ def create_dataset(
 
 def create_dataloader(
     dataset: datasets.Dataset,
-    split: Literal["train", "eval", "test"],
+    split: Literal["train", "eval", "dev", "test"],
     config: ExperimentConfig,
     tokenizer: PreTrainedTokenizerBase,
     distributed_parameters: DistributedParameters,
@@ -304,11 +307,11 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
         # We must be pretraining
         # Instead of language-specific eval sets, let's use all of the pretraining and ID eval data and make iid splits
         pretraining_data = datasets.concatenate_datasets(
-            [dataset["train"], dataset["eval"]]
+            [dataset["train"], dataset[key]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
         new_dataset["train"] = pretraining_data["train"]
-        new_dataset["eval"] = pretraining_data["test"]
+        new_dataset[key] = pretraining_data["test"]
         new_dataset["test"] = dataset["test"]
     return new_dataset
 
@@ -409,7 +412,12 @@ def _prepare_prompt_fields(row: typing.Mapping):
         and row["translation"] != "Unknown"
     ):
         translation = " ".join((row["translation"]).split())
-        metalang = row["metalang"] or "an unknown language"
+        if "metalanguage" in row:
+            metalang = row["metalanguage"]
+        elif "metalang" in row:
+            metalang = row["metalang"]
+        else:
+            metalang = "an unknown language"
     else:
         translation = "None"
         metalang = "English"
