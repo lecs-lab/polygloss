@@ -58,6 +58,12 @@ class ExperimentConfig:
     max_epochs: int = 50
     """Maximum number of training epochs"""
 
+    min_epochs: int = 15
+    """Minimum number of training epochs"""
+
+    early_stopping: int = 0
+    """Will tolerate this many epochs without improvements. If set to 0, there is no early stopping. """
+
     optimizer: str = "adafactor"
     """adamw | adafactor"""
 
