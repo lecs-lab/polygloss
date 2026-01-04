@@ -4,14 +4,8 @@ from data.scrape_data import evaluation_languages
 api = wandb.Api()
 
 metrics = ["glossing.morphemes.error_rate", "segmentation.f1", "alignment"]
-models = [
-    "Qwen/Qwen3-0.6B",
-    "CohereLabs/aya-expanse-8b",
-]
-nice_names = [
-    "Qwen 0.6B (ICL)",
-    "Aya Expanse (ICL)",
-]
+models = ["Qwen/Qwen3-0.6B", "CohereLabs/aya-expanse-8b", "google/gemma-3-4b-it"]
+nice_names = ["Qwen 3 (ICL)", "Aya Expanse (ICL)", "Gemma 3 (ICL)"]
 
 results = {
     run_name: {m: [None for _ in range(len(evaluation_languages))] for m in metrics}
