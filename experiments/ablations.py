@@ -74,7 +74,7 @@ plt.close(f)
 
 
 # Ablation 2
-f, ax = plt.subplots(figsize=(4, 2))
+f, ax = plt.subplots(figsize=(4, 1.5))
 data = df[df["Method"].isin(["Joint", "PolyGloss [interleaved]"])]
 data["Method"] = data["Method"].replace(
     {"Joint": "Monolingual", "PolyGloss [interleaved]": "PolyGloss"}
@@ -138,7 +138,7 @@ plt.close(f)
 
 
 # Ablation 3
-f, ax = plt.subplots(figsize=(4, 3))
+f, ax = plt.subplots(figsize=(4, 2.25))
 data = df[
     df["Method"].isin(
         ["PolyGloss [multitask]", "PolyGloss [interleaved]", "PolyGloss [concat]"]
