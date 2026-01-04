@@ -236,8 +236,9 @@ def train(
                     )
                     flag_tensor += 1
         # If we early stopped, broadcast break to all ranks
-        torch.distributed.all_reduce(flag_tensor, op=ReduceOp.SUM)
-        if flag_tensor == 1:
+        if distributed_parameters["distributed"]:
+            torch.distributed.all_reduce(flag_tensor, op=ReduceOp.SUM)
+        if flag_tensor.item() == 1:
             break
 
     # Save final model and remove checkpoint
