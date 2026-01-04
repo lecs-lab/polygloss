@@ -61,13 +61,16 @@ def grpo_epoch(
             generations = tokenizer.batch_decode(
                 generated_ids, skip_special_tokens=True
             )
-            scores = torch.tensor(compute_scores(generations)).view(
-                config.batch_size, config.grpo_group_size
-            )
+            decoder_in = generated_ids[:, :-1]
+            labels = generated_ids[:, 1:]
+            scores = torch.tensor(
+                compute_scores(generations), device=generated_ids.device
+            ).view(config.batch_size, config.grpo_group_size)
             # Normalize
             means = scores.mean(dim=-1).unsqueeze(1)
             stds = (scores.std(dim=-1) + 1e-9).unsqueeze(1)
             scores = (scores - means) / stds
+            scores = scores.view(config.batch_size * config.grpo_group_size).detach()
 
         # Compute kl divergence
         inputs_repeated = {
@@ -76,59 +79,51 @@ def grpo_epoch(
             else v
             for k, v in batch.items()
         }
-        mask = inputs_repeated["attention_mask"]
-        policy_logprobs = torch.log_softmax(
-            model(**inputs_repeated, decoder_input_ids=generated_ids), dim=-1
-        )
-        old_policy_logprobs = policy_logprobs.detach()
-        log_ratio = policy_logprobs - old_policy_logprobs
-        log_importance_weights = (log_ratio * mask).sum(-1) / mask.sum(-1).clamp(
-            min=1.0
-        )
-        log_importance_weights = log_importance_weights.unsqueeze(-1)
-        coef_1 = torch.exp(log_importance_weights)
-        with model.disable_adapter(), torch.no_grad():
-            ref_logprobs = torch.log_softmax(
-                model(**inputs_repeated, decoder_input_ids=generated_ids), dim=-1
+        mask = labels != tokenizer.pad_token_id
+        with torch.no_grad():
+            old_policy_logprobs = (
+                torch.log_softmax(
+                    model(**inputs_repeated, decoder_input_ids=decoder_in).logits,
+                    dim=-1,
+                )
+                .gather(dim=-1, index=labels.unsqueeze(-1))
+                .squeeze(-1)
+                .detach()
             )
+        policy_logprobs = (
+            torch.log_softmax(
+                model(**inputs_repeated, decoder_input_ids=decoder_in).logits, dim=-1
+            )
+            .gather(dim=-1, index=labels.unsqueeze(-1))
+            .squeeze(-1)
+        )
+        log_ratio = policy_logprobs - old_policy_logprobs
+        coef_1 = torch.exp(log_ratio) * scores.unsqueeze(1) * mask
+        # log_importance_weights = (log_ratio * mask).sum(-1) / mask.sum(-1).clamp(
+        #     min=1.0
+        # )
+        # log_importance_weights = log_importance_weights.unsqueeze(-1)
 
-        breakpoint()
-        # loss.backward()
-
-        # Only update weights every accumulation_steps batches
-        # if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
-        #     torch.nn.utils.clip_grad_norm_(
-        #         model.parameters(), max_norm=config.grad_norm
-        #     )
-
-        #     # Update LR as needed
-        #     if step < total_warmup_steps:
-        #         # Linear warmup
-        #         new_lr = config.learning_rate * step / total_warmup_steps
-        #     else:
-        #         # Cosine decay
-        #         progress = (step - total_warmup_steps) / (
-        #             max_steps - total_warmup_steps
-        #         )
-        #         cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
-        #         new_lr = (
-        #             config.min_learning_rate
-        #             + (config.learning_rate - config.min_learning_rate) * cosine_decay
-        #         )
-
-        #     for param_group in optimizer.param_groups:
-        #         param_group["lr"] = new_lr
-
-        #     if distributed_parameters["rank"] == 0:
-        #         wandb.log({"train/lr": new_lr}, step=step)
-
-        #     optimizer.step()
-        #     step += 1
-
-        # # Note: multiply by accumulation_steps to get the actual loss value
-        # num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-        # train_loss_sum += loss.item() * num_tokens * config.gradient_accumulation_steps
-        # train_n += num_tokens
+        with model.disable_adapter(), torch.no_grad():
+            ref_logprobs = (
+                torch.log_softmax(
+                    model(**inputs_repeated, decoder_input_ids=decoder_in).logits,
+                    dim=-1,
+                )
+                .gather(dim=-1, index=labels.unsqueeze(-1))
+                .squeeze(-1)
+                .detach()
+            )
+        log_ref_ratio = ref_logprobs - policy_logprobs
+        coef_2 = (
+            config.grpo_beta * (torch.exp(log_ref_ratio) - log_ref_ratio - 1) * mask
+        )
+        loss = (
+            -1
+            * torch.sum(coef_1 + coef_2)
+            / (config.batch_size * config.grpo_group_size)
+        )
+        loss.backward()
 
         if pbar:
             pbar.update()

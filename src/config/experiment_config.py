@@ -116,6 +116,8 @@ class ExperimentConfig:
     grpo_group_size: int = 4
     """Num of generations for a GRPO group"""
 
+    grpo_beta: float = 0.1
+
     # ============================
     # Computed properties
     # ============================
