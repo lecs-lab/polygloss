@@ -6,6 +6,7 @@ import pathlib
 import torch
 import tqdm
 from peft import set_peft_model_state_dict
+from torch.distributed import ReduceOp
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
@@ -91,8 +92,7 @@ def train(
     logger.info(
         f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
     )
-    eval_losses = []
-    min_eval_loss = 1000000000
+    min_eval_loss = float("inf")
     since_best = 0
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
@@ -169,6 +169,7 @@ def train(
             torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
             train_loss_sum, train_n = stats.tolist()
 
+        flag_tensor = torch.zeros(1).to(device)
         if distributed_parameters["rank"] == 0:
             model.eval()
             logger.info("Evaluating...")
@@ -194,7 +195,7 @@ def train(
                 train_loss = train_loss_sum / train_n
                 eval_loss = eval_loss_sum / eval_n
             # Log results
-            print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
+            logger.info(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
             wandb.log(
                 {
                     "train/loss": train_loss,
@@ -230,10 +231,14 @@ def train(
                     and config.early_stopping > 0
                     and since_best >= config.early_stopping
                 ):
-                    print(
+                    logger.info(
                         f"Early stopping. No improvements in the last {since_best} epochs"
                     )
-                    break
+                    flag_tensor += 1
+        # If we early stopped, broadcast break to all ranks
+        torch.distributed.all_reduce(flag_tensor, op=ReduceOp.SUM)
+        if flag_tensor == 1:
+            break
 
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
