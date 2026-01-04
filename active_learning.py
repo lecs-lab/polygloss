@@ -6,9 +6,9 @@ import pprint
 import random
 import sys
 from dataclasses import asdict
-import copy
-import torch
+
 import datasets
+import torch
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
@@ -163,7 +163,7 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-    metrics=None
+    metrics = None
     if distributed_parameters["rank"] == 0:
         assert predictions is not None
         assert perplexity_by_lang is not None
@@ -207,7 +207,6 @@ def run(
     return metrics
 
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -229,35 +228,27 @@ if __name__ == "__main__":
 
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
     dataset = datasets.load_dataset(config.dataset_key)
-    total_size = len(dataset["train"])
+    total_size = len(dataset["train"])  # type:ignore
     logger.info(f"TOTAL training samples = {total_size}")
 
     folder = pathlib.Path(args.config).parent
-    chunk_size=50
-        # Loop through dataset in chunks
+    chunk_sizes = [50, 100, 150, 200, 250, 300, 350, 380]
 
-    for i in range(1,3):
-        end_idx = min(chunk_size*i, total_size)
-        dataset = create_dataset(
-            tokenizer=tokenizer,
-            config=config,
-            end_idx=end_idx
-        )
-        logger.info(f"Starting chunk {end_idx}")
-        # Setup distributed parameters
+    for end_idx in chunk_sizes:
         distributed_parameters = setup_ddp()
-        exp_folder= folder / f"chunk_{str(i)}"
+        dataset = create_dataset(tokenizer=tokenizer, config=config, end_idx=end_idx)
+        logger.info(f"Starting chunk 0:{end_idx}")
+        exp_folder = folder / f"chunk_0_{end_idx}"
         exp_folder.mkdir(exist_ok=True)
-        # Run training/evaluation for this chunk
+        if end_idx <= 100:
+            config.max_epochs *= 2
         out = run(
             config=config,
             experiment_folder=exp_folder,
             distributed_parameters=distributed_parameters,
             dataset=dataset,
         )
-        # Clean up DDP if needed
         if distributed_parameters.get("distributed"):
             torch.distributed.destroy_process_group()
 
     logger.info("All chunks processed successfully.")
-
