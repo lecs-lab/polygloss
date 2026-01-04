@@ -235,6 +235,7 @@ if __name__ == "__main__":
     chunk_sizes = [50, 100, 150, 200, 250, 300, 350, 380]
 
     for end_idx in chunk_sizes:
+        config.train_subset_size = end_idx
         distributed_parameters = setup_ddp()
         dataset = create_dataset(tokenizer=tokenizer, config=config, end_idx=end_idx)
         logger.info(f"Starting chunk 0:{end_idx}")
