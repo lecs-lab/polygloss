@@ -122,7 +122,7 @@ def grpo_epoch(
         optimizer.step()
         optimizer.zero_grad()
         train_loss_sum += loss.item()
-        train_n += 1
+        train_n += bs * config.grpo_group_size
         if pbar:
             pbar.update()
 
@@ -140,6 +140,7 @@ def grpo_epoch(
             keys_to_pop = [k for k in batch.keys() if k not in forward_params]
             for key in keys_to_pop:
                 batch.pop(key)
+            bs = batch["input_ids"].size(0)
             batch = batch.to(device)
             generated_ids = model.generate(
                 **batch,
@@ -154,7 +155,7 @@ def grpo_epoch(
             )
             scores = compute_scores(generations)
             eval_reward_sum += sum(scores)
-            eval_n += 1
+            eval_n += 1 * bs
 
         if distributed_parameters["distributed"]:
             stats = torch.tensor(
