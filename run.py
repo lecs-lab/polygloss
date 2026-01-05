@@ -154,6 +154,24 @@ def run(
         torch.distributed.destroy_process_group()
         model = model.module
 
+    if config.mode == "grpo":
+        # Remake the dataset for evaluation
+        config.mode = "predict"
+        dataset = create_dataset(
+            tokenizer=tokenizer,
+            config=config,
+        )
+        dataloaders: dict[str, DataLoader] = {
+            split: create_dataloader(
+                dataset[split],
+                split=split,
+                config=config,
+                tokenizer=tokenizer,
+                distributed_parameters=distributed_parameters,
+            )
+            for split in dataset.keys()
+        }
+
     # Compute perplexity for each language
     perplexity_by_lang = eval_ppl_per_lang(
         model=model,
@@ -174,7 +192,6 @@ def run(
 
     if distributed_parameters["rank"] == 0:
         assert predictions is not None
-        assert perplexity_by_lang is not None
         # Join with original dataset to add language info
         meta = (
             dataset["test"]  # type:ignore

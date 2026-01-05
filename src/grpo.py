@@ -1,6 +1,5 @@
 import inspect
 import logging
-import math
 from pprint import pformat
 
 import torch
@@ -142,15 +141,17 @@ def grpo_epoch(
                 # Linear warmup
                 new_lr = config.learning_rate * step / total_warmup_steps
             else:
-                # Cosine decay
-                progress = (step - total_warmup_steps) / (
-                    max_steps - total_warmup_steps
-                )
-                cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
-                new_lr = (
-                    config.min_learning_rate
-                    + (config.learning_rate - config.min_learning_rate) * cosine_decay
-                )
+                new_lr = config.learning_rate
+            # else:
+            #     # Cosine decay
+            #     progress = (step - total_warmup_steps) / (
+            #         max_steps - total_warmup_steps
+            #     )
+            #     cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+            #     new_lr = (
+            #         config.min_learning_rate
+            #         + (config.learning_rate - config.min_learning_rate) * cosine_decay
+            #     )
 
             for param_group in optimizer.param_groups:
                 param_group["lr"] = new_lr
@@ -160,11 +161,11 @@ def grpo_epoch(
 
             optimizer.step()
             optimizer.zero_grad()
+            step += 1
+            if pbar:
+                pbar.update()
         train_loss_sum += loss.item()
         train_n += bs * config.grpo_group_size
-        step += 1
-        if pbar:
-            pbar.update()
 
     logger.info("Evaluating...")
     with (
