@@ -133,7 +133,7 @@ def grpo_epoch(
         coef_2_seq = coef_2.sum(dim=-1) / token_counts
         loss = -(coef_1_seq - coef_2_seq).mean()
         loss.backward()
-        if step % config.gradient_accumulation_steps == 0:
+        if (step + 1) % config.gradient_accumulation_steps == 0:
             # torch.nn.utils.clip_grad_norm_(
             #     model.parameters(), max_norm=config.grad_norm
             # )
