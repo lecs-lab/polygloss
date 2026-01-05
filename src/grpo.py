@@ -187,7 +187,7 @@ def compute_scores(generations: list[str]):
     scores = []
     for gen in generations:
         splits = gen.split(gloss_label)
-        if len(splits) == 0:
+        if len(splits) <= 1:
             scores.append(0)
             continue
         if len(splits) > 2:
