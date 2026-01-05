@@ -162,11 +162,11 @@ def grpo_epoch(
 
             optimizer.step()
             optimizer.zero_grad()
+            if pbar:
+                pbar.update()
         train_loss_sum += loss.item()
         train_n += bs * config.grpo_group_size
         step += 1
-        if pbar:
-            pbar.update()
 
     logger.info("Evaluating...")
     with (
