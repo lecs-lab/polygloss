@@ -57,8 +57,8 @@ def grpo_epoch(
             generated_ids = model.generate(
                 **batch,
                 do_sample=True,
-                temperature=0.6,
-                top_p=0.7,
+                temperature=config.grpo_temperature,
+                top_p=config.grpo_top_p,
                 repetition_penalty=1.05,
                 num_return_sequences=config.grpo_group_size,
                 max_length=1024,

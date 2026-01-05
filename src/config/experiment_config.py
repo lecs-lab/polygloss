@@ -118,6 +118,10 @@ class ExperimentConfig:
 
     grpo_beta: float = 0.1
 
+    grpo_temperature: float = 0.6
+
+    grpo_top_p: float = 0.7
+
     # ============================
     # Computed properties
     # ============================
