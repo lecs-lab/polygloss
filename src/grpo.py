@@ -42,7 +42,7 @@ def grpo_epoch(
             batch.pop(key)
         batch = batch.to(device)
         optimizer.zero_grad()
-        bs = batch.size(0)
+        bs = batch["input_ids"].size(0)
 
         # Generate step
         with (
