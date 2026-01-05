@@ -123,6 +123,7 @@ def grpo_epoch(
         optimizer.zero_grad()
         train_loss_sum += loss.item()
         train_n += bs * config.grpo_group_size
+        step += 1
         if pbar:
             pbar.update()
 
