@@ -37,7 +37,7 @@ def grpo_epoch(
     train_loss_sum = 0.0
     train_n = 0
 
-    for batch in train_dataloader:
+    for batch_idx, batch in enumerate(train_dataloader):
         keys_to_pop = [k for k in batch.keys() if k not in forward_params]
         for key in keys_to_pop:
             batch.pop(key)
@@ -72,6 +72,10 @@ def grpo_epoch(
             scores = torch.tensor(
                 compute_scores(generations), device=generated_ids.device
             ).view(bs, config.grpo_group_size)
+            if batch_idx == 0:
+                logger.info(
+                    f"First train group: {pformat(list(zip(generations, compute_scores(generations)))[: config.grpo_group_size])}"
+                )
             # Normalize
             means = scores.mean(dim=-1).unsqueeze(1)
             stds = (scores.std(dim=-1) + 1e-9).unsqueeze(1)
@@ -143,7 +147,7 @@ def grpo_epoch(
     ):
         eval_reward_sum = 0.0
         eval_n = 0
-        for batch in dev_dataloader:
+        for batch_idx, batch in enumerate(dev_dataloader):
             keys_to_pop = [k for k in batch.keys() if k not in forward_params]
             for key in keys_to_pop:
                 batch.pop(key)
@@ -160,7 +164,10 @@ def grpo_epoch(
                 generated_ids, skip_special_tokens=True
             )
             scores = compute_scores(generations)
-            logger.info(pformat(list(zip(generations, scores))[:5]))
+            if batch_idx == 0:
+                logger.info(
+                    "Some eval examples: " + pformat(list(zip(generations, scores))[:5])
+                )
             eval_reward_sum += sum(scores)
             eval_n += bs
 
