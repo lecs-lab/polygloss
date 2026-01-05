@@ -23,7 +23,6 @@ from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset.prepare_dataset import create_dataloader, create_dataset
 from src.distributed import DistributedParameters, setup_ddp
 from src.evaluation.evaluate import evaluate
-from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
 from src.util.pip_freeze import log_pip_freeze_artifact
@@ -160,11 +159,6 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
-
-    if distributed_parameters["distributed"]:
-        torch.distributed.barrier()
-        torch.distributed.destroy_process_group()
-        model = model.module
 
     if config.mode == "grpo":
         # Remake the dataset for evaluation
