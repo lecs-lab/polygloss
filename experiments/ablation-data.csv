@@ -1,193 +1,220 @@
-,Method,Language,Score,Metric
-0,Separate,arp,0.092,Glossing MER
-1,Joint,arp,0.128,Glossing MER
-2,Pipeline,arp,0.14,Glossing MER
-3,Girrbach (2023),arp,0.185,Glossing MER
-4,PolyGloss [multitask],arp,0.177,Glossing MER
-5,PolyGloss [concat],arp,0.171,Glossing MER
-6,PolyGloss [interleaved],arp,0.152,Glossing MER
-7,Separate,ddo,0.059,Glossing MER
-8,Joint,ddo,0.064,Glossing MER
-9,Pipeline,ddo,0.076,Glossing MER
-10,Girrbach (2023),ddo,0.11,Glossing MER
-11,PolyGloss [multitask],ddo,0.089,Glossing MER
-12,PolyGloss [concat],ddo,0.08,Glossing MER
-13,PolyGloss [interleaved],ddo,0.072,Glossing MER
-14,Separate,git,0.977,Glossing MER
-15,Joint,git,0.841,Glossing MER
-16,Pipeline,git,0.972,Glossing MER
-17,Girrbach (2023),git,0.732,Glossing MER
-18,PolyGloss [multitask],git,0.603,Glossing MER
-19,PolyGloss [concat],git,0.597,Glossing MER
-20,PolyGloss [interleaved],git,0.597,Glossing MER
-21,Separate,usp,0.116,Glossing MER
-22,Joint,usp,0.17,Glossing MER
-23,Pipeline,usp,0.173,Glossing MER
-24,Girrbach (2023),usp,0.242,Glossing MER
-25,PolyGloss [multitask],usp,0.162,Glossing MER
-26,PolyGloss [concat],usp,0.165,Glossing MER
-27,PolyGloss [interleaved],usp,0.16,Glossing MER
-28,Separate,ain,0.08,Glossing MER
-29,Joint,ain,0.075,Glossing MER
-30,Pipeline,ain,0.096,Glossing MER
-31,Girrbach (2023),ain,0.353,Glossing MER
-32,PolyGloss [multitask],ain,0.122,Glossing MER
-33,PolyGloss [concat],ain,0.108,Glossing MER
-34,PolyGloss [interleaved],ain,0.095,Glossing MER
-35,Separate,lez,0.38,Glossing MER
-36,Joint,lez,0.382,Glossing MER
-37,Pipeline,lez,0.454,Glossing MER
-38,Girrbach (2023),lez,0.392,Glossing MER
-39,PolyGloss [multitask],lez,0.383,Glossing MER
-40,PolyGloss [concat],lez,0.357,Glossing MER
-41,PolyGloss [interleaved],lez,0.357,Glossing MER
-42,Separate,ntu,0.184,Glossing MER
-43,Joint,ntu,0.144,Glossing MER
-44,Pipeline,ntu,0.238,Glossing MER
-45,Girrbach (2023),ntu,0.266,Glossing MER
-46,PolyGloss [multitask],ntu,0.189,Glossing MER
-47,PolyGloss [concat],ntu,0.18,Glossing MER
-48,PolyGloss [interleaved],ntu,0.142,Glossing MER
-49,Separate,nyb,0.283,Glossing MER
-50,Joint,nyb,0.225,Glossing MER
-51,Pipeline,nyb,0.314,Glossing MER
-52,Girrbach (2023),nyb,0.246,Glossing MER
-53,PolyGloss [multitask],nyb,0.328,Glossing MER
-54,PolyGloss [concat],nyb,0.31,Glossing MER
-55,PolyGloss [interleaved],nyb,0.222,Glossing MER
-56,Separate,ruc,0.292,Glossing MER
-57,Joint,ruc,0.346,Glossing MER
-58,Pipeline,ruc,0.433,Glossing MER
-59,Girrbach (2023),ruc,0.512,Glossing MER
-60,PolyGloss [multitask],ruc,0.329,Glossing MER
-61,PolyGloss [concat],ruc,0.315,Glossing MER
-62,PolyGloss [interleaved],ruc,0.306,Glossing MER
-0,Separate,arp,0.921,Segmentation F1
-1,Joint,arp,0.924,Segmentation F1
-2,Pipeline,arp,0.921,Segmentation F1
-3,Girrbach (2023),arp,0.531,Segmentation F1
-4,PolyGloss [multitask],arp,0.903,Segmentation F1
-5,PolyGloss [concat],arp,0.901,Segmentation F1
-6,PolyGloss [interleaved],arp,0.91,Segmentation F1
-7,Separate,ddo,0.975,Segmentation F1
-8,Joint,ddo,0.976,Segmentation F1
-9,Pipeline,ddo,0.975,Segmentation F1
-10,Girrbach (2023),ddo,0.447,Segmentation F1
-11,PolyGloss [multitask],ddo,0.967,Segmentation F1
-12,PolyGloss [concat],ddo,0.964,Segmentation F1
-13,PolyGloss [interleaved],ddo,0.972,Segmentation F1
-14,Separate,git,0.191,Segmentation F1
-15,Joint,git,0.152,Segmentation F1
-16,Pipeline,git,0.191,Segmentation F1
-17,Girrbach (2023),git,0.241,Segmentation F1
-18,PolyGloss [multitask],git,0.605,Segmentation F1
-19,PolyGloss [concat],git,0.589,Segmentation F1
-20,PolyGloss [interleaved],git,0.595,Segmentation F1
-21,Separate,usp,0.851,Segmentation F1
-22,Joint,usp,0.865,Segmentation F1
-23,Pipeline,usp,0.851,Segmentation F1
-24,Girrbach (2023),usp,0.548,Segmentation F1
-25,PolyGloss [multitask],usp,0.85,Segmentation F1
-26,PolyGloss [concat],usp,0.852,Segmentation F1
-27,PolyGloss [interleaved],usp,0.855,Segmentation F1
-28,Separate,ain,0.972,Segmentation F1
-29,Joint,ain,0.972,Segmentation F1
-30,Pipeline,ain,0.972,Segmentation F1
-31,Girrbach (2023),ain,0.348,Segmentation F1
-32,PolyGloss [multitask],ain,0.963,Segmentation F1
-33,PolyGloss [concat],ain,0.963,Segmentation F1
-34,PolyGloss [interleaved],ain,0.963,Segmentation F1
-35,Separate,lez,0.795,Segmentation F1
-36,Joint,lez,0.827,Segmentation F1
-37,Pipeline,lez,0.795,Segmentation F1
-38,Girrbach (2023),lez,0.349,Segmentation F1
-39,PolyGloss [multitask],lez,0.826,Segmentation F1
-40,PolyGloss [concat],lez,0.825,Segmentation F1
-41,PolyGloss [interleaved],lez,0.782,Segmentation F1
-42,Separate,ntu,0.93,Segmentation F1
-43,Joint,ntu,0.935,Segmentation F1
-44,Pipeline,ntu,0.93,Segmentation F1
-45,Girrbach (2023),ntu,0.441,Segmentation F1
-46,PolyGloss [multitask],ntu,0.925,Segmentation F1
-47,PolyGloss [concat],ntu,0.924,Segmentation F1
-48,PolyGloss [interleaved],ntu,0.935,Segmentation F1
-49,Separate,nyb,0.957,Segmentation F1
-50,Joint,nyb,0.962,Segmentation F1
-51,Pipeline,nyb,0.957,Segmentation F1
-52,Girrbach (2023),nyb,0.73,Segmentation F1
-53,PolyGloss [multitask],nyb,0.938,Segmentation F1
-54,PolyGloss [concat],nyb,0.94,Segmentation F1
-55,PolyGloss [interleaved],nyb,0.959,Segmentation F1
-56,Separate,ruc,0.717,Segmentation F1
-57,Joint,ruc,0.766,Segmentation F1
-58,Pipeline,ruc,0.717,Segmentation F1
-59,Girrbach (2023),ruc,0.494,Segmentation F1
-60,PolyGloss [multitask],ruc,0.763,Segmentation F1
-61,PolyGloss [concat],ruc,0.772,Segmentation F1
-62,PolyGloss [interleaved],ruc,0.782,Segmentation F1
-0,Separate,arp,0.98,Alignment
-1,Joint,arp,0.999,Alignment
-2,Pipeline,arp,0.998,Alignment
-3,Girrbach (2023),arp,0.998,Alignment
-4,PolyGloss [multitask],arp,0.984,Alignment
-5,PolyGloss [concat],arp,0.996,Alignment
-6,PolyGloss [interleaved],arp,1.0,Alignment
-7,Separate,ddo,0.988,Alignment
-8,Joint,ddo,1.0,Alignment
-9,Pipeline,ddo,0.989,Alignment
-10,Girrbach (2023),ddo,0.998,Alignment
-11,PolyGloss [multitask],ddo,0.995,Alignment
-12,PolyGloss [concat],ddo,0.997,Alignment
-13,PolyGloss [interleaved],ddo,1.0,Alignment
-14,Separate,git,0.65,Alignment
-15,Joint,git,0.996,Alignment
-16,Pipeline,git,0.464,Alignment
-17,Girrbach (2023),git,1.0,Alignment
-18,PolyGloss [multitask],git,0.919,Alignment
-19,PolyGloss [concat],git,0.965,Alignment
-20,PolyGloss [interleaved],git,1.0,Alignment
-21,Separate,usp,0.977,Alignment
-22,Joint,usp,1.0,Alignment
-23,Pipeline,usp,1.0,Alignment
-24,Girrbach (2023),usp,1.0,Alignment
-25,PolyGloss [multitask],usp,0.99,Alignment
-26,PolyGloss [concat],usp,1.0,Alignment
-27,PolyGloss [interleaved],usp,1.0,Alignment
-28,Separate,ain,0.979,Alignment
-29,Joint,ain,1.0,Alignment
-30,Pipeline,ain,0.994,Alignment
-31,Girrbach (2023),ain,0.895,Alignment
-32,PolyGloss [multitask],ain,0.982,Alignment
-33,PolyGloss [concat],ain,0.994,Alignment
-34,PolyGloss [interleaved],ain,1.0,Alignment
-35,Separate,lez,0.885,Alignment
-36,Joint,lez,1.0,Alignment
-37,Pipeline,lez,0.522,Alignment
-38,Girrbach (2023),lez,0.985,Alignment
-39,PolyGloss [multitask],lez,0.973,Alignment
-40,PolyGloss [concat],lez,0.986,Alignment
-41,PolyGloss [interleaved],lez,1.0,Alignment
-42,Separate,ntu,0.907,Alignment
-43,Joint,ntu,1.0,Alignment
-44,Pipeline,ntu,0.785,Alignment
-45,Girrbach (2023),ntu,0.976,Alignment
-46,PolyGloss [multitask],ntu,0.985,Alignment
-47,PolyGloss [concat],ntu,0.995,Alignment
-48,PolyGloss [interleaved],ntu,1.0,Alignment
-49,Separate,nyb,0.963,Alignment
-50,Joint,nyb,1.0,Alignment
-51,Pipeline,nyb,0.914,Alignment
-52,Girrbach (2023),nyb,0.994,Alignment
-53,PolyGloss [multitask],nyb,0.988,Alignment
-54,PolyGloss [concat],nyb,0.999,Alignment
-55,PolyGloss [interleaved],nyb,1.0,Alignment
-56,Separate,ruc,0.904,Alignment
-57,Joint,ruc,0.997,Alignment
-58,Pipeline,ruc,0.713,Alignment
-59,Girrbach (2023),ruc,0.941,Alignment
-60,PolyGloss [multitask],ruc,0.941,Alignment
-61,PolyGloss [concat],ruc,0.973,Alignment
-62,PolyGloss [interleaved],ruc,1.0,Alignment
-63,GRPO,git,0.574,Glossing MER
-64,GRPO,git,0.610,Segmentation F1
-65,GRPO,git,0.975,Alignment
+Method,Language,Score,Metric
+Separate,arp,0.092,Glossing MER
+Joint,arp,0.128,Glossing MER
+Pipeline,arp,0.14,Glossing MER
+Girrbach (2023),arp,0.185,Glossing MER
+PolyGloss [multitask],arp,0.177,Glossing MER
+PolyGloss [concat],arp,0.171,Glossing MER
+PolyGloss [interleaved],arp,0.152,Glossing MER
+Separate,ddo,0.059,Glossing MER
+Joint,ddo,0.064,Glossing MER
+Pipeline,ddo,0.076,Glossing MER
+Girrbach (2023),ddo,0.11,Glossing MER
+PolyGloss [multitask],ddo,0.089,Glossing MER
+PolyGloss [concat],ddo,0.08,Glossing MER
+PolyGloss [interleaved],ddo,0.072,Glossing MER
+Separate,git,0.977,Glossing MER
+Joint,git,0.841,Glossing MER
+Pipeline,git,0.972,Glossing MER
+Girrbach (2023),git,0.732,Glossing MER
+PolyGloss [multitask],git,0.603,Glossing MER
+PolyGloss [concat],git,0.597,Glossing MER
+PolyGloss [interleaved],git,0.597,Glossing MER
+Separate,usp,0.116,Glossing MER
+Joint,usp,0.17,Glossing MER
+Pipeline,usp,0.173,Glossing MER
+Girrbach (2023),usp,0.242,Glossing MER
+PolyGloss [multitask],usp,0.162,Glossing MER
+PolyGloss [concat],usp,0.165,Glossing MER
+PolyGloss [interleaved],usp,0.16,Glossing MER
+Separate,ain,0.08,Glossing MER
+Joint,ain,0.075,Glossing MER
+Pipeline,ain,0.096,Glossing MER
+Girrbach (2023),ain,0.353,Glossing MER
+PolyGloss [multitask],ain,0.122,Glossing MER
+PolyGloss [concat],ain,0.108,Glossing MER
+PolyGloss [interleaved],ain,0.095,Glossing MER
+Separate,lez,0.38,Glossing MER
+Joint,lez,0.382,Glossing MER
+Pipeline,lez,0.454,Glossing MER
+Girrbach (2023),lez,0.392,Glossing MER
+PolyGloss [multitask],lez,0.383,Glossing MER
+PolyGloss [concat],lez,0.357,Glossing MER
+PolyGloss [interleaved],lez,0.357,Glossing MER
+Separate,ntu,0.184,Glossing MER
+Joint,ntu,0.144,Glossing MER
+Pipeline,ntu,0.238,Glossing MER
+Girrbach (2023),ntu,0.266,Glossing MER
+PolyGloss [multitask],ntu,0.189,Glossing MER
+PolyGloss [concat],ntu,0.18,Glossing MER
+PolyGloss [interleaved],ntu,0.142,Glossing MER
+Separate,nyb,0.283,Glossing MER
+Joint,nyb,0.225,Glossing MER
+Pipeline,nyb,0.314,Glossing MER
+Girrbach (2023),nyb,0.246,Glossing MER
+PolyGloss [multitask],nyb,0.328,Glossing MER
+PolyGloss [concat],nyb,0.31,Glossing MER
+PolyGloss [interleaved],nyb,0.222,Glossing MER
+Separate,ruc,0.292,Glossing MER
+Joint,ruc,0.346,Glossing MER
+Pipeline,ruc,0.433,Glossing MER
+Girrbach (2023),ruc,0.512,Glossing MER
+PolyGloss [multitask],ruc,0.329,Glossing MER
+PolyGloss [concat],ruc,0.315,Glossing MER
+PolyGloss [interleaved],ruc,0.306,Glossing MER
+Separate,arp,0.921,Segmentation F1
+Joint,arp,0.924,Segmentation F1
+Pipeline,arp,0.921,Segmentation F1
+Girrbach (2023),arp,0.531,Segmentation F1
+PolyGloss [multitask],arp,0.903,Segmentation F1
+PolyGloss [concat],arp,0.901,Segmentation F1
+PolyGloss [interleaved],arp,0.91,Segmentation F1
+Separate,ddo,0.975,Segmentation F1
+Joint,ddo,0.976,Segmentation F1
+Pipeline,ddo,0.975,Segmentation F1
+Girrbach (2023),ddo,0.447,Segmentation F1
+PolyGloss [multitask],ddo,0.967,Segmentation F1
+PolyGloss [concat],ddo,0.964,Segmentation F1
+PolyGloss [interleaved],ddo,0.972,Segmentation F1
+Separate,git,0.191,Segmentation F1
+Joint,git,0.152,Segmentation F1
+Pipeline,git,0.191,Segmentation F1
+Girrbach (2023),git,0.241,Segmentation F1
+PolyGloss [multitask],git,0.605,Segmentation F1
+PolyGloss [concat],git,0.589,Segmentation F1
+PolyGloss [interleaved],git,0.595,Segmentation F1
+Separate,usp,0.851,Segmentation F1
+Joint,usp,0.865,Segmentation F1
+Pipeline,usp,0.851,Segmentation F1
+Girrbach (2023),usp,0.548,Segmentation F1
+PolyGloss [multitask],usp,0.85,Segmentation F1
+PolyGloss [concat],usp,0.852,Segmentation F1
+PolyGloss [interleaved],usp,0.855,Segmentation F1
+Separate,ain,0.972,Segmentation F1
+Joint,ain,0.972,Segmentation F1
+Pipeline,ain,0.972,Segmentation F1
+Girrbach (2023),ain,0.348,Segmentation F1
+PolyGloss [multitask],ain,0.963,Segmentation F1
+PolyGloss [concat],ain,0.963,Segmentation F1
+PolyGloss [interleaved],ain,0.963,Segmentation F1
+Separate,lez,0.795,Segmentation F1
+Joint,lez,0.827,Segmentation F1
+Pipeline,lez,0.795,Segmentation F1
+Girrbach (2023),lez,0.349,Segmentation F1
+PolyGloss [multitask],lez,0.826,Segmentation F1
+PolyGloss [concat],lez,0.825,Segmentation F1
+PolyGloss [interleaved],lez,0.782,Segmentation F1
+Separate,ntu,0.93,Segmentation F1
+Joint,ntu,0.935,Segmentation F1
+Pipeline,ntu,0.93,Segmentation F1
+Girrbach (2023),ntu,0.441,Segmentation F1
+PolyGloss [multitask],ntu,0.925,Segmentation F1
+PolyGloss [concat],ntu,0.924,Segmentation F1
+PolyGloss [interleaved],ntu,0.935,Segmentation F1
+Separate,nyb,0.957,Segmentation F1
+Joint,nyb,0.962,Segmentation F1
+Pipeline,nyb,0.957,Segmentation F1
+Girrbach (2023),nyb,0.73,Segmentation F1
+PolyGloss [multitask],nyb,0.938,Segmentation F1
+PolyGloss [concat],nyb,0.94,Segmentation F1
+PolyGloss [interleaved],nyb,0.959,Segmentation F1
+Separate,ruc,0.717,Segmentation F1
+Joint,ruc,0.766,Segmentation F1
+Pipeline,ruc,0.717,Segmentation F1
+Girrbach (2023),ruc,0.494,Segmentation F1
+PolyGloss [multitask],ruc,0.763,Segmentation F1
+PolyGloss [concat],ruc,0.772,Segmentation F1
+PolyGloss [interleaved],ruc,0.782,Segmentation F1
+Separate,arp,0.98,Alignment
+Joint,arp,0.999,Alignment
+Pipeline,arp,0.998,Alignment
+Girrbach (2023),arp,0.998,Alignment
+PolyGloss [multitask],arp,0.984,Alignment
+PolyGloss [concat],arp,0.996,Alignment
+PolyGloss [interleaved],arp,1.0,Alignment
+Separate,ddo,0.988,Alignment
+Joint,ddo,1.0,Alignment
+Pipeline,ddo,0.989,Alignment
+Girrbach (2023),ddo,0.998,Alignment
+PolyGloss [multitask],ddo,0.995,Alignment
+PolyGloss [concat],ddo,0.997,Alignment
+PolyGloss [interleaved],ddo,1.0,Alignment
+Separate,git,0.65,Alignment
+Joint,git,0.996,Alignment
+Pipeline,git,0.464,Alignment
+Girrbach (2023),git,1.0,Alignment
+PolyGloss [multitask],git,0.919,Alignment
+PolyGloss [concat],git,0.965,Alignment
+PolyGloss [interleaved],git,1.0,Alignment
+Separate,usp,0.977,Alignment
+Joint,usp,1.0,Alignment
+Pipeline,usp,1.0,Alignment
+Girrbach (2023),usp,1.0,Alignment
+PolyGloss [multitask],usp,0.99,Alignment
+PolyGloss [concat],usp,1.0,Alignment
+PolyGloss [interleaved],usp,1.0,Alignment
+Separate,ain,0.979,Alignment
+Joint,ain,1.0,Alignment
+Pipeline,ain,0.994,Alignment
+Girrbach (2023),ain,0.895,Alignment
+PolyGloss [multitask],ain,0.982,Alignment
+PolyGloss [concat],ain,0.994,Alignment
+PolyGloss [interleaved],ain,1.0,Alignment
+Separate,lez,0.885,Alignment
+Joint,lez,1.0,Alignment
+Pipeline,lez,0.522,Alignment
+Girrbach (2023),lez,0.985,Alignment
+PolyGloss [multitask],lez,0.973,Alignment
+PolyGloss [concat],lez,0.986,Alignment
+PolyGloss [interleaved],lez,1.0,Alignment
+Separate,ntu,0.907,Alignment
+Joint,ntu,1.0,Alignment
+Pipeline,ntu,0.785,Alignment
+Girrbach (2023),ntu,0.976,Alignment
+PolyGloss [multitask],ntu,0.985,Alignment
+PolyGloss [concat],ntu,0.995,Alignment
+PolyGloss [interleaved],ntu,1.0,Alignment
+Separate,nyb,0.963,Alignment
+Joint,nyb,1.0,Alignment
+Pipeline,nyb,0.914,Alignment
+Girrbach (2023),nyb,0.994,Alignment
+PolyGloss [multitask],nyb,0.988,Alignment
+PolyGloss [concat],nyb,0.999,Alignment
+PolyGloss [interleaved],nyb,1.0,Alignment
+Separate,ruc,0.904,Alignment
+Joint,ruc,0.997,Alignment
+Pipeline,ruc,0.713,Alignment
+Girrbach (2023),ruc,0.941,Alignment
+PolyGloss [multitask],ruc,0.941,Alignment
+PolyGloss [concat],ruc,0.973,Alignment
+PolyGloss [interleaved],ruc,1.0,Alignment
+GRPO,git,0.574,Glossing MER
+GRPO,git,0.610,Segmentation F1
+GRPO,git,0.975,Alignment
+PolyGloss [qwen],arp,0.453,Glossing MER
+PolyGloss [qwen],ddo,0.626,Glossing MER
+PolyGloss [qwen],git,0.902,Glossing MER
+PolyGloss [qwen],usp,0.418,Glossing MER
+PolyGloss [qwen],ain,0.480,Glossing MER
+PolyGloss [qwen],lez,0.872,Glossing MER
+PolyGloss [qwen],ntu,0.739,Glossing MER
+PolyGloss [qwen],nyb,0.912,Glossing MER
+PolyGloss [qwen],ruc,0.835,Glossing MER
+PolyGloss [qwen],arp,0.658,Segmentation F1
+PolyGloss [qwen],ddo,0.610,Segmentation F1
+PolyGloss [qwen],git,0.235,Segmentation F1
+PolyGloss [qwen],usp,0.663,Segmentation F1
+PolyGloss [qwen],ain,0.754,Segmentation F1
+PolyGloss [qwen],lez,0.485,Segmentation F1
+PolyGloss [qwen],ntu,0.554,Segmentation F1
+PolyGloss [qwen],nyb,0.656,Segmentation F1
+PolyGloss [qwen],ruc,0.375,Segmentation F1
+PolyGloss [qwen],arp,0.999,Alignment
+PolyGloss [qwen],ddo,0.999,Alignment
+PolyGloss [qwen],git,0.996,Alignment
+PolyGloss [qwen],usp,0.999,Alignment
+PolyGloss [qwen],ain,1.000,Alignment
+PolyGloss [qwen],lez,0.988,Alignment
+PolyGloss [qwen],ntu,1.000,Alignment
+PolyGloss [qwen],nyb,0.997,Alignment
+PolyGloss [qwen],ruc,1.000,Alignment
