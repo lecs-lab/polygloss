@@ -135,9 +135,9 @@ def grpo_epoch(
         loss = -(coef_1_seq - coef_2_seq).mean()
         loss.backward()
         if step % config.gradient_accumulation_steps == 0:
-            torch.nn.utils.clip_grad_norm_(
-                model.parameters(), max_norm=config.grad_norm
-            )
+            # torch.nn.utils.clip_grad_norm_(
+            #     model.parameters(), max_norm=config.grad_norm
+            # )
             if step < total_warmup_steps:
                 # Linear warmup
                 new_lr = config.learning_rate * step / total_warmup_steps
