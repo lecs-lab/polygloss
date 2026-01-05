@@ -57,7 +57,7 @@ def grpo_epoch(
                 **batch,
                 do_sample=True,
                 temperature=0.6,
-                top_p=0.3,
+                top_p=0.7,
                 repetition_penalty=1.05,
                 num_return_sequences=config.grpo_group_size,
                 max_length=1024,
