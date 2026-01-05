@@ -155,6 +155,7 @@ def grpo_epoch(
                 generated_ids, skip_special_tokens=True
             )
             scores = compute_scores(generations)
+            logger.info(zip(generations[:5], scores[:5]))
             eval_reward_sum += sum(scores)
             eval_n += 1 * bs
 
@@ -189,10 +190,13 @@ def compute_scores(generations: list[str]):
     for gen in generations:
         splits = gen.split(gloss_label)
         if len(splits) <= 1:
+            logger.warning(f"No splits: {gen}")
             scores.append(0)
             continue
         if len(splits) > 2:
-            breakpoint()
+            logger.warning(f"Too many splits: {gen}")
+            scores.append(0)
+            continue
         segments, glosses = splits
         scores.append(alignment_score([(segments, glosses)]))
     return scores
