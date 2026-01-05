@@ -1,5 +1,6 @@
 import inspect
 import logging
+from pprint import pformat
 
 import torch
 import tqdm
@@ -156,7 +157,7 @@ def grpo_epoch(
                 generated_ids, skip_special_tokens=True
             )
             scores = compute_scores(generations)
-            logger.info(list(zip(generations, scores))[:5])
+            logger.info(pformat(list(zip(generations, scores))[:5]))
             eval_reward_sum += sum(scores)
             eval_n += bs
 
