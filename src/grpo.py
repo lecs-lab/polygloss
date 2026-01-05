@@ -129,8 +129,12 @@ def grpo_epoch(
         coef_2_seq = coef_2.sum(dim=-1) / token_counts
         loss = -(coef_1_seq - coef_2_seq).mean()
         loss.backward()
-        optimizer.step()
-        optimizer.zero_grad()
+        if (
+            batch_idx % config.gradient_accumulation_steps == 0
+            or batch_idx == len(train_dataloader) - 1
+        ):
+            optimizer.step()
+            optimizer.zero_grad()
         train_loss_sum += loss.item()
         train_n += bs * config.grpo_group_size
         step += 1
