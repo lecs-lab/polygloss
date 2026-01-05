@@ -137,9 +137,10 @@ def grpo_epoch(
             # torch.nn.utils.clip_grad_norm_(
             #     model.parameters(), max_norm=config.grad_norm
             # )
-            if step < total_warmup_steps:
+            effective_step = step // config.gradient_accumulation_steps
+            if effective_step < total_warmup_steps:
                 # Linear warmup
-                new_lr = config.learning_rate * step / total_warmup_steps
+                new_lr = config.learning_rate * effective_step / total_warmup_steps
             else:
                 new_lr = config.learning_rate
             # else:
@@ -157,13 +158,10 @@ def grpo_epoch(
                 param_group["lr"] = new_lr
 
             if distributed_parameters["rank"] == 0:
-                wandb.log({"train/lr": new_lr}, step=step)
+                wandb.log({"train/lr": new_lr}, step=effective_step)
 
             optimizer.step()
             optimizer.zero_grad()
-            step += 1
-            if pbar:
-                pbar.update()
         train_loss_sum += loss.item()
         train_n += bs * config.grpo_group_size
 
@@ -227,6 +225,9 @@ def grpo_epoch(
             },
             step=step,
         )
+        step += 1
+        if pbar:
+            pbar.update()
     return step
 
 
