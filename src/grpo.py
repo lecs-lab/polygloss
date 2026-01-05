@@ -57,6 +57,7 @@ def grpo_epoch(
                 do_sample=True,
                 temperature=0.6,
                 top_p=0.5,
+                repetition_penalty=1.05,
                 num_return_sequences=config.grpo_group_size,
                 max_length=1024,
                 pad_token_id=tokenizer.pad_token_id,
