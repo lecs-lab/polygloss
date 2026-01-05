@@ -42,6 +42,7 @@ def grpo_epoch(
             batch.pop(key)
         batch = batch.to(device)
         optimizer.zero_grad()
+        bs = batch.size(0)
 
         # Generate step
         with (
@@ -67,12 +68,12 @@ def grpo_epoch(
             labels = generated_ids[:, 1:]
             scores = torch.tensor(
                 compute_scores(generations), device=generated_ids.device
-            ).view(config.batch_size, config.grpo_group_size)
+            ).view(bs, config.grpo_group_size)
             # Normalize
             means = scores.mean(dim=-1).unsqueeze(1)
             stds = (scores.std(dim=-1) + 1e-9).unsqueeze(1)
             scores = (scores - means) / stds
-            scores = scores.view(config.batch_size * config.grpo_group_size).detach()
+            scores = scores.view(bs * config.grpo_group_size).detach()
 
         # Compute kl divergence
         inputs_repeated = {
@@ -116,11 +117,7 @@ def grpo_epoch(
         coef_2 = (
             config.grpo_beta * (torch.exp(log_ref_ratio) - log_ref_ratio - 1) * mask
         )
-        loss = (
-            -1
-            * torch.sum(coef_1 + coef_2)
-            / (config.batch_size * config.grpo_group_size)
-        )
+        loss = -1 * torch.sum(coef_1 + coef_2) / (bs * config.grpo_group_size)
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
