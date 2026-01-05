@@ -120,7 +120,10 @@ def grpo_epoch(
         coef_2 = (
             config.grpo_beta * (torch.exp(log_ref_ratio) - log_ref_ratio - 1) * mask
         )
-        loss = -1 * torch.sum(coef_1 + coef_2) / (bs * config.grpo_group_size)
+        token_counts = mask.sum(dim=-1).clamp(min=1)
+        coef_1_seq = coef_1.sum(dim=-1) / token_counts
+        coef_2_seq = coef_2.sum(dim=-1) / token_counts
+        loss = -(coef_1_seq - coef_2_seq).mean()
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
