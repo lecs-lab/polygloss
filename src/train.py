@@ -99,6 +99,7 @@ def train(
         if config.mode in ["pretrain", "finetune", "lora"]:
             step = train_epoch(
                 model=model,
+                tokenizer=tokenizer,
                 optimizer=optimizer,
                 epoch=epoch,
                 step=step,

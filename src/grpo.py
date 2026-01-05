@@ -33,8 +33,10 @@ def grpo_epoch(
         (model.module if distributed_parameters["distributed"] else model).forward
     ).parameters
     device = distributed_parameters["device"]
+    train_loss_sum = 0.0
+    train_n = 0
 
-    for batch_idx, batch in enumerate(train_dataloader):
+    for batch in train_dataloader:
         keys_to_pop = [k for k in batch.keys() if k not in forward_params]
         for key in keys_to_pop:
             batch.pop(key)
@@ -99,10 +101,6 @@ def grpo_epoch(
         )
         log_ratio = policy_logprobs - old_policy_logprobs
         coef_1 = torch.exp(log_ratio) * scores.unsqueeze(1) * mask
-        # log_importance_weights = (log_ratio * mask).sum(-1) / mask.sum(-1).clamp(
-        #     min=1.0
-        # )
-        # log_importance_weights = log_importance_weights.unsqueeze(-1)
 
         with model.disable_adapter(), torch.no_grad():
             ref_logprobs = (
@@ -124,50 +122,62 @@ def grpo_epoch(
             / (config.batch_size * config.grpo_group_size)
         )
         loss.backward()
-
+        optimizer.step()
+        optimizer.zero_grad()
+        train_loss_sum += loss.item()
+        train_n += 1
         if pbar:
             pbar.update()
 
-    if distributed_parameters["distributed"]:
-        stats = torch.tensor(
-            [train_loss_sum, train_n],
-            device=device,
-            dtype=torch.float64,
-        )
-        torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
-        train_loss_sum, train_n = stats.tolist()
+    logger.info("Evaluating...")
+    with (
+        torch.amp.autocast_mode.autocast(
+            distributed_parameters["device_type"], dtype=torch.bfloat16
+        ),
+        torch.inference_mode(),
+        torch.no_grad(),
+    ):
+        eval_reward_sum = 0.0
+        eval_n = 0
+        for batch in dev_dataloader:
+            keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+            for key in keys_to_pop:
+                batch.pop(key)
+            batch = batch.to(device)
+            generated_ids = model.generate(
+                **batch,
+                use_model_defaults=True,
+                do_sample=False,
+                max_length=1024,
+                pad_token_id=tokenizer.pad_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+            generations = tokenizer.batch_decode(
+                generated_ids, skip_special_tokens=True
+            )
+            scores = compute_scores(generations)
+            eval_reward_sum += sum(scores)
+            eval_n += 1
 
-    if distributed_parameters["rank"] == 0:
-        model.eval()
-        logger.info("Evaluating...")
-        with (
-            torch.amp.autocast_mode.autocast(
-                distributed_parameters["device_type"], dtype=torch.bfloat16
-            ),
-            torch.inference_mode(),
-        ):
-            eval_loss_sum = 0.0
-            eval_n = 0
-            for batch in dev_dataloader:
-                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-                for key in keys_to_pop:
-                    batch.pop(key)
-                batch = batch.to(device)
-                out = model(**batch)
-                loss = _get_loss(out, batch["labels"]).item()
-                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-                eval_loss_sum += loss * num_tokens
-                eval_n += num_tokens
+        if distributed_parameters["distributed"]:
+            stats = torch.tensor(
+                [train_loss_sum, train_n, eval_reward_sum, eval_n],
+                device=device,
+                dtype=torch.float64,
+            )
+            torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
+            train_loss_sum, train_n, eval_reward_sum, eval_n = stats.tolist()
 
-            train_loss = train_loss_sum / train_n
-            eval_loss = eval_loss_sum / eval_n
+        train_loss = train_loss_sum / train_n
+        eval_reward = eval_reward_sum / eval_n
+
         # Log results
-        print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
+        print(f"Epoch {epoch}\tLoss: {train_loss}\tEval reward: {eval_reward}")
         wandb.log(
             {
                 "train/loss": train_loss,
                 "train/epoch": epoch,
-                "eval/loss": eval_loss,
+                "eval/avg_reward": eval_reward,
             },
             step=step,
         )
