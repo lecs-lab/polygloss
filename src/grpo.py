@@ -54,8 +54,9 @@ def grpo_epoch(
             model.eval()
             generated_ids = model.generate(
                 **batch,
-                use_model_defaults=True,
                 do_sample=True,
+                temperature=0.6,
+                top_p=0.5,
                 num_return_sequences=config.grpo_group_size,
                 max_length=1024,
                 pad_token_id=tokenizer.pad_token_id,
@@ -145,7 +146,6 @@ def grpo_epoch(
             batch = batch.to(device)
             generated_ids = model.generate(
                 **batch,
-                use_model_defaults=True,
                 do_sample=False,
                 max_length=1024,
                 pad_token_id=tokenizer.pad_token_id,
@@ -155,9 +155,9 @@ def grpo_epoch(
                 generated_ids, skip_special_tokens=True
             )
             scores = compute_scores(generations)
-            logger.info(zip(generations[:5], scores[:5]))
+            logger.info(list(zip(generations, scores))[:5])
             eval_reward_sum += sum(scores)
-            eval_n += 1 * bs
+            eval_n += bs
 
         if distributed_parameters["distributed"]:
             stats = torch.tensor(
