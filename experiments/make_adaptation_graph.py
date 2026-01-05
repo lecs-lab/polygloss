@@ -30,6 +30,8 @@ ax.tick_params(
     width=1,
     labelsize=9,
 )
+for label in ax.get_xticklabels() + ax.get_yticklabels():
+    label.set_fontweight("bold")
 leg = ax.legend(
     loc="lower center",
     bbox_to_anchor=(0.5, 1.02),  # x=0 is the *axes* left edge
@@ -41,6 +43,8 @@ leg = ax.legend(
     columnspacing=1.2,
     handletextpad=0.6,
 )
+for text in leg.get_texts():
+    text.set_fontweight("bold")
 # ax.set_ylim(0, 1)
 plt.savefig("experiments/viz/adaptation.pdf", format="pdf", bbox_inches="tight")
 plt.show()
