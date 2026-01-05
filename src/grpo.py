@@ -1,5 +1,6 @@
 import inspect
 import logging
+import math
 from pprint import pformat
 
 import torch
@@ -130,6 +131,29 @@ def grpo_epoch(
         loss = -(coef_1_seq - coef_2_seq).mean()
         loss.backward()
         if step % config.gradient_accumulation_steps == 0:
+            torch.nn.utils.clip_grad_norm_(
+                model.parameters(), max_norm=config.grad_norm
+            )
+            if step < total_warmup_steps:
+                # Linear warmup
+                new_lr = config.learning_rate * step / total_warmup_steps
+            else:
+                # Cosine decay
+                progress = (step - total_warmup_steps) / (
+                    max_steps - total_warmup_steps
+                )
+                cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
+                new_lr = (
+                    config.min_learning_rate
+                    + (config.learning_rate - config.min_learning_rate) * cosine_decay
+                )
+
+            for param_group in optimizer.param_groups:
+                param_group["lr"] = new_lr
+
+            if distributed_parameters["rank"] == 0:
+                wandb.log({"train/lr": new_lr}, step=step)
+
             optimizer.step()
             optimizer.zero_grad()
         train_loss_sum += loss.item()
