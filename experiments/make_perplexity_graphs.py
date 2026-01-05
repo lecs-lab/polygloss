@@ -58,7 +58,7 @@ sns.regplot(
     scatter=False,
     ax=ax,
     ci=None,
-    line_kws={"color": "grey", "linestyle": "--"},
+    line_kws={"color": "black", "linestyle": "--", "linewidth": 1},
 )
 leg = ax.legend(
     loc="lower center",
