@@ -232,7 +232,8 @@ if __name__ == "__main__":
     logger.info(f"TOTAL training samples = {total_size}")
 
     folder = pathlib.Path(args.config).parent
-    chunk_sizes = [50, 100, 150, 200, 250, 300, 350, 380]
+    chunk_sizes = [100, 150, 200, 250, 300, 350, 380]
+    max_epochs = config.max_epochs
 
     for end_idx in chunk_sizes:
         config.train_subset_size = end_idx
@@ -242,7 +243,9 @@ if __name__ == "__main__":
         exp_folder = folder / f"chunk_0_{end_idx}"
         exp_folder.mkdir(exist_ok=True)
         if end_idx <= 100:
-            config.max_epochs *= 2
+            config.max_epochs = max_epochs * 2
+        else:
+            config.max_epochs = max_epochs
         out = run(
             config=config,
             experiment_folder=exp_folder,
