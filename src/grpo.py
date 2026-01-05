@@ -226,7 +226,7 @@ def grpo_epoch(
                 "train/epoch": epoch,
                 "eval/avg_reward": eval_reward,
             },
-            step=step,
+            step=step // config.gradient_accumulation_steps,
         )
 
     return step
