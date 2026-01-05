@@ -36,6 +36,7 @@ def grpo_epoch(
     ).parameters
     device = distributed_parameters["device"]
     train_loss_sum = 0.0
+    train_reward_sum = 0.0
     train_n = 0
 
     for batch_idx, batch in enumerate(train_dataloader):
@@ -70,13 +71,16 @@ def grpo_epoch(
             )
             decoder_in = generated_ids[:, :-1]
             labels = generated_ids[:, 1:]
-            scores = torch.tensor(
-                compute_scores(generations), device=generated_ids.device
-            ).view(bs, config.grpo_group_size)
+            scores = compute_scores(generations)
+            train_reward_sum += sum(scores)
+            scores = torch.tensor(scores, device=generated_ids.device).view(
+                bs, config.grpo_group_size
+            )
             if batch_idx == 0:
                 logger.info(
                     f"First train group: {pformat(list(zip(generations, compute_scores(generations)))[: config.grpo_group_size])}"
                 )
+
             # Normalize
             means = scores.mean(dim=-1).unsqueeze(1)
             stds = (scores.std(dim=-1) + 1e-9).unsqueeze(1)
@@ -198,14 +202,17 @@ def grpo_epoch(
 
         if distributed_parameters["distributed"]:
             stats = torch.tensor(
-                [train_loss_sum, train_n, eval_reward_sum, eval_n],
+                [train_loss_sum, train_n, train_reward_sum, eval_reward_sum, eval_n],
                 device=device,
                 dtype=torch.float64,
             )
             torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
-            train_loss_sum, train_n, eval_reward_sum, eval_n = stats.tolist()
+            train_loss_sum, train_n, train_reward_sum, eval_reward_sum, eval_n = (
+                stats.tolist()
+            )
 
         train_loss = train_loss_sum / train_n
+        train_reward_sum = train_reward_sum / train_n
         eval_reward = eval_reward_sum / eval_n
 
         # Log results
@@ -213,6 +220,7 @@ def grpo_epoch(
         wandb.log(
             {
                 "train/loss": train_loss,
+                "train/avg_reward": train_reward_sum,
                 "train/epoch": epoch,
                 "eval/avg_reward": eval_reward,
             },
