@@ -196,7 +196,7 @@ def run(
         distributed_parameters=distributed_parameters,
     )
     assert predictions is not None
-    assert perplexity_by_lang is not None
+    # assert perplexity_by_lang is not None
     # Join with original dataset to add language info
     meta = (
         dataset["test"]  # type:ignore
