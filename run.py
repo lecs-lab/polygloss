@@ -192,8 +192,8 @@ def run(
     if distributed_parameters["rank"] == 0:
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
-        lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
-        wandb.log({"eval/loss_per_language": lang_loss_table})
+        # lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
+        # wandb.log({"eval/loss_per_language": lang_loss_table})
 
         # Evaluation (if we have labels, ie not in inference mode)
         if predictions_with_langs["reference"].notnull().all():  # type:ignore
