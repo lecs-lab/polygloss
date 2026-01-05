@@ -188,3 +188,6 @@
 60,PolyGloss [multitask],ruc,0.941,Alignment
 61,PolyGloss [concat],ruc,0.973,Alignment
 62,PolyGloss [interleaved],ruc,1.0,Alignment
+63,GRPO,git,0.574,Glossing MER
+64,GRPO,git,0.610,Segmentation F1
+65,GRPO,git,0.975,Alignment
