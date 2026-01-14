@@ -9,12 +9,14 @@ runs = [
     "polygloss-byt5-multitask-adamw (fixed eval)",
     "polygloss-byt5-concat-adamw (fixed eval)",
     "polygloss-byt5-interleaved-adamw (fixed eval)",
+    "dutiful-firefly-280",
 ]
 nice_names = [
     "\\textsc{GlossLM}",
     "\\textsc{PolyGloss} (ByT5, multitask)",
     "\\textsc{PolyGloss} (ByT5, concat)",
     "\\textsc{PolyGloss} (ByT5, interleaved)",
+    "\\textsc{PolyGloss} (Qwen, interleaved)",
 ]
 
 results = {run_name: {m: [] for m in metrics} for run_name in runs}
