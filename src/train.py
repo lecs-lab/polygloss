@@ -8,6 +8,7 @@ import tqdm
 from peft import set_peft_model_state_dict
 from torch.optim import Adafactor
 from torch.optim.adamw import AdamW
+from torch.distributed import ReduceOp
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
@@ -90,6 +91,8 @@ def train(
     logger.info(
         f"Training with {len(train_dataloader)} batches of size {config.batch_size}."
     )
+    min_eval_loss = float("inf")
+    since_best = 0
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
@@ -97,7 +100,8 @@ def train(
 
         model.train()
         if config.mode in ["pretrain", "finetune", "lora"]:
-            step = train_epoch(
+            flag_tensor = torch.zeros(1).to(device)
+            step, eval_loss = train_epoch(
                 model=model,
                 tokenizer=tokenizer,
                 optimizer=optimizer,
@@ -111,6 +115,31 @@ def train(
                 config=config,
                 distributed_parameters=distributed_parameters,
             )
+            if eval_loss < min_eval_loss:
+                min_eval_loss = eval_loss
+                since_best = 0
+                best_checkpoint_dir = models_folder / f"{run_id}.model"
+                (
+                    model.module if distributed_parameters["distributed"] else model
+                ).save_pretrained(best_checkpoint_dir)
+                tokenizer.save_pretrained(best_checkpoint_dir)
+                logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
+            else:
+                since_best += 1
+                if (
+                    (epoch + 1) >= config.min_epochs
+                    and config.early_stopping > 0
+                    and since_best >= config.early_stopping
+                ):
+                    logger.info(
+                        f"Early stopping. No improvements in the last {since_best} epochs"
+                    )
+                    flag_tensor += 1
+            # If we early stopped, broadcast break to all ranks
+            if distributed_parameters["distributed"]:
+                torch.distributed.all_reduce(flag_tensor, op=ReduceOp.SUM)
+            if flag_tensor.item() == 1:
+                break
         elif config.mode == "grpo":
             step = grpo_epoch(
                 model=model,
@@ -142,10 +171,13 @@ def train(
     if distributed_parameters["rank"] == 0:
         (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
         final_checkpoint_dir = models_folder / f"{run_id}.model"
-        (
-            model.module if distributed_parameters["distributed"] else model
-        ).save_pretrained(final_checkpoint_dir)
-        tokenizer.save_pretrained(final_checkpoint_dir)
+        if not final_checkpoint_dir.exists():
+            # If the checkpoint already exists, we must have early stopped
+            # If not, make it now
+            (
+                model.module if distributed_parameters["distributed"] else model
+            ).save_pretrained(final_checkpoint_dir)
+            tokenizer.save_pretrained(final_checkpoint_dir)
         logger.info(f"Saved model to {final_checkpoint_dir.resolve()}")
 
         if config.new_hub_identifier:
@@ -242,30 +274,40 @@ def train_epoch(
         torch.distributed.all_reduce(stats, op=torch.distributed.ReduceOp.SUM)
         train_loss_sum, train_n = stats.tolist()
 
-    if distributed_parameters["rank"] == 0:
-        model.eval()
-        logger.info("Evaluating...")
-        with (
-            torch.amp.autocast_mode.autocast(
-                distributed_parameters["device_type"], dtype=torch.bfloat16
-            ),
-            torch.inference_mode(),
-        ):
-            eval_loss_sum = 0.0
-            eval_n = 0
-            for batch in dev_dataloader:
-                keys_to_pop = [k for k in batch.keys() if k not in forward_params]
-                for key in keys_to_pop:
-                    batch.pop(key)
-                batch = batch.to(device)
-                out = model(**batch)
-                loss = _get_loss(out, batch["labels"]).item()
-                num_tokens = torch.sum(batch["labels"] != -100).detach().item()
-                eval_loss_sum += loss * num_tokens
-                eval_n += num_tokens
+    model.eval()
+    logger.info("Evaluating...")
+    with (
+        torch.amp.autocast_mode.autocast(
+            distributed_parameters["device_type"], dtype=torch.bfloat16
+        ),
+        torch.inference_mode(),
+    ):
+        eval_loss_sum = 0.0
+        eval_n = 0
+        for batch in dev_dataloader:
+            keys_to_pop = [k for k in batch.keys() if k not in forward_params]
+            for key in keys_to_pop:
+                batch.pop(key)
+            batch = batch.to(device)
+            out = model(**batch)
+            loss = _get_loss(out, batch["labels"]).item()
+            num_tokens = torch.sum(batch["labels"] != -100).detach().item()
+            eval_loss_sum += loss * num_tokens
+            eval_n += num_tokens
 
-            train_loss = train_loss_sum / train_n
-            eval_loss = eval_loss_sum / eval_n
+    # Sum losses over devices, if distributed
+    if distributed_parameters["distributed"]:
+        losses_tensor = torch.tensor(
+            [train_loss_sum, train_n, eval_loss_sum, eval_n], device=device
+        )
+        torch.distributed.all_reduce(losses_tensor, torch.distributed.ReduceOp.SUM)
+        train_loss = losses_tensor[0] / losses_tensor[1]
+        eval_loss = losses_tensor[2] / losses_tensor[3]
+    else:
+        train_loss = train_loss_sum / train_n
+        eval_loss = eval_loss_sum / eval_n
+        
+    if distributed_parameters["rank"] == 0:
         # Log results
         print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
         wandb.log(
@@ -276,7 +318,7 @@ def train_epoch(
             },
             step=step,
         )
-    return step
+    return step, eval_loss
 
 
 def _get_loss(out, labels):
