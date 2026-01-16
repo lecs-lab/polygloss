@@ -23,6 +23,7 @@ from src.config.config_to_dataclass import config_to_dataclass
 from src.dataset.prepare_dataset import create_dataloader, create_dataset
 from src.distributed import DistributedParameters, setup_ddp
 from src.evaluation.evaluate import evaluate
+from src.evaluation.perplexity import eval_ppl_per_lang
 from src.generate import generate
 from src.train import ExperimentConfig, train
 from src.util.pip_freeze import log_pip_freeze_artifact
@@ -125,7 +126,7 @@ def run(
             target_modules=target_modules,
         )
         model = get_peft_model(model, lora_config)
-        model.enable_input_require_grads()
+        model.enable_input_require_grads()  # type:ignore
 
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -196,7 +197,7 @@ def run(
         distributed_parameters=distributed_parameters,
     )
     assert predictions is not None
-    # assert perplexity_by_lang is not None
+    assert perplexity_by_lang is not None
     # Join with original dataset to add language info
     meta = (
         dataset["test"]  # type:ignore
@@ -210,7 +211,6 @@ def run(
     )
 
     if distributed_parameters["rank"] == 0:
-<<<<<<< HEAD
         assert predictions is not None
         # Join with original dataset to add language info
         meta = (
@@ -223,13 +223,10 @@ def run(
             on="id",
             how="left",
         )
-
-=======
->>>>>>> 41da05b (Revert to distributed eval)
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
-        # lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
-        # wandb.log({"eval/loss_per_language": lang_loss_table})
+        lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
+        wandb.log({"eval/loss_per_language": lang_loss_table})
 
         # Evaluation (if we have labels, ie not in inference mode)
         if predictions_with_langs["reference"].notnull().all():  # type:ignore
@@ -244,10 +241,7 @@ def run(
                 experiment_folder / "metrics.json",
             )
             return metrics
-    if distributed_parameters["distributed"]:
-        if distributed_parameters["rank"] == 0:
-            wandb.finish()
-    else:
+    if not distributed_parameters["distributed"] or distributed_parameters["rank"] == 0:
         wandb.finish()
 
 
