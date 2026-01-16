@@ -174,7 +174,6 @@ def grpo_epoch(
             distributed_parameters["device_type"], dtype=torch.bfloat16
         ),
         torch.inference_mode(),
-        torch.no_grad(),
     ):
         eval_reward_sum = 0.0
         eval_n = 0
@@ -218,16 +217,19 @@ def grpo_epoch(
         eval_reward = eval_reward_sum / eval_n
 
         # Log results
-        print(f"Epoch {epoch}\tLoss: {train_loss}\tEval reward: {eval_reward}")
-        wandb.log(
-            {
-                "train/loss": train_loss,
-                "train/avg_reward": train_reward_sum,
-                "train/epoch": epoch,
-                "eval/avg_reward": eval_reward,
-            },
-            step=step // config.gradient_accumulation_steps,
-        )
+        if distributed_parameters["rank"] == 0:
+            logger.info(
+                f"Epoch {epoch}\tLoss: {train_loss}\tEval reward: {eval_reward}"
+            )
+            wandb.log(
+                {
+                    "train/loss": train_loss,
+                    "train/avg_reward": train_reward_sum,
+                    "train/epoch": epoch,
+                    "eval/avg_reward": eval_reward,
+                },
+                step=step // config.gradient_accumulation_steps,
+            )
 
     return step
 

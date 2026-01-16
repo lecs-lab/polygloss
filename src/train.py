@@ -6,9 +6,9 @@ import pathlib
 import torch
 import tqdm
 from peft import set_peft_model_state_dict
+from torch.distributed import ReduceOp
 from torch.optim import Adafactor
 from torch.optim.adamw import AdamW
-from torch.distributed import ReduceOp
 from torch.utils.data import DataLoader, DistributedSampler
 
 import wandb
@@ -157,16 +157,17 @@ def train(
             )
 
         # Save checkpoint
-        torch.save(
-            {
-                "epoch": epoch + 1,
-                "model_state_dict": (
-                    model.module if distributed_parameters["distributed"] else model
-                ).state_dict(),
-                "optimizer_state_dict": optimizer.state_dict(),
-            },
-            models_folder / f"{run_id}.checkpoint.pt",
-        )
+        if distributed_parameters["rank"] == 0:
+            torch.save(
+                {
+                    "epoch": epoch + 1,
+                    "model_state_dict": (
+                        model.module if distributed_parameters["distributed"] else model
+                    ).state_dict(),
+                    "optimizer_state_dict": optimizer.state_dict(),
+                },
+                models_folder / f"{run_id}.checkpoint.pt",
+            )
     # Save final model and remove checkpoint
     if distributed_parameters["rank"] == 0:
         (models_folder / f"{run_id}.checkpoint.pt").unlink(missing_ok=True)
@@ -228,7 +229,7 @@ def train_epoch(
         loss.backward()
 
         # Only update weights every accumulation_steps batches
-        if (batch_idx + 1) % config.gradient_accumulation_steps == 0:
+        if (step + 1) % config.gradient_accumulation_steps == 0:
             torch.nn.utils.clip_grad_norm_(
                 model.parameters(), max_norm=config.grad_norm
             )
@@ -306,7 +307,7 @@ def train_epoch(
     else:
         train_loss = train_loss_sum / train_n
         eval_loss = eval_loss_sum / eval_n
-        
+
     if distributed_parameters["rank"] == 0:
         # Log results
         print(f"Epoch {epoch}\tLoss: {train_loss}\tEval loss: {eval_loss}")
