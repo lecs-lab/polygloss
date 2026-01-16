@@ -82,7 +82,9 @@ class FlexibleCollatorWithPadding(DataCollatorForLanguageModeling):
         prompt_mask = torch.arange(batch["input_ids"].size(-1)).expand(
             batch["input_ids"].shape
         )
-        prompt_mask = prompt_mask < (batch["prompt_lengths"]).unsqueeze(-1)
+        prompt_mask = prompt_mask > (
+            batch["input_ids"].size(-1) - batch["label_lengths"]
+        ).unsqueeze(-1)
         batch["labels"].masked_fill_(prompt_mask, -100)
 
         # Add the untouched extras back
