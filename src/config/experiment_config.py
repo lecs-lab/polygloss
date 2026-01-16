@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Literal
 
-TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora"]
+TRAIN_MODE = Literal["pretrain", "predict", "finetune", "lora", "grpo"]
 MODEL_TYPE = Literal["seq2seq", "decoder"]
 TASK_FORMAT = Literal[
     "multitask", "concatenated", "interleaved", "gloss-only", "segment-only"
@@ -106,6 +106,9 @@ class ExperimentConfig:
     lora_alpha: int = 8
     """Alpha for LoRa"""
 
+    target_modules: str | None = None
+    """Target modules for LoRA"""
+
     adapter_dir: str | None = None
     """LoRA adapter directory. If specified, will add adapter layer to pretrained model (for inference)"""
 
@@ -115,6 +118,15 @@ class ExperimentConfig:
 
     num_beams: int = 2
     """Num beams for beam search"""
+
+    grpo_group_size: int = 4
+    """Num of generations for a GRPO group"""
+
+    grpo_beta: float = 0.1
+
+    grpo_temperature: float = 0.6
+
+    grpo_top_p: float = 0.7
 
     # ============================
     # Computed properties
@@ -138,3 +150,5 @@ class ExperimentConfig:
         else:
             if self.mode == "finetune":
                 raise ValueError("Finetuning must have a glottocode!")
+        if self.mode == "grpo" and self.task_format != "concatenated":
+            raise ValueError("Can only do GRPO with `task_format=concatenated`")

@@ -8,7 +8,7 @@ from glossing.igt import gloss_string_to_word_glosses
 logger = logging.getLogger(__name__)
 
 
-def alignment_score(segments_and_glosses: list[tuple[str, str]]):
+def alignment_score(segments_and_glosses: list[tuple[str, str]], should_log=False):
     """Computes an alignment score between glossing predictions and segmentation predictions"""
     sum_edit_dist = 0
     # Log a few random examples
@@ -27,7 +27,7 @@ def alignment_score(segments_and_glosses: list[tuple[str, str]]):
         else:
             sentence_score = 1 - (edit_distance / max_edit_distance)
 
-        if index in log_indices:
+        if should_log and index in log_indices:
             logger.info(
                 f"Ex {index}\nSegmentation: {segments} ({segment_abstract})\nGlosses: {glosses} ({glosses_abstract})\nScore: {sentence_score}"
             )

@@ -88,13 +88,14 @@ def run(
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]
+            distributed_parameters["device"]  # type:ignore
         )
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
         model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
-    elif config.mode == "lora":
+    elif config.mode in ["lora", "grpo"]:
+        logger.info("Creating LoRA adapter")
         model.enable_input_require_grads()
         if config.model_type == "seq2seq":
             task_type = TaskType.SEQ_2_SEQ_LM
@@ -102,11 +103,16 @@ def run(
             task_type = TaskType.CAUSAL_LM
         else:
             raise NotImplementedError()
+        if config.target_modules is not None:
+            target_modules = json.loads(config.target_modules)
+        else:
+            target_modules = None
         lora_config = LoraConfig(
             task_type=task_type,
             r=config.lora_rank,
             lora_alpha=config.lora_alpha,
             lora_dropout=config.lora_dropout,
+            target_modules=target_modules,
         )
         model = get_peft_model(model, lora_config)
 
@@ -132,7 +138,7 @@ def run(
         for split in dataset.keys()
     }
 
-    if config.mode in ["pretrain", "finetune", "lora"]:
+    if config.mode in ["pretrain", "finetune", "lora", "grpo"]:
         train(
             model,
             tokenizer=tokenizer,
@@ -147,6 +153,24 @@ def run(
         torch.distributed.barrier()
         torch.distributed.destroy_process_group()
         model = model.module
+
+    if config.mode == "grpo":
+        # Remake the dataset for evaluation
+        config.mode = "predict"
+        dataset = create_dataset(
+            tokenizer=tokenizer,
+            config=config,
+        )
+        dataloaders: dict[str, DataLoader] = {
+            split: create_dataloader(
+                dataset[split],
+                split=split,
+                config=config,
+                tokenizer=tokenizer,
+                distributed_parameters=distributed_parameters,
+            )
+            for split in dataset.keys()
+        }
 
     # Compute perplexity for each language
     perplexity_by_lang = eval_ppl_per_lang(
@@ -168,7 +192,6 @@ def run(
 
     if distributed_parameters["rank"] == 0:
         assert predictions is not None
-        assert perplexity_by_lang is not None
         # Join with original dataset to add language info
         meta = (
             dataset["test"]  # type:ignore

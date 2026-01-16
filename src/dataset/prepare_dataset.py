@@ -20,7 +20,7 @@ from glossing.igt import gloss_string_to_word_glosses
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
-from transformers import AutoConfig
+from transformers.models.auto.configuration_auto import AutoConfig
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from data.model import boundary_pattern
@@ -31,7 +31,7 @@ from src.util.collator import FlexibleCollatorWithPadding, FlexibleSeq2SeqCollat
 
 logger = logging.getLogger(__name__)
 
-supported_decoder_models = ["qwen3"]
+supported_decoder_models = ["qwen3", "cohere"]
 
 InputKey = typing.Literal["transcription", "segmentation"]
 OutputKey = typing.Literal["segmentation", "glosses"]
@@ -150,6 +150,13 @@ def create_dataset(
                     raise NotImplementedError(
                         "GlossLM does not support the `concatenated` format"
                     )
+                if config.mode == "grpo":
+                    # GRPO doesn't need labels
+                    prompt = templates["polygloss.concat.t2sg"].substitute(fields)
+                    examples.append(
+                        _create_example(prompt, None, "t2sg", row, config.model_type)
+                    )
+                    continue
                 if fields["segmentation"]:
                     prompt = templates["polygloss.concat.t2sg"].substitute(fields)
                     label = f"{fields['segmentation']}\nGlosses: {fields['glosses']}"
@@ -319,6 +326,8 @@ def _make_seq2seq_tokenizer(tokenizer: PreTrainedTokenizerBase, max_length: int)
     def _tokenize(batch):
         nonlocal tokenizer, max_length
         targets = batch.get("label")
+        if any([t is None for t in targets]):
+            targets = None
         model_inputs = tokenizer(
             batch["input"],
             text_target=targets,
@@ -354,18 +363,30 @@ def _make_causal_tokenizer_with_chat_template(
         prompt_lengths = []  # Track where assistant response starts for loss masking
 
         for prompt, label in zip(batch["input"], batch["label"]):
-            # Apply chat template
-            user_and_assistant_turns.append(
-                tokenizer.apply_chat_template(
-                    [
-                        {"role": "user", "content": prompt},
-                        {"role": "assistant", "content": label},
-                    ],
-                    tokenize=False,
-                    add_generation_prompt=False,
-                    enable_thinking=use_thinking,
+            if label is not None:
+                # Apply chat template
+                user_and_assistant_turns.append(
+                    tokenizer.apply_chat_template(
+                        [
+                            {"role": "user", "content": prompt},
+                            {"role": "assistant", "content": label},
+                        ],
+                        tokenize=False,
+                        add_generation_prompt=False,
+                        enable_thinking=use_thinking,
+                    )
                 )
-            )
+            else:
+                user_and_assistant_turns.append(
+                    tokenizer.apply_chat_template(
+                        [
+                            {"role": "user", "content": prompt},
+                        ],
+                        tokenize=False,
+                        add_generation_prompt=True,
+                        enable_thinking=use_thinking,
+                    )
+                )
             prompt_lengths.append(
                 len(
                     tokenizer.apply_chat_template(
@@ -497,7 +518,7 @@ def split_interleaved_segments(interleaved: str):
 
 def _create_example(
     prompt: str,
-    label: str,
+    label: str | None,
     task_key: str,
     row: typing.Mapping,
     model_type: MODEL_TYPE,

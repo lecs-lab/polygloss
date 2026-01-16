@@ -125,7 +125,8 @@ def _evaluate(predictions: pd.DataFrame):
                     joint_predictions["predicted_segmentations"].tolist(),
                     joint_predictions["predicted_glosses"].tolist(),
                 )
-            ]
+            ],
+            should_log=True,
         )
 
     return metrics
