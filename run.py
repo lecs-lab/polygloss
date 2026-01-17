@@ -106,8 +106,6 @@ def run(
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     elif config.mode in ["lora", "grpo"]:
         logger.info("Creating LoRA adapter")
-        model.enable_input_require_grads()
-    elif config.mode == "lora":
         if config.model_type == "seq2seq":
             task_type = TaskType.SEQ_2_SEQ_LM
         elif config.model_type == "decoder":
@@ -118,6 +116,7 @@ def run(
             target_modules = json.loads(config.target_modules)
         else:
             target_modules = None
+        logger.info(f"{target_modules=}")
         lora_config = LoraConfig(
             task_type=task_type,
             r=config.lora_rank,
@@ -134,11 +133,11 @@ def run(
         )
 
     dataloaders = {}
-
     dataset = create_dataset(
         tokenizer=tokenizer,
         config=config,
     )
+    logger.info(f"First few train examples: {dataset['train'][:5]}")
     dataloaders: dict[str, DataLoader] = {
         split: create_dataloader(
             dataset[split],
