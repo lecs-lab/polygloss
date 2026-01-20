@@ -1,6 +1,6 @@
 import inspect
-import itertools
 import logging
+import tempfile
 
 import pandas as pd
 import torch
@@ -81,33 +81,6 @@ def generate(
         ids.extend(batch["id"])
 
     # Gather all examples
-    if distributed_parameters["distributed"]:
-        all_generations = [None for _ in range(distributed_parameters["world_size"])]
-        all_labels = [None for _ in range(distributed_parameters["world_size"])]
-        all_task_keys = [None for _ in range(distributed_parameters["world_size"])]
-        all_ids = [None for _ in range(distributed_parameters["world_size"])]
-
-        logger.info(
-            f"[RANK {distributed_parameters['rank']}] Finished generation, entering gather"
-        )
-        torch.distributed.all_gather_object(all_generations, generations)
-        torch.distributed.all_gather_object(all_labels, labels)
-        torch.distributed.all_gather_object(all_task_keys, task_keys)
-        torch.distributed.all_gather_object(all_ids, ids)
-
-        # all_gather creates a list of lists, so we need to flatten
-        all_generations = list(itertools.chain.from_iterable(all_generations))  # type:ignore
-        all_labels = list(itertools.chain.from_iterable(all_labels))  # type:ignore
-        all_task_keys = list(
-            itertools.chain.from_iterable(all_task_keys)  # type:ignore
-        )
-        all_ids = list(itertools.chain.from_iterable(all_ids))  # type:ignore
-    else:
-        all_generations = generations
-        all_labels = labels
-        all_task_keys = task_keys
-        all_ids = ids
-    assert all(gen is not None for gen in all_generations)
     df = pd.DataFrame(
         [
             {
@@ -116,11 +89,26 @@ def generate(
                 "task": task_key,
                 "id": id,
             }
-            for gen, label, task_key, id in zip(
-                all_generations, all_labels, all_task_keys, all_ids
-            )
+            for gen, label, task_key, id in zip(generations, labels, task_keys, ids)
         ]
     )
+    if distributed_parameters["distributed"]:
+        logger.info(
+            f"[RANK {distributed_parameters['rank']}] Finished generation, saving tempfile to disk"
+        )
+        tmp_dir = tempfile.gettempdir()
+        tmp_path = f"{tmp_dir}/gen_{distributed_parameters['rank']}.parquet"
+        df.to_parquet(tmp_path)
+        torch.distributed.barrier()
+
+        df = pd.concat(
+            [
+                pd.read_parquet(f"{tmp_dir}/gen_{i}.parquet")
+                for i in range(distributed_parameters["world_size"])
+            ],
+            ignore_index=True,
+        )
+
     # De-dupe, since with DDP we might have dupe generations due to weird batch sizes
     df = df.drop_duplicates(subset=["id", "task"], keep="first").reset_index(drop=True)
     return df
