@@ -2,7 +2,11 @@
 
 A Massively Multilingual Corpus and Pretrained Model for Interlinear Glossed Text
 
-[📄 Paper](https://arxiv.org/abs/2403.06399) | [📦 Models and data](https://huggingface.co/collections/lecslab/glosslm-66da150854209e910113dd87)
+- PolyGloss (v2): [📄 Paper](https://arxiv.org/abs/2601.10925) | [📦 Models and data](https://hf.co/collections/lecslab/polygloss)
+- GlossLM (v1): [📄 Paper](https://arxiv.org/abs/2403.06399) | [📦 Models and data](https://huggingface.co/collections/lecslab/glosslm-66da150854209e910113dd87)
+
+> [!NOTE]
+> To see instructions for using the v1 GlossLM models, switch this repo to the `frozen/glosslm-v1` branch.
 
 ## Overview
 
@@ -31,10 +35,10 @@ Creating consistent and large IGT datasets is time-consuming and error-prone. Th
 ```python
 import datasets
 
-glosslm_corpus = datasets.load_dataset("lecslab/glosslm-corpus")
+polygloss_corpus = datasets.load_dataset("lecslab/polygloss-corpus")
 ```
 
-## Using the model
+## Using the interleaved model
 
 ```python
 import transformers
@@ -44,28 +48,41 @@ transcription = "o sey xtok rixoqiil"
 translation = "O sea busca esposa."
 lang = "Uspanteco"
 metalang = "Spanish"
-is_segmented = False
 
-prompt = f"""Provide the glosses for the following transcription in {lang}.
+prompt = f"""Predict the glosses and morphological segmentation (in parentheses) for the following text in {lang}.
 
-Transcription in {lang}: {transcription}
-Transcription segmented: {is_segmented}
-Translation in {metalang}: {translation}\n
-Glosses:
+Text in {lang}: {transcription}
+Translation in {metalang}: {translation}
+
+Output: 
 """
 
-model = transformers.T5ForConditionalGeneration.from_pretrained("lecslab/glosslm")
-tokenizer = transformers.ByT5Tokenizer.from_pretrained("google/byt5-base", use_fast=False)
+model = transformers.T5ForConditionalGeneration.from_pretrained("lecslab/polygloss-byt5-interleaved-2025-12-28")
+tokenizer = transformers.ByT5Tokenizer.from_pretrained("lecslab/polygloss-byt5-interleaved-2025-12-28", use_fast=False)
 
 inputs = tokenizer(prompt, return_tensors="pt")
-outputs = tokenizer.batch_decode(model.generate(**inputs, max_length=1024), skip_special_tokens=True)
-print(outputs[0]) # o sea COM-buscar E3S-esposa
+outputs = tokenizer.batch_decode(model.generate(**inputs, max_length=1024, num_beams=2), skip_special_tokens=True)
+print(outputs[0]) # CONJ(o) sea(sey) COM(x)-buscar(tok) E3S(r)-esposa(ixoqiil)
 ```
 
 ## License
 
 ## Citation
 
+PolyGloss:
+```
+@misc{ginn2026massivelymultilingualjointsegmentation,
+      title={Massively Multilingual Joint Segmentation and Glossing}, 
+      author={Michael Ginn and Lindia Tjuatja and Enora Rice and Ali Marashian and Maria Valentini and Jasmine Xu and Graham Neubig and Alexis Palmer},
+      year={2026},
+      eprint={2601.10925},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2601.10925}, 
+}
+```
+
+GlossLM:
 ```
 @inproceedings{ginn-etal-2024-glosslm,
     title = "{G}loss{LM}: A Massively Multilingual Corpus and Pretrained Model for Interlinear Glossed Text",
