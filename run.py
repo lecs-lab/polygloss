@@ -137,7 +137,8 @@ def run(
         tokenizer=tokenizer,
         config=config,
     )
-    logger.info(f"First few train examples: {dataset['train'][:5]}")
+    if "train" in dataset:
+        logger.info(f"First few train examples: {dataset['train'][:5]}")
     dataloaders: dict[str, DataLoader] = {
         split: create_dataloader(
             dataset[split],
