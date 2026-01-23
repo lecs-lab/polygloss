@@ -197,6 +197,8 @@ def run(
         distributed_parameters=distributed_parameters,
     )
     if distributed_parameters["rank"] == 0:
+        # Reset for WandB bug (https://github.com/wandb/wandb/issues/11112)
+        random.seed()
         assert predictions is not None
         assert perplexity_by_lang is not None
         # Join with original dataset to add language info
