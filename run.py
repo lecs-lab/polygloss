@@ -196,22 +196,21 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-    assert predictions is not None
-    assert perplexity_by_lang is not None
-    # Join with original dataset to add language info
-    meta = (
-        dataset["test"]  # type:ignore
-        .to_pandas()[["id", "glottocode"]]
-        .drop_duplicates(subset=["id"])
-    )
-    predictions_with_langs = predictions.merge(
-        meta,
-        on="id",
-        how="left",
-    )
-
     if distributed_parameters["rank"] == 0:
         assert predictions is not None
+        assert perplexity_by_lang is not None
+        # Join with original dataset to add language info
+        meta = (
+            dataset["test"]  # type:ignore
+            .to_pandas()[["id", "glottocode"]]
+            .drop_duplicates(subset=["id"])
+        )
+        predictions_with_langs = predictions.merge(
+            meta,
+            on="id",
+            how="left",
+        )
+
         # Join with original dataset to add language info
         meta = (
             dataset["test"]  # type:ignore
