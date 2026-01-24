@@ -55,7 +55,6 @@ def generate(
             for k, v in batch.items()
             if k in inspect.signature(model.forward).parameters
         }
-
         batch_generations = model.generate(
             **inputs,
             do_sample=False,
@@ -66,15 +65,30 @@ def generate(
         )
         if config.model_type == "decoder":
             batch_generations = batch_generations[:, inputs["input_ids"].size(-1) :]
-        generations.extend(
-            tokenizer.batch_decode(batch_generations, skip_special_tokens=True)
+        generated_strings = tokenizer.batch_decode(
+            batch_generations, skip_special_tokens=True
         )
+        if config.model_type == "decoder":
+            generated_strings = [
+                s.replace(config.assistant_response_token, "")
+                for s in generated_strings
+            ]
+        generations.extend(generated_strings)
 
         if "labels" in batch:
             batch["labels"][batch["labels"] == -100] = tokenizer.pad_token_id
-            labels.extend(
-                tokenizer.batch_decode(batch["labels"], skip_special_tokens=True)
+            new_labels = tokenizer.batch_decode(
+                batch["labels"], skip_special_tokens=True
             )
+            if config.model_type == "decoder":
+                assert config.assistant_response_token is not None
+                for i, lab in enumerate(new_labels):
+                    if config.assistant_response_token in lab:
+                        new_labels[i] = lab[
+                            lab.index(config.assistant_response_token)
+                            + len(config.assistant_response_token) :
+                        ]
+            labels.extend(new_labels)
         else:
             labels.extend([None] * len(batch_generations))
         task_keys.extend(batch["task"])

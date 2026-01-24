@@ -32,6 +32,9 @@ class ExperimentConfig:
     pretrained_model: str = "google/byt5-base"
     """Hugging Face model identifier for the pretrained model to use"""
 
+    assistant_response_token: str | None = None
+    """String such as '<CHATBOT_TOKEN>' used by decoder models at the start of the assistant response"""
+
     model_type: MODEL_TYPE = "seq2seq"
     """Architecture type: 'seq2seq' for encoder-decoder models or 'decoder' for decoder-only models"""
 
@@ -155,3 +158,7 @@ class ExperimentConfig:
                 raise ValueError("Finetuning must have a glottocode!")
         if self.mode == "grpo" and self.task_format != "concatenated":
             raise ValueError("Can only do GRPO with `task_format=concatenated`")
+        if self.model_type == "decoder" and self.assistant_response_token is None:
+            raise ValueError(
+                "Must specify `assistant_response_token` when using a chat-style model!"
+            )
