@@ -107,11 +107,11 @@ def generate(
         ]
     )
     if distributed_parameters["distributed"]:
-        logger.info(
-            f"[RANK {distributed_parameters['rank']}] Finished generation, saving tempfile to disk"
-        )
         tmp_dir = tempfile.gettempdir()
         tmp_path = f"{tmp_dir}/gen_{distributed_parameters['rank']}.parquet"
+        logger.info(
+            f"[RANK {distributed_parameters['rank']}] Finished generation, saving tempfile to {tmp_path}"
+        )
         df.to_parquet(tmp_path)
         torch.distributed.barrier()
 

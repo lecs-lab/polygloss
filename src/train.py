@@ -121,12 +121,13 @@ def train(
             if eval_loss < min_eval_loss:
                 min_eval_loss = eval_loss
                 since_best = 0
-                best_checkpoint_dir = models_folder / f"{run_id}.model"
-                (
-                    model.module if distributed_parameters["distributed"] else model
-                ).save_pretrained(best_checkpoint_dir)
-                tokenizer.save_pretrained(best_checkpoint_dir)
-                logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
+                if distributed_parameters["rank"] == 0:
+                    best_checkpoint_dir = models_folder / f"{run_id}.model"
+                    (
+                        model.module if distributed_parameters["distributed"] else model
+                    ).save_pretrained(best_checkpoint_dir)
+                    tokenizer.save_pretrained(best_checkpoint_dir)
+                    logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
             else:
                 since_best += 1
                 if (
