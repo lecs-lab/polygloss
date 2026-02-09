@@ -268,12 +268,14 @@ def create_dataloader(
     else:
         num_workers = 0
     if distributed_parameters["distributed"]:
+        # test is shuffled to balance lengths over ranks
         sampler = DistributedSampler(
             dataset,  # type:ignore
-            shuffle=split == "train",
+            shuffle=split in ["train", "test"],
             num_replicas=distributed_parameters["world_size"],
             rank=distributed_parameters["rank"],
             drop_last=split == "train",
+            seed=0,
         )
     else:
         sampler = (
