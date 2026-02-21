@@ -46,6 +46,7 @@ for lang, iso in zip(evaluation_languages, evaluation_isocodes):
     rows.append(row)
 
 scores = pd.DataFrame(rows)
+scores.to_csv("test-scores.csv")
 
 X_METRIC = "PPL"
 Y_METRIC = "glossing.morphemes.error_rate"
@@ -63,8 +64,8 @@ sns.regplot(
 leg = ax.legend(
     loc="lower center",
     fontsize="x-small",
-    bbox_to_anchor=(0.5, 1.02),  # x=0 is the *axes* left edge
-    bbox_transform=ax.transAxes,  # <-- crucial
+    bbox_to_anchor=(0.5, 1.02),
+    bbox_transform=ax.transAxes,
     ncol=5,
     frameon=False,
     title=None,
@@ -82,5 +83,14 @@ plt.savefig(
 )  # bbox_inches="tight" removes extra whitespace
 plt.show()
 
-r2 = stats.pearsonr(scores["PPL"], scores["glossing.morphemes.error_rate"])[0] ** 2
-print(f"r^2={r2}")
+regressions = {}
+
+for metric in metrics:
+    print("\n" + metric)
+    r2 = stats.pearsonr(scores["PPL"], scores[metric])[0] ** 2
+    print(f"r^2={r2}")
+    reg = stats.linregress(scores["PPL"], scores[metric])
+    regressions[metric] = {"slope": reg[0], "intercept": reg[1]}
+    print(reg)
+
+pd.DataFrame.from_dict(regressions).transpose().to_csv("regressions.csv")
