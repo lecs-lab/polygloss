@@ -31,7 +31,8 @@ def train(
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
     logger.info(
-        f"Model has {sum(p.numel() for p in model.parameters())}, {sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable"
+        f"Model has {sum(p.numel() for p in model.parameters())} parameters, "
+        f"{sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable parameters"
     )
 
     if distributed_parameters["rank"] == 0:
