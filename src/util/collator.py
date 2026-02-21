@@ -78,6 +78,7 @@ class FlexibleCollatorWithPadding(DataCollatorForLanguageModeling):
         batch = super().__call__(features, return_tensors)
 
         # Mask labels for prompt
+        # FIXME: I've commented this out to disable loss masking, but we may want to add it back in at some point.
         # prompt_mask = torch.arange(batch["input_ids"].size(-1)).expand(
         #     batch["input_ids"].shape
         # )
