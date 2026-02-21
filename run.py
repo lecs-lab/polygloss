@@ -1,6 +1,7 @@
 import argparse
 import json
 import logging
+import os
 import pathlib
 import pprint
 import random
@@ -16,6 +17,7 @@ from transformers.models.auto.modeling_auto import (
     AutoModelForSeq2SeqLM,
 )
 from transformers.models.auto.tokenization_auto import AutoTokenizer
+from transformers.utils.quantization_config import BitsAndBytesConfig
 
 import wandb
 from src.config.config_to_dataclass import config_to_dataclass
@@ -32,6 +34,7 @@ logging.basicConfig(
     format="\033[90m%(asctime)s \033[36m[%(levelname)s] \033[1;33m%(module)s\033[0m: %(message)s",
 )
 logger = logging.getLogger(__name__)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 def run(
@@ -81,22 +84,30 @@ def run(
     models_folder.mkdir(exist_ok=True, parents=True)
 
     # Prepare model, dataset, tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    if config.model_type == "seq2seq":
-        model = AutoModelForSeq2SeqLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]
+    tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=True)
+    if config.quantize:
+        logger.info("Quantizing base model")
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
         )
     else:
-        model = AutoModelForCausalLM.from_pretrained(config.pretrained_model).to(
-            distributed_parameters["device"]  # type:ignore
-        )
+        bnb_config = None
+    if config.model_type == "seq2seq":
+        model = AutoModelForSeq2SeqLM.from_pretrained(
+            config.pretrained_model, quantization_config=bnb_config
+        ).to(distributed_parameters["device"])
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            config.pretrained_model, quantization_config=bnb_config
+        ).to(distributed_parameters["device"])
     model.gradient_checkpointing_enable()
     if config.adapter_dir:
-        model.enable_input_require_grads()
         model = PeftModel.from_pretrained(model, config.adapter_dir, is_trainable=True)
     elif config.mode in ["lora", "grpo"]:
         logger.info("Creating LoRA adapter")
-        model.enable_input_require_grads()
         if config.model_type == "seq2seq":
             task_type = TaskType.SEQ_2_SEQ_LM
         elif config.model_type == "decoder":
@@ -107,6 +118,7 @@ def run(
             target_modules = json.loads(config.target_modules)
         else:
             target_modules = None
+        logger.info(f"{target_modules=}")
         lora_config = LoraConfig(
             task_type=task_type,
             r=config.lora_rank,
@@ -115,6 +127,7 @@ def run(
             target_modules=target_modules,
         )
         model = get_peft_model(model, lora_config)
+        model.enable_input_require_grads()  # type:ignore
 
     if distributed_parameters["distributed"]:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -122,11 +135,12 @@ def run(
         )
 
     dataloaders = {}
-
     dataset = create_dataset(
         tokenizer=tokenizer,
         config=config,
     )
+    if "train" in dataset:
+        logger.info(f"First few train examples: {dataset['train'][:5]}")
     dataloaders: dict[str, DataLoader] = {
         split: create_dataloader(
             dataset[split],
@@ -148,11 +162,6 @@ def run(
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
         )
-
-    if distributed_parameters["distributed"]:
-        torch.distributed.barrier()
-        torch.distributed.destroy_process_group()
-        model = model.module
 
     if config.mode == "grpo":
         # Remake the dataset for evaluation
@@ -189,9 +198,11 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-
     if distributed_parameters["rank"] == 0:
+        # Reset for WandB bug (https://github.com/wandb/wandb/issues/11112)
+        random.seed()
         assert predictions is not None
+        assert perplexity_by_lang is not None
         # Join with original dataset to add language info
         meta = (
             dataset["test"]  # type:ignore
@@ -204,6 +215,17 @@ def run(
             how="left",
         )
 
+        # Join with original dataset to add language info
+        meta = (
+            dataset["test"]  # type:ignore
+            .to_pandas()[["id", "glottocode"]]
+            .drop_duplicates(subset=["id"])
+        )
+        predictions_with_langs = predictions.merge(
+            meta,
+            on="id",
+            how="left",
+        )
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
         lang_loss_table = wandb.Table(dataframe=perplexity_by_lang)
@@ -222,10 +244,7 @@ def run(
                 experiment_folder / "metrics.json",
             )
             return metrics
-    if distributed_parameters["distributed"]:
-        if distributed_parameters["rank"] == 0:
-            wandb.finish()
-    else:
+    if not distributed_parameters["distributed"] or distributed_parameters["rank"] == 0:
         wandb.finish()
 
 

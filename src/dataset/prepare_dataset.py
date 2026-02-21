@@ -20,7 +20,6 @@ from glossing.igt import gloss_string_to_word_glosses
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm
-from transformers.models.auto.configuration_auto import AutoConfig
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 from data.model import boundary_pattern
@@ -226,17 +225,16 @@ def create_dataset(
         logger.info(f"Skipped {skipped} for split {split}")
         inputs_dataset[split] = datasets.Dataset.from_list(examples)
 
-    model_config = AutoConfig.from_pretrained(config.pretrained_model)
-    if model_config.is_encoder_decoder:
+    if config.model_type == "seq2seq":
         _make_tokenizer = _make_seq2seq_tokenizer
-    elif model_config.model_type in supported_decoder_models:
-        # for now, only Qwen 3 is supported (uses chat template)
+    elif config.model_type == "decoder":
+        logger.info("Setting padding side to `left`")
+        if tokenizer.pad_token is None:
+            tokenizer.pad_token = tokenizer.eos_token
+        tokenizer.padding_side = "left"
         _make_tokenizer = _make_causal_tokenizer_with_chat_template
     else:
-        raise ValueError(
-            f"Unknown or unsupported model_type from pretrained config: {model_config.model_type!r}. "
-            f"Supported decoder-only model types: {supported_decoder_models}."
-        )
+        raise ValueError()
 
     # Create prompts and tokenize
     return inputs_dataset.map(
@@ -269,13 +267,15 @@ def create_dataloader(
         num_workers = int(os.environ["SLURM_CPUS_PER_TASK"])
     else:
         num_workers = 0
-    if distributed_parameters["distributed"] and split == "train":
+    if distributed_parameters["distributed"]:
+        # test is shuffled to balance lengths over ranks
         sampler = DistributedSampler(
             dataset,  # type:ignore
-            shuffle=True,
+            shuffle=split in ["train", "test"],
             num_replicas=distributed_parameters["world_size"],
             rank=distributed_parameters["rank"],
-            drop_last=True,
+            drop_last=split == "train",
+            seed=0,
         )
     else:
         sampler = (
@@ -355,14 +355,21 @@ def _make_causal_tokenizer_with_chat_template(
     def _tokenize(batch):
         nonlocal tokenizer, max_length, use_thinking
 
-        # Ensure tokenizer has pad token
-        if tokenizer.pad_token is None:
-            tokenizer.pad_token = tokenizer.eos_token
-
         user_and_assistant_turns = []
-        prompt_lengths = []  # Track where assistant response starts for loss masking
+        prompt_lengths = []
+        label_lengths = []  # Track the length of the assistant responses
 
         for prompt, label in zip(batch["input"], batch["label"]):
+            prompt_length = len(
+                tokenizer.apply_chat_template(
+                    [{"role": "user", "content": prompt}],
+                    tokenize=True,
+                    add_generation_prompt=True,  # True to get the assistant start token
+                    enable_thinking=use_thinking,
+                )  # type:ignore
+            )
+            prompt_lengths.append(prompt_length)
+
             if label is not None:
                 # Apply chat template
                 user_and_assistant_turns.append(
@@ -376,6 +383,8 @@ def _make_causal_tokenizer_with_chat_template(
                         enable_thinking=use_thinking,
                     )
                 )
+                full_len = len(tokenizer(user_and_assistant_turns[-1])["input_ids"])  # type:ignore
+                label_lengths.append(full_len - prompt_length)
             else:
                 user_and_assistant_turns.append(
                     tokenizer.apply_chat_template(
@@ -387,16 +396,7 @@ def _make_causal_tokenizer_with_chat_template(
                         enable_thinking=use_thinking,
                     )
                 )
-            prompt_lengths.append(
-                len(
-                    tokenizer.apply_chat_template(
-                        [{"role": "user", "content": prompt}],
-                        tokenize=True,
-                        add_generation_prompt=True,  # True to get the assistant start token
-                        enable_thinking=use_thinking,
-                    )["input_ids"]  # type:ignore
-                )
-            )
+                label_lengths.append(0)
 
         # Tokenize the full conversations
         model_inputs = tokenizer(
@@ -405,6 +405,7 @@ def _make_causal_tokenizer_with_chat_template(
             padding=False,
             max_length=max_length,
         )
+        model_inputs["label_lengths"] = label_lengths
         model_inputs["prompt_lengths"] = prompt_lengths
         return model_inputs
 

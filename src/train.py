@@ -30,6 +30,10 @@ def train(
 ):
     """Training loop. Logs information to WandB and updates the model in place."""
     device = distributed_parameters["device"]
+    logger.info(
+        f"Model has {sum(p.numel() for p in model.parameters())} parameters, "
+        f"{sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable parameters"
+    )
 
     if distributed_parameters["rank"] == 0:
         if not (run := wandb.run):
@@ -51,7 +55,6 @@ def train(
         )
     else:
         raise ValueError(f"Unrecognized optimizer: {config.optimizer}")
-
     start_epoch = 0
     step = 0
     max_steps = (
@@ -96,6 +99,7 @@ def train(
     for epoch in range(start_epoch, config.max_epochs):
         if distributed_parameters["distributed"]:
             assert isinstance(train_dataloader.sampler, DistributedSampler)
+            assert isinstance(dev_dataloader.sampler, DistributedSampler)
             train_dataloader.sampler.set_epoch(epoch)
 
         model.train()
@@ -118,12 +122,13 @@ def train(
             if eval_loss < min_eval_loss:
                 min_eval_loss = eval_loss
                 since_best = 0
-                best_checkpoint_dir = models_folder / f"{run_id}.model"
-                (
-                    model.module if distributed_parameters["distributed"] else model
-                ).save_pretrained(best_checkpoint_dir)
-                tokenizer.save_pretrained(best_checkpoint_dir)
-                logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
+                if distributed_parameters["rank"] == 0:
+                    best_checkpoint_dir = models_folder / f"{run_id}.model"
+                    (
+                        model.module if distributed_parameters["distributed"] else model
+                    ).save_pretrained(best_checkpoint_dir)
+                    tokenizer.save_pretrained(best_checkpoint_dir)
+                    logger.info(f"Saved model to {best_checkpoint_dir.resolve()}")
             else:
                 since_best += 1
                 if (
