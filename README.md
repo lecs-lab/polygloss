@@ -43,26 +43,19 @@ polygloss_corpus = datasets.load_dataset("lecslab/polygloss-corpus")
 ```python
 import transformers
 
-# Your inputs
+model = transformers.AutoModelForSeq2SeqLM.from_pretrained("lecslab/polygloss-byt5-interleaved-2025-12-28", trust_remote_code=True)
+
+# Estimate performance based on a glottocode
+model.estimate_perf(glottocode="uspa1245")
+
+# Predict IGT outputs
 transcription = "o sey xtok rixoqiil"
 translation = "O sea busca esposa."
 lang = "Uspanteco"
 metalang = "Spanish"
 
-prompt = f"""Predict the glosses and morphological segmentation (in parentheses) for the following text in {lang}.
-
-Text in {lang}: {transcription}
-Translation in {metalang}: {translation}
-
-Output: 
-"""
-
-model = transformers.T5ForConditionalGeneration.from_pretrained("lecslab/polygloss-byt5-interleaved-2025-12-28")
-tokenizer = transformers.ByT5Tokenizer.from_pretrained("lecslab/polygloss-byt5-interleaved-2025-12-28", use_fast=False)
-
-inputs = tokenizer(prompt, return_tensors="pt")
-outputs = tokenizer.batch_decode(model.generate(**inputs, max_length=1024, num_beams=2), skip_special_tokens=True)
-print(outputs[0]) # CONJ(o) sea(sey) COM(x)-buscar(tok) E3S(r)-esposa(ixoqiil)
+output = model.predict_igt(transcription, translation, lang, metalang)
+print(outputs) # CONJ(o) sea(sey) COM(x)-buscar(tok) E3S(r)-esposa(ixoqiil)
 ```
 
 ## License
