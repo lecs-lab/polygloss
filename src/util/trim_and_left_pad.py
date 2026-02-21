@@ -15,7 +15,6 @@ def trim_and_left_pad(batch, pad_token_id: int):
     for idx in range(batch_size):
         prompt_length = batch["prompt_lengths"][idx]
         label_length = batch["label_lengths"][idx]
-        # Cut out the label
         input_ids[idx][max_length - prompt_length :] = batch["input_ids"][idx][
             -(prompt_length + label_length) : -label_length
         ]
