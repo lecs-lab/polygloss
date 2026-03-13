@@ -103,6 +103,9 @@ class ExperimentConfig:
     adapter_dir: str | None = None
     """LoRA adapter directory. If specified, will add adapter layer to pretrained model (for inference)"""
 
+    seed: int = 42
+    """seed for train set split"""
+
     # ============================
     # Generation
     # ============================

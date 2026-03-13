@@ -13,7 +13,7 @@ import typing
 from pathlib import Path
 from string import Template
 from typing import Literal, cast
-
+import random 
 import datasets
 import regex as re
 from glossing.igt import gloss_string_to_word_glosses
@@ -40,7 +40,8 @@ OutputKey = typing.Literal["segmentation", "glosses"]
 def create_dataset(
     tokenizer: PreTrainedTokenizerBase,
     config: ExperimentConfig,
-    end_idx: int = None
+    data_limit: int = None,
+    seed: int = None
 ) -> datasets.DatasetDict:
     """Creates dataset for training/finetuning
 
@@ -49,11 +50,9 @@ def create_dataset(
         config (ExperimentConfig): The experiment configuration
     """
     dataset = datasets.load_dataset(config.dataset_key)
-    if end_idx:
-        logger.info(f"Limiting to {end_idx} samples")
-        dataset["train"] = dataset["train"].select(range(end_idx))
     dataset = cast(datasets.DatasetDict, dataset)
-    dataset = _filter(dataset, config.glottocode)
+    dataset = dataset.filter(lambda row: row["source"] == "sigmorphon_st") #filter to just st data (should be pretty much in the same order)
+    dataset = _filter(dataset, config.glottocode, data_limit, seed)
     inputs_dataset = datasets.DatasetDict()
 
     if "glosslm" in config.pretrained_model:
@@ -288,7 +287,7 @@ def create_dataloader(
     )
 
 
-def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
+def _filter(dataset: datasets.DatasetDict, glottocode: str | None, data_limit: int | None, seed: int | None):
     """Filter down to the relevant examples (depending on pretraining vs finetuning)"""
     dataset = dataset.filter(
         lambda x: x["transcription"] is not None and x["glosses"] is not None
@@ -302,12 +301,16 @@ def _filter(dataset: datasets.DatasetDict, glottocode: str | None):
         if dataset["test"].num_rows == 0:
             raise ValueError(f"Dataset does not contain glottocode {glottocode}!")
         new_dataset = dataset
+        if seed and data_limit:
+            rng = random.Random(seed)
+            indices = rng.sample(range(len(new_dataset["train"])), data_limit)
+            new_dataset["train"] = new_dataset["train"].select(indices)
     else:
         print("Re-splitting dataset for pretraining")
         # We must be pretraining
         # Instead of language-specific eval sets, let's use all of the pretraining and ID eval data and make iid splits
         pretraining_data = datasets.concatenate_datasets(
-            [dataset["train"], dataset[key]]
+            [dataset["train"], dataset["dev"]]
         )
         pretraining_data = pretraining_data.train_test_split(test_size=0.1, seed=0)
         new_dataset["train"] = pretraining_data["train"]

@@ -131,13 +131,13 @@ def run(
         )
         for split in dataset.keys()
     }
-
+    key = "eval" if "eval" in dataloaders else "dev"
     if config.mode in ["pretrain", "finetune", "lora"]:
         train(
             model,
             tokenizer=tokenizer,
             train_dataloader=dataloaders["train"],
-            dev_dataloader=dataloaders["eval"],
+            dev_dataloader=dataloaders[key],
             config=config,
             models_folder=models_folder,
             distributed_parameters=distributed_parameters,
@@ -148,11 +148,12 @@ def run(
         torch.distributed.destroy_process_group()
         model = model.module
 
+
     # Compute perplexity for each language
     perplexity_by_lang = eval_ppl_per_lang(
         model=model,
         tokenizer=tokenizer,
-        dev_dataloader=dataloaders["eval"],
+        dev_dataloader=dataloaders[key],
         config=config,
         distributed_parameters=distributed_parameters,
     )
@@ -182,6 +183,9 @@ def run(
             on="id",
             how="left",
         )
+        predictions.to_csv("untrained.csv")
+
+        print(f"length of predictions {len(predictions_with_langs)}")
 
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 

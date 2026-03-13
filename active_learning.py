@@ -1,4 +1,5 @@
 import argparse
+import pickle
 import json
 import logging
 import pathlib
@@ -35,6 +36,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+LANGUAGES_BY_GLOTTO = {"arap1274": "Arapaho", "natu1246": "Natugu", "nyan1302": "Nyangbo", "lezg1247": "Lezgi", "dido1241": "Tsez", "uspa1245": "Uspanteko"}
 def run(
     config: ExperimentConfig,
     experiment_folder: pathlib.Path,
@@ -47,7 +49,7 @@ def run(
     if distributed_parameters["rank"] == 0:
         if config.resume_from_checkpoint_id:
             wandb.init(
-                project="polygloss",
+                project="byt5",
                 entity="lecs-general",
                 config=asdict(config),
                 id=config.resume_from_checkpoint_id,
@@ -55,7 +57,7 @@ def run(
             )
         else:
             wandb.init(
-                project="polygloss",
+                project="byt5",
                 entity="lecs-general",
                 config=asdict(config),
             )
@@ -180,7 +182,6 @@ def run(
             on="id",
             how="left",
         )
-        predictions.to_csv("wtf.csv")
 
         wandb.log({"predictions": wandb.Table(dataframe=predictions_with_langs)})
 
@@ -228,25 +229,30 @@ if __name__ == "__main__":
     logger.info(f"Experiment config:\n{pprint.pformat(config)}")
 
     tokenizer = AutoTokenizer.from_pretrained(config.pretrained_model, use_fast=False)
-    dataset = datasets.load_dataset(config.dataset_key)
-    total_size = len(dataset["train"])
-    logger.info(f"TOTAL training samples = {total_size}")
+    # dataset = datasets.load_dataset(config.dataset_key)
+    # total_size = len(dataset["train"])
+    # logger.info(f"TOTAL training samples = {total_size}")
 
     folder = pathlib.Path(args.config).parent
-    chunk_size=50
-        # Loop through dataset in chunks
 
-    for i in range(1,3):
-        end_idx = min(chunk_size*i, total_size)
+
+    chunks = [200, 400, 600, 800, 1000, 1200, 1400, 1600]
+
+
+    language = LANGUAGES_BY_GLOTTO[config.glottocode]
+
+    for chunk in chunks:
+        data_size = chunk
         dataset = create_dataset(
             tokenizer=tokenizer,
             config=config,
-            end_idx=end_idx
+            data_limit=chunk,
+            seed = config.seed
         )
-        logger.info(f"Starting chunk {end_idx}")
+        logger.info(f"Starting chunk {chunk} with seed {config.seed}")
         # Setup distributed parameters
         distributed_parameters = setup_ddp()
-        exp_folder= folder / f"chunk_{str(i)}"
+        exp_folder= folder / f"chunks_{str(chunk)}_{str(config.seed)}"
         exp_folder.mkdir(exist_ok=True)
         # Run training/evaluation for this chunk
         out = run(

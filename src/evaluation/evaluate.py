@@ -94,8 +94,7 @@ def _evaluate(predictions: pd.DataFrame):
         metrics["glossing"] = glossing.evaluate_glosses(generations, references)
 
     if len(segmentation_predictions) > 0:
-        # Average metrics over examples
-
+        # Average metrics over example
         segmentation_metrics = collections.defaultdict(float)
         for _, row in segmentation_predictions.iterrows():
             for k, v in _evaluate_segmentation_example(
@@ -157,8 +156,34 @@ def _evaluate_segmentation_example(generation: str, label: str):
         f1 = 0
 
     edit_dist = editdistance.eval(" ".join(predicted_words), " ".join(label_words))
+    def _normalized_edit_dist(pred, gold):
+        """DP edit distance (clamped at 1) as in https://en.wikipedia.org/wiki/Levenshtein_distance"""
+        pred = [p for p in pred if p != "-"]
+        gold = [g for g in gold if g != "-"]
+        if len(pred) == 0:
+            return len(gold)
+        if len(gold) == 0:
+            return len(pred)
 
+        dists = [[0 for _ in range(len(gold) + 1)] for _ in range(len(pred) + 1)]
+
+        for i in range(1, len(pred) + 1):
+            dists[i][0] = i
+        for j in range(1, len(gold) + 1):
+            dists[0][j] = j
+
+        for j in range(1, len(gold) + 1):
+            for i in range(1, len(pred) + 1):
+                subst_cost = 0 if pred[i - 1] == gold[j - 1] else 1
+                dists[i][j] = min(
+                    dists[i - 1][j] + 1,
+                    dists[i][j - 1] + 1,
+                    dists[i - 1][j - 1] + subst_cost,
+                )
+        edit_dist = dists[-1][-1] / len(gold)
+        return min(edit_dist, 1)
     return {
+        "MER": _normalized_edit_dist(predicted_morphemes, label_morphemes),
         "accuracy": int(predicted_words == label_words),
         "precision": precision,
         "recall": recall,
