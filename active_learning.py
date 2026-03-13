@@ -7,9 +7,9 @@ import pprint
 import random
 import sys
 from dataclasses import asdict
-import copy
-import torch
+
 import datasets
+import torch
 from huggingface_hub import HfApi
 from peft import LoraConfig, PeftModel, TaskType, get_peft_model
 from torch.utils.data.dataloader import DataLoader
@@ -165,7 +165,7 @@ def run(
         config=config,
         distributed_parameters=distributed_parameters,
     )
-    metrics=None
+    metrics = None
     if distributed_parameters["rank"] == 0:
         assert predictions is not None
         assert perplexity_by_lang is not None
@@ -206,7 +206,6 @@ def run(
     else:
         wandb.finish()
     return metrics
-
 
 
 if __name__ == "__main__":
@@ -254,16 +253,17 @@ if __name__ == "__main__":
         distributed_parameters = setup_ddp()
         exp_folder= folder / f"chunks_{str(chunk)}_{str(config.seed)}"
         exp_folder.mkdir(exist_ok=True)
-        # Run training/evaluation for this chunk
+        if end_idx <= 100:
+            config.max_epochs = max_epochs * 2
+        else:
+            config.max_epochs = max_epochs
         out = run(
             config=config,
             experiment_folder=exp_folder,
             distributed_parameters=distributed_parameters,
             dataset=dataset,
         )
-        # Clean up DDP if needed
         if distributed_parameters.get("distributed"):
             torch.distributed.destroy_process_group()
 
     logger.info("All chunks processed successfully.")
-

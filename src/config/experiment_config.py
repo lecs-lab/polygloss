@@ -42,6 +42,8 @@ class ExperimentConfig:
     dataset_key: str = "lecslab/polygloss-corpus"
     """Hugging Face dataset identifier for the corpus to use"""
 
+    train_subset_size: int | None = None
+
     glottocode: str | None = None
     """Glottocode of the language to finetune on (None for pretraining on all languages)"""
 
