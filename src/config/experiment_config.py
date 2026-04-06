@@ -57,6 +57,9 @@ class ExperimentConfig:
     max_tokens: int = 1024
     """Truncate prompts to this many tokens"""
 
+    eval_length_percentile: int | None = None
+    """If provided, only evaluate examples whose transcriptions are in the top x percentile by length (within a language)"""
+
     # ============================
     # Training
     # ============================

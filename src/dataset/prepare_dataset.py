@@ -15,6 +15,7 @@ from string import Template
 from typing import Literal, cast
 
 import datasets
+import numpy as np
 import regex as re
 from glossing.igt import gloss_string_to_word_glosses
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
@@ -72,6 +73,28 @@ def create_dataset(
             continue
         examples = []
         skipped = 0
+
+        # Filter to only long strings
+        if config.eval_length_percentile is not None and split == "test":
+            lang_thresholds = {}
+            for glotto in set(dataset[split]["glottocode"]):
+                lengths = [
+                    len(t)
+                    for t in dataset[split].filter(lambda r: r["glottocode"] == glotto)[
+                        "transcription"
+                    ]
+                ]
+                lang_thresholds[glotto] = np.percentile(
+                    lengths, float(config.eval_length_percentile)
+                )
+            prev_num_rows = len(dataset[split])
+            dataset[split] = dataset[split].filter(
+                lambda r: len(r["transcription"]) >= lang_thresholds[r["glottocode"]]
+            )
+            print(
+                f"Filtered {prev_num_rows - len(dataset[split])} rows from {split} due to length."
+            )
+
         for row in tqdm(dataset[split], f"Creating examples for {split}"):
             row = typing.cast(typing.Mapping, row)
             fields = _prepare_prompt_fields(row)
