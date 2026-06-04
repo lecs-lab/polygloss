@@ -10,6 +10,9 @@ runs = [
     "polygloss-byt5-concat-adamw (fixed eval)",
     "polygloss-byt5-interleaved-adamw (fixed eval)",
     "dutiful-firefly-280",
+    "polygloss-byt5-multitask (only long sentences)",
+    "polygloss-byt5-concat (only long sentences)",
+    "polygloss-byt5-interleaved (only long sentences)",
 ]
 nice_names = [
     "\\textsc{GlossLM}",
@@ -17,6 +20,9 @@ nice_names = [
     "\\textsc{PolyGloss} (ByT5, concat)",
     "\\textsc{PolyGloss} (ByT5, interleaved)",
     "\\textsc{PolyGloss} (Qwen, interleaved)",
+    "\\textsc{PolyGloss} (ByT5, multitask, long only)",
+    "\\textsc{PolyGloss} (ByT5, concat, long only)",
+    "\\textsc{PolyGloss} (ByT5, interleaved, long only)",
 ]
 
 results = {run_name: {m: [] for m in metrics} for run_name in runs}

@@ -218,3 +218,84 @@ PolyGloss [qwen],lez,0.988,Alignment
 PolyGloss [qwen],ntu,1.000,Alignment
 PolyGloss [qwen],nyb,0.997,Alignment
 PolyGloss [qwen],ruc,1.000,Alignment
+"PolyGloss [interleaved, long]",arp,0.146,Glossing MER
+"PolyGloss [interleaved, long]",ddo,0.089,Glossing MER
+"PolyGloss [interleaved, long]",git,0.603,Glossing MER
+"PolyGloss [interleaved, long]",usp,0.151,Glossing MER
+"PolyGloss [interleaved, long]",ain,0.102,Glossing MER
+"PolyGloss [interleaved, long]",lez,0.317,Glossing MER
+"PolyGloss [interleaved, long]",ntu,0.129,Glossing MER
+"PolyGloss [interleaved, long]",nyb,0.206,Glossing MER
+"PolyGloss [interleaved, long]",ruc,0.294,Glossing MER
+"PolyGloss [interleaved, long]",arp,0.924,Segmentation F1
+"PolyGloss [interleaved, long]",ddo,0.965,Segmentation F1
+"PolyGloss [interleaved, long]",git,0.628,Segmentation F1
+"PolyGloss [interleaved, long]",usp,0.849,Segmentation F1
+"PolyGloss [interleaved, long]",ain,0.961,Segmentation F1
+"PolyGloss [interleaved, long]",lez,0.791,Segmentation F1
+"PolyGloss [interleaved, long]",ntu,0.943,Segmentation F1
+"PolyGloss [interleaved, long]",nyb,0.966,Segmentation F1
+"PolyGloss [interleaved, long]",ruc,0.825,Segmentation F1
+"PolyGloss [interleaved, long]",arp,1.0,Alignment
+"PolyGloss [interleaved, long]",ddo,1.0,Alignment
+"PolyGloss [interleaved, long]",git,1.0,Alignment
+"PolyGloss [interleaved, long]",usp,1.0,Alignment
+"PolyGloss [interleaved, long]",ain,1.0,Alignment
+"PolyGloss [interleaved, long]",lez,1.0,Alignment
+"PolyGloss [interleaved, long]",ntu,1.0,Alignment
+"PolyGloss [interleaved, long]",nyb,1.0,Alignment
+"PolyGloss [interleaved, long]",ruc,1.0,Alignment
+"PolyGloss [multitask, long]",arp,0.167,Glossing MER
+"PolyGloss [multitask, long]",ddo,0.106,Glossing MER
+"PolyGloss [multitask, long]",git,0.613,Glossing MER
+"PolyGloss [multitask, long]",usp,0.159,Glossing MER
+"PolyGloss [multitask, long]",ain,0.129,Glossing MER
+"PolyGloss [multitask, long]",lez,0.412,Glossing MER
+"PolyGloss [multitask, long]",ntu,0.186,Glossing MER
+"PolyGloss [multitask, long]",nyb,0.3,Glossing MER
+"PolyGloss [multitask, long]",ruc,0.332,Glossing MER
+"PolyGloss [multitask, long]",arp,0.919,Segmentation F1
+"PolyGloss [multitask, long]",ddo,0.959,Segmentation F1
+"PolyGloss [multitask, long]",git,0.62,Segmentation F1
+"PolyGloss [multitask, long]",usp,0.829,Segmentation F1
+"PolyGloss [multitask, long]",ain,0.967,Segmentation F1
+"PolyGloss [multitask, long]",lez,0.816,Segmentation F1
+"PolyGloss [multitask, long]",ntu,0.919,Segmentation F1
+"PolyGloss [multitask, long]",nyb,0.945,Segmentation F1
+"PolyGloss [multitask, long]",ruc,0.8,Segmentation F1
+"PolyGloss [multitask, long]",arp,0.987,Alignment
+"PolyGloss [multitask, long]",ddo,0.995,Alignment
+"PolyGloss [multitask, long]",git,0.903,Alignment
+"PolyGloss [multitask, long]",usp,0.985,Alignment
+"PolyGloss [multitask, long]",ain,0.981,Alignment
+"PolyGloss [multitask, long]",lez,0.972,Alignment
+"PolyGloss [multitask, long]",ntu,0.975,Alignment
+"PolyGloss [multitask, long]",nyb,0.992,Alignment
+"PolyGloss [multitask, long]",ruc,0.951,Alignment
+"PolyGloss [concat, long]",arp,0.161,Glossing MER
+"PolyGloss [concat, long]",ddo,0.099,Glossing MER
+"PolyGloss [concat, long]",git,0.628,Glossing MER
+"PolyGloss [concat, long]",usp,0.169,Glossing MER
+"PolyGloss [concat, long]",ain,0.115,Glossing MER
+"PolyGloss [concat, long]",lez,0.409,Glossing MER
+"PolyGloss [concat, long]",ntu,0.191,Glossing MER
+"PolyGloss [concat, long]",nyb,0.293,Glossing MER
+"PolyGloss [concat, long]",ruc,0.32,Glossing MER
+"PolyGloss [concat, long]",arp,0.917,Segmentation F1
+"PolyGloss [concat, long]",ddo,0.958,Segmentation F1
+"PolyGloss [concat, long]",git,0.573,Segmentation F1
+"PolyGloss [concat, long]",usp,0.837,Segmentation F1
+"PolyGloss [concat, long]",ain,0.969,Segmentation F1
+"PolyGloss [concat, long]",lez,0.816,Segmentation F1
+"PolyGloss [concat, long]",ntu,0.921,Segmentation F1
+"PolyGloss [concat, long]",nyb,0.948,Segmentation F1
+"PolyGloss [concat, long]",ruc,0.808,Segmentation F1
+"PolyGloss [concat, long]",arp,0.996,Alignment
+"PolyGloss [concat, long]",ddo,0.997,Alignment
+"PolyGloss [concat, long]",git,0.932,Alignment
+"PolyGloss [concat, long]",usp,0.999,Alignment
+"PolyGloss [concat, long]",ain,0.991,Alignment
+"PolyGloss [concat, long]",lez,0.989,Alignment
+"PolyGloss [concat, long]",ntu,0.989,Alignment
+"PolyGloss [concat, long]",nyb,1.0,Alignment
+"PolyGloss [concat, long]",ruc,0.981,Alignment
