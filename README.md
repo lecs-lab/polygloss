@@ -55,7 +55,7 @@ lang = "Uspanteco"
 metalang = "Spanish"
 
 output = model.predict_igt(transcription, translation, lang, metalang)
-print(outputs) # CONJ(o) sea(sey) COM(x)-buscar(tok) E3S(r)-esposa(ixoqiil)
+print(output) # o(o) sea(sey) COM(x)-buscar(tok) E3S(r)-esposa(ixoqiil)
 ```
 
 ## License
